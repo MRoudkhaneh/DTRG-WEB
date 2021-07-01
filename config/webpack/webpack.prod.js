@@ -47,7 +47,7 @@ module.exports = {
       'process.env.name': JSON.stringify('Codevolution'),
     }),
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new DuplicatePackageCheckerPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new CompressionPlugin({
