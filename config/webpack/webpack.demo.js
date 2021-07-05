@@ -3,6 +3,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   mode: 'production',
@@ -66,8 +68,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.variable': JSON.stringify('prod'),
+      'process.env.variable': JSON.stringify('demo'),
     }),
     new CleanWebpackPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 }
