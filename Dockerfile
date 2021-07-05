@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 COPY . .
 COPY --from=node_cache /cache/ .
 
-ARG BUILD_CMD=build
+ARG BUILD_CMD=notset
 
 # Building app
 RUN npm run $BUILD_CMD
