@@ -9,6 +9,11 @@ variables:
     value: cc34f6f4-3d14-4162-bbbc-9aa3b8680625
   ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}: # only works if you have a dev branch
     value: 7e66b725-08c3-4a7b-99e6-23ea681b90c6
+- name: BuildCommand
+  ${{ if eq(variables['Build.SourceBranchName'], 'prod') }}: # only works if you have a main branch
+    value: build
+  ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}: # only works if you have a dev branch
+    value: demo
 
 trigger:
 - dev
@@ -26,3 +31,4 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: '$(Build.SourceBranchName)'
+    arguments: '--build-arg BUILD_CMD=$(BuildCommand)'
