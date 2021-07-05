@@ -11,8 +11,10 @@ WORKDIR /usr/src/app
 COPY . .
 COPY --from=node_cache /cache/ .
 
+ARG BUILD_CMD=build
+
 # Building app
-RUN npm run build
+RUN npm run $BUILD_CMD
 
 # Stage 3
 FROM nginx:1.19.10-alpine
