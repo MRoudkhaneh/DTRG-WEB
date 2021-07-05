@@ -11,9 +11,9 @@ variables:
     value: 7e66b725-08c3-4a7b-99e6-23ea681b90c6
 - name: BuildCommand
   ${{ if eq(variables['Build.SourceBranchName'], 'prod') }}: # only works if you have a main branch
-    value: build
+    value: '**/Dockerfile'
   ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}: # only works if you have a dev branch
-    value: demo
+    value: '**/Dockerfile-dev'
 
 trigger:
 - dev
@@ -29,6 +29,6 @@ steps:
     containerRegistry: $(ContainerRegistry)
     repository: '$(Build.Repository.Name)'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: $(BuildCommand)
     tags: '$(Build.SourceBranchName)'
     arguments: '--build-arg BUILD_CMD=$(BuildCommand)'
