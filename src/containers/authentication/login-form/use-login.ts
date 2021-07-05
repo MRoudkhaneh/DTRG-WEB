@@ -1,34 +1,36 @@
-import { useCallback } from "react";
-import { useHistory } from "react-router";
-import { useForm } from "react-hook-form";
-import { useService, useToast } from "hooks";
-import { Api } from "utils";
+import { useCallback } from 'react'
+import { useHistory } from 'react-router'
+import { useForm } from 'react-hook-form'
+import { useError, useService, useToast } from 'hooks'
+import { Api } from 'utils'
 
-const defaultValues = { email: "", password: "" };
+const defaultValues = { email: '', password: '' }
 
 export const useLogin = () => {
-  const { control, handleSubmit } = useForm({ defaultValues });
+  const { control, handleSubmit } = useForm({ defaultValues })
 
-  const { error, success } = useToast();
+  const { success } = useToast()
 
-  const { usePost } = useService();
+  const { usePost } = useService()
 
-  const { push } = useHistory();
+  const { push } = useHistory()
+
+  const { onError } = useError()
 
   const { mutate, isLoading } = usePost({
     url: `${Api.users}login/`,
-    onError: () => error("Something went wrong."),
+    onError,
     onSuccess: (res) => {
-      localStorage.setItem("token", res.data.access);
-      success("You successfully loged in.");
-      push("/admin/patients");
+      localStorage.setItem('token', res.data.access)
+      success('You successfully loged in.')
+      push('/admin/patients')
     },
-  });
+  })
 
   return {
     control,
     handleSubmit,
     isLoading,
     onSubmit: useCallback((payload) => mutate({ payload }), []),
-  };
-};
+  }
+}

@@ -12,6 +12,9 @@ module.exports = {
     hot: true,
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.variable': JSON.stringify('dev'),
+    }),
     new ReactRefreshWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
