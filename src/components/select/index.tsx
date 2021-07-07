@@ -1,12 +1,12 @@
-import { FC, memo } from "react";
-import { Controller } from "react-hook-form";
-import { useToggle, useValidation } from "hooks";
-import { Input, Button, Error } from "components";
-import { classNames } from "utils";
+import { FC, memo } from 'react'
+import { Controller } from 'react-hook-form'
+import { useToggle, useValidation } from 'hooks'
+import { Input, Button, Error } from 'components'
+import { classNames } from 'utils'
 
-import { SelectBackDrop } from "./select-back-drop";
-import { SelectBox } from "./select-box";
-import { SelectDropBox } from "./select-drop-box";
+import { SelectBackDrop } from './select-back-drop'
+import { SelectBox } from './select-box'
+import { SelectDropBox } from './select-drop-box'
 
 export const Select: FC<ISelect> = memo(
   ({
@@ -19,11 +19,11 @@ export const Select: FC<ISelect> = memo(
     multiple,
     setValue,
   }) => {
-    const { open, toggle } = useToggle();
-    const { validate } = useValidation({ required });
+    const { open, toggle } = useToggle()
+    const { validate } = useValidation({ required })
 
     return (
-      <div className={classNames("w-full col-start", className)} slot="wrapper">
+      <div className={classNames('w-full col-start', className)} slot="wrapper">
         {label && (
           <label className="text-gray-800 mb-2" slot="label">
             {label}
@@ -36,7 +36,17 @@ export const Select: FC<ISelect> = memo(
           rules={{ validate }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <div className={`w-full flex-col relative`} slot="controlled">
-              {open ? (
+              <SelectBox
+                onChange={onChange}
+                toggle={toggle}
+                value={value}
+                error={error}
+                multiple={multiple}
+                setValue={setValue}
+                name={name}
+                open={open}
+              />
+              {open && (
                 <SelectDropBox
                   onChange={onChange}
                   toggle={toggle}
@@ -45,16 +55,6 @@ export const Select: FC<ISelect> = memo(
                 >
                   {children}
                 </SelectDropBox>
-              ) : (
-                <SelectBox
-                  onChange={onChange}
-                  toggle={toggle}
-                  value={value}
-                  error={error}
-                  multiple={multiple}
-                  setValue={setValue}
-                  name={name}
-                />
               )}
               <Error error={error} />
             </div>
@@ -63,6 +63,6 @@ export const Select: FC<ISelect> = memo(
 
         {open && <SelectBackDrop toggle={toggle} />}
       </div>
-    );
+    )
   }
-);
+)

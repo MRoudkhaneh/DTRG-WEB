@@ -1,21 +1,22 @@
-import { Button } from "components";
-import { ICChevronDown, ICDelete } from "icons";
-import { FC, memo } from "react";
+import { Button } from 'components'
+import { ICChevronDown, ICDelete, ICChevronUp } from 'icons'
+import { FC, memo } from 'react'
 
 export const SelectBoxActions: FC<ISelect> = memo(
-  ({ multiple, value, setValue, name }) => {
+  ({ multiple, value, setValue, name, open }) => {
     return (
       <div className=" flex items-center space-x-2">
         {multiple
           ? value &&
+            !open &&
             value.length > 0 && (
               <Button
                 type="button"
                 icon
                 onClick={(e) => {
-                  e.stopPropagation();
+                  e.stopPropagation()
                   if (setValue) {
-                    setValue(name, "");
+                    setValue(name, '')
                   }
                 }}
               >
@@ -25,14 +26,15 @@ export const SelectBoxActions: FC<ISelect> = memo(
                 />
               </Button>
             )
-          : value && (
+          : value &&
+            !open && (
               <Button
                 type="button"
                 icon
                 onClick={(e) => {
-                  e.stopPropagation();
+                  e.stopPropagation()
                   if (setValue) {
-                    setValue(name, "");
+                    setValue(name, '')
                   }
                 }}
               >
@@ -43,9 +45,16 @@ export const SelectBoxActions: FC<ISelect> = memo(
               </Button>
             )}
         <Button icon type="button">
-          <ICChevronDown className="w-4 h-4 text-gray-500" role="arrow-down" />
+          {open ? (
+            <ICChevronUp className="w-4 h-4 text-gray-500" role="arrow-down" />
+          ) : (
+            <ICChevronDown
+              className="w-4 h-4 text-gray-500"
+              role="arrow-down"
+            />
+          )}
         </Button>
       </div>
-    );
+    )
   }
-);
+)

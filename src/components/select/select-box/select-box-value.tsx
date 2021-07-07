@@ -1,16 +1,27 @@
-import { FC, memo } from "react";
+import { FC, memo } from 'react'
+import { classNames } from 'utils/classes'
 
-export const SelectBoxValue: FC<ISelect> = memo(({ multiple, value }) => {
-  if (multiple && value && typeof value === "object" && value.length > 0)
+export const SelectBoxValue: FC<ISelect> = memo(({ multiple, value, open }) => {
+  if (multiple && value && typeof value === 'object' && value.length > 0)
     return (
-      <div className="w-10/12 flex-row justify-start items-center ">
+      <div
+        className={classNames(
+          'w-10/12 flex-row justify-start items-center ',
+          open && 'opacity-30'
+        )}
+      >
         {(value || []).map((val, index) => (
           <span className="text-gray-700" key={index}>
             {val}
-            {value.length - 1 === index ? " " : " , "}
+            {value.length - 1 === index ? ' ' : ' , '}
           </span>
         ))}
       </div>
-    );
-  else return <span className="text-gray-700">{value}</span>;
-});
+    )
+  else
+    return (
+      <span className={classNames('text-gray-700', open && 'opacity-30')}>
+        {value}
+      </span>
+    )
+})
