@@ -2,18 +2,23 @@ import { FC, memo } from 'react'
 import { ICPlus } from 'icons'
 import { Button, Text, Toolbar, Tooltip } from 'components'
 import { useUi } from 'hooks'
+import { useLocation } from 'react-router-dom'
 
 export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(
   () => {
     const { toggleDialog } = useUi()
+    const {
+      state: { patient },
+    } = useLocation() as any
+
     return (
       <Toolbar>
         <Text
-          size="header"
+          size="title"
           className="w-3/4 flex flex-col items-start "
           slot="start"
         >
-          Patient interactions
+          {`${patient}'s interactions`}
         </Text>
         <div className="flex items-center justify-end w-1/4 " slot="end">
           <Tooltip content="Create">

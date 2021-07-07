@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer components {
- 
   .col-center {
     @apply flex flex-col items-center justify-center;
   }
@@ -29,7 +28,7 @@
     @apply flex flex-row justify-center items-start;
   }
   .trans {
-    @apply transition ease-linear duration-200;
+    @apply transition ease-in-out duration-100;
   }
   .col-full {
     @apply w-full flex flex-col;

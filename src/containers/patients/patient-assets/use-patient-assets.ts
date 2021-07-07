@@ -6,6 +6,7 @@ import { Api } from 'utils'
 const columns = [
   { head: 'Lot number', key: 'lot_number', width: 'w-1/2' },
   { head: 'Expiration date', key: 'expiration_date', width: 'w-1/2' },
+  { head: '' },
 ]
 
 export const usePatientAssets = () => {

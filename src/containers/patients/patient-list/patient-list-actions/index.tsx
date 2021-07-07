@@ -15,7 +15,10 @@ export const PatientListActions = ({ item }) => {
           icon
           onClick={(e) => {
             e.stopPropagation()
-            push(`patients/interactions/${item.id}`)
+            push({
+              pathname: `patients/interactions/${item.id}`,
+              state: { patient: `${item.first_name} ${item.surename}` },
+            })
           }}
         >
           <ICInteractions className="text-green-300 w-5 h-5 mr-3" />
@@ -27,7 +30,10 @@ export const PatientListActions = ({ item }) => {
           className="peer"
           onClick={(e) => {
             e.stopPropagation()
-            push(`patients/assets/${item.id}`)
+            push({
+              pathname: `patients/assets/${item.id}`,
+              state: { patient: `${item.first_name} ${item.surename}` },
+            })
           }}
         >
           <ICEyeFill className="text-blue-300 w-5 h-5 mr-3 " />

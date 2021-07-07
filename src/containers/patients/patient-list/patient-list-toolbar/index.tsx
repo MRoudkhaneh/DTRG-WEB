@@ -18,7 +18,7 @@ export const PatientListToolbar: FC<{ onSearch?: any }> = memo(
         <div className="flex items-center w-1/4 " slot="end">
           <Input
             className="mr-4"
-            placeholder="Search content here ..."
+            placeholder="Search ..."
             onChange={onSearch}
             icon={() => <ICSearch className="w-5 h-5 text-gray-600 " />}
           />

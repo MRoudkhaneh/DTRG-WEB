@@ -6,14 +6,15 @@ import { TableCell } from '../table-cell'
 import { TableRowLoading } from './table-row-loading'
 
 export const TableRow: FC<ITableRow> = memo(
-  ({ item, columns, expand, loading }) => {
+  ({ item, columns, expand, loading, index, length }) => {
     const { open, toggle } = useToggle()
 
     return (
       <div
         className={classNames(
-          'w-full flex flex-col border-b border-gray-300  group ',
-          loading && 'opacity-50'
+          'w-full flex flex-col   group ',
+          loading && 'opacity-50',
+          index === length - 1 ? '' : 'border-b border-gray-300'
         )}
       >
         {item ? (
