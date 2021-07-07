@@ -21,7 +21,11 @@ export const SelectBox: FC<ISelect> = memo(
             ? 'rounded border-2'
             : 'rounded border ',
           multiple ? 'min-h-[3rem]  py-2 pl-2 pr-4' : 'h-12  px-4',
-          error ? ' border-red-400 shadow' : ' border-gray-300',
+          error
+            ? ' border-red-400 shadow'
+            : dark
+            ? 'border-gray-700'
+            : ' border-gray-300',
           dark ? 'bg-gray-400' : 'bg-white'
         )}
       >

@@ -1,43 +1,58 @@
-import { memo } from "react";
-import { useHistory, useLocation } from "react-router";
-import { ICMenu, ICPeoples, ICPerson } from "icons";
-import { Button } from "components";
-import { classNames } from "utils";
-import { useAuth, useUi } from "hooks";
+import { memo } from 'react'
+import { useHistory, useLocation } from 'react-router'
+import { ICMenu, ICPeoples, ICPerson } from 'icons'
+import { Button } from 'components'
+import { classNames } from 'utils'
+import { useAuth, useUi } from 'hooks'
 
 export const AdminDashboardClose = memo(() => {
-  const { push } = useHistory();
-  const { pathname } = useLocation();
-  const { toggleDrawer } = useUi();
-  const { token } = useAuth();
+  const { push } = useHistory()
+  const { pathname } = useLocation()
+  const { token } = useAuth()
+  const {
+    toggleDrawer,
+    uiState: { dark },
+  } = useUi()
 
   return (
     <div className="col-center mt-6 relative">
       <div className="col-center space-y-4 ">
         {token ? null : (
-          <Button icon onClick={() => push("/authentication/login")}>
+          <Button icon onClick={() => push('/authentication/login')}>
             <ICPerson
               className={classNames(
-                "w-6 h-6",
-                pathname.includes("authentication")
-                  ? "text-white"
-                  : "text-gray-400"
+                'w-6 h-6',
+                pathname.includes('authentication')
+                  ? dark
+                    ? 'text-white'
+                    : 'text-gray-500'
+                  : 'text-gray-400'
               )}
             />
           </Button>
         )}
-        <Button icon onClick={() => push("/admin/patients")}>
+        <Button icon onClick={() => push('/admin/patients')}>
           <ICPeoples
             className={classNames(
-              "w-6 h-6 ",
-              pathname.includes("patients") ? "text-white" : "text-gray-400"
+              'w-6 h-6 ',
+              pathname.includes('patients')
+                ? dark
+                  ? 'text-white'
+                  : 'text-gray-500'
+                : 'text-gray-400'
             )}
           />
         </Button>
       </div>
       <Button icon onClick={() => toggleDrawer()} className="fixed bottom-6">
-        <ICMenu id="menu" className="w-10 h-10 text-gray-300 " />
+        <ICMenu
+          id="menu"
+          className={classNames(
+            'w-10 h-10',
+            dark ? 'text-gray-300' : 'text-gray-500'
+          )}
+        />
       </Button>
     </div>
-  );
-});
+  )
+})

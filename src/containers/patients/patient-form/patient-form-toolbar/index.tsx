@@ -1,9 +1,10 @@
-import { memo } from "react";
-import { Button, Text, Toolbar } from "components";
-import { useHistory } from "react-router";
+import { memo } from 'react'
+import { Button, Text, Toolbar, Tooltip } from 'components'
+import { useHistory } from 'react-router'
+import { ICArrowLeft } from 'icons'
 
 export const PatientFormToolbar = memo(() => {
-  const { push } = useHistory();
+  const { push } = useHistory()
   return (
     <Toolbar>
       <Text
@@ -14,13 +15,12 @@ export const PatientFormToolbar = memo(() => {
         Add new patient
       </Text>
       <div className="flex items-center" slot="end">
-        <Button
-          className="bg-white h-12 text-black w-20"
-          onClick={() => push("/admin/patients")}
-        >
-          Cancel
-        </Button>
+        <Tooltip content="Go back">
+          <Button className="peer" onClick={() => push('/admin/patients')} icon>
+            <ICArrowLeft className="w-7 h-7 text-primary" />
+          </Button>
+        </Tooltip>
       </div>
     </Toolbar>
-  );
-});
+  )
+})

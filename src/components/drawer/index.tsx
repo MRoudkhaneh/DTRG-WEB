@@ -9,9 +9,9 @@ export const Drawer: FC<IDrawer> = memo(({ children, open }) => {
   return (
     <div
       className={classNames(
-        'fixed top-0 left-0 h-full flex-col shadow-2xl trans z-30 ',
+        'fixed top-0 left-0 h-full flex-col shadow-lg trans z-30 ',
         open ? ' w-72' : 'w-20 ',
-        dark ? 'bg-gray-900' : 'bg-[#002242]'
+        dark ? 'bg-gray-900' : 'bg-fade'
       )}
       slot="wrapper"
     >

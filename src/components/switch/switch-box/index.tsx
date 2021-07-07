@@ -8,7 +8,7 @@ export const SwitchBox: FC<ISwitch> = memo(
     return (
       <div
         className={classNames(
-          'flex items-center justify-between  rounded-full  px-1  ',
+          'flex items-center justify-between  rounded-full  px-1 border border-indigo-600  ',
           open ? 'bg-indigo-400 ' : withError ? 'bg-red-400 ' : 'bg-gray-400 ',
           disabled ? ' cursor-default' : 'cursor-pointer',
           size === 'small' ? 'h-7 w-14' : 'h-8 w-16'
@@ -21,16 +21,7 @@ export const SwitchBox: FC<ISwitch> = memo(
         }}
       >
         {open && <div />}
-        {/*open && (
-          <span
-            className={classNames(
-              "text-secondary  font-semibold pl-1",
-              size === "small" ? "text-xs" : "text-sm"
-            )}
-          >
-            Yes
-          </span>
-            )*/}
+
         <div
           className={classNames(
             ' rounded-full border   ',
@@ -43,16 +34,6 @@ export const SwitchBox: FC<ISwitch> = memo(
           )}
         />
         {!open && <div />}
-        {/*!open && (
-          <span
-            className={classNames(
-              "text-gray-600  font-semibold pr-1",
-              size === "small" ? "text-xs" : "text-sm"
-            )}
-          >
-            No
-          </span>
-            )*/}
       </div>
     )
   }

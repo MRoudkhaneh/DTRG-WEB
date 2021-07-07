@@ -19,7 +19,10 @@ export const useUi = () => {
   )
 
   const toggleDark = useCallback(
-    (payload) => uiDispatch({ type: uiTypes.TOGGLE_DARK, payload }),
+    (payload) => {
+      localStorage.setItem('dark', payload)
+      uiDispatch({ type: uiTypes.TOGGLE_DARK, payload })
+    },
     [uiState.dark]
   )
 

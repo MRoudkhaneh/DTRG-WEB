@@ -21,6 +21,7 @@ export const PatientListToolbar: FC<{ onSearch?: any }> = memo(
             placeholder="Search ..."
             onChange={onSearch}
             icon={() => <ICSearch className="w-5 h-5 text-gray-600 " />}
+            size="small"
           />
           <Tooltip content="Create">
             <Button
@@ -28,7 +29,7 @@ export const PatientListToolbar: FC<{ onSearch?: any }> = memo(
               className="peer"
               onClick={() => push('/admin/patients/add')}
             >
-              <ICPersonPlus className="w-8 h-8 text-secondary" />
+              <ICPersonPlus className="w-8 h-8 text-primary" />
             </Button>
           </Tooltip>
         </div>

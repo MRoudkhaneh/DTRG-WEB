@@ -78,6 +78,8 @@ export const DatePicker: FC<IDatePicker> = memo(
                   ' w-full row-between focus:outline-none overflow-hidden cursor-pointer  rounded  text-gray-900  h-12  px-4 absolute top-8 right-0 z-0',
                   error
                     ? 'border-2 border-red-400 shadow'
+                    : dark
+                    ? 'border border-gray-700'
                     : 'border border-gray-300',
                   dark ? 'bg-gray-400' : 'bg-white'
                 )}

@@ -17,6 +17,8 @@ export const TextAreatCore: FC<ITextArea> = memo(
           'w-full min-h-[3rem] h-12  rounded  focus:outline-none focus:shadow px-4 py-2 text-gray-700 placeholder-gray-500',
           error
             ? 'border-2 border-red-400'
+            : dark
+            ? 'border border-gray-700 focus:ring-2  focus:ring-indigo-600'
             : 'border border-gray-300 focus:ring-2  focus:ring-indigo-400',
           dark && 'bg-gray-400'
         )}

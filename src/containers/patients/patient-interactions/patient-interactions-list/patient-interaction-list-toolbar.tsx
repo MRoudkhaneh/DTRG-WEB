@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
-import { ICPlus } from 'icons'
+import { ICPlus, ICArrowLeft } from 'icons'
 import { Button, Text, Toolbar, Tooltip } from 'components'
 import { useUi } from 'hooks'
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(
   () => {
@@ -10,6 +10,7 @@ export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(
     const {
       state: { patient },
     } = useLocation() as any
+    const { push } = useHistory()
 
     return (
       <Toolbar>
@@ -21,6 +22,15 @@ export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(
           {`${patient}'s interactions`}
         </Text>
         <div className="flex items-center justify-end w-1/4 " slot="end">
+          <Tooltip content="Go back">
+            <Button
+              className="peer"
+              onClick={() => push('/admin/patients')}
+              icon
+            >
+              <ICArrowLeft className="w-7 h-7 text-primary" />
+            </Button>
+          </Tooltip>
           <Tooltip content="Create">
             <Button
               icon
@@ -33,7 +43,7 @@ export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(
                 })
               }}
             >
-              <ICPlus className="w-10 h-10 text-secondary" />
+              <ICPlus className="w-10 h-10 text-primary" />
             </Button>
           </Tooltip>
         </div>

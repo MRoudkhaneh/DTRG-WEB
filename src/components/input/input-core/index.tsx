@@ -53,13 +53,13 @@ export const InputCore: FC<IInput> = memo(
             dark ? 'bg-gray-400 placeholder-gray-700' : 'placeholder-gray-500',
             fieldError || withError
               ? 'border-2 border-red-400 shadow'
-              : disabled
-              ? 'bg-gray-300'
+              : dark
+              ? 'border border-gray-700 focus:ring-2 focus:ring-indigo-600'
               : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400',
             size === 'large'
               ? 'h-14 '
               : size === 'small'
-              ? 'h-8 text-[10px]'
+              ? 'h-8 text-[13px]'
               : 'h-12',
             icon ? 'px-10' : 'px-4'
           )}
@@ -81,13 +81,13 @@ export const InputCore: FC<IInput> = memo(
             dark && 'bg-gray-400',
             error || withError
               ? 'border-2 border-red-400 shadow'
-              : disabled
-              ? 'bg-gray-300'
+              : dark
+              ? 'border border-gray-700 focus:ring-2 focus:ring-indigo-600'
               : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400',
             size === 'large'
               ? 'h-14 '
               : size === 'small'
-              ? 'h-8 text-[10px]'
+              ? 'h-8 text-[13px]'
               : 'h-12',
             icon ? 'px-10' : 'px-4'
           )}
