@@ -1,13 +1,17 @@
-import { memo } from "react";
+import { memo } from 'react'
 
-import { Button, Form, Input, Tab } from "components";
-import { useHistory } from "react-router";
-import { usePassword } from "./use-password";
+import { Button, Form, Input, Tab } from 'components'
+import { useHistory } from 'react-router'
+import { usePassword } from './use-password'
+import { useUi } from 'hooks/use-ui'
+import { classNames } from 'utils/classes'
 
 export const PasswordForm = memo(() => {
-  const { push } = useHistory();
-  const { control, handleSubmit, isLoading, onSubmit } = usePassword();
-
+  const { push } = useHistory()
+  const { control, handleSubmit, isLoading, onSubmit } = usePassword()
+  const {
+    uiState: { dark },
+  } = useUi()
   return (
     <Form
       className="w-11/12 md:w-2/3 lg:w-1/3 mx-auto mt-14"
@@ -36,9 +40,12 @@ export const PasswordForm = memo(() => {
             <Button
               icon
               role="cancel"
-              className="w-full h-12 text-secondary"
+              className={classNames(
+                'w-full h-12 ',
+                dark ? 'text-primary' : 'text-secondary'
+              )}
               type="button"
-              onClick={() => push("/authentication/login")}
+              onClick={() => push('/authentication/login')}
             >
               Login instead
             </Button>
@@ -46,5 +53,5 @@ export const PasswordForm = memo(() => {
         </div>
       </Tab>
     </Form>
-  );
-});
+  )
+})

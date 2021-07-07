@@ -1,13 +1,17 @@
-import { memo } from "react";
-import { useHistory } from "react-router";
-import { Button, Form, Input, Tab } from "components";
+import { memo } from 'react'
+import { useHistory } from 'react-router'
+import { Button, Form, Input, Tab } from 'components'
 
-import { useLogin } from "./use-login";
+import { useLogin } from './use-login'
+import { useUi } from 'hooks/use-ui'
+import { classNames } from 'utils/classes'
 
 export const LoginForm = memo(() => {
-  const { push } = useHistory();
-  const { control, handleSubmit, isLoading, onSubmit } = useLogin();
-
+  const { push } = useHistory()
+  const { control, handleSubmit, isLoading, onSubmit } = useLogin()
+  const {
+    uiState: { dark },
+  } = useUi()
   return (
     <Form
       className="w-11/12 md:w-2/3 lg:w-1/3 mx-auto mt-14 "
@@ -44,18 +48,24 @@ export const LoginForm = memo(() => {
             <Button
               icon
               role="cancel"
-              className="w-full h-12 text-secondary"
+              className={classNames(
+                'w-full h-12 ',
+                dark ? 'text-primary' : 'text-secondary'
+              )}
               type="button"
-              onClick={() => push("/authentication/password")}
+              onClick={() => push('/authentication/password')}
             >
               Forgot password
             </Button>
             <Button
               icon
               role="cancel"
-              className="w-full h-12 text-secondary"
+              className={classNames(
+                'w-full h-12 ',
+                dark ? 'text-primary' : 'text-secondary'
+              )}
               type="button"
-              onClick={() => push("/authentication/register")}
+              onClick={() => push('/authentication/register')}
             >
               Create a new account
             </Button>
@@ -63,5 +73,5 @@ export const LoginForm = memo(() => {
         </div>
       </Tab>
     </Form>
-  );
-});
+  )
+})

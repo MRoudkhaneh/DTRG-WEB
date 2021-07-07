@@ -11,7 +11,7 @@ export const SelectBoxValue: FC<ISelect> = memo(({ multiple, value, open }) => {
         )}
       >
         {(value || []).map((val, index) => (
-          <span className="text-gray-700" key={index}>
+          <span className="text-gray-900" key={index}>
             {val}
             {value.length - 1 === index ? ' ' : ' , '}
           </span>
@@ -20,7 +20,7 @@ export const SelectBoxValue: FC<ISelect> = memo(({ multiple, value, open }) => {
     )
   else
     return (
-      <span className={classNames('text-gray-700', open && 'opacity-30')}>
+      <span className={classNames('text-gray-900', open && 'opacity-30')}>
         {value}
       </span>
     )

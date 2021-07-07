@@ -1,13 +1,17 @@
-import { memo } from "react";
-import { useHistory } from "react-router";
-import { Button, Form, Input, Tab } from "components";
+import { memo } from 'react'
+import { useHistory } from 'react-router'
+import { Button, Form, Input, Tab } from 'components'
 
-import { useRegister } from "./use-register";
+import { useRegister } from './use-register'
+import { classNames } from 'utils/classes'
+import { useUi } from 'hooks/use-ui'
 
 export const RegisterForm = memo(() => {
-  const { push } = useHistory();
-  const { control, handleSubmit, isLoading, onSubmit } = useRegister();
-
+  const { push } = useHistory()
+  const { control, handleSubmit, isLoading, onSubmit } = useRegister()
+  const {
+    uiState: { dark },
+  } = useUi()
   return (
     <Form
       className="w-11/12 md:w-2/3 lg:w-1/3 mx-auto mt-14 "
@@ -66,9 +70,12 @@ export const RegisterForm = memo(() => {
             <Button
               icon
               role="cancel"
-              className="w-full h-12 text-secondary"
+              className={classNames(
+                'w-full h-12 ',
+                dark ? 'text-primary' : 'text-secondary'
+              )}
               type="button"
-              onClick={() => push("/authentication/login")}
+              onClick={() => push('/authentication/login')}
             >
               Login instead
             </Button>
@@ -76,5 +83,5 @@ export const RegisterForm = memo(() => {
         </div>
       </Tab>
     </Form>
-  );
-});
+  )
+})
