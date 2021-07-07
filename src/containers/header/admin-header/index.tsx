@@ -1,14 +1,17 @@
 import { memo } from 'react'
 import { classNames } from 'utils'
-import { Button, Menu } from 'components'
+import { Button, Menu, Switch } from 'components'
 import { useAuth, useUi } from 'hooks'
 import { useHistory } from 'react-router'
+import { ICDark, ICLight } from 'icons'
 
 export const AdminHeader = memo(() => {
   const { push } = useHistory()
   const { token } = useAuth()
   const {
+    toggleDark,
     uiState: {
+      dark,
       drawer: { open },
     },
   } = useUi()
@@ -16,38 +19,40 @@ export const AdminHeader = memo(() => {
   return (
     <header
       className={classNames(
-        ' row-between h-20 pr-4 md:pr-10 px-2',
+        'row-between h-20 pr-4 md:pr-10 px-2',
         open
           ? 'md:transform md:translate-x-72 md:w-[calc(100%-18rem)]'
           : 'md:transform md:translate-x-20 md:w-[calc(100%-5rem)]'
       )}
     >
       <div />
-      {token ? (
-        <Menu
-          icon
-          activator={() => (
-            <img
-              className="w-9 h-9 rounded-full"
-              src="https://picsum.photos/200/300"
-            />
-          )}
-          render={(setter) =>
-            token ? (
-              <Button
-                className="text-sm  w-20 h-10 text-white bg-danger"
-                onClick={() => {
-                  localStorage.removeItem('token')
-                  push('/authentication/login')
-                  setter(false)
-                }}
-              >
-                Logout
-              </Button>
-            ) : null
-          }
+      <div className="flex items-center">
+        {token && (
+          <Button
+            icon
+            className={classNames(
+              'text-sm  w-16 h-8 mr-4',
+              dark
+                ? 'text-gray-300 bg-gray-600 rounded'
+                : 'text-gray-700 bg-gray-300 rounded'
+            )}
+            onClick={() => {
+              localStorage.removeItem('token')
+              push('/authentication/login')
+            }}
+          >
+            Logout
+          </Button>
+        )}
+
+        {dark && <ICLight className="w-5 h-5 text-gray-300 mr-2" />}
+        <Switch
+          onChange={(value) => toggleDark(value)}
+          checked={dark}
+          size="small"
         />
-      ) : null}
+        {!dark && <ICDark className="w-5 h-5 text-gray-600 -ml-2" />}
+      </div>
     </header>
   )
 })

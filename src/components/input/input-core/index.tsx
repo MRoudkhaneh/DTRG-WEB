@@ -1,5 +1,6 @@
-import { FC, memo, useMemo } from "react";
-import { classNames } from "utils";
+import { useUi } from 'hooks/use-ui'
+import { FC, memo, useMemo } from 'react'
+import { classNames } from 'utils'
 
 export const InputCore: FC<IInput> = memo(
   ({
@@ -21,16 +22,20 @@ export const InputCore: FC<IInput> = memo(
   }) => {
     const actualValue = useMemo(() => {
       switch (typeof value) {
-        case "string":
-          return value;
-        case "object":
+        case 'string':
+          return value
+        case 'object':
           if (value && value.length) {
-            return value.join(",");
-          } else return "";
+            return value.join(',')
+          } else return ''
         default:
-          break;
+          break
       }
-    }, [value]);
+    }, [value])
+
+    const {
+      uiState: { dark },
+    } = useUi()
 
     if (control)
       return (
@@ -44,21 +49,22 @@ export const InputCore: FC<IInput> = memo(
           onClick={onClick}
           onChange={(e) => fieldChange(e.target.value)}
           className={classNames(
-            " w-full  rounded focus:outline-none focus:shadow  text-gray-900 placeholder-gray-500 ",
+            ' w-full  rounded focus:outline-none focus:shadow  text-gray-900  ',
+            dark ? 'bg-gray-400 placeholder-gray-700' : 'placeholder-gray-500',
             fieldError || withError
-              ? "border-2 border-red-400 shadow"
+              ? 'border-2 border-red-400 shadow'
               : disabled
-              ? "bg-gray-300"
-              : "border border-gray-300 focus:ring-2 focus:ring-indigo-400",
-            size === "large"
-              ? "h-14 "
-              : size === "small"
-              ? "h-8 text-[10px]"
-              : "h-12",
-            icon ? "px-10" : "px-4"
+              ? 'bg-gray-300'
+              : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400',
+            size === 'large'
+              ? 'h-14 '
+              : size === 'small'
+              ? 'h-8 text-[10px]'
+              : 'h-12',
+            icon ? 'px-10' : 'px-4'
           )}
         />
-      );
+      )
     else
       return (
         <input
@@ -71,20 +77,21 @@ export const InputCore: FC<IInput> = memo(
           onClick={onClick}
           onChange={onChange}
           className={classNames(
-            " w-full  rounded focus:outline-none focus:shadow  text-gray-900 placeholder-gray-500 ",
+            ' w-full  rounded focus:outline-none focus:shadow  text-gray-900 placeholder-gray-500 ',
+            dark && 'bg-gray-400',
             error || withError
-              ? "border-2 border-red-400 shadow"
+              ? 'border-2 border-red-400 shadow'
               : disabled
-              ? "bg-gray-300"
-              : "border border-gray-300 focus:ring-2 focus:ring-indigo-400",
-            size === "large"
-              ? "h-14 "
-              : size === "small"
-              ? "h-8 text-[10px]"
-              : "h-12",
-            icon ? "px-10" : "px-4"
+              ? 'bg-gray-300'
+              : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400',
+            size === 'large'
+              ? 'h-14 '
+              : size === 'small'
+              ? 'h-8 text-[10px]'
+              : 'h-12',
+            icon ? 'px-10' : 'px-4'
           )}
         />
-      );
+      )
   }
-);
+)

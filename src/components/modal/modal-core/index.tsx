@@ -1,3 +1,4 @@
+import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
 
@@ -17,6 +18,9 @@ export const ModalCore: FC<IModal> = memo(
     header,
     withHeader,
   }) => {
+    const {
+      uiState: { dark },
+    } = useUi()
     return (
       <div
         className="fixed inset-0 row-items-start z-40 pt-10 md:pt-32 "
@@ -27,7 +31,7 @@ export const ModalCore: FC<IModal> = memo(
         <div
           slot="modal"
           className={classNames(
-            'col-center z-50 rounded overflow-hidden max-h-[85%] bg-fade ',
+            'col-center z-50 rounded overflow-hidden max-h-[85%] ',
             size === 'xl'
               ? 'w-10/12'
               : size === 'lg'
@@ -36,7 +40,8 @@ export const ModalCore: FC<IModal> = memo(
               ? 'w-10/12 lg:w-1/2'
               : size === 'sm'
               ? 'w-10/12 lg:w-4/12'
-              : 'w-10/12 lg:w-1/2'
+              : 'w-10/12 lg:w-1/2',
+            dark ? 'bg-gray-800' : 'bg-fade '
           )}
         >
           <ModalHeader

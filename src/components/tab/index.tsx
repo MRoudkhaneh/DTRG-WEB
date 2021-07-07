@@ -1,9 +1,10 @@
-import { FC } from "react";
-import { classNames } from "utils";
+import { FC } from 'react'
+import { classNames } from 'utils'
 
-import { TabExpand } from "./tab-expand";
-import { TabActions } from "./tab-actions";
-import { useTab } from "./use-tab";
+import { TabExpand } from './tab-expand'
+import { TabActions } from './tab-actions'
+import { useTab } from './use-tab'
+import { useUi } from 'hooks/use-ui'
 
 export const Tab: FC<ITab> = ({
   children,
@@ -11,21 +12,26 @@ export const Tab: FC<ITab> = ({
   className,
   expandable = false,
   initialIsOpen = false,
-  justify = "start",
+  justify = 'start',
 }) => {
-  const { open, onExpand } = useTab({ initialIsOpen, expandable });
+  const { open, onExpand } = useTab({ initialIsOpen, expandable })
+  const {
+    uiState: { dark },
+  } = useUi()
+
   return (
-    <div className={classNames("w-full col-center ", className)}>
+    <div className={classNames('w-full col-center ', className)}>
       <div
         className={classNames(
-          "w-full flex items-center py-4 px-4 bg-secondary",
-          expandable && "cursor-pointer",
-          expandable ? (open ? "rounded-t" : "rounded") : "rounded-t",
-          justify === "center"
-            ? "justify-center"
-            : justify === "start"
-            ? "justify-between"
-            : "justify-end"
+          'w-full flex items-center py-4 px-4 ',
+          expandable && 'cursor-pointer',
+          expandable ? (open ? 'rounded-t' : 'rounded') : 'rounded-t',
+          justify === 'center'
+            ? 'justify-center'
+            : justify === 'start'
+            ? 'justify-between'
+            : 'justify-end',
+          dark ? 'bg-gray-900' : 'bg-secondary'
         )}
         onClick={onExpand}
       >
@@ -36,5 +42,5 @@ export const Tab: FC<ITab> = ({
         {children}
       </TabExpand>
     </div>
-  );
-};
+  )
+}

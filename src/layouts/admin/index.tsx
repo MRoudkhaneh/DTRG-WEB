@@ -3,11 +3,20 @@ import { useUi } from 'hooks'
 import { classNames } from 'utils'
 
 export const AdminLayout = ({ children }) => {
-  const { uiState } = useUi()
-  const { open } = uiState.drawer
+  const {
+    uiState: {
+      dark,
+      drawer: { open },
+    },
+  } = useUi()
 
   return (
-    <div className="fixed inset-0 overflow-y-auto overflow-x-hidden bg-fade ">
+    <div
+      className={classNames(
+        'fixed inset-0 overflow-y-auto overflow-x-hidden',
+        dark ? 'bg-gray-800' : 'bg-fade'
+      )}
+    >
       <AdminDashboard />
       <AdminHeader />
       <div

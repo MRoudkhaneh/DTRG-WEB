@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
-import { useToggle } from 'hooks'
+import { useToggle, useUi } from 'hooks'
 
 import { TableCell } from '../table-cell'
 import { TableRowLoading } from './table-row-loading'
@@ -8,6 +8,9 @@ import { TableRowLoading } from './table-row-loading'
 export const TableRow: FC<ITableRow> = memo(
   ({ item, columns, expand, loading, index, length }) => {
     const { open, toggle } = useToggle()
+    const {
+      uiState: { dark },
+    } = useUi()
 
     return (
       <div
@@ -22,7 +25,13 @@ export const TableRow: FC<ITableRow> = memo(
             onClick={() => (expand ? toggle() : {})}
             className={classNames(
               'w-full row-start py-4 px-6 ',
-              open ? 'bg-blue-100' : 'hover:bg-gray-100',
+              open
+                ? dark
+                  ? 'bg-gray-700'
+                  : 'bg-blue-100'
+                : dark
+                ? 'hover:bg-gray-700'
+                : 'hover:bg-gray-100',
               expand && 'cursor-pointer'
             )}
           >
@@ -40,7 +49,14 @@ export const TableRow: FC<ITableRow> = memo(
           <TableRowLoading columns={columns} />
         )}
         {open && expand ? (
-          <div className="w-full row-start p-4 bg-blue-100">{expand(item)}</div>
+          <div
+            className={classNames(
+              'w-full row-start p-4 ',
+              dark ? 'bg-gray-700' : 'bg-blue-100'
+            )}
+          >
+            {expand(item)}
+          </div>
         ) : null}
       </div>
     )

@@ -1,9 +1,12 @@
+import { useUi } from 'hooks'
 import { FC, memo } from 'react'
-
 import { classNames } from 'utils'
 
 export const TableCell: FC<ITableCell> = memo(
   ({ column, index, item, columns }) => {
+    const {
+      uiState: { dark },
+    } = useUi()
     return (
       <div
         slot="wrapper"
@@ -16,7 +19,14 @@ export const TableCell: FC<ITableCell> = memo(
         {column.render ? (
           column.render(item)
         ) : (
-          <span className="text-gray-600 text-lg"> {item[column.key]}</span>
+          <span
+            className={classNames(
+              ' text-lg',
+              dark ? 'text-gray-100' : 'text-gray-600'
+            )}
+          >
+            {item[column.key]}
+          </span>
         )}
       </div>
     )

@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import { Controller } from 'react-hook-form'
-import { useToggle, useValidation } from 'hooks'
+import { useToggle, useUi, useValidation } from 'hooks'
 import { Input, Button, Error } from 'components'
 import { classNames } from 'utils'
 
@@ -21,11 +21,20 @@ export const Select: FC<ISelect> = memo(
   }) => {
     const { open, toggle } = useToggle()
     const { validate } = useValidation({ required })
+    const {
+      uiState: { dark },
+    } = useUi()
 
     return (
       <div className={classNames('w-full col-start', className)} slot="wrapper">
         {label && (
-          <label className="text-gray-800 mb-2" slot="label">
+          <label
+            className={classNames(
+              ' mb-2',
+              dark ? 'text-gray-300' : 'text-gray-800'
+            )}
+            slot="label"
+          >
             {label}
           </label>
         )}
