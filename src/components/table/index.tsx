@@ -12,7 +12,7 @@ export const Table: FC<ITable> = memo(
         className={classNames('w-full flex flex-col items-center', className)}
         slot="wrapper"
       >
-        <TableHead columns={columns} />
+        <TableHead columns={columns} loading={loading} />
 
         {loading && (!data || data.length === 0) ? (
           Array.from(new Array(10)).map((item, index) => (

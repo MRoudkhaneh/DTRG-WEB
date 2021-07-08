@@ -2,7 +2,7 @@ import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
 
-export const TableHead: FC<ITableHead> = memo(({ columns }) => {
+export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
   const {
     uiState: { dark },
   } = useUi()
@@ -10,7 +10,8 @@ export const TableHead: FC<ITableHead> = memo(({ columns }) => {
     <div
       className={classNames(
         'w-full row-start  border-b-2  py-4 px-6  rounded-t ',
-        dark ? 'border-primary ' : 'border-secondary'
+        dark ? 'border-primary ' : 'border-secondary',
+        loading && 'opacity-30 animate-bounce'
       )}
     >
       {(columns || []).map((column, index) => (

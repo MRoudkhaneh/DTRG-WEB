@@ -36,4 +36,5 @@ interface ITableRow {
 
 interface ITableHead {
   columns?: Array<TColumn>
+  loading?: boolean
 }

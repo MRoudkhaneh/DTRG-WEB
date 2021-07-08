@@ -3,7 +3,7 @@ import { useUi } from 'hooks'
 import { ICDelete, ICEdit, ICEyeFill, ICInteractions } from 'icons'
 import { useHistory } from 'react-router-dom'
 
-export const PatientListActions = ({ item }) => {
+export const PatientListActions = ({ item, queryKey }) => {
   const { toggleDialog } = useUi()
   const { push } = useHistory()
 
@@ -45,7 +45,12 @@ export const PatientListActions = ({ item }) => {
           className="peer"
           onClick={(e) => {
             e.stopPropagation()
-            toggleDialog({ open: true, type: 'patient-edit', data: item })
+            toggleDialog({
+              open: true,
+              type: 'patient-edit',
+              data: item,
+              queryKey,
+            })
           }}
         >
           <ICEdit className="text-gray-500 w-5 h-5 mr-3 " />
@@ -57,7 +62,12 @@ export const PatientListActions = ({ item }) => {
           className="peer"
           onClick={(e) => {
             e.stopPropagation()
-            toggleDialog({ open: true, type: 'patient-delete', data: item })
+            toggleDialog({
+              open: true,
+              type: 'patient-delete',
+              data: item,
+              queryKey,
+            })
           }}
         >
           <ICDelete className="text-red-500 w-5 h-5  " />

@@ -209,7 +209,9 @@ export const PatientForm = memo((props?: IPatientForm) => {
           </Grid>
         </Tab>
 
-        <PatientFormSubmit loading={saveLoading || editLoading} />
+        <PatientFormSubmit
+          loading={isEditing ? false : saveLoading || editLoading}
+        />
       </Form>
     </div>
   )

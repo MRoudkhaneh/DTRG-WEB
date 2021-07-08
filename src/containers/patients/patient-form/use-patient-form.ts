@@ -61,10 +61,13 @@ const initialState = {
 
 export const usePatientForm = (props: IPatientForm) => {
   const { usePost, usePut, client } = useService()
-  const { toggleDialog } = useUi()
   const { push } = useHistory()
   const { success } = useToast()
   const { onError } = useError()
+  const {
+    toggleDialog,
+    uiState: { dialog },
+  } = useUi()
 
   const { isEditing, editInitials } = props
 
@@ -88,12 +91,27 @@ export const usePatientForm = (props: IPatientForm) => {
 
   const { mutate: edit, isLoading: editLoading } = usePut({
     url: editInitials ? `${Api.patients}${editInitials.id}/` : '',
-    onSuccess: () => {
+    onMutate: async ({ payload }) => {
+      await client.cancelQueries(dialog.queryKey)
+      const snapshot = client.getQueryData(dialog.queryKey)
+      client.setQueryData(dialog.queryKey, (old: any) => {
+        old.data.results = old.data.results.map((item) =>
+          item.id == editInitials.id ? payload : item
+        )
+        return old
+      })
       success('You successfully edited this patient.')
-      toggleDialog({ open: false, data: {}, type: null })
-      client.invalidateQueries('PATIENTS_LIST')
+      toggleDialog({ open: false, type: null, data: {} })
+      return { snapshot }
     },
-    onError,
+    onError: (error, data, context) => {
+      client.setQueryData(dialog.queryKey, context.snapshot)
+      onError(error)
+    },
+    onSuccess: () => {
+      client.invalidateQueries(dialog.queryKey)
+      toggleDialog({ open: false, data: {}, type: null })
+    },
   })
 
   return {
