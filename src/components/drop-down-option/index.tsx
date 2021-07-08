@@ -14,8 +14,8 @@ export const DropDownOption: FC<IDropdownOption> = memo(
           active
             ? 'text-blue-400 font-semibold'
             : dark
-            ? ' text-gray-300'
-            : 'text-gray-500',
+            ? ' text-dark'
+            : 'text-light',
           ' cursor-pointer hover:opacity-80 px-4 pt-3 text-sm'
         )}
         onClick={onClick}

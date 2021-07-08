@@ -48,8 +48,8 @@ export const SwitchCore: FC<ISwitch> = memo(
                 ? 'text-red-500'
                 : 'text-red-700'
               : dark
-              ? 'text-gray-300'
-              : 'text-gray-800'
+              ? 'text-dark'
+              : 'text-light'
           )}
         >
           {label}

@@ -21,7 +21,7 @@ export const Confirm: FC<IConfirm> = memo(
         size="sm"
         className={classNames(
           'col-center px-4 md:px-10 xl:px-26 py-10 ',
-          dark ? 'bg-gray-800' : 'bg-white'
+          dark ? 'bg-dark' : 'bg-white'
         )}
         slot="dialog"
       >

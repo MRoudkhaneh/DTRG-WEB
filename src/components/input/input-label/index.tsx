@@ -13,7 +13,7 @@ export const InputLabel: FC<IInput> = memo(({ label, size }) => {
         className={classNames(
           ' mb-2',
           size === 'small' ? 'text-xs' : 'text-base',
-          dark ? 'text-gray-300' : 'text-gray-800'
+          dark ? 'text-dark' : 'text-light'
         )}
       >
         {label}

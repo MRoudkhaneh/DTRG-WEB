@@ -42,7 +42,7 @@ export const DatePicker: FC<IDatePicker> = memo(
                 <label
                   className={classNames(
                     ' mb-2',
-                    dark ? 'text-gray-300' : 'text-gray-800'
+                    dark ? 'text-dark' : 'text-light'
                   )}
                 >
                   {label}

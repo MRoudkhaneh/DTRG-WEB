@@ -14,7 +14,7 @@ export const DropDownButton: FC<IDropdown> = memo(
           'w-full row-between focus:outline-none   ',
           className,
           !open && 'transform hover:opacity-80',
-          dark ? 'text-white' : 'text-gray-500'
+          dark ? 'text-dark' : 'text-light'
         )}
         onClick={() => toggle()}
         role="button"
@@ -24,7 +24,7 @@ export const DropDownButton: FC<IDropdown> = memo(
           <span
             className={classNames(
               'text-lg ',
-              dark ? 'text-gray-300' : 'text-gray-500'
+              dark ? 'text-dark' : 'text-light'
             )}
           >
             {label}

@@ -14,14 +14,14 @@ export const AdminLayout = ({ children }) => {
     <div
       className={classNames(
         'fixed inset-0 overflow-y-auto overflow-x-hidden',
-        dark ? 'bg-gray-800' : 'bg-fade'
+        dark ? 'bg-dark' : 'bg-light'
       )}
     >
       <AdminDashboard />
       <AdminHeader />
       <div
         className={classNames(
-          'w-full trans col-center my-10 px-10 md:px-20',
+          'w-full trans col-center my-4 px-10 md:px-20',
           open
             ? 'md:transform md:translate-x-72 md:w-[calc(100%-18rem)]'
             : 'md:transform md:translate-x-20 md:w-[calc(100%-5rem)]'

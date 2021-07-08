@@ -41,7 +41,7 @@ export const ModalCore: FC<IModal> = memo(
               : size === 'sm'
               ? 'w-10/12 lg:w-4/12'
               : 'w-10/12 lg:w-1/2',
-            dark ? 'bg-gray-800' : 'bg-fade '
+            dark ? 'bg-dark' : 'bg-light '
           )}
         >
           <ModalHeader

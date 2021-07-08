@@ -33,4 +33,22 @@
   .col-full {
     @apply w-full flex flex-col;
   }
+  .bg-dark {
+    @apply bg-gray-800;
+  }
+  .bg-light {
+    @apply bg-fade;
+  }
+  .text-dark {
+    @apply text-gray-300;
+  }
+  .text-light {
+    @apply text-gray-800;
+  }
+  .border-dark {
+    @apply border-gray-700;
+  }
+  .border-light {
+    @apply border-gray-300;
+  }
 }

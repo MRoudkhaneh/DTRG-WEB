@@ -29,10 +29,7 @@ export const Select: FC<ISelect> = memo(
       <div className={classNames('w-full col-start', className)} slot="wrapper">
         {label && (
           <label
-            className={classNames(
-              ' mb-2',
-              dark ? 'text-gray-300' : 'text-gray-800'
-            )}
+            className={classNames(' mb-2', dark ? 'text-dark' : 'text-light')}
             slot="label"
           >
             {label}

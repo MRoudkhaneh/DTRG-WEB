@@ -24,8 +24,8 @@ export const SelectBox: FC<ISelect> = memo(
           error
             ? ' border-red-400 shadow'
             : dark
-            ? 'border-gray-700'
-            : ' border-gray-300',
+            ? 'border-dark'
+            : ' border-light',
           dark ? 'bg-gray-400' : 'bg-white'
         )}
       >

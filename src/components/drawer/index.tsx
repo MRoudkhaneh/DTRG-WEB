@@ -11,7 +11,7 @@ export const Drawer: FC<IDrawer> = memo(({ children, open }) => {
       className={classNames(
         'fixed top-0 left-0 h-full flex-col shadow-lg trans z-30 ',
         open ? ' w-72' : 'w-20 ',
-        dark ? 'bg-gray-900' : 'bg-fade'
+        dark ? 'bg-gray-900' : 'bg-gray-300'
       )}
       slot="wrapper"
     >
