@@ -1,8 +1,8 @@
 import { memo } from 'react'
 import { Form, Grid, Text, Tab } from 'components'
 import { usePatientForm } from './use-patient-form'
-import { PatientFormToolbar } from './patient-form-toolbar'
-import { PatientFormSubmit } from './patient-form-submit'
+import { PatientFormToolbar } from './toolbar'
+import { PatientFormSubmit } from './submit'
 import {
   CHOCounting,
   FirstName,
@@ -56,7 +56,7 @@ import {
   Deceased,
   PatientStatus,
   PatientStatusDetails,
-} from './patient-form-fields'
+} from './fields'
 
 export const PatientForm = memo((props?: IPatientForm) => {
   const { isEditing, editInitials } = props

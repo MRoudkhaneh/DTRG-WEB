@@ -1,8 +1,8 @@
 import { memo } from 'react'
 import { useHistory, useLocation } from 'react-router'
 import { useAuth, useUi } from 'hooks'
-import { Button } from 'components'
-import { ICClose } from 'icons'
+import { Button, Text } from 'components'
+import { ICChevronLeft } from 'icons'
 
 import { AuthDropDown } from './auth-drop-down'
 import { PatientDropDown } from './patient-drop-down'
@@ -23,11 +23,19 @@ export const AdminDashboardOpen = memo(() => {
         <AuthDropDown pathname={pathname} push={push} dark={dark} />
       )}
       <PatientDropDown pathname={pathname} push={push} dark={dark} />
+      <Text
+        className={classNames(
+          'fixed bottom-12',
+          dark ? 'text-primary' : 'text-secondary'
+        )}
+      >
+        Powered by DORIS
+      </Text>
       <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3">
-        <ICClose
+        <ICChevronLeft
           id="close"
           className={classNames(
-            'w-12 h-12',
+            'w-6 h-6',
             dark ? 'text-gray-300' : 'text-gray-500'
           )}
         />

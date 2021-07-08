@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { Table } from 'components'
 
 import { usePatientInteractionList } from './use-patient-interactien-list'
-import { PatientinteractionListToolbar } from './patient-interaction-list-toolbar'
+import { PatientinteractionListToolbar } from './toolbar'
 
 export const PatientInteractionsList = memo(() => {
   const { data, isLoading, columns, onPaginate, page } =

@@ -2,9 +2,9 @@ import { useCallback, useMemo, useState } from 'react'
 import { useError, useService } from 'hooks'
 import { Api } from 'utils'
 
-import { PatientInteractionListActions } from './patient-interaction-list-actions'
-import { PatientInteractionListDate } from './patient-interaction-list-date'
-import { PatientInteractionListDetails } from './patient-interaction-list-details'
+import { PatientInteractionListActions } from './actions'
+import { PatientInteractionListDate } from './date'
+import { PatientInteractionListDetails } from './details'
 import { useParams } from 'react-router-dom'
 
 const columns = [

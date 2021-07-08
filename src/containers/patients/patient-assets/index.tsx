@@ -1,8 +1,8 @@
 import { Table } from 'components'
 import { FC, memo } from 'react'
-import { PatientAssetsDetails } from './patient-assets-details'
+import { PatientAssetsDetails } from './details'
 import { usePatientAssets } from './use-patient-assets'
-import { PatientAssetsToolbar } from './patient-assets-toolbar'
+import { PatientAssetsToolbar } from './toolbar'
 
 export const PatientAssets: FC<{ item?: any }> = memo(() => {
   const { data, columns, page, onPaginate, isLoading } = usePatientAssets()

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { useHistory, useLocation } from 'react-router'
 import { ICMenu, ICPeoples, ICPerson } from 'icons'
-import { Button } from 'components'
+import { Button, Text } from 'components'
 import { classNames } from 'utils'
 import { useAuth, useUi } from 'hooks'
 
@@ -44,11 +44,19 @@ export const AdminDashboardClose = memo(() => {
           />
         </Button>
       </div>
+      <Text
+        className={classNames(
+          'fixed bottom-12',
+          dark ? 'text-primary' : 'text-secondary'
+        )}
+      >
+        DORIS
+      </Text>
       <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3">
         <ICMenu
           id="menu"
           className={classNames(
-            'w-10 h-10',
+            'w-6 h-6',
             dark ? 'text-gray-300' : 'text-gray-500'
           )}
         />

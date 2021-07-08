@@ -1,3 +1,3 @@
-export * from './patient-interactions-list'
-export * from './patient-interactions-form'
-export * from './patient-interactions-modal'
+export * from './list'
+export * from './form'
+export * from './modal'

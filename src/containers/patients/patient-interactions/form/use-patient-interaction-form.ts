@@ -64,7 +64,7 @@ export const usePatientInteractionForm = () => {
     onSubmit: handleSubmit((state) => {
       const payload = {
         ...state,
-        patinet_id: id,
+        id,
         interaction_datetime:
           state.interaction_datetime ||
           `${new Date().toISOString().slice(0, 10)} ${new Date()

@@ -1,13 +1,13 @@
-import { memo } from "react";
-import { Table } from "components";
+import { memo } from 'react'
+import { Table } from 'components'
 
-import { usePatientList } from "./use-patient-list";
-import { PatientListToolbar } from "./patient-list-toolbar";
-import { PatientListDetails } from "./patient-list-details";
+import { usePatientList } from './use-patient-list'
+import { PatientListToolbar } from './toolbar'
+import { PatientListDetails } from './details'
 
 export const PatientList = memo(() => {
   const { data, columns, onPaginate, isLoading, page, onSearch } =
-    usePatientList();
+    usePatientList()
 
   return (
     <div className="w-full">
@@ -23,5 +23,5 @@ export const PatientList = memo(() => {
         expand={(item) => <PatientListDetails item={item} />}
       />
     </div>
-  );
-});
+  )
+})

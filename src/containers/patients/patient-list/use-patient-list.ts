@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { useError, useService } from 'hooks'
 import { Api } from 'utils'
-import { PatientListActions } from './patient-list-actions'
+import { PatientListActions } from './actions'
 
 const columns = [
   { head: 'Name', key: 'first_name', width: 'w-1/3' },
