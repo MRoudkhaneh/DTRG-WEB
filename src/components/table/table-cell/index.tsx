@@ -20,10 +20,7 @@ export const TableCell: FC<ITableCell> = memo(
           column.render(item)
         ) : (
           <span
-            className={classNames(
-              ' text-lg',
-              dark ? 'text-gray-100' : 'text-gray-600'
-            )}
+            className={classNames(dark ? 'text-gray-100' : 'text-gray-600')}
           >
             {item[column.key]}
           </span>

@@ -38,7 +38,7 @@ export const Table: FC<ITable> = memo(
             />
           ))
         ) : (
-          <span className="text-gray-600 pt-6">No items</span>
+          <span className="text-gray-600 pt-6 text-lg">No items</span>
         )}
 
         {data && onPaginate && (
