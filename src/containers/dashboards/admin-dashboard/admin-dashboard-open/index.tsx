@@ -23,7 +23,7 @@ export const AdminDashboardOpen = memo(() => {
         <AuthDropDown pathname={pathname} push={push} dark={dark} />
       )}
       <PatientDropDown pathname={pathname} push={push} dark={dark} />
-      <Button icon onClick={() => toggleDrawer()} className="fixed bottom-6">
+      <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3">
         <ICClose
           id="close"
           className={classNames(

@@ -44,7 +44,7 @@ export const AdminDashboardClose = memo(() => {
           />
         </Button>
       </div>
-      <Button icon onClick={() => toggleDrawer()} className="fixed bottom-6">
+      <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3">
         <ICMenu
           id="menu"
           className={classNames(
