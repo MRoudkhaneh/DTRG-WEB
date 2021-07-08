@@ -1,8 +1,8 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import { Request } from "utils";
+import { useMutation, useQuery, useQueryClient } from 'react-query'
+import { Request } from 'utils'
 
 export const useService = () => {
-  const client = useQueryClient();
+  const client = useQueryClient()
 
   return {
     client,
@@ -19,11 +19,11 @@ export const useService = () => {
         enabled,
         initialData,
         keepPreviousData,
-      } = props;
+      } = props
       const asyncGet = async () =>
         await Request.get(url, {
           params: { ...params, ...(key[1] && { ...key[1] }) },
-        });
+        })
       return useQuery(key, asyncGet, {
         ...(onSuccess && { onSuccess }),
         ...(onError && { onError }),
@@ -33,34 +33,37 @@ export const useService = () => {
         ...(onMount !== undefined && { refetchOnMount: onMount }),
         ...(initialData && { initialData }),
         ...(keepPreviousData && { keepPreviousData }),
-      });
+      })
     },
     usePost: (props: IUseService) => {
-      const { url, onError, onSuccess, onMutate } = props;
-      const asyncPost = async ({ payload }) => await Request.post(url, payload);
+      const { url, onError, onSuccess, onMutate, onSettled } = props
+      const asyncPost = async ({ payload }) => await Request.post(url, payload)
       return useMutation(asyncPost, {
         ...(onSuccess && { onSuccess }),
         ...(onError && { onError }),
         ...(onMutate && { onMutate }),
-      });
+        ...(onSettled && { onSettled }),
+      })
     },
     usePut: (props: IUseService) => {
-      const { url, onError, onSuccess, onMutate } = props;
-      const asyncPut = async ({ payload }) => await Request.put(url, payload);
+      const { url, onError, onSuccess, onMutate, onSettled } = props
+      const asyncPut = async ({ payload }) => await Request.put(url, payload)
       return useMutation(asyncPut, {
         ...(onSuccess && { onSuccess }),
         ...(onError && { onError }),
         ...(onMutate && { onMutate }),
-      });
+        ...(onSettled && { onSettled }),
+      })
     },
     useDelete: (props: IUseService) => {
-      const { url, onError, onSuccess, onMutate } = props;
-      const asyncDelete = async () => await Request.delete(url);
+      const { url, onError, onSuccess, onMutate, onSettled } = props
+      const asyncDelete = async () => await Request.delete(url)
       return useMutation(asyncDelete, {
         ...(onSuccess && { onSuccess }),
         ...(onError && { onError }),
         ...(onMutate && { onMutate }),
-      });
+        ...(onSettled && { onSettled }),
+      })
     },
-  };
-};
+  }
+}

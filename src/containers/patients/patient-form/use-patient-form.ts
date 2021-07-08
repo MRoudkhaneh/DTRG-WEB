@@ -108,9 +108,9 @@ export const usePatientForm = (props: IPatientForm) => {
       client.setQueryData(dialog.queryKey, context.snapshot)
       onError(error)
     },
-    onSuccess: () => {
+    onSettled: (data, error) => {
+      if (error) onError(error)
       client.invalidateQueries(dialog.queryKey)
-      toggleDialog({ open: false, data: {}, type: null })
     },
   })
 

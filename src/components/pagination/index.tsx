@@ -15,10 +15,11 @@ export const Pagination: FC<IPagination> = memo(
       () =>
         Array.from(new Array(actualTotal === 1 ? actualTotal + 1 : actualTotal))
           .map((item, index) => index)
-          .slice(page === 1 ? 0 : page - 2, page === 1 ? 5 : page + 3)
+          .slice(page === 1 ? 0 : page - 2, page === 1 ? 5 : page + 4)
           .filter((item) =>
             actualTotal > 1 ? item !== actualTotal - 1 : true
           ),
+
       [page, total]
     )
 
@@ -40,13 +41,13 @@ export const Pagination: FC<IPagination> = memo(
                     'w-8 h-8  disabled:opacity-30',
                     page === 1
                       ? 'bg-secondary text-white'
-                      : dark && 'bg-gray-400 text-gray-700'
+                      : dark && 'bg-gray-600 text-gray-300'
                   )}
                 >
                   1
                 </Button>
                 <span className={classNames('mx-4', dark && 'text-gray-400')}>
-                  ...
+                  {' '}
                 </span>
               </>
             )}
@@ -60,7 +61,7 @@ export const Pagination: FC<IPagination> = memo(
                   'w-8 h-8  mr-2 disabled:opacity-30',
                   page === item + 1
                     ? 'bg-secondary text-white'
-                    : dark && 'bg-gray-400 text-gray-700'
+                    : dark && 'bg-gray-600 text-gray-300'
                 )}
               >
                 {item + 1}
@@ -70,7 +71,7 @@ export const Pagination: FC<IPagination> = memo(
             {Math.floor(total / 10) > 2 && (
               <>
                 <span className={classNames('mx-4', dark && 'text-gray-400')}>
-                  ...
+                  {' '}
                 </span>
                 <Button
                   onClick={() => onPaginate(actualTotal)}
@@ -79,7 +80,7 @@ export const Pagination: FC<IPagination> = memo(
                     'w-8 h-8  disabled:opacity-30',
                     page === actualTotal
                       ? 'bg-secondary text-white'
-                      : dark && 'bg-gray-400 text-gray-700'
+                      : dark && 'bg-gray-600 text-gray-300'
                   )}
                 >
                   {actualTotal}

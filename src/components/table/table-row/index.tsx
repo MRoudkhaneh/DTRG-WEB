@@ -17,21 +17,25 @@ export const TableRow: FC<ITableRow> = memo(
         className={classNames(
           'w-full flex flex-col   group ',
           loading && ' animate-pulse',
-          index === length - 1 ? '' : 'border-b border-gray-300'
+          index === length - 1
+            ? ''
+            : dark
+            ? 'border-b border-gray-600'
+            : 'border-b border-gray-300'
         )}
       >
         {item ? (
           <div
             onClick={() => (expand ? toggle() : {})}
             className={classNames(
-              'w-full row-start py-4 px-6 ',
+              'w-full row-start h-14 px-6 ',
               open
                 ? dark
                   ? 'bg-gray-700'
                   : 'bg-blue-100'
                 : dark
                 ? 'hover:bg-gray-700'
-                : 'hover:bg-gray-100',
+                : 'hover:bg-gray-300',
               expand && 'cursor-pointer'
             )}
           >

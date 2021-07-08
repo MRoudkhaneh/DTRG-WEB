@@ -18,28 +18,30 @@ export const AdminDashboardOpen = memo(() => {
   } = useUi()
 
   return (
-    <div className="w-full col-center space-y-4 px-4 relative">
+    <div className="w-full flex flex-col space-y-4 px-4 relative">
       {token ? null : (
         <AuthDropDown pathname={pathname} push={push} dark={dark} />
       )}
       <PatientDropDown pathname={pathname} push={push} dark={dark} />
       <Text
         className={classNames(
-          'fixed bottom-12',
+          'fixed bottom-12 self-center',
           dark ? 'text-primary' : 'text-secondary'
         )}
       >
-        Powered by DORIS
+        DORIS
       </Text>
-      <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3">
-        <ICChevronLeft
-          id="close"
-          className={classNames(
-            'w-6 h-6',
-            dark ? 'text-gray-300' : 'text-gray-500'
-          )}
-        />
-      </Button>
+      <div className="flex flex-row items-center justify-end">
+        <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3 ">
+          <ICChevronLeft
+            id="close"
+            className={classNames(
+              'w-5 h-5',
+              dark ? 'text-gray-300' : 'text-gray-500'
+            )}
+          />
+        </Button>
+      </div>
     </div>
   )
 })
