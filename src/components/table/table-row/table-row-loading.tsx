@@ -21,19 +21,19 @@ export const TableRowLoading: FC<ITable> = memo(({ columns }) => {
             <Fragment>
               <div
                 className={classNames(
-                  'h-8 w-8 rounded-xl ',
+                  'h-6 w-3 rounded-xl ',
                   dark ? 'bg-gray-700' : 'bg-gray-300'
                 )}
               />
               <div
                 className={classNames(
-                  'h-6 w-8 rounded-xl ml-2',
+                  'h-4 w-3 rounded-xl ml-2',
                   dark ? 'bg-gray-700' : 'bg-gray-300'
                 )}
               />
               <div
                 className={classNames(
-                  'h-4 w-24 rounded-xl ml-2',
+                  'h-2.5 w-16 rounded-xl ml-2',
                   dark ? 'bg-gray-700' : 'bg-gray-300'
                 )}
               />
