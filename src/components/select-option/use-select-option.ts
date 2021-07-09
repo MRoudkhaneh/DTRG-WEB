@@ -1,22 +1,26 @@
-import { useCallback } from "react";
+import { useCallback } from 'react'
 
 export const useSelectOption = ({ state }) => {
   return {
     handleChange: useCallback(
       ({ value, onChange }) => {
         const existed =
-          state !== undefined &&
-          state.length > 0 &&
-          state.find((item) => item === value);
+          state === null
+            ? false
+            : state !== undefined &&
+              state.length &&
+              state.some((item) => item === value)
         const payload =
-          state !== undefined
+          state === null
+            ? [value]
+            : state !== undefined
             ? existed
               ? [...state.filter((item) => item !== value)]
               : [...state, value]
-            : [value];
-        onChange(payload);
+            : [value]
+        onChange(payload)
       },
       [state]
     ),
-  };
-};
+  }
+}

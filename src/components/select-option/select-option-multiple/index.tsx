@@ -5,7 +5,7 @@ import { useSelectOption } from '../use-select-option'
 import { useUi } from 'hooks/use-ui'
 
 export const SelectOptionMultiple: FC<ISelectOption> = memo(
-  ({ key, disabled, onChange, value, toggle, onClick, children, state }) => {
+  ({ key, disabled, value, children, state, onChange }) => {
     const { handleChange } = useSelectOption({ state })
     const {
       uiState: { dark },
@@ -22,11 +22,10 @@ export const SelectOptionMultiple: FC<ISelectOption> = memo(
           if (!disabled) {
             e.stopPropagation()
             handleChange({ value, onChange })
-            onClick && onClick(toggle)
           }
         }}
       >
-        <Check checked={state.includes(value)} className="mr-3" />
+        <Check checked={state && state.includes(value)} className="mr-3" />
         <span
           slot="child"
           key={key}
