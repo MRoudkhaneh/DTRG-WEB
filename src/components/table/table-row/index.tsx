@@ -15,7 +15,7 @@ export const TableRow: FC<ITableRow> = memo(
     return (
       <div
         className={classNames(
-          'w-full flex flex-col   group ',
+          'w-full flex flex-col overflow-hidden group ',
           loading && ' animate-pulse',
           index === length - 1
             ? ''
