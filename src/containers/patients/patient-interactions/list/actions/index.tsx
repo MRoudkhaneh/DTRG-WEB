@@ -2,7 +2,7 @@ import { useUi } from 'hooks'
 import { Tooltip, Button } from 'components'
 import { ICEdit, ICDelete } from 'icons'
 
-export const PatientInteractionListActions = ({ item }) => {
+export const PatientInteractionListActions = ({ item, queryKey }) => {
   const { toggleDialog } = useUi()
   return (
     <div className=" hidden group-hover:flex  items-center justify-end ">
@@ -16,6 +16,7 @@ export const PatientInteractionListActions = ({ item }) => {
               open: true,
               type: 'patient-interactions-form',
               data: { ...item, isEditing: true },
+              queryKey,
             })
           }}
         >
@@ -32,6 +33,7 @@ export const PatientInteractionListActions = ({ item }) => {
               open: true,
               type: 'patient-interaction-delete',
               data: item,
+              queryKey,
             })
           }}
         >

@@ -100,7 +100,6 @@ export const usePatientForm = (props: IPatientForm) => {
         )
         return old
       })
-      success('You successfully edited this patient.')
       toggleDialog({ open: false, type: null, data: {} })
       return { snapshot }
     },
@@ -110,6 +109,7 @@ export const usePatientForm = (props: IPatientForm) => {
     },
     onSettled: (data, error) => {
       if (error) onError(error)
+      success('You successfully edited this patient.')
       client.invalidateQueries(dialog.queryKey)
     },
   })

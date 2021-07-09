@@ -30,7 +30,7 @@ export const usePatientModal = () => {
             )
             return old
           })
-          success('You successfully deleted this patient.')
+
           toggleDialog({ open: false, type: null, data: {} })
           return { snapshot }
         },
@@ -40,6 +40,7 @@ export const usePatientModal = () => {
         },
         onSettled: (data, error) => {
           if (error) onError(error)
+          success('You successfully deleted this patient.')
           client.invalidateQueries(dialog.queryKey)
         },
       }),

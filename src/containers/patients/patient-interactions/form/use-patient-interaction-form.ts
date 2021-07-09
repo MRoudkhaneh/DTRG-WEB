@@ -6,15 +6,15 @@ import { useParams } from 'react-router-dom'
 
 export const usePatientInteractionForm = () => {
   const { id } = useParams() as any
-  const { usePost, client } = useService()
+  const { usePost, usePut, client } = useService()
+  const { onError } = useError()
+  const { success } = useToast()
   const {
     toggleDialog,
     uiState: {
-      dialog: { data },
+      dialog: { data, queryKey },
     },
   } = useUi()
-  const { onError } = useError()
-  const { success } = useToast()
 
   const { control, handleSubmit, setValue } = useForm({
     defaultValues:
@@ -30,27 +30,54 @@ export const usePatientInteractionForm = () => {
 
   const { mutate: save, isLoading: saveLoading } = usePost({
     url: Api.interactions,
-    onError,
-    onSuccess: () => {
-      success('You successfully added an interaction.')
-      toggleDialog({
-        open: false,
-        type: null,
+    onMutate: async ({ payload }) => {
+      await client.cancelQueries(queryKey)
+      const snapshot = client.getQueryData(queryKey)
+      client.setQueryData(queryKey, (old: any) => {
+        old.data.results = [
+          payload,
+          ...old.data.results.filter(
+            (item, index) => index !== old.data.results.length - 1
+          ),
+        ]
+        return old
       })
-      client.invalidateQueries('PATIENT_INTERACTION_LIST')
+      toggleDialog({ open: false, type: null, data: {} })
+      return { snapshot }
+    },
+    onError: (error, data, context) => {
+      client.setQueryData(queryKey, context.snapshot)
+      onError(error)
+    },
+    onSettled: (data, error) => {
+      if (error) onError(error)
+      success('You successfully add an interaction.')
+      client.invalidateQueries(queryKey)
     },
   })
 
-  const { mutate: edit, isLoading: editLoading } = usePost({
-    url: data ? `${Api.interactions}/${data.patient_id}/` : '',
-    onError,
-    onSuccess: () => {
-      success('You successfully edited an interaction.')
-      toggleDialog({
-        open: false,
-        type: null,
+  const { mutate: edit, isLoading: editLoading } = usePut({
+    url: data ? `${Api.interactions}/${data.id}/` : '',
+    onMutate: async ({ payload }) => {
+      await client.cancelQueries(queryKey)
+      const snapshot = client.getQueryData(queryKey)
+      client.setQueryData(queryKey, (old: any) => {
+        old.data.results = old.data.results.map((item) =>
+          item.id == data.id ? payload : item
+        )
+        return old
       })
-      client.invalidateQueries('PATIENT_INTERACTION_LIST')
+      toggleDialog({ open: false, type: null, data: {} })
+      return { snapshot }
+    },
+    onError: (error, data, context) => {
+      client.setQueryData(queryKey, context.snapshot)
+      onError(error)
+    },
+    onSettled: (data, error) => {
+      if (error) onError(error)
+      success('You successfully edit this interaction.')
+      client.invalidateQueries(queryKey)
     },
   })
 
@@ -64,14 +91,14 @@ export const usePatientInteractionForm = () => {
     onSubmit: handleSubmit((state) => {
       const payload = {
         ...state,
-        //patient_id: parseInt(id),
+        patient: parseInt(id),
         interaction_datetime:
           state.interaction_datetime ||
           `${new Date().toISOString().slice(0, 10)} ${new Date()
             .toISOString()
             .slice(11, 16)}`,
       }
-      data.isEditing ? edit({ payload }) : save({ payload })
+      data && data.isEditing ? edit({ payload }) : save({ payload })
     }),
   }
 }

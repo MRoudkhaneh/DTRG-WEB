@@ -3,9 +3,11 @@ import { ICPlus, ICArrowLeft } from 'icons'
 import { Button, Text, Toolbar, Tooltip } from 'components'
 import { useUi } from 'hooks'
 import { useHistory, useLocation } from 'react-router-dom'
+import { usePatientInteractionList } from '../use-patient-interactien-list'
 
 export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(
   () => {
+    const { queryKey } = usePatientInteractionList()
     const { toggleDialog } = useUi()
     const {
       state: { patient },
@@ -40,6 +42,7 @@ export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(
                 toggleDialog({
                   open: true,
                   type: 'patient-interactions-form',
+                  queryKey,
                 })
               }}
             >

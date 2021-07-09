@@ -10,8 +10,9 @@ const PatientInteractionsForm = lazy(() =>
 )
 
 export const PatientInteractionsModal = memo(() => {
-  const { deleteInteraction, deleteInteractionLoading } =
-    usePatientInteractionModal()
+  const { deleteInteraction } = usePatientInteractionModal()
+
+  const { mutate } = deleteInteraction()
 
   const {
     uiState: { dialog },
@@ -41,8 +42,7 @@ export const PatientInteractionsModal = memo(() => {
         <Confirm
           type="delete"
           description={`You are about to delete this interaction.`}
-          loading={deleteInteractionLoading}
-          onConfirm={() => deleteInteraction()}
+          onConfirm={() => mutate()}
           onCancel={() => toggleDialog({ open: false, type: null, data: null })}
         />
       )

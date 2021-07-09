@@ -13,12 +13,12 @@ export const PatientInteractionsList = memo(() => {
       <PatientinteractionListToolbar />
       <Table
         className="w-full my-10"
-        columns={columns}
         data={data.results}
         total={data.count}
-        loading={isLoading}
         page={page}
+        columns={columns}
         onPaginate={onPaginate}
+        loading={isLoading}
       />
     </div>
   )

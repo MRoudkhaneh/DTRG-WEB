@@ -7,49 +7,57 @@ import { PatientInteractionListDate } from './date'
 import { PatientInteractionListDetails } from './details'
 import { useParams } from 'react-router-dom'
 
-const columns = [
-  {
-    head: 'Type',
-    key: 'interaction_type',
-    width: 'w-1/6',
-  },
-  { head: 'Contact admin', key: 'contact_admin', width: 'w-1/6' },
-  {
-    head: 'Date',
-    key: 'interaction_datetime',
-    width: 'w-1/6',
-    render: (item) => PatientInteractionListDate({ item }),
-  },
-
-  {
-    head: 'Contact details',
-    key: 'contact_details',
-    width: 'w-3/4',
-    render: (item) => PatientInteractionListDetails({ item }),
-  },
-  {
-    head: '',
-    width: 'w-[0px]',
-    render: (item) => PatientInteractionListActions({ item }),
-  },
-]
-
 export const usePatientInteractionList = () => {
   const routerParams = useParams() as any
-  const [params, setParams] = useState({ page: null, search: null })
+  const [params, setParams] = useState({
+    page: null,
+    search: null,
+    patient_id: routerParams.id,
+  })
   const { useGet } = useService()
   const { onError } = useError()
 
+  const queryKey = useMemo(() => ['PATIENT_INTERACTION_LIST', params], [params])
+
   const { data, isLoading, isFetching } = useGet({
     key: ['PATIENT_INTERACTION_LIST', params],
-    url: `${Api.interactions}${routerParams.id}/`,
+    url: `${Api.interactions}`,
     onFocus: false,
     keepPreviousData: true,
     onError,
   })
 
   return {
-    columns,
+    queryKey,
+    columns: useMemo(
+      () => [
+        {
+          head: 'Type',
+          key: 'interaction_type',
+          width: 'w-1/6',
+        },
+        {
+          head: 'Date',
+          key: 'interaction_datetime',
+          width: 'w-1/6',
+          render: (item) => PatientInteractionListDate({ item }),
+        },
+        { head: 'Contact admin', key: 'contact_admin', width: 'w-1/6' },
+
+        {
+          head: 'Contact details',
+          key: 'contact_details',
+          width: 'w-3/4',
+          render: (item) => PatientInteractionListDetails({ item }),
+        },
+        {
+          head: '',
+          width: 'w-[100px]',
+          render: (item) => PatientInteractionListActions({ item, queryKey }),
+        },
+      ],
+      [queryKey]
+    ),
     data: data ? data.data : { count: 0, results: [] },
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     page: useMemo(() => params.page, [params.page]),

@@ -56,8 +56,8 @@ export const useService = () => {
       })
     },
     useDelete: (props: IUseService) => {
-      const { url, onError, onSuccess, onMutate, onSettled } = props
-      const asyncDelete = async () => await Request.delete(url)
+      const { url, onError, onSuccess, onMutate, onSettled, params } = props
+      const asyncDelete = async () => await Request.delete(url, { params })
       return useMutation(asyncDelete, {
         ...(onSuccess && { onSuccess }),
         ...(onError && { onError }),
