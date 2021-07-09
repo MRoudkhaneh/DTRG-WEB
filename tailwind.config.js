@@ -11,6 +11,10 @@ module.exports = {
         warning: '#FFC56C',
         fade: '#F2F1F1',
       },
+      animation: {
+        bounce200: 'bounce 1s infinite 200ms',
+        bounce400: 'bounce 1s infinite 400ms',
+      },
     },
   },
   variants: {

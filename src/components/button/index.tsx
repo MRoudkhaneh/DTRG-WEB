@@ -1,6 +1,7 @@
-import { FC, memo } from "react";
-import { ICLoading } from "icons";
-import { classNames } from "utils";
+import { FC, memo } from 'react'
+import { ICLoading } from 'icons'
+import { classNames } from 'utils'
+import { LoaidngBounce } from 'components/loading'
 
 export const Button: FC<IButton> = memo(
   ({
@@ -26,20 +27,16 @@ export const Button: FC<IButton> = memo(
         id={id}
         role={role}
         className={classNames(
-          " flex items-center justify-center transition rounded focus:outline-none  disabled:opacity-50 ",
-          !icon && "shadow",
+          ' flex items-center justify-center transition rounded focus:outline-none  disabled:opacity-50 ',
+          !icon && 'shadow',
           loading
-            ? "cursor-wait "
-            : !disabled && "transform hover:-translate-y-1 hover:scale-105",
+            ? 'cursor-wait '
+            : !disabled && 'transform hover:-translate-y-1 hover:scale-105',
           className
         )}
       >
-        {loading ? (
-          <ICLoading className="w-6 h-6 text-blue-gray-500" />
-        ) : (
-          children
-        )}
+        {loading ? <LoaidngBounce /> : children}
       </button>
-    );
+    )
   }
-);
+)

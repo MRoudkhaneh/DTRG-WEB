@@ -1,10 +1,10 @@
-import { ICLoading } from "icons";
+import { LoaidngBounce } from 'components/loading'
 
 const Skeleton = () => {
   return (
     <div className="fixed inset-0 w-full h-full flex justify-center items-center pt-64">
-      <ICLoading className="w-20 h-20 text-gray-400" />
+      <LoaidngBounce size="large" />
     </div>
-  );
-};
-export { Skeleton };
+  )
+}
+export { Skeleton }
