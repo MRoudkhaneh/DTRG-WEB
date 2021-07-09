@@ -1,3 +1,4 @@
+import { useUi } from 'hooks/use-ui'
 import { memo, useEffect, useState } from 'react'
 import { classNames } from 'utils/classes'
 
@@ -18,6 +19,9 @@ const flexes = [
 
 export const LoaidngProgress = memo(() => {
   const [state, setstate] = useState(0)
+  const {
+    uiState: { dark },
+  } = useUi()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,9 +35,18 @@ export const LoaidngProgress = memo(() => {
 
   return (
     <div className="w-full">
-      <div className={classNames('w-full flex h-[2px] bg-gray-100 trans')}>
+      <div
+        className={classNames(
+          'w-full flex h-[2px]',
+          dark ? 'bg-gray-800' : 'bg-gray-100'
+        )}
+      >
         <div
-          className={classNames('bg-primary h-[2px] trans', flexes[state])}
+          className={classNames(
+            ' h-[2px]',
+            dark ? 'bg-primary' : 'bg-secondary',
+            flexes[state]
+          )}
         />
       </div>
     </div>
