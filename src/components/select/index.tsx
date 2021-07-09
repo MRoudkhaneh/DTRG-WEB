@@ -51,6 +51,7 @@ export const Select: FC<ISelect> = memo(
                 setValue={setValue}
                 name={name}
                 open={open}
+                label={label}
               />
               {open && (
                 <SelectDropBox

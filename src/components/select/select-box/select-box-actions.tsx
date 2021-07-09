@@ -46,10 +46,10 @@ export const SelectBoxActions: FC<ISelect> = memo(
             )}
         <Button icon type="button">
           {open ? (
-            <ICChevronUp className="w-4 h-4 text-gray-500" role="arrow-down" />
+            <ICChevronUp className="w-4 h-4 text-gray-900" role="arrow-down" />
           ) : (
             <ICChevronDown
-              className="w-4 h-4 text-gray-500"
+              className="w-4 h-4 text-gray-900"
               role="arrow-down"
             />
           )}

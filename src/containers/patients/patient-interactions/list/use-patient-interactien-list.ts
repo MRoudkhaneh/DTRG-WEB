@@ -36,16 +36,15 @@ export const usePatientInteractionList = () => {
           key: 'interaction_type',
           width: 'w-1/6',
         },
+        { head: 'Admin', key: 'contact_admin', width: 'w-1/6' },
         {
           head: 'Date',
           key: 'interaction_datetime',
           width: 'w-1/6',
           render: (item) => PatientInteractionListDate({ item }),
         },
-        { head: 'Contact admin', key: 'contact_admin', width: 'w-1/6' },
-
         {
-          head: 'Contact details',
+          head: 'Details',
           key: 'contact_details',
           width: 'w-3/4',
           render: (item) => PatientInteractionListDetails({ item }),

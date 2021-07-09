@@ -15,4 +15,5 @@ interface ISelect {
   toggle?: any
   ref?: any
   open?: any
+  dark?: boolean
 }

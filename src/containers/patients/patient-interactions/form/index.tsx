@@ -30,18 +30,22 @@ export const PatientInteractionsForm = memo(() => {
       </Select>
       <DatePicker
         control={control}
-        name="interaction_datetime"
-        label="Interaction datetime"
+        name="interaction_date"
+        label="Interaction date"
         className="my-4"
-        time
-        defaultValue={`${new Date().toISOString().slice(0, 10)} 
-          ${new Date().toISOString().slice(11, 16)}`}
+      />
+      <Input
+        control={control}
+        name="interaction_time"
+        label="Interaction time"
+        required
+        className="mt-10"
       />
       <Input
         control={control}
         name="contact_admin"
         label="Contact admin"
-        className="mt-10"
+        className="mt-4"
         required
       />
       <TextArea

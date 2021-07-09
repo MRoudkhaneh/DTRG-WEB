@@ -5,7 +5,7 @@ import { SelectBoxActions } from './select-box-actions'
 import { SelectBoxValue } from './select-box-value'
 
 export const SelectBox: FC<ISelect> = memo(
-  ({ toggle, value, error, multiple, setValue, name, open }) => {
+  ({ toggle, value, error, multiple, setValue, name, open, label }) => {
     const {
       uiState: { dark },
     } = useUi()
@@ -20,7 +20,7 @@ export const SelectBox: FC<ISelect> = memo(
             : error
             ? 'rounded border-2'
             : 'rounded border ',
-          multiple ? 'min-h-[3rem]  py-2 pl-2 pr-4' : 'h-12  px-4',
+          multiple && value ? 'min-h-[3rem]  py-2 pl-2 pr-4' : 'h-12  px-4',
           error
             ? ' border-red-400 shadow'
             : dark
@@ -29,7 +29,13 @@ export const SelectBox: FC<ISelect> = memo(
           dark ? 'bg-gray-400' : 'bg-white'
         )}
       >
-        <SelectBoxValue multiple={multiple} value={value} open={open} />
+        <SelectBoxValue
+          multiple={multiple}
+          value={value}
+          open={open}
+          label={label}
+          dark={dark}
+        />
         <SelectBoxActions
           multiple={multiple}
           value={value}

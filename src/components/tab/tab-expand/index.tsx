@@ -12,7 +12,7 @@ export const TabExpand: FC<ITab> = memo(({ expandable, children, open }) => {
       <div
         className={classNames(
           'w-full px-10 py-8 rounded-b  ',
-          dark ? 'bg-gray-600' : 'bg-white'
+          dark ? 'bg-gray-700' : 'bg-white'
         )}
       >
         {children}
@@ -23,7 +23,7 @@ export const TabExpand: FC<ITab> = memo(({ expandable, children, open }) => {
       <div
         className={classNames(
           'w-full px-10 py-8 rounded-b',
-          dark ? 'bg-gray-600' : 'bg-white'
+          dark ? 'bg-gray-700' : 'bg-white'
         )}
       >
         {children}

@@ -57,18 +57,23 @@ import {
   PatientStatus,
   PatientStatusDetails,
 } from './fields'
+import { useUi } from 'hooks/use-ui'
+import { classNames } from 'utils/classes'
 
 export const PatientForm = memo((props?: IPatientForm) => {
   const { isEditing, editInitials } = props
   const { onSubmit, control, setValue, saveLoading, editLoading } =
     usePatientForm({ isEditing, editInitials })
+  const {
+    uiState: { dark },
+  } = useUi()
 
   return (
     <div className="w-full">
       {!isEditing && <PatientFormToolbar />}
       <Form className="w-full  px-5" onSubmit={onSubmit}>
         <Tab
-          expandable
+          // expandable
           initialIsOpen={!isEditing}
           text="Patient Bio"
           className="mt-10"
@@ -111,7 +116,7 @@ export const PatientForm = memo((props?: IPatientForm) => {
         </Tab>
 
         <Tab
-          expandable
+          //expandable
           initialIsOpen={!isEditing}
           text="Medical History"
           className="mt-10"
@@ -162,7 +167,9 @@ export const PatientForm = memo((props?: IPatientForm) => {
             <HadSevereHypo control={control} />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <Text>Have you ever been diagnosed with:</Text>
+            <span className={classNames(dark ? 'text-dark' : 'text-light')}>
+              Have you ever been diagnosed with:
+            </span>
           </Grid>
           <Grid className="mt-4">
             <div className="col-span-1 grid grid-cols-1 ">
@@ -179,7 +186,7 @@ export const PatientForm = memo((props?: IPatientForm) => {
         </Tab>
 
         <Tab
-          expandable
+          //expandable
           initialIsOpen={!isEditing}
           text="Logistics"
           className="mt-10"
