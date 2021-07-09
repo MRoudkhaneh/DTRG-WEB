@@ -14,7 +14,10 @@ export const ConfirmBody: FC<IConfirm> = memo(
         >
           {title}
         </span>
-        <span className="pt-10 text-indigo-600" slot="description">
+        <span
+          className={classNames('pt-10 ', dark ? 'text-dark' : 'text-light')}
+          slot="description"
+        >
           {description}
         </span>
       </Fragment>
