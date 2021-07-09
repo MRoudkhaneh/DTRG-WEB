@@ -2,23 +2,21 @@ import { useUi } from 'hooks/use-ui'
 import { memo, useEffect, useState } from 'react'
 import { classNames } from 'utils/classes'
 
-const flexes = ['w-1/3', 'w-2/3', 'w-full']
+const flexes = ['w-1/5', 'w-1/3', 'w-1/2', 'w-2/3', 'w-full']
 
 export const LoaidngProgress = memo(() => {
   const [state, setstate] = useState(0)
-
   const {
     uiState: { dark },
   } = useUi()
 
+  const interval = setInterval(() => {
+    if (state === 4) setstate(0)
+    else setstate(state + 1)
+  }, 700)
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (state === 2) setstate(0)
-      else setstate(state + 1)
-    }, 600)
-    return () => {
-      clearInterval(interval)
-    }
+    return () => clearInterval(interval)
   }, [])
 
   return (

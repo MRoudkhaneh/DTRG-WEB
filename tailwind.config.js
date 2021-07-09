@@ -15,6 +15,7 @@ module.exports = {
         bounce200: 'bounce 1s infinite 200ms',
         bounce400: 'bounce 1s infinite 400ms',
         bounce800: 'bounce 2s infinite 600ms',
+        pulse200: 'pulse 1s linear infinite 20ms',
       },
     },
   },

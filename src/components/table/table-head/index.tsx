@@ -1,7 +1,6 @@
 import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
-import { LoaidngProgress } from 'components'
 
 export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
   const {
@@ -11,9 +10,9 @@ export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
     <div className="w-full flex flex-col">
       <div
         className={classNames(
-          'w-full row-start  py-4 px-6  rounded-t ',
+          'w-full row-start  py-4 px-6  rounded-t border-b-2',
           dark ? 'border-primary ' : 'border-secondary',
-          loading ? '' : 'border-b-2'
+          loading && 'animate-pulse200'
         )}
       >
         {(columns || []).map((column, index) => (
@@ -33,7 +32,6 @@ export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
           </div>
         ))}
       </div>
-      {loading && <LoaidngProgress />}
     </div>
   )
 })
