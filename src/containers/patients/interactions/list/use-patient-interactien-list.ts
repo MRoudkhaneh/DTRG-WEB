@@ -46,7 +46,7 @@ export const usePatientInteractionList = () => {
         {
           head: 'Details',
           key: 'contact_details',
-          width: 'w-3/4',
+          width: 'w-4/5',
           render: (item) => PatientInteractionListDetails({ item }),
         },
         {

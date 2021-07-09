@@ -54,7 +54,7 @@ export const PatientInteractionsForm = memo(() => {
         label="Contact details"
         className="my-4"
         required
-        max={512}
+        max={450}
       />
       <Button
         type="submit"

@@ -12,7 +12,7 @@ export const PatientInteractionListDetails = ({ item }) => {
         dark ? 'text-gray-300' : 'text-gray-600'
       )}
     >
-      {item.contact_details}
+      {item.contact_details.substr(0, 450)}
     </span>
   )
 }
