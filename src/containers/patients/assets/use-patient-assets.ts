@@ -12,7 +12,7 @@ const columns = [
 export const usePatientAssets = () => {
   const routerParams = useParams() as any
   const [params, setParams] = useState({
-    page: null,
+    page: 1,
     patient_id: routerParams.id,
   })
   const { useGet } = useService()

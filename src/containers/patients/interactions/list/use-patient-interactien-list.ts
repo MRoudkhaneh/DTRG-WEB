@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 export const usePatientInteractionList = () => {
   const routerParams = useParams() as any
   const [params, setParams] = useState({
-    page: null,
+    page: 1,
     search: null,
     patient_id: routerParams.id,
   })

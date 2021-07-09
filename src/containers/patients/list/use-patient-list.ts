@@ -4,7 +4,7 @@ import { Api } from 'utils'
 import { PatientListActions } from './actions'
 
 export const usePatientList = () => {
-  const [params, setParams] = useState({ page: null, search: null })
+  const [params, setParams] = useState({ page: 1, search: null })
   const { useGet } = useService()
   const { onError } = useError()
 

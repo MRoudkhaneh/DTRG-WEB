@@ -11,7 +11,7 @@ export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
       className={classNames(
         'w-full row-start  border-b-2  py-4 px-6  rounded-t ',
         dark ? 'border-primary ' : 'border-secondary',
-        loading && 'opacity-30 animate-bounce400'
+        loading && 'opacity-30 animate-bounce800'
       )}
     >
       {(columns || []).map((column, index) => (
