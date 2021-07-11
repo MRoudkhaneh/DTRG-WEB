@@ -22,14 +22,16 @@ export const usePatientInteractionForm = () => {
         ? {
             interaction_type: data.interaction_type,
             interaction_date: data.interaction_datetime.slice(0, 10),
-            interaction_time: data.interaction_datetime.slice(11, 16),
+            interaction_hours: data.interaction_datetime.slice(11, 13),
+            interaction_minutes: data.interaction_datetime.slice(14, 16),
             contact_admin: data.contact_admin,
             contact_details: data.contact_details,
           }
         : {
             interaction_type: '',
             interaction_date: new Date().toISOString().slice(0, 10),
-            interaction_time: new Date().toISOString().slice(11, 16),
+            interaction_hours: new Date().toISOString().slice(11, 13),
+            interaction_minutes: new Date().toISOString().slice(14, 16),
             contact_admin: '',
             contact_details: '',
           },
@@ -99,7 +101,7 @@ export const usePatientInteractionForm = () => {
       const payload = {
         ...state,
         patient: parseInt(id),
-        interaction_datetime: `${state.interaction_date} ${state.interaction_time}`,
+        interaction_datetime: `${state.interaction_date} ${state.interaction_hours}:${state.interaction_minutes}`,
       }
       data && data.isEditing ? edit({ payload }) : save({ payload })
     }),

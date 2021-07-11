@@ -32,10 +32,28 @@ const precentValidation = (value) => {
     return 'This field mut be between 0 and 100.'
 }
 
+const hoursValidation = (value) => {
+  if (parseInt(value) < 0 || parseInt(value) > 24)
+    return 'This field must be between 0 and 24.'
+}
+
+const minutesValidation = (value) => {
+  if (parseInt(value) < 0 || parseInt(value) > 60)
+    return 'This field mut be between 0 and 60.'
+}
+
+const numberValidation = (value) => {
+  if (value.match('^[0-9]*$') === null || !value.match('^[0-9]*$').length)
+    return 'This field must be number.'
+}
+
 export {
   requiredValidation,
   maxValidation,
   minValidation,
   laterValidation,
   precentValidation,
+  hoursValidation,
+  minutesValidation,
+  numberValidation,
 }

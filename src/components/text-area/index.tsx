@@ -1,16 +1,16 @@
-import { FC, memo } from "react";
-import { useValidation } from "hooks";
-import { Error } from "components";
-import { classNames } from "utils";
+import { FC, memo } from 'react'
+import { useValidation } from 'hooks'
+import { Error } from 'components'
+import { classNames } from 'utils'
 
-import { TextAreaLabel } from "./text-area-label";
-import { TextAreatCore } from "./text-area-core";
-import { TextAreaInteractive } from "./text-area-interactive";
-import { Controller } from "react-hook-form";
+import { TextAreaLabel } from './text-area-label'
+import { TextAreatCore } from './text-area-core'
+import { TextAreaInteractive } from './text-area-interactive'
+import { Controller } from 'react-hook-form'
 
 export const TextArea: FC<ITextArea> = memo((props) => {
-  const { required, max, min, className, error, control, name } = props;
-  const { validate } = useValidation({ required, max, min });
+  const { required, max, min, className, error, control, name } = props
+  const { validate } = useValidation({ required, max, min })
 
   if (control)
     return (
@@ -21,7 +21,7 @@ export const TextArea: FC<ITextArea> = memo((props) => {
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <div
             className={classNames(
-              "w-full col-start resize-y relative",
+              'w-full col-start resize-y relative',
               className
             )}
           >
@@ -32,19 +32,19 @@ export const TextArea: FC<ITextArea> = memo((props) => {
               error={error}
               {...props}
             />
-            <Error error={error} />
+            <Error error={error} className="absolute top-[75px] left-0" />
           </div>
         )}
       />
-    );
+    )
   else
     return (
       <div
-        className={classNames("w-full col-start resize-y relative", className)}
+        className={classNames('w-full col-start resize-y relative', className)}
       >
         <TextAreaLabel {...props} />
         <TextAreatCore {...props} />
         <Error error={error} />
       </div>
-    );
-});
+    )
+})

@@ -12,7 +12,7 @@ import {
 import { usePatientInteractionForm } from './use-patient-interaction-form'
 
 export const PatientInteractionsForm = memo(() => {
-  const { control, onSubmit, isLoading, setValue } = usePatientInteractionForm()
+  const { control, onSubmit, setValue } = usePatientInteractionForm()
 
   return (
     <Form onSubmit={onSubmit}>
@@ -32,34 +32,50 @@ export const PatientInteractionsForm = memo(() => {
         control={control}
         name="interaction_date"
         label="Interaction date"
-        className="my-4"
+        className="mt-5"
       />
-      <Input
-        control={control}
-        name="interaction_time"
-        label="Interaction time"
-        required
-        className="mt-10"
-      />
+      <div className="flex items-center mt-10 space-x-4">
+        <Input
+          control={control}
+          name="interaction_hours"
+          label="Interaction time (hour)"
+          placeholder="Enter interaction time in hour"
+          max={2}
+          required
+          hours
+          number
+        />
+        <Input
+          control={control}
+          name="interaction_minutes"
+          label="Interaction time (minutes)"
+          placeholder="Enter interaction time in minutes"
+          max={2}
+          required
+          minutes
+          number
+        />
+      </div>
       <Input
         control={control}
         name="contact_admin"
         label="Contact admin"
-        className="mt-4"
+        placeholder="Enter contact admin"
+        className="mt-5"
         required
       />
       <TextArea
         control={control}
         name="contact_details"
         label="Contact details"
-        className="my-4"
+        placeholder="Enter contact details"
+        className="my-5"
         required
         max={450}
       />
       <Button
         type="submit"
         className=" mx-auto w-1/2 h-12 my-10 ml-auto bg-pink-700 text-white"
-        //loading={isLoading}
       >
         Save Interaction
       </Button>

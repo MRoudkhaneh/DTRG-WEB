@@ -1,11 +1,11 @@
-import { FC, memo } from "react";
-import { useValidation } from "hooks";
-import { Error } from "components";
+import { FC, memo } from 'react'
+import { useValidation } from 'hooks'
+import { Error } from 'components'
 
-import { InputLabel } from "./input-label";
-import { InputCore } from "./input-core";
-import { InputIcon } from "./input-icon";
-import { Controller } from "react-hook-form";
+import { InputLabel } from './input-label'
+import { InputCore } from './input-core'
+import { InputIcon } from './input-icon'
+import { Controller } from 'react-hook-form'
 
 export const Input: FC<IInput> = memo((props) => {
   const {
@@ -19,7 +19,10 @@ export const Input: FC<IInput> = memo((props) => {
     precent,
     control,
     name,
-  } = props;
+    hours,
+    minutes,
+    number,
+  } = props
   const { validate } = useValidation({
     required,
     max,
@@ -27,7 +30,10 @@ export const Input: FC<IInput> = memo((props) => {
     later,
     validation,
     precent,
-  });
+    hours,
+    minutes,
+    number,
+  })
 
   if (control)
     return (
@@ -53,11 +59,11 @@ export const Input: FC<IInput> = memo((props) => {
             />
 
             <InputIcon {...props} />
-            <Error error={fieldError} />
+            <Error error={fieldError} className="absolute top-[75px] left-0" />
           </div>
         )}
       />
-    );
+    )
   else
     return (
       <div className={`w-full col-start relative ${className}`} slot="wrapper">
@@ -66,5 +72,5 @@ export const Input: FC<IInput> = memo((props) => {
         <InputIcon {...props} />
         <Error error={error} />
       </div>
-    );
-});
+    )
+})

@@ -63,7 +63,7 @@ export const Select: FC<ISelect> = memo(
                   {children}
                 </SelectDropBox>
               )}
-              <Error error={error} />
+              <Error error={error} className="absolute top-[42px] left-0" />
             </div>
           )}
         />

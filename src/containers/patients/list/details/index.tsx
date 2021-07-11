@@ -5,12 +5,14 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
   return (
     <div className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
       <Input size="small" disabled label="Patient Status" value={item.status} />
-      <Input
-        size="small"
-        disabled
-        label="Patient Status Details"
-        value={item.status_details}
-      />
+      {item.status_details && (
+        <Input
+          size="small"
+          disabled
+          label="Patient Status Details"
+          value={item.status_details}
+        />
+      )}
       <Input
         size="small"
         disabled
@@ -80,16 +82,14 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
           value={item.cho_counting}
         />
       )}
-      {item.cho_counting_details &&
-        item.cho_counting &&
-        item.cho_counting.includes('Other') && (
-          <Input
-            size="small"
-            disabled
-            label="CHO Counting Detail"
-            value={item.cho_counting_details}
-          />
-        )}
+      {item.cho_counting_details && (
+        <Input
+          size="small"
+          disabled
+          label="CHO Counting Detail"
+          value={item.cho_counting_details}
+        />
+      )}
       {item.exercise_type && (
         <Input
           size="small"
@@ -114,8 +114,7 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
           value={item.current_diabetes_management}
         />
       )}
-      {(item.current_diabetes_management === 'Looping' ||
-        item.current_diabetes_management === 'Other') && (
+      {item.pump_details && (
         <Input
           size="small"
           disabled
@@ -201,15 +200,14 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         label="In the past 12 months, have you had Diabetic Ketoacidosis (DKA) requiring a hospital admission?"
         checked={item.dka_requiring_hospital_admission_past_12_months}
       />
-      {item.dka_requiring_hospital_admission_past_12_months &&
-        item.dka_details && (
-          <Input
-            size="small"
-            disabled
-            label="DKA Details"
-            value={item.dka_details}
-          />
-        )}
+      {item.dka_details && (
+        <Input
+          size="small"
+          disabled
+          label="DKA Details"
+          value={item.dka_details}
+        />
+      )}
 
       <Switch
         size="small"
