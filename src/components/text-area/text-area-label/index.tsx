@@ -2,7 +2,7 @@ import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
 
-export const TextAreaLabel: FC<IInput> = memo(({ label }) => {
+export const TextAreaLabel: FC<IInput> = memo(({ label, size }) => {
   const {
     uiState: { dark },
   } = useUi()
@@ -11,6 +11,7 @@ export const TextAreaLabel: FC<IInput> = memo(({ label }) => {
       <label
         className={classNames(
           ' mb-2',
+          size === 'small' ? 'text-xs' : 'text-base',
           dark ? 'text-gray-300' : 'text-gray-800'
         )}
       >

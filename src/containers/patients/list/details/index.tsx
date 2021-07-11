@@ -1,18 +1,20 @@
-import { Input, Switch } from 'components'
+import { Input, Switch, TextArea } from 'components'
 import { FC, memo } from 'react'
 
 export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
   return (
     <div className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
       <Input size="small" disabled label="Patient Status" value={item.status} />
-      {item.status_details && (
-        <Input
-          size="small"
-          disabled
-          label="Patient Status Details"
-          value={item.status_details}
-        />
-      )}
+      {(item.status == 'Approached - declined' ||
+        item.status == 'Approached - ineligible') &&
+        item.status_details && (
+          <TextArea
+            size="small"
+            disabled
+            label="Patient Status Details"
+            value={item.status_details}
+          />
+        )}
       <Input
         size="small"
         disabled
@@ -82,14 +84,16 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
           value={item.cho_counting}
         />
       )}
-      {item.cho_counting_details && (
-        <Input
-          size="small"
-          disabled
-          label="CHO Counting Detail"
-          value={item.cho_counting_details}
-        />
-      )}
+      {item.cho_counting &&
+        item.cho_counting.includes('Other') &&
+        item.cho_counting_details && (
+          <TextArea
+            size="small"
+            disabled
+            label="CHO Counting Detail"
+            value={item.cho_counting_details}
+          />
+        )}
       {item.exercise_type && (
         <Input
           size="small"
@@ -99,7 +103,7 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         />
       )}
       {item.exercise_detail && (
-        <Input
+        <TextArea
           size="small"
           disabled
           label="Exercise Detail"
@@ -114,14 +118,16 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
           value={item.current_diabetes_management}
         />
       )}
-      {item.pump_details && (
-        <Input
-          size="small"
-          disabled
-          label="Pump Details"
-          value={item.pump_details}
-        />
-      )}
+      {(item.current_diabetes_management == 'Looping' ||
+        item.current_diabetes_management == 'Other') &&
+        item.pump_details && (
+          <TextArea
+            size="small"
+            disabled
+            label="Pump Details"
+            value={item.pump_details}
+          />
+        )}
       {item.infusion_line_type && (
         <Input
           size="small"
@@ -200,14 +206,15 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         label="In the past 12 months, have you had Diabetic Ketoacidosis (DKA) requiring a hospital admission?"
         checked={item.dka_requiring_hospital_admission_past_12_months}
       />
-      {item.dka_details && (
-        <Input
-          size="small"
-          disabled
-          label="DKA Details"
-          value={item.dka_details}
-        />
-      )}
+      {item.dka_requiring_hospital_admission_past_12_months &&
+        item.dka_details && (
+          <TextArea
+            size="small"
+            disabled
+            label="DKA Details"
+            value={item.dka_details}
+          />
+        )}
 
       <Switch
         size="small"
@@ -310,7 +317,7 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         />
       )}
       {item.availability_detail && (
-        <Input
+        <TextArea
           size="small"
           disabled
           label="Availability Detail"
