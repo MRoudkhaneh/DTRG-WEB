@@ -6,13 +6,8 @@ export const PatientInteractionListDate = ({ item }) => {
     uiState: { dark },
   } = useUi()
   return (
-    <span
-      className={classNames(
-        ' text-sm',
-        dark ? 'text-gray-300' : 'text-gray-600'
-      )}
-    >
-      {item.interaction_datetime.slice(0, 16)}
+    <span className={classNames(dark ? 'text-gray-300' : 'text-gray-600')}>
+      {item.interaction_datetime.slice(0, 10)}
     </span>
   )
 }

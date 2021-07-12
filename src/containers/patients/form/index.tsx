@@ -198,10 +198,10 @@ export const PatientForm = memo((props?: IPatientForm) => {
             <HasInternetAccess control={control} />
             <ComputerType control={control} setValue={setValue} />
           </Grid>
-          <Grid className=" pt-6 mt-4">
+          {/* <Grid className=" pt-6 mt-4">
             <DiscussionHeld control={control} />
             <ContactDate control={control} setValue={setValue} />
-          </Grid>
+          </Grid> */}
           <Grid className=" pt-6 mt-4">
             <PWODReferal control={control} />
             <StudyForConsideration control={control} />

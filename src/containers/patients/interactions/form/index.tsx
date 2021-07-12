@@ -34,28 +34,19 @@ export const PatientInteractionsForm = memo(() => {
         label="Interaction date"
         className="mt-5"
       />
-      <div className="flex items-center mt-10 space-x-4">
-        <Input
-          control={control}
-          name="interaction_hours"
-          label="Interaction time (hour)"
-          placeholder="Enter interaction time in hour"
-          max={2}
-          required
-          hours
-          number
-        />
-        <Input
-          control={control}
-          name="interaction_minutes"
-          label="Interaction time (minutes)"
-          placeholder="Enter interaction time in minutes"
-          max={2}
-          required
-          minutes
-          number
-        />
-      </div>
+
+      <Input
+        control={control}
+        name="interaction_minutes"
+        label="Interaction time (minutes)"
+        placeholder="Enter interaction time in minutes"
+        className="mt-10"
+        min={0}
+        required
+        max={9999}
+        number
+      />
+
       <Input
         control={control}
         name="contact_admin"

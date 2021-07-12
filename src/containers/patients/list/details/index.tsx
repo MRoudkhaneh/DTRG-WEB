@@ -65,7 +65,7 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
           value={item.diabetes_type}
         />
       )}
-      {item.date_of_diagnosis_of_t1d && (
+      {item.diabetes_type === 'Type 1' && item.date_of_diagnosis_of_t1d && (
         <Input
           size="small"
           disabled
@@ -276,22 +276,22 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
           value={item.computer_type}
         />
       )}
-      {item.discussion_held_and_what_discussed && (
+      {/* {item.discussion_held_and_what_discussed && (
         <Input
           size="small"
           disabled
           label="Discussion Held And What Was Discussed"
           value={item.discussion_held_and_what_discussed}
         />
-      )}
-      {item.contact_date && (
+      )} */}
+      {/* {item.contact_date && (
         <Input
           size="small"
           disabled
           label="Contact Date "
           value={item.contact_date}
         />
-      )}
+      )} */}
       {item.pwod_referral && (
         <Input
           size="small"
