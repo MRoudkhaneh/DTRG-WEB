@@ -35,7 +35,7 @@ export const PatientInteractionsForm = memo(() => {
         className="mt-5"
       />
 
-      <Input
+      {/* <Input
         control={control}
         name="interaction_minutes"
         label="Interaction time (minutes)"
@@ -45,14 +45,14 @@ export const PatientInteractionsForm = memo(() => {
         required
         max={9999}
         number
-      />
+      /> */}
 
       <Input
         control={control}
         name="contact_admin"
         label="Contact admin"
         placeholder="Enter contact admin"
-        className="mt-5"
+        className="mt-10"
         required
       />
       <TextArea

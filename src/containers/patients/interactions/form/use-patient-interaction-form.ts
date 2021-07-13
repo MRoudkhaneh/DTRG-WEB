@@ -44,12 +44,7 @@ export const usePatientInteractionForm = () => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
       client.setQueryData(queryKey, (old: any) => {
-        old.data.results = [
-          payload,
-          ...old.data.results.filter(
-            (item, index) => index !== old.data.results.length - 1
-          ),
-        ]
+        old.data.results = [payload, ...old.data.results]
         return old
       })
       toggleDialog({ open: false, type: null, data: {} })
