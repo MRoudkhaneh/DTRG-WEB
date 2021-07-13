@@ -59,7 +59,8 @@ export const RegisterForm = memo(() => {
           />
           <div className="col-center space-y-4 w-full mb-6" slot="actions">
             <Button
-              className="w-full h-12  bg-pink-700 text-white"
+              icon
+              className="w-full h-12 text-white  shadow-blue bg-secondary dark:bg-primary mt-4"
               role="confirm"
               type="submit"
               loading={isLoading}
@@ -72,7 +73,7 @@ export const RegisterForm = memo(() => {
               role="cancel"
               className={classNames(
                 'w-full h-12 ',
-                dark ? 'text-primary' : 'text-secondary'
+                'text-secondary dark:text-primary'
               )}
               type="button"
               onClick={() => push('/authentication/login')}

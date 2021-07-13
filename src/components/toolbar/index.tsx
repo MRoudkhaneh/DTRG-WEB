@@ -1,16 +1,11 @@
-import { useUi } from 'hooks/use-ui'
 import { FC, Fragment, memo } from 'react'
 import { classNames } from 'utils/classes'
 
 export const Toolbar: FC<IToolbar> = memo(({ children }) => {
-  const {
-    uiState: { dark },
-  } = useUi()
   return (
     <div
       className={classNames(
-        'w-full flex items-center justify-between border-b pb-4',
-        dark ? 'border-gray-700' : 'border-gray-200'
+        'w-full flex items-center justify-between border-b pb-4 border-gray-200 dark:border-gray-700'
       )}
     >
       {typeof children !== 'object' ? (

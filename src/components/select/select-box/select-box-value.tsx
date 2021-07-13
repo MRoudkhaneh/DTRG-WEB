@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
 export const SelectBoxValue: FC<ISelect> = memo(
-  ({ multiple, value, open, label, dark }) => {
+  ({ multiple, value, open, label }) => {
     if (multiple && value && typeof value === 'object' && value.length > 0)
       return (
         <div
@@ -23,7 +23,7 @@ export const SelectBoxValue: FC<ISelect> = memo(
       return (
         <span
           className={classNames(
-            value ? 'text-gray-900' : dark ? 'text-gray-700' : 'text-gray-500',
+            value ? 'text-gray-900' : 'text-gray-500 dark:text-gray-700',
             open && 'opacity-30'
           )}
         >

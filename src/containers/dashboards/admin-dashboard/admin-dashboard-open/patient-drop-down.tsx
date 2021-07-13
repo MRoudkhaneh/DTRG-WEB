@@ -7,7 +7,7 @@ export const PatientDropDown: FC<{
   pathname?: string
   push?: any
   dark?: boolean
-}> = memo(({ pathname, push, dark }) => {
+}> = memo(({ pathname, push }) => {
   return (
     <DropDown
       label="Patients"
@@ -15,8 +15,7 @@ export const PatientDropDown: FC<{
       icon={() => (
         <ICPeoples
           className={classNames(
-            'w-6 h-6 mx-3 cursor-pointer ',
-            dark ? 'text-gray-300' : 'text-gray-500'
+            'w-6 h-6 mx-3 cursor-pointer text-gray-500 dark:text-gray-300 '
           )}
           onClick={(e) => {
             e.stopPropagation()

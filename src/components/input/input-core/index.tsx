@@ -1,4 +1,3 @@
-import { useUi } from 'hooks/use-ui'
 import { FC, memo, useMemo } from 'react'
 import { classNames } from 'utils'
 
@@ -33,10 +32,6 @@ export const InputCore: FC<IInput> = memo(
       }
     }, [value])
 
-    const {
-      uiState: { dark },
-    } = useUi()
-
     if (control)
       return (
         <input
@@ -49,13 +44,10 @@ export const InputCore: FC<IInput> = memo(
           onClick={onClick}
           onChange={(e) => fieldChange(e.target.value)}
           className={classNames(
-            ' w-full  rounded focus:outline-none focus:shadow  text-gray-900  ',
-            dark ? 'bg-gray-400 placeholder-gray-700' : 'placeholder-gray-500',
+            ' w-full  rounded focus:outline-none focus:shadow   text-gray-900 bg-white placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700  ',
             fieldError || withError
               ? 'border-2 border-red-400 shadow'
-              : dark
-              ? 'border border-gray-700 focus:ring-2 focus:ring-indigo-600'
-              : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400',
+              : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400 dark:border-gray-700 dark:focus:ring-indigo-600',
             size === 'large'
               ? 'h-14 '
               : size === 'small'
@@ -77,13 +69,10 @@ export const InputCore: FC<IInput> = memo(
           onClick={onClick}
           onChange={onChange}
           className={classNames(
-            ' w-full  rounded focus:outline-none focus:shadow  text-gray-900 placeholder-gray-500 ',
-            dark && 'bg-gray-400',
+            ' w-full  rounded focus:outline-none focus:shadow  text-gray-900 placeholder-gray-500 bg-white dark:bg-gray-400 ',
             error || withError
               ? 'border-2 border-red-400 shadow'
-              : dark
-              ? 'border border-gray-700 focus:ring-2 focus:ring-indigo-600'
-              : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400',
+              : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400 dark:border-gray-700 dark:focus:ring-indigo-600',
             size === 'large'
               ? 'h-14 '
               : size === 'small'

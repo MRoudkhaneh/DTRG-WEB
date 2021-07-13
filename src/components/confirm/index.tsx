@@ -13,19 +13,15 @@ export const Confirm: FC<IConfirm> = memo(
     title = 'Are You Sure?',
     loading = false,
   }) => {
-    const {
-      uiState: { dark },
-    } = useUi()
     return (
       <Modal
         size="sm"
         className={classNames(
-          'col-center px-4 md:px-10 xl:px-26 py-10 ',
-          dark ? 'bg-dark' : 'bg-white'
+          'col-center px-4 md:px-10 xl:px-26 py-10  bg-white dark:bg-dark'
         )}
         slot="dialog"
       >
-        <ConfirmBody title={title} description={description} dark={dark} />
+        <ConfirmBody title={title} description={description} />
         <ConfirmActions
           onCancel={onCancel}
           onConfirm={onConfirm}

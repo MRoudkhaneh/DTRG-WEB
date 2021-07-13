@@ -1,7 +1,7 @@
 module.exports = {
   purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   mode: 'jit',
-  darkMode: false,
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -16,6 +16,9 @@ module.exports = {
         bounce400: 'bounce 1s infinite 400ms',
         bounce800: 'bounce 2s infinite 600ms',
         pulse200: 'pulse 1s linear infinite 20ms',
+      },
+      boxShadow: {
+        blue: '0 5px 5px -3px rgba(0, 0, 50, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
     },
   },

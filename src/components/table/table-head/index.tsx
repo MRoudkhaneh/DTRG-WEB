@@ -1,17 +1,12 @@
-import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
 
 export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
-  const {
-    uiState: { dark },
-  } = useUi()
   return (
     <div className="w-full flex flex-col">
       <div
         className={classNames(
-          'w-full row-start  py-4 px-6  rounded-t border-b-2',
-          dark ? 'border-primary ' : 'border-secondary',
+          'w-full row-start  py-4 px-6  rounded-t border-b-2 border-secondary dark:border-primary',
           loading && 'animate-pulse200'
         )}
       >
@@ -24,9 +19,7 @@ export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
             )}
             key={index}
           >
-            <span
-              className={classNames(dark ? 'text-primary' : 'text-secondary')}
-            >
+            <span className={classNames('text-secondary dark:text-primary')}>
               {column.head}
             </span>
           </div>

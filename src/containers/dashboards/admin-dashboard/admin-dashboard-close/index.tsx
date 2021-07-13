@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useHistory, useLocation } from 'react-router'
+import { useHistory, useLocation } from 'react-router-dom'
 import { ICMenu, ICPeoples, ICPerson } from 'icons'
 import { Button, Text } from 'components'
 import { classNames } from 'utils'
@@ -9,10 +9,7 @@ export const AdminDashboardClose = memo(() => {
   const { push } = useHistory()
   const { pathname } = useLocation()
   const { token } = useAuth()
-  const {
-    toggleDrawer,
-    uiState: { dark },
-  } = useUi()
+  const { toggleDrawer } = useUi()
 
   return (
     <div className="col-center mt-6 relative">
@@ -23,9 +20,7 @@ export const AdminDashboardClose = memo(() => {
               className={classNames(
                 'w-6 h-6',
                 pathname.includes('authentication')
-                  ? dark
-                    ? 'text-white'
-                    : 'text-gray-500'
+                  ? 'text-gray-500 dark:text-white'
                   : 'text-gray-400'
               )}
             />
@@ -36,9 +31,7 @@ export const AdminDashboardClose = memo(() => {
             className={classNames(
               'w-6 h-6 ',
               pathname.includes('patients')
-                ? dark
-                  ? 'text-white'
-                  : 'text-gray-500'
+                ? 'text-gray-500 dark:text-white'
                 : 'text-gray-400'
             )}
           />
@@ -46,8 +39,7 @@ export const AdminDashboardClose = memo(() => {
       </div>
       <Text
         className={classNames(
-          'fixed bottom-12',
-          dark ? 'text-primary' : 'text-secondary'
+          'fixed bottom-12 text-secondary dark:text-primary'
         )}
       >
         DORIS
@@ -55,10 +47,7 @@ export const AdminDashboardClose = memo(() => {
       <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3">
         <ICMenu
           id="menu"
-          className={classNames(
-            'w-6 h-6',
-            dark ? 'text-gray-300' : 'text-gray-500'
-          )}
+          className={classNames('w-6 h-6 text-gray-500 dark:text-gray-300')}
         />
       </Button>
     </div>

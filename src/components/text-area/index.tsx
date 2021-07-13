@@ -5,11 +5,11 @@ import { classNames } from 'utils'
 
 import { TextAreaLabel } from './text-area-label'
 import { TextAreatCore } from './text-area-core'
-import { TextAreaInteractive } from './text-area-interactive'
 import { Controller } from 'react-hook-form'
 
 export const TextArea: FC<ITextArea> = memo((props) => {
-  const { required, max, min, className, error, control, name } = props
+  const { required, max, min, className, error, control, name, expanded } =
+    props
   const { validate } = useValidation({ required, max, min })
 
   if (control)
@@ -32,7 +32,13 @@ export const TextArea: FC<ITextArea> = memo((props) => {
               error={error}
               {...props}
             />
-            <Error error={error} className="absolute top-[75px] left-0" />
+            <Error
+              error={error}
+              className={classNames(
+                'absolute  left-0',
+                expanded ? 'top-[155px]' : 'top-[75px]'
+              )}
+            />
           </div>
         )}
       />

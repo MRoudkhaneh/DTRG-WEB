@@ -54,7 +54,8 @@ export const PatientInteractionsForm = memo(() => {
       />
       <Button
         type="submit"
-        className=" w-full h-12 my-10  bg-indigo-600 text-white"
+        icon
+        className=" w-full h-12 my-10 text-white shadow-blue bg-secondary dark:bg-primary"
       >
         Save Interaction
       </Button>

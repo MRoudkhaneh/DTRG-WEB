@@ -21,7 +21,7 @@ export const reducer = (state = initialState, { type, payload }) => {
     case uiTypes.TOGGLE_DARK:
       return {
         ...state,
-        dark: payload,
+        theme: payload ? 'dark' : 'light',
       }
     default:
       return state

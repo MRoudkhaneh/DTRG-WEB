@@ -27,9 +27,7 @@ export const DatePicker: FC<IDatePicker> = memo(
       validation,
     })
     const id = useMemo(() => uuid(), [])
-    const {
-      uiState: { dark },
-    } = useUi()
+
     if (control)
       return (
         <Controller
@@ -40,10 +38,7 @@ export const DatePicker: FC<IDatePicker> = memo(
             <div className={`w-full col-start relative ${className}`}>
               {label && (
                 <label
-                  className={classNames(
-                    ' mb-2',
-                    dark ? 'text-dark' : 'text-light'
-                  )}
+                  className={classNames(' mb-2 text-light dark:text-dark')}
                 >
                   {label}
                 </label>
@@ -75,13 +70,10 @@ export const DatePicker: FC<IDatePicker> = memo(
               <label
                 htmlFor={id}
                 className={classNames(
-                  ' w-full row-between focus:outline-none overflow-hidden cursor-pointer  rounded  text-gray-900  h-12  px-4 absolute top-8 right-0 z-0',
+                  ' w-full row-between focus:outline-none overflow-hidden cursor-pointer  rounded  text-gray-900  h-12  px-4 absolute top-8 right-0 z-0 bg-white dark:bg-gray-400',
                   error
                     ? 'border-2 border-red-400 shadow'
-                    : dark
-                    ? 'border border-gray-700'
-                    : 'border border-gray-300',
-                  dark ? 'bg-gray-400' : 'bg-white'
+                    : 'border border-gray-300 dark:border-gray-700'
                 )}
               >
                 {value

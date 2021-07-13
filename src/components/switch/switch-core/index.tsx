@@ -1,14 +1,9 @@
-import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
 import { SwitchBox } from '../switch-box'
 
 export const SwitchCore: FC<ISwitch> = memo(
   ({ className, onChange, size, disabled, withError, label, checked }) => {
-    const {
-      uiState: { dark },
-    } = useUi()
-
     return (
       <div
         className={classNames(
@@ -44,12 +39,8 @@ export const SwitchCore: FC<ISwitch> = memo(
           className={classNames(
             size === 'small' ? 'text-[11px]' : ' text-sm lg:text-base',
             withError
-              ? dark
-                ? 'text-red-500'
-                : 'text-red-700'
-              : dark
-              ? 'text-dark'
-              : 'text-light'
+              ? 'text-red-700 dark:text-red-500'
+              : 'text-light dark:text-dark'
           )}
         >
           {label}

@@ -12,21 +12,15 @@ export const AdminDashboardOpen = memo(() => {
   const { push } = useHistory()
   const { pathname } = useLocation()
   const { token } = useAuth()
-  const {
-    toggleDrawer,
-    uiState: { dark },
-  } = useUi()
+  const { toggleDrawer } = useUi()
 
   return (
     <div className="w-full flex flex-col space-y-4 px-4 relative">
-      {token ? null : (
-        <AuthDropDown pathname={pathname} push={push} dark={dark} />
-      )}
-      <PatientDropDown pathname={pathname} push={push} dark={dark} />
+      {token ? null : <AuthDropDown pathname={pathname} push={push} />}
+      <PatientDropDown pathname={pathname} push={push} />
       <Text
         className={classNames(
-          'fixed bottom-12 self-center',
-          dark ? 'text-primary' : 'text-secondary'
+          'fixed bottom-12 self-center text-secondary dark:text-primary'
         )}
       >
         DORIS
@@ -35,10 +29,7 @@ export const AdminDashboardOpen = memo(() => {
         <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3 ">
           <ICChevronLeft
             id="close"
-            className={classNames(
-              'w-5 h-5',
-              dark ? 'text-gray-300' : 'text-gray-500'
-            )}
+            className={classNames('w-5 h-5 text-gray-500 dark:text-gray-300')}
           />
         </Button>
       </div>

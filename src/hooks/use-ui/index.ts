@@ -3,6 +3,7 @@ import { UiContext, uiTypes } from 'provider'
 
 export const useUi = () => {
   const { uiState, uiDispatch } = useContext(UiContext)
+
   const toggleDrawer = useCallback(
     () => uiDispatch({ type: uiTypes.TOGGLE_DRAWER }),
     [uiState.drawer.open]
@@ -20,7 +21,11 @@ export const useUi = () => {
 
   const toggleDark = useCallback(
     (payload) => {
-      localStorage.setItem('dark', payload)
+      if (payload) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
       uiDispatch({ type: uiTypes.TOGGLE_DARK, payload })
     },
     [uiState.dark]

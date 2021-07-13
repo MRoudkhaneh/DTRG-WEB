@@ -5,7 +5,6 @@ import { classNames } from 'utils'
 export const AdminLayout = ({ children }) => {
   const {
     uiState: {
-      dark,
       drawer: { open },
     },
   } = useUi()
@@ -13,8 +12,7 @@ export const AdminLayout = ({ children }) => {
   return (
     <div
       className={classNames(
-        'fixed inset-0 overflow-y-auto overflow-x-hidden',
-        dark ? 'bg-dark' : 'bg-light'
+        'fixed inset-0 overflow-y-auto overflow-x-hidden bg-light dark:bg-dark'
       )}
     >
       <AdminDashboard />

@@ -64,9 +64,6 @@ export const PatientForm = memo((props?: IPatientForm) => {
   const { isEditing, editInitials } = props
   const { onSubmit, control, setValue, saveLoading, editLoading } =
     usePatientForm({ isEditing, editInitials })
-  const {
-    uiState: { dark },
-  } = useUi()
 
   return (
     <div className="w-full">
@@ -167,7 +164,7 @@ export const PatientForm = memo((props?: IPatientForm) => {
             <HadSevereHypo control={control} />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <span className={classNames(dark ? 'text-dark' : 'text-light')}>
+            <span className={classNames('text-light dark:text-dark')}>
               Have you ever been diagnosed with:
             </span>
           </Grid>
