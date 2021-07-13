@@ -1,7 +1,7 @@
-import { PasswordForm } from "containers";
+import { PasswordForm } from 'containers/authentication/password-form'
 
 const ForgotPassword = () => {
-  return <PasswordForm />;
-};
+  return <PasswordForm />
+}
 
-export default ForgotPassword;
+export default ForgotPassword

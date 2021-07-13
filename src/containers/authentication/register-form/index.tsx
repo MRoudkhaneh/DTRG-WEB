@@ -1,17 +1,17 @@
 import { memo } from 'react'
-import { useHistory } from 'react-router'
-import { Button, Form, Input, Tab } from 'components'
+import { useHistory } from 'react-router-dom'
+import { Button } from 'components/button'
+import { Tab } from 'components/tab'
+import { Input } from 'components/input'
+import { Form } from 'components/form'
+import { classNames } from 'utils/classes'
 
 import { useRegister } from './use-register'
-import { classNames } from 'utils/classes'
-import { useUi } from 'hooks/use-ui'
 
 export const RegisterForm = memo(() => {
   const { push } = useHistory()
   const { control, handleSubmit, isLoading, onSubmit } = useRegister()
-  const {
-    uiState: { dark },
-  } = useUi()
+
   return (
     <Form
       className="w-11/12 md:w-2/3 lg:w-1/3 mx-auto mt-14 "

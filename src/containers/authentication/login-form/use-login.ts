@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'

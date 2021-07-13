@@ -1,7 +1,7 @@
-import { RegisterForm } from "containers";
+import { RegisterForm } from 'containers/authentication/register-form'
 
 const Register = () => {
-  return <RegisterForm />;
-};
+  return <RegisterForm />
+}
 
-export default Register;
+export default Register
