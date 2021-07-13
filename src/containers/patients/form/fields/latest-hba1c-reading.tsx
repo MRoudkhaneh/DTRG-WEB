@@ -1,5 +1,5 @@
-import { Input } from "components";
-import { FC, memo } from "react";
+import { Input } from 'components/input'
+import { FC, memo } from 'react'
 
 export const LatestHBA1CReading: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -9,6 +9,7 @@ export const LatestHBA1CReading: FC<IPatientField> = memo(({ control }) => {
       name="latest_hba1c_reading"
       control={control}
       precent
+      number
     />
-  );
-});
+  )
+})

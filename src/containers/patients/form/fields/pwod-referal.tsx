@@ -1,5 +1,5 @@
-import { TextArea } from "components";
-import { FC, memo } from "react";
+import { TextArea } from 'components/text-area'
+import { FC, memo } from 'react'
 
 export const PWODReferal: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -9,5 +9,5 @@ export const PWODReferal: FC<IPatientField> = memo(({ control }) => {
       name="pwod_referral"
       control={control}
     />
-  );
-});
+  )
+})

@@ -1,5 +1,5 @@
-import { Input } from "components";
-import { FC, memo } from "react";
+import { Input } from 'components/input'
+import { FC, memo } from 'react'
 
 export const FirstName: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -11,5 +11,5 @@ export const FirstName: FC<IPatientField> = memo(({ control }) => {
       required
       max={64}
     />
-  );
-});
+  )
+})

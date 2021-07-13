@@ -1,5 +1,5 @@
-import { Switch } from "components";
-import { FC, memo } from "react";
+import { Switch } from 'components/switch'
+import { FC, memo } from 'react'
 
 export const DKAExperience: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -8,5 +8,5 @@ export const DKAExperience: FC<IPatientField> = memo(({ control }) => {
       name="dka_requiring_hospital_admission_past_12_months"
       control={control}
     />
-  );
-});
+  )
+})

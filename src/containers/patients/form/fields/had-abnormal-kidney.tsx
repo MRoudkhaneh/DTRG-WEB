@@ -1,5 +1,5 @@
-import { Switch } from "components";
-import { FC, memo } from "react";
+import { Switch } from 'components/switch'
+import { FC, memo } from 'react'
 
 export const HadAbnormalKidney: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -8,5 +8,5 @@ export const HadAbnormalKidney: FC<IPatientField> = memo(({ control }) => {
       name="abnormal_kidney_function"
       control={control}
     />
-  );
-});
+  )
+})

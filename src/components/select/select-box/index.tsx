@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 import { SelectBoxActions } from './select-box-actions'
 import { SelectBoxValue } from './select-box-value'
 

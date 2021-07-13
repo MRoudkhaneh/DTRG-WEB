@@ -1,5 +1,6 @@
-import { Select, SelectOption } from "components";
-import { FC, memo } from "react";
+import { FC, memo } from 'react'
+import { Select } from 'components/select'
+import { SelectOption } from 'components/select-option'
 
 export const PhoneType: FC<IPatientField> = memo(({ control, setValue }) => {
   return (
@@ -16,5 +17,5 @@ export const PhoneType: FC<IPatientField> = memo(({ control, setValue }) => {
       <SelectOption value="Windows">Windows</SelectOption>
       <SelectOption value="Other">Other</SelectOption>
     </Select>
-  );
-});
+  )
+})

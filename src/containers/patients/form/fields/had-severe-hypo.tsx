@@ -1,5 +1,5 @@
-import { Switch } from "components";
-import { FC, memo } from "react";
+import { Switch } from 'components/switch'
+import { FC, memo } from 'react'
 
 export const HadSevereHypo: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -8,5 +8,5 @@ export const HadSevereHypo: FC<IPatientField> = memo(({ control }) => {
       name="hypoglycemic_event_past_12_months"
       control={control}
     />
-  );
-});
+  )
+})

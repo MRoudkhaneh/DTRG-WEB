@@ -1,8 +1,9 @@
 import { FC, memo } from 'react'
 import { Controller } from 'react-hook-form'
-import { useToggle, useValidation } from 'hooks'
-import { Error } from 'components'
-import { classNames } from 'utils'
+import { useValidation } from 'hooks/use-validation'
+import { useToggle } from 'hooks/use-toggle'
+import { Error } from 'components/error'
+import { classNames } from 'utils/classes'
 
 import { SelectBackDrop } from './select-back-drop'
 import { SelectBox } from './select-box'

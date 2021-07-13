@@ -1,9 +1,9 @@
 import { FC, memo, useMemo } from 'react'
 import { Controller } from 'react-hook-form'
 import DatePickerReact from 'react-datepicker'
-import { Error } from 'components'
-import { useUi, useValidation } from 'hooks'
-import { classNames } from 'utils'
+import { Error } from 'components/error'
+import { useValidation } from 'hooks/use-validation'
+import { classNames } from 'utils/classes'
 import { v4 as uuid } from 'uuid'
 
 import 'react-datepicker/dist/react-datepicker.css'

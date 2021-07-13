@@ -1,5 +1,5 @@
-import { Input } from "components";
-import { FC, memo } from "react";
+import { Input } from 'components/input'
+import { FC, memo } from 'react'
 
 export const DiabeticMedicalHistory: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -8,5 +8,5 @@ export const DiabeticMedicalHistory: FC<IPatientField> = memo(({ control }) => {
       name="DiabeticHistory"
       control={control}
     />
-  );
-});
+  )
+})

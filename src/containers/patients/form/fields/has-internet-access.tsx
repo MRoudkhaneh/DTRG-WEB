@@ -1,5 +1,5 @@
-import { Switch } from "components";
-import { FC, memo } from "react";
+import { Switch } from 'components/switch'
+import { FC, memo } from 'react'
 
 export const HasInternetAccess: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -8,5 +8,5 @@ export const HasInternetAccess: FC<IPatientField> = memo(({ control }) => {
       name="has_internet_access"
       control={control}
     />
-  );
-});
+  )
+})

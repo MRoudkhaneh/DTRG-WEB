@@ -1,5 +1,6 @@
-import { Select, SelectOption } from "components";
-import { FC, memo } from "react";
+import { FC, memo } from 'react'
+import { Select } from 'components/select'
+import { SelectOption } from 'components/select-option'
 
 export const Availability: FC<IPatientField> = memo(({ control, setValue }) => {
   return (
@@ -14,5 +15,5 @@ export const Availability: FC<IPatientField> = memo(({ control, setValue }) => {
       <SelectOption value="Fortnightly">Fortnightly</SelectOption>
       <SelectOption value="Monthly">Monthly</SelectOption>
     </Select>
-  );
-});
+  )
+})

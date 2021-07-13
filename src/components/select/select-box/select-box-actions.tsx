@@ -1,6 +1,8 @@
-import { Button } from 'components'
-import { ICChevronDown, ICDelete, ICChevronUp } from 'icons'
 import { FC, memo } from 'react'
+import { Button } from 'components/button'
+import { ICChevronDown } from 'icons/chevron-down'
+import { ICChevronUp } from 'icons/chevron-up'
+import { ICDelete } from 'icons/delete'
 
 export const SelectBoxActions: FC<ISelect> = memo(
   ({ multiple, value, setValue, name, open }) => {

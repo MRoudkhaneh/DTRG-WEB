@@ -1,5 +1,5 @@
-import { TextArea } from "components";
-import { FC, memo } from "react";
+import { TextArea } from 'components/text-area'
+import { FC, memo } from 'react'
 
 export const AvailabilityDetail: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -10,5 +10,5 @@ export const AvailabilityDetail: FC<IPatientField> = memo(({ control }) => {
       control={control}
       max={2000}
     />
-  );
-});
+  )
+})

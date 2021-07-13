@@ -1,5 +1,5 @@
-import { DatePicker } from "components";
-import { FC, memo } from "react";
+import { DatePicker } from 'components/date-picker'
+import { FC, memo } from 'react'
 
 export const LatestHBA1CReadingDate: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -8,5 +8,5 @@ export const LatestHBA1CReadingDate: FC<IPatientField> = memo(({ control }) => {
       name="latest_hba1c_reading_date"
       control={control}
     />
-  );
-});
+  )
+})

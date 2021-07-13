@@ -1,5 +1,6 @@
-import { Select, SelectOption } from 'components'
 import { FC, memo } from 'react'
+import { Select } from 'components/select'
+import { SelectOption } from 'components/select-option'
 
 export const PatientStatus: FC<IPatientField> = memo(
   ({ control, setValue }) => {

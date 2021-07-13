@@ -1,9 +1,10 @@
-import { Select, SelectOption } from "components";
-import { FC, memo } from "react";
-import { useWatch } from "react-hook-form";
+import { FC, memo } from 'react'
+import { Select } from 'components/select'
+import { SelectOption } from 'components/select-option'
+import { useWatch } from 'react-hook-form'
 
 export const CHOCounting: FC<IPatientField> = memo(({ control, setValue }) => {
-  const state = useWatch({ control, name: "cho_counting" });
+  const state = useWatch({ control, name: 'cho_counting' })
   return (
     <Select
       label="CHO Counting"
@@ -12,17 +13,17 @@ export const CHOCounting: FC<IPatientField> = memo(({ control, setValue }) => {
       setValue={setValue}
       multiple
     >
-      <SelectOption value="DAFNE" selected={state && state.includes("DAFNE")}>
+      <SelectOption value="DAFNE" selected={state && state.includes('DAFNE')}>
         DAFNE
       </SelectOption>
       <SelectOption value="Food App">Food App</SelectOption>
-      <SelectOption value="Yes" disabled={state && state.includes("No")}>
+      <SelectOption value="Yes" disabled={state && state.includes('No')}>
         Yes
       </SelectOption>
-      <SelectOption disabled={state && state.includes("Yes")} value="No">
+      <SelectOption disabled={state && state.includes('Yes')} value="No">
         No
       </SelectOption>
       <SelectOption value="Other">Other</SelectOption>
     </Select>
-  );
-});
+  )
+})

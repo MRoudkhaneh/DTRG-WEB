@@ -1,5 +1,5 @@
-import { DatePicker } from "components";
-import { FC, memo } from "react";
+import { DatePicker } from 'components/date-picker'
+import { FC, memo } from 'react'
 
 export const ContactDate: FC<IPatientField> = memo(({ control }) => {
   return (
@@ -9,5 +9,5 @@ export const ContactDate: FC<IPatientField> = memo(({ control }) => {
       control={control}
       later
     />
-  );
-});
+  )
+})

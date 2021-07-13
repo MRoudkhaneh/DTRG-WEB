@@ -1,5 +1,5 @@
-import { TextArea } from "components";
-import { FC } from "react";
+import { TextArea } from 'components/text-area'
+import { FC } from 'react'
 
 export const StudyForConsideration: FC<IPatientField> = ({ control }) => {
   return (
@@ -9,5 +9,5 @@ export const StudyForConsideration: FC<IPatientField> = ({ control }) => {
       name="study_for_consideration"
       control={control}
     />
-  );
-};
+  )
+}

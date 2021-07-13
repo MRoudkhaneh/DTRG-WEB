@@ -1,7 +1,10 @@
 import { memo } from 'react'
-import { Button, Text, Toolbar, Tooltip } from 'components'
-import { useHistory } from 'react-router'
-import { ICArrowLeft } from 'icons'
+import { useHistory } from 'react-router-dom'
+import { ICArrowLeft } from 'icons/arrow-left'
+import { Button } from 'components/button'
+import { Toolbar } from 'components/toolbar'
+import { Text } from 'components/text'
+import { Tooltip } from 'components/tooltip'
 
 export const PatientFormToolbar = memo(() => {
   const { push } = useHistory()

@@ -1,5 +1,7 @@
 import { memo } from 'react'
-import { Form, Grid, Text, Tab } from 'components'
+import { Form } from 'components/form'
+import { Tab } from 'components/tab'
+import { Grid } from 'components/grid'
 import { usePatientForm } from './use-patient-form'
 import { PatientFormToolbar } from './toolbar'
 import { PatientFormSubmit } from './submit'
@@ -44,9 +46,7 @@ import {
   HasInternetAccess,
   NextStep,
   ComputerType,
-  ContactDate,
   PWODReferal,
-  DiscussionHeld,
   StudyForConsideration,
   DoNotCallUntil,
   CHOCountingDetails,
@@ -57,7 +57,7 @@ import {
   PatientStatus,
   PatientStatusDetails,
 } from './fields'
-import { useUi } from 'hooks/use-ui'
+
 import { classNames } from 'utils/classes'
 
 export const PatientForm = memo((props?: IPatientForm) => {

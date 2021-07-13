@@ -1,4 +1,4 @@
-import { TextArea } from 'components'
+import { TextArea } from 'components/text-area'
 import { FC, memo } from 'react'
 import { useWatch } from 'react-hook-form'
 
