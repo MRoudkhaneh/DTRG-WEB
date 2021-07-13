@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
-import { useToggle } from 'hooks'
+import { classNames } from 'utils/classes'
+import { useToggle } from 'hooks/use-toggle'
 
 import { TableCell } from '../table-cell'
 import { TableRowLoading } from './table-row-loading'

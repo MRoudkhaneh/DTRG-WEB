@@ -1,17 +1,13 @@
 import { useEffect } from 'react'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 const View = () => {
   const { push } = useHistory()
-  // useEffect(() => {
-  //   push('/admin/patients')
-  // }, [])
+  useEffect(() => {
+    push('/admin/patients')
+  }, [])
 
-  return (
-    <div className="w-full">
-      <button onClick={() => push('/authentication/login')}>go</button>
-    </div>
-  )
+  return <div className="w-full"></div>
 }
 
 export default View

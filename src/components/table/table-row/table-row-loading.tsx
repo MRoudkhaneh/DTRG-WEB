@@ -1,5 +1,5 @@
 import { FC, Fragment, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 
 export const TableRowLoading: FC<ITable> = memo(({ columns }) => {
   return (

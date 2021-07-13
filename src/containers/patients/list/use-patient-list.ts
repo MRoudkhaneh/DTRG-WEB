@@ -1,6 +1,8 @@
 import { useCallback, useMemo, useState } from 'react'
-import { useError, useService } from 'hooks'
-import { Api } from 'utils'
+import { useService } from 'hooks/use-service'
+import { useError } from 'hooks/use-error'
+import { Api } from 'utils/api'
+
 import { PatientListActions } from './actions'
 
 export const usePatientList = () => {

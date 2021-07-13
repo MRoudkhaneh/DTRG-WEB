@@ -1,16 +1,17 @@
-import { PatientList, PatientModal } from 'containers'
-import { useUi } from 'hooks'
+import { useUi } from 'hooks/use-ui'
+import { PatientList } from 'containers/patients/list'
+// import { PatientModal } from 'containers/patients/modal'
 
 const Patients = () => {
-  const {
-    uiState: {
-      dialog: { open },
-    },
-  } = useUi()
+  // const {
+  //   uiState: {
+  //     dialog: { open },
+  //   },
+  // } = useUi()
   return (
     <>
       <PatientList />
-      {open && <PatientModal />}
+      {/* {open && <PatientModal />} */}
     </>
   )
 }

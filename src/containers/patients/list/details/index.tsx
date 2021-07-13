@@ -1,5 +1,7 @@
-import { Input, Switch, TextArea } from 'components'
 import { FC, memo } from 'react'
+import { Input } from 'components/input'
+import { TextArea } from 'components/text-area'
+import { Switch } from 'components/switch'
 
 export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
   return (

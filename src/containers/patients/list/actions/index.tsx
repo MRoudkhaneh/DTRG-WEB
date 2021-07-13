@@ -1,7 +1,11 @@
-import { Button, Tooltip } from 'components'
-import { useUi } from 'hooks'
-import { ICDelete, ICEdit, ICEyeFill, ICInteractions } from 'icons'
 import { useHistory } from 'react-router-dom'
+import { useUi } from 'hooks/use-ui'
+import { Button } from 'components/button'
+import { Tooltip } from 'components/tooltip'
+import { ICDelete } from 'icons/delete'
+import { ICEdit } from 'icons/edit'
+import { ICEyeFill } from 'icons/eye-fill'
+import { ICInteractions } from 'icons/interactions'
 
 export const PatientListActions = ({ item, queryKey }) => {
   const { toggleDialog } = useUi()

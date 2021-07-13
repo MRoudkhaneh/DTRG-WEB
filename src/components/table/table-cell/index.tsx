@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 
 export const TableCell: FC<ITableCell> = memo(
   ({ column, index, item, columns }) => {

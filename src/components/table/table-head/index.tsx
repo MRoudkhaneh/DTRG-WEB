@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 
 export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
   return (

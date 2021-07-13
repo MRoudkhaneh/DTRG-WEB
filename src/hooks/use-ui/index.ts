@@ -1,5 +1,6 @@
 import { useCallback, useContext } from 'react'
-import { UiContext, uiTypes } from 'provider'
+import { UiContext } from 'provider/ui-provider'
+import { uiTypes } from 'provider/ui-provider/types'
 
 export const useUi = () => {
   const { uiState, uiDispatch } = useContext(UiContext)

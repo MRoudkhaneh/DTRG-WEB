@@ -1,7 +1,12 @@
 import { FC, memo } from 'react'
-import { useHistory } from 'react-router'
-import { ICPersonPlus, ICSearch } from 'icons'
-import { Button, Input, Text, Toolbar, Tooltip } from 'components'
+import { useHistory } from 'react-router-dom'
+import { ICPersonPlus } from 'icons/person-plus'
+import { ICSearch } from 'icons/search'
+import { Button } from 'components/button'
+import { Toolbar } from 'components/toolbar'
+import { Input } from 'components/input'
+import { Text } from 'components/text'
+import { Tooltip } from 'components/tooltip'
 
 export const PatientListToolbar: FC<{ onSearch?: any }> = memo(
   ({ onSearch }) => {

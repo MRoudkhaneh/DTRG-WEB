@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
-import { Pagination } from 'components'
-import { classNames } from 'utils'
+import { Pagination } from 'components/pagination'
+import { classNames } from 'utils/classes'
 
 import { TableHead } from './table-head'
 import { TableRow } from './table-row'

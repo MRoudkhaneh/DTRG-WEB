@@ -1,11 +1,11 @@
 import { FC, memo } from 'react'
-import { useValidation } from 'hooks'
-import { Error } from 'components'
-import { classNames } from 'utils'
+import { Controller } from 'react-hook-form'
+import { useValidation } from 'hooks/use-validation'
+import { Error } from 'components/error'
+import { classNames } from 'utils/classes'
 
 import { TextAreaLabel } from './text-area-label'
 import { TextAreatCore } from './text-area-core'
-import { Controller } from 'react-hook-form'
 
 export const TextArea: FC<ITextArea> = memo((props) => {
   const { required, max, min, className, error, control, name, expanded } =

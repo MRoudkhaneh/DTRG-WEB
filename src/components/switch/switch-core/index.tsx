@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 import { SwitchBox } from '../switch-box'
 
 export const SwitchCore: FC<ISwitch> = memo(

@@ -1,6 +1,5 @@
-import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 
 export const TextAreatCore: FC<ITextArea> = memo(
   ({ placeholder, name, error, onChange, value, size, disabled, expanded }) => {

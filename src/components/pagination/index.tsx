@@ -1,6 +1,6 @@
 import { FC, memo, useMemo } from 'react'
-import { Button } from 'components'
-import { classNames } from 'utils'
+import { Button } from 'components/button'
+import { classNames } from 'utils/classes'
 
 export const Pagination: FC<IPagination> = memo(
   ({ className, total, page, onPaginate, disabled }) => {
