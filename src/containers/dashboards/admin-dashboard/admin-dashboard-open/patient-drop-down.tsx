@@ -1,6 +1,7 @@
-import { DropDown, DropDownOption } from 'components'
-import { ICPeoples } from 'icons'
 import { FC, memo } from 'react'
+import { DropDown } from 'components/drop-down'
+import { DropDownOption } from 'components/drop-down-option'
+import { ICPeoples } from 'icons/peoples'
 import { classNames } from 'utils/classes'
 
 export const PatientDropDown: FC<{

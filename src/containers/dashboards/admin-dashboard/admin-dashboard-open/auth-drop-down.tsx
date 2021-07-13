@@ -1,6 +1,7 @@
-import { DropDown, DropDownOption } from 'components'
-import { ICPerson } from 'icons'
 import { FC, memo } from 'react'
+import { DropDown } from 'components/drop-down'
+import { DropDownOption } from 'components/drop-down-option'
+import { ICPerson } from 'icons/person'
 import { classNames } from 'utils/classes'
 
 export const AuthDropDown: FC<{

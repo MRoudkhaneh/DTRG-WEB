@@ -1,6 +1,7 @@
-import { ICChevronDown, ICChevronRight } from 'icons'
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
+import { ICChevronDown } from 'icons/chevron-down'
+import { ICChevronRight } from 'icons/chevron-right'
 
 export const DropDownButton: FC<IDropdown> = memo(
   ({ className, icon, label, toggle, open }) => {

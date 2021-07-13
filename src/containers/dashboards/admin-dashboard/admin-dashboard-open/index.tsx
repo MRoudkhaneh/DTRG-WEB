@@ -1,12 +1,14 @@
 import { memo } from 'react'
 import { useHistory, useLocation } from 'react-router'
-import { useAuth, useUi } from 'hooks'
-import { Button, Text } from 'components'
-import { ICChevronLeft } from 'icons'
+import { classNames } from 'utils/classes'
+import { Text } from 'components/text'
+import { Button } from 'components/button'
+import { useUi } from 'hooks/use-ui'
+import { useAuth } from 'hooks/use-auth'
+import { ICChevronLeft } from 'icons/chevron-left'
 
 import { AuthDropDown } from './auth-drop-down'
 import { PatientDropDown } from './patient-drop-down'
-import { classNames } from 'utils/classes'
 
 export const AdminDashboardOpen = memo(() => {
   const { push } = useHistory()

@@ -1,9 +1,10 @@
+import { memo } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Page, Toast } from 'components'
-import { useUi } from 'hooks'
+import { Toast } from 'components/toast'
+import { Page } from 'components/page'
+import { useUi } from 'hooks/use-ui'
 import { routes } from './routes'
 import { Layout } from './layout'
-import { memo } from 'react'
 
 export const Router = memo(() => {
   const {

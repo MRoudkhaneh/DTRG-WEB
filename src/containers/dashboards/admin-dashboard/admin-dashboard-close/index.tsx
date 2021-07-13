@@ -1,9 +1,13 @@
 import { memo } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-import { ICMenu, ICPeoples, ICPerson } from 'icons'
-import { Button, Text } from 'components'
-import { classNames } from 'utils'
-import { useAuth, useUi } from 'hooks'
+import { ICMenu } from 'icons/menu'
+import { ICPeoples } from 'icons/peoples'
+import { ICPerson } from 'icons/person'
+import { Text } from 'components/text'
+import { Button } from 'components/button'
+import { classNames } from 'utils/classes'
+import { useUi } from 'hooks/use-ui'
+import { useAuth } from 'hooks/use-auth'
 
 export const AdminDashboardClose = memo(() => {
   const { push } = useHistory()

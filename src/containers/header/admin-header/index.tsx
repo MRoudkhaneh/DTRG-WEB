@@ -1,8 +1,9 @@
 import { memo, useMemo } from 'react'
-import { classNames } from 'utils'
-import { Switch } from 'components'
-import { useUi } from 'hooks'
-import { ICDark, ICLight } from 'icons'
+import { classNames } from 'utils/classes'
+import { Switch } from 'components/switch'
+import { useUi } from 'hooks/use-ui'
+import { ICDark } from 'icons/dark'
+import { ICLight } from 'icons/light'
 
 export const AdminHeader = memo(() => {
   const {

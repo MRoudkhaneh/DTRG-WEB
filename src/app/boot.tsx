@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { persistQueryClient } from 'react-query/persistQueryClient-experimental'
 import { createWebStoragePersistor } from 'react-query/createWebStoragePersistor-experimental'
-import { UiProvider } from 'provider'
+import { UiProvider } from 'provider/ui-provider'
 import { Router } from './router'
 
 const queryClient = new QueryClient({

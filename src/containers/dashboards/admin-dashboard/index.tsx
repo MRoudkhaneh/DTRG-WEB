@@ -1,15 +1,15 @@
-import { useHistory } from "react-router-dom";
-import { Drawer } from "components";
-import { useUi } from "hooks";
+import { memo } from 'react'
+import { useHistory } from 'react-router-dom'
+import { Drawer } from 'components/drawer'
+import { useUi } from 'hooks/use-ui'
+import Logo from 'assets/images/logo.jpg'
 
-import { AdminDashboardOpen } from "./admin-dashboard-open";
-import { AdminDashboardClose } from "./admin-dashboard-close";
-import Logo from "assets/images/logo.jpg";
-import { memo } from "react";
+// import { AdminDashboardOpen } from "./admin-dashboard-open";
+// import { AdminDashboardClose } from "./admin-dashboard-close";
 
 export const AdminDashboard = memo(() => {
-  const { push } = useHistory();
-  const { uiState } = useUi();
+  const { push } = useHistory()
+  const { uiState } = useUi()
 
   return (
     <Drawer open={uiState.drawer.open}>
@@ -18,10 +18,10 @@ export const AdminDashboard = memo(() => {
           className="w-14 h-14 cursor-pointer"
           src={Logo}
           alt="Logo"
-          onClick={() => push("/admin/patients")}
+          onClick={() => push('/admin/patients')}
         />
       </div>
-      {uiState.drawer.open ? <AdminDashboardOpen /> : <AdminDashboardClose />}
+      {/*uiState.drawer.open ? <AdminDashboardOpen /> : <AdminDashboardClose />*/}
     </Drawer>
-  );
-});
+  )
+})
