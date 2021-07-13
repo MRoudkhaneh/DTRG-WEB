@@ -71,6 +71,6 @@ module.exports = {
       'process.env.variable': JSON.stringify('demo'),
     }),
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 }

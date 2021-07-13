@@ -4,15 +4,19 @@ import { Drawer } from 'components/drawer'
 import { useUi } from 'hooks/use-ui'
 import Logo from 'assets/images/logo.jpg'
 
-// import { AdminDashboardOpen } from "./admin-dashboard-open";
-// import { AdminDashboardClose } from "./admin-dashboard-close";
+import { AdminDashboardOpen } from './admin-dashboard-open'
+import { AdminDashboardClose } from './admin-dashboard-close'
 
 export const AdminDashboard = memo(() => {
   const { push } = useHistory()
-  const { uiState } = useUi()
+  const {
+    uiState: {
+      drawer: { open },
+    },
+  } = useUi()
 
   return (
-    <Drawer open={uiState.drawer.open}>
+    <Drawer open={open}>
       <div className="w-full row-center mt-2 mb-6 ">
         <img
           className="w-14 h-14 cursor-pointer"
@@ -21,7 +25,7 @@ export const AdminDashboard = memo(() => {
           onClick={() => push('/admin/patients')}
         />
       </div>
-      {/*uiState.drawer.open ? <AdminDashboardOpen /> : <AdminDashboardClose />*/}
+      {open ? <AdminDashboardOpen /> : <AdminDashboardClose />}
     </Drawer>
   )
 })
