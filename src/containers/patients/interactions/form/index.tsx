@@ -34,19 +34,6 @@ export const PatientInteractionsForm = memo(() => {
         label="Interaction date"
         className="mt-5"
       />
-
-      {/* <Input
-        control={control}
-        name="interaction_minutes"
-        label="Interaction time (minutes)"
-        placeholder="Enter interaction time in minutes"
-        className="mt-10"
-        min={0}
-        required
-        max={9999}
-        number
-      /> */}
-
       <Input
         control={control}
         name="contact_admin"
@@ -61,12 +48,13 @@ export const PatientInteractionsForm = memo(() => {
         label="Contact details"
         placeholder="Enter contact details"
         className="my-5"
+        expanded
         required
         max={450}
       />
       <Button
         type="submit"
-        className=" mx-auto w-1/2 h-12 my-10 ml-auto bg-pink-700 text-white"
+        className=" w-full h-12 my-10  bg-indigo-600 text-white"
       >
         Save Interaction
       </Button>

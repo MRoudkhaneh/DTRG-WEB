@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import { classNames } from 'utils'
 
 export const TextAreatCore: FC<ITextArea> = memo(
-  ({ placeholder, name, error, onChange, value, size, disabled }) => {
+  ({ placeholder, name, error, onChange, value, size, disabled, expanded }) => {
     const {
       uiState: { dark },
     } = useUi()
@@ -26,6 +26,8 @@ export const TextAreatCore: FC<ITextArea> = memo(
             ? 'h-14 '
             : size === 'small'
             ? 'h-8 text-[13px] min-h-[1.6rem] py-1'
+            : expanded
+            ? 'h-32 min-h-[3rem] pt-2.5'
             : 'h-12 min-h-[3rem] pt-2.5'
         )}
       />

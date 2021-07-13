@@ -16,4 +16,5 @@ interface ITextArea {
   onChange?: any
   size?: 'small' | 'large'
   disabled?: boolean
+  expanded?: boolean
 }
