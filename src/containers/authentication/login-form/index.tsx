@@ -1,9 +1,12 @@
 import { memo } from 'react'
 import { useHistory } from 'react-router'
-import { Button, Form, Input, Tab } from 'components'
+import { Button } from 'components/button'
+import { Tab } from 'components/tab'
+import { Input } from 'components/input'
+import { Form } from 'components/form'
+import { classNames } from 'utils/classes'
 
 import { useLogin } from './use-login'
-import { classNames } from 'utils/classes'
 
 export const LoginForm = memo(() => {
   const { push } = useHistory()

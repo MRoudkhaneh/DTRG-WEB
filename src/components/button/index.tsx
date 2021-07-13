@@ -1,7 +1,6 @@
 import { FC, memo } from 'react'
-import { ICLoading } from 'icons'
-import { classNames } from 'utils'
-import { LoaidngBounce } from 'components/loading'
+import { classNames } from 'utils/classes'
+import { LoaidngBounce } from 'components/loading/bounce'
 
 export const Button: FC<IButton> = memo(
   ({

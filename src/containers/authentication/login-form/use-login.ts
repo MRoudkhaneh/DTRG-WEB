@@ -1,8 +1,10 @@
 import { useCallback } from 'react'
 import { useHistory } from 'react-router'
 import { useForm } from 'react-hook-form'
-import { useError, useService, useToast } from 'hooks'
-import { Api } from 'utils'
+import { useError } from 'hooks/use-error'
+import { useService } from 'hooks/use-service'
+import { useToast } from 'hooks/use-toast'
+import { Api } from 'utils/api'
 
 const defaultValues = { email: '', password: '' }
 

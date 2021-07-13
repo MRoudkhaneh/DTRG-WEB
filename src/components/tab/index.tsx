@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 
 import { TabExpand } from './tab-expand'
 import { TabActions } from './tab-actions'

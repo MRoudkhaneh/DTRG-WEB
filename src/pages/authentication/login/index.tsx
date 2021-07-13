@@ -1,7 +1,7 @@
-import { LoginForm } from "containers";
+import { LoginForm } from 'containers/authentication/login-form'
 
 const Login = () => {
-  return <LoginForm />;
-};
+  return <LoginForm />
+}
 
-export default Login;
+export default Login

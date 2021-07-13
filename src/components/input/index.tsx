@@ -1,11 +1,11 @@
 import { FC, memo } from 'react'
-import { useValidation } from 'hooks'
-import { Error } from 'components'
+import { Controller } from 'react-hook-form'
+import { useValidation } from 'hooks/use-validation'
+import { Error } from 'components/error'
 
 import { InputLabel } from './input-label'
 import { InputCore } from './input-core'
 import { InputIcon } from './input-icon'
-import { Controller } from 'react-hook-form'
 
 export const Input: FC<IInput> = memo((props) => {
   const {

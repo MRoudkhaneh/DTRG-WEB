@@ -1,5 +1,5 @@
 import { FC, memo, useMemo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 
 export const InputCore: FC<IInput> = memo(
   ({
