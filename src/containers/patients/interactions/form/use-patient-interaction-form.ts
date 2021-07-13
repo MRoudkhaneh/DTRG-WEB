@@ -55,9 +55,8 @@ export const usePatientInteractionForm = () => {
       onError(error)
     },
     onSettled: (data, error) => {
-      if (error) onError(error)
-      success('You successfully add an interaction.')
       client.invalidateQueries(queryKey)
+      if (!error) success('You successfully add an interaction.')
     },
   })
 
