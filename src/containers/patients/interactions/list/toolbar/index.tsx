@@ -1,8 +1,13 @@
 import { FC, memo } from 'react'
-import { ICPlus, ICArrowLeft } from 'icons'
-import { Button, Text, Toolbar, Tooltip } from 'components'
-import { useUi } from 'hooks'
 import { useHistory, useLocation } from 'react-router-dom'
+import { useUi } from 'hooks/use-ui'
+import { ICPlus } from 'icons/plus'
+import { ICArrowLeft } from 'icons/arrow-left'
+import { Button } from 'components/button'
+import { Toolbar } from 'components/toolbar'
+import { Text } from 'components/text'
+import { Tooltip } from 'components/tooltip'
+
 import { usePatientInteractionList } from '../use-patient-interactien-list'
 
 export const PatientinteractionListToolbar: FC<{ onSearch?: any }> = memo(

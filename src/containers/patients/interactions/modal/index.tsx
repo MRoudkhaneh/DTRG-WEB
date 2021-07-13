@@ -1,10 +1,12 @@
-import { useUi } from 'hooks'
 import { lazy, memo } from 'react'
-import { Confirm, Modal } from 'components'
+import { useUi } from 'hooks/use-ui'
+import { Modal } from 'components/modal'
+import { Confirm } from 'components/confirm'
+
 import { usePatientInteractionModal } from './use-patient-interactions-modal'
 
 const PatientInteractionsForm = lazy(() =>
-  import('containers').then((module) => ({
+  import('containers/patients/interactions/form').then((module) => ({
     default: module.PatientInteractionsForm,
   }))
 )

@@ -1,7 +1,8 @@
-import { useError, useService } from 'hooks'
 import { useCallback, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Api } from 'utils'
+import { useError } from 'hooks/use-error'
+import { useService } from 'hooks/use-service'
+import { Api } from 'utils/api'
 
 const columns = [
   { head: 'Lot number', key: 'lot_number', width: 'w-1/2' },

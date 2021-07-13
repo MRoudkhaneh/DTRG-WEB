@@ -1,8 +1,11 @@
 import { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
-import { useError, useService, useToast, useUi } from 'hooks'
-import { Api } from 'utils'
 import { useParams } from 'react-router-dom'
+import { useUi } from 'hooks/use-ui'
+import { useError } from 'hooks/use-error'
+import { useService } from 'hooks/use-service'
+import { useToast } from 'hooks/use-toast'
+import { Api } from 'utils/api'
 
 export const usePatientInteractionForm = () => {
   const { id } = useParams() as any

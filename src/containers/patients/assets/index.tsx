@@ -1,4 +1,4 @@
-import { Table } from 'components'
+import { Table } from 'components/table'
 import { FC, memo } from 'react'
 import { PatientAssetsDetails } from './details'
 import { usePatientAssets } from './use-patient-assets'

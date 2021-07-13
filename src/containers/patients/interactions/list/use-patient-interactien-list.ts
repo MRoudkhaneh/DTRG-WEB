@@ -1,11 +1,12 @@
 import { useCallback, useMemo, useState } from 'react'
-import { useError, useService } from 'hooks'
-import { Api } from 'utils'
+import { useParams } from 'react-router-dom'
+import { useService } from 'hooks/use-service'
+import { useError } from 'hooks/use-error'
+import { Api } from 'utils/api'
 
 import { PatientInteractionListActions } from './actions'
 import { PatientInteractionListDate } from './date'
 import { PatientInteractionListDetails } from './details'
-import { useParams } from 'react-router-dom'
 
 export const usePatientInteractionList = () => {
   const routerParams = useParams() as any

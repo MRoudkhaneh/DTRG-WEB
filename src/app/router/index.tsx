@@ -11,6 +11,9 @@ const Login = lazy(() => import('pages/authentication/login'))
 const Password = lazy(() => import('pages/authentication/password'))
 const Register = lazy(() => import('pages/authentication/register'))
 const Patients = lazy(() => import('pages/patients/list'))
+const PatientForm = lazy(() => import('pages/patients/add'))
+const PatientInteractions = lazy(() => import('pages/patients/interactions'))
+const PatientAssets = lazy(() => import('pages/patients/assets'))
 
 export const Router = memo(() => {
   const {
@@ -27,6 +30,17 @@ export const Router = memo(() => {
             <Route exact path="/authentication/password" component={Password} />
             <Route exact path="/authentication/register" component={Register} />
             <Route exact path="/admin/patients" component={Patients} />
+            <Route exact path="/admin/patients/add" component={PatientForm} />
+            <Route
+              exact
+              path="/admin/patients/interactions/:id"
+              component={PatientInteractions}
+            />
+            <Route
+              exact
+              path="/admin/patients/assets/:id"
+              component={PatientAssets}
+            />
             {/* {routes.map((route, index) => (
               <Route key={index} {...route}>
                 <Page route={route} />

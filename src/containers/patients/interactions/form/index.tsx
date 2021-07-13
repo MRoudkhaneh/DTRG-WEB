@@ -1,13 +1,11 @@
 import { memo } from 'react'
-import {
-  Form,
-  Input,
-  Button,
-  Select,
-  SelectOption,
-  DatePicker,
-  TextArea,
-} from 'components'
+import { DatePicker } from 'components/date-picker'
+import { Button } from 'components/button'
+import { Form } from 'components/form'
+import { Input } from 'components/input'
+import { Select } from 'components/select'
+import { SelectOption } from 'components/select-option'
+import { TextArea } from 'components/text-area'
 
 import { usePatientInteractionForm } from './use-patient-interaction-form'
 

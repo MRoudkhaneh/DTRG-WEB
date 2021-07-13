@@ -1,7 +1,11 @@
 import { memo } from 'react'
-import { Text, Toolbar, Tooltip, Button } from 'components'
 import { useHistory, useLocation } from 'react-router-dom'
-import { ICArrowLeft } from 'icons'
+import { ICArrowLeft } from 'icons/arrow-left'
+import { Button } from 'components/button'
+import { Toolbar } from 'components/toolbar'
+import { Input } from 'components/input'
+import { Text } from 'components/text'
+import { Tooltip } from 'components/tooltip'
 
 export const PatientAssetsToolbar = memo(() => {
   const {

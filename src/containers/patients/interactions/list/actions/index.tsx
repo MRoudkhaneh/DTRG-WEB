@@ -1,6 +1,8 @@
-import { useUi } from 'hooks'
-import { Tooltip, Button } from 'components'
-import { ICEdit, ICDelete } from 'icons'
+import { useUi } from 'hooks/use-ui'
+import { Button } from 'components/button'
+import { ICDelete } from 'icons/delete'
+import { Tooltip } from 'components/tooltip'
+import { ICEdit } from 'icons/edit'
 
 export const PatientInteractionListActions = ({ item, queryKey }) => {
   const { toggleDialog } = useUi()

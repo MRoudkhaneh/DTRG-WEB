@@ -1,7 +1,7 @@
-import { PatientForm } from "containers";
+import { PatientForm } from 'containers/patients/form'
 
 const AddPatient = () => {
-  return <PatientForm />;
-};
+  return <PatientForm />
+}
 
-export default AddPatient;
+export default AddPatient

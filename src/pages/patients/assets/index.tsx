@@ -1,7 +1,7 @@
-import { PatientAssets } from "containers";
+import { PatientAssets } from 'containers/patients/assets'
 
 const Assets = () => {
-  return <PatientAssets />;
-};
+  return <PatientAssets />
+}
 
-export default Assets;
+export default Assets
