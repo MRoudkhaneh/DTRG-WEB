@@ -1,7 +1,7 @@
-import { Modal, Button } from 'components'
-import { useUi } from 'hooks/use-ui'
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { Modal } from 'components/modal'
+import { classNames } from 'utils/classes'
+
 import { ConfirmActions } from './confirm-actions'
 import { ConfirmBody } from './confirm-body'
 

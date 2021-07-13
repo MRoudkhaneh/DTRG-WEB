@@ -1,6 +1,8 @@
-import { FC, memo } from "react";
-import { Button, Text, Tooltip } from "components";
-import { ICClose } from "icons";
+import { FC, memo } from 'react'
+import { Text } from 'components/text'
+import { ICClose } from 'icons/close'
+import { Button } from 'components/button'
+import { Tooltip } from 'components/tooltip'
 
 export const ModalHeader: FC<IModal> = memo(
   ({ header, onClose, withHeader }) => {
@@ -22,7 +24,7 @@ export const ModalHeader: FC<IModal> = memo(
             </Tooltip>
           )}
         </div>
-      );
-    else return null;
+      )
+    else return null
   }
-);
+)

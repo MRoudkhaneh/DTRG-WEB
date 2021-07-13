@@ -1,11 +1,14 @@
 import { useUi } from 'hooks'
 import { lazy, memo } from 'react'
-import { Confirm, Modal } from 'components'
+import { Modal } from 'components/modal'
+import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
 
-const PatientForm = lazy(() =>
-  import('containers').then((module) => ({ default: module.PatientForm }))
-)
+// const PatientForm = lazy(() =>
+//   import('containers/patients/form').then((module) => ({
+//     default: module.PatientForm,
+//   }))
+// )
 
 export const PatientModal = memo(() => {
   const { deletePatient } = usePatientModal()
@@ -31,7 +34,7 @@ export const PatientModal = memo(() => {
           }
           withHeader
         >
-          <PatientForm isEditing editInitials={dialog.data} />
+          {/* <PatientForm isEditing editInitials={dialog.data} /> */}
         </Modal>
       )
 

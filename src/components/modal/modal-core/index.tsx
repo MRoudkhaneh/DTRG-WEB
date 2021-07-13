@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { classNames } from 'utils'
+import { classNames } from 'utils/classes'
 
 import { ModalBackDrop } from '../modal-back-drop'
 import { ModalBody } from '../modal-body'

@@ -1,5 +1,8 @@
-import { useError, useService, useToast, useUi } from 'hooks'
-import { Api } from 'utils'
+import { useUi } from 'hooks/use-ui'
+import { useError } from 'hooks/use-error'
+import { useService } from 'hooks/use-service'
+import { useToast } from 'hooks/use-toast'
+import { Api } from 'utils/api'
 
 export const usePatientModal = () => {
   const { success } = useToast()

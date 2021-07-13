@@ -1,5 +1,5 @@
-import { Button } from "components";
-import { FC, memo } from "react";
+import { Button } from 'components/button'
+import { FC, memo } from 'react'
 
 export const ConfirmActions: FC<IConfirm> = memo(
   ({ onConfirm, onCancel, loading }) => {
@@ -23,6 +23,6 @@ export const ConfirmActions: FC<IConfirm> = memo(
           Confirm
         </Button>
       </div>
-    );
+    )
   }
-);
+)
