@@ -40,7 +40,7 @@ export const InputCore: FC<IInput> = memo(
           name={name}
           placeholder={placeholder}
           disabled={disabled}
-          value={fieldValue}
+          value={fieldValue || ''}
           onClick={onClick}
           onChange={(e) => fieldChange(e.target.value)}
           className={classNames(

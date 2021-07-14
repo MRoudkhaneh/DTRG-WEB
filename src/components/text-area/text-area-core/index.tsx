@@ -6,7 +6,7 @@ export const TextAreatCore: FC<ITextArea> = memo(
     return (
       <textarea
         placeholder={placeholder}
-        value={value}
+        value={value || ''}
         name={name}
         disabled={disabled}
         onChange={(e) => onChange(e.target.value)}
