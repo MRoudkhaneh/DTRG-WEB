@@ -48,7 +48,7 @@ export const PatientInteractionsForm = memo(() => {
         className="my-5"
         expanded
         required
-        max={450}
+        max={300}
       />
       <Button
         type="submit"
