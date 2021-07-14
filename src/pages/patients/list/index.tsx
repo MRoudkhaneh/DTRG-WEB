@@ -1,13 +1,8 @@
-import { lazy, Suspense } from 'react'
+import { Suspense } from 'react'
 import { useUi } from 'hooks/use-ui'
 import { PatientList } from 'containers/patients/list'
 import { Skeleton } from 'components/skeleton'
-
-const PatientModal = lazy(() =>
-  import('containers/patients/modal').then((module) => ({
-    default: module.PatientModal,
-  }))
-)
+import { PatientModal } from 'containers/patients/modal'
 
 const Patients = () => {
   const {

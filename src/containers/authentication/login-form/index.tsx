@@ -36,10 +36,10 @@ export const LoginForm = memo(() => {
             placeholder="Enter your password"
             interactive
           />
-          <div className="col-center space-y-4 w-full mb-6" slot="actions">
+          <div className="col-center w-full mb-6" slot="actions">
             <Button
               icon
-              className="w-full h-12 text-white shadow-blue bg-secondary dark:bg-primary mt-4"
+              className="w-full h-12 text-white shadow-blue bg-secondary dark:bg-primary my-4"
               role="confirm"
               type="submit"
               loading={isLoading}
@@ -49,9 +49,7 @@ export const LoginForm = memo(() => {
             <Button
               icon
               role="cancel"
-              className={classNames(
-                'w-full h-12 text-secondary dark:text-primary '
-              )}
+              className="w-full h-12 text-secondary dark:text-primary "
               type="button"
               onClick={() => push('/authentication/password')}
             >
@@ -60,9 +58,7 @@ export const LoginForm = memo(() => {
             <Button
               icon
               role="cancel"
-              className={classNames(
-                'w-full h-12 text-secondary dark:text-primary'
-              )}
+              className="w-full h-12 text-secondary dark:text-primary"
               type="button"
               onClick={() => push('/authentication/register')}
             >

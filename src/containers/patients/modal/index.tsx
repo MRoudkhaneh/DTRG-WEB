@@ -47,7 +47,6 @@ export const PatientModal = memo(() => {
               ? `You are about to delete ${dialog.data.first_name} ${dialog.data.surename}`
               : 'You are about to delete this patient.'
           }
-          //loading={deletePatientLoading}
           onConfirm={() => mutate()}
           onCancel={() => toggleDialog({ open: false, type: null })}
         />
