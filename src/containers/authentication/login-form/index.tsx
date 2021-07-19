@@ -4,9 +4,10 @@ import { Button } from 'components/button'
 import { Tab } from 'components/tab'
 import { Input } from 'components/input'
 import { Form } from 'components/form'
-import { classNames } from 'utils/classes'
 
 import { useLogin } from './use-login'
+
+const isProd = process.env.variable === 'prod'
 
 export const LoginForm = memo(() => {
   const { push } = useHistory()
@@ -46,15 +47,16 @@ export const LoginForm = memo(() => {
             >
               login
             </Button>
-            <Button
-              icon
-              role="cancel"
-              className="w-full h-12 text-secondary dark:text-primary "
-              type="button"
-              onClick={() => push('/authentication/password')}
+            <a
+              href={
+                isProd
+                  ? 'https://wa-syd-prod-kl-dtrgcrmbe.azurewebsites.net/web/password-reset/'
+                  : 'https://wa-syd-dev-kl-dtrgcrmbe.azurewebsites.net/web/password-reset/'
+              }
+              className=" text-secondary dark:text-primary text-center my-4 "
             >
               Forgot password
-            </Button>
+            </a>
             <Button
               icon
               role="cancel"
