@@ -7,16 +7,14 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
   return (
     <div className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
       <Input size="small" disabled label="Patient Status" value={item.status} />
-      {(item.status == 'Approached - declined' ||
-        item.status == 'Approached - ineligible') &&
-        item.status_details && (
-          <TextArea
-            size="small"
-            disabled
-            label="Patient Status Details"
-            value={item.status_details}
-          />
-        )}
+
+      <TextArea
+        size="small"
+        disabled
+        label="Patient Status Details"
+        value={item.status_details}
+      />
+
       <Input
         size="small"
         disabled
@@ -59,164 +57,142 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         value={item.deceased ? item.deceased : 'No'}
         withError={item.deceased === 'Yes' ? true : false}
       />
-      {item.diabetes_type && (
-        <Input
-          size="small"
-          disabled
-          label="Diabetes Type"
-          value={item.diabetes_type}
-        />
-      )}
-      {item.diabetes_type === 'Type 1' && item.date_of_diagnosis_of_t1d && (
-        <Input
-          size="small"
-          disabled
-          label="Date Of Diagnosis Of T1D"
-          value={
-            item.date_of_diagnosis_of_t1d &&
-            item.date_of_diagnosis_of_t1d.slice(0, 4)
-          }
-        />
-      )}
-      {item.cho_counting && (
-        <Input
-          size="small"
-          disabled
-          label="CHO Counting"
-          value={item.cho_counting}
-        />
-      )}
-      {item.cho_counting &&
-        item.cho_counting.includes('Other') &&
-        item.cho_counting_details && (
-          <TextArea
-            size="small"
-            disabled
-            label="CHO Counting Detail"
-            value={item.cho_counting_details}
-          />
-        )}
-      {item.exercise_type && (
-        <Input
-          size="small"
-          disabled
-          label="Exercise Type"
-          value={item.exercise_type}
-        />
-      )}
-      {item.exercise_detail && (
-        <TextArea
-          size="small"
-          disabled
-          label="Exercise Detail"
-          value={item.exercise_detail}
-        />
-      )}
-      {item.current_diabetes_management && (
-        <Input
-          size="small"
-          disabled
-          label="Current Diabetes Management"
-          value={item.current_diabetes_management}
-        />
-      )}
-      {(item.current_diabetes_management == 'Looping' ||
-        item.current_diabetes_management == 'Other') &&
-        item.pump_details && (
-          <TextArea
-            size="small"
-            disabled
-            label="Pump Details"
-            value={item.pump_details}
-          />
-        )}
-      {item.infusion_line_type && (
-        <Input
-          size="small"
-          disabled
-          label="Infusion Line Type"
-          value={item.infusion_line_type}
-        />
-      )}
-      {item.current_insulin_use && (
-        <Input
-          size="small"
-          disabled
-          label="Current Insulin Use"
-          value={item.current_insulin_use}
-        />
-      )}
-      {item.current_cgm_wear && (
-        <Input
-          size="small"
-          disabled
-          label="Current CGM Wear"
-          value={item.current_cgm_wear}
-        />
-      )}
-      {item.past_cgm_wear && (
-        <Input
-          size="small"
-          disabled
-          label="Past CGM Wear"
-          value={item.past_cgm_wear}
-        />
-      )}
-      {item.frequency_of_daily_fingerstick && (
-        <Input
-          size="small"
-          disabled
-          label="Frequency of Daily Fingerstick"
-          value={item.frequency_of_daily_fingerstick}
-        />
-      )}
-      {item.endocrinologist && (
-        <Input
-          size="small"
-          disabled
-          label="Endocrinologist"
-          value={item.endocrinologist}
-        />
-      )}
-      {item.diabetes_educator && (
-        <Input
-          size="small"
-          disabled
-          label="Diabetes Educator"
-          value={item.diabetes_educator}
-        />
-      )}
-      {item.latest_hba1c_reading && (
-        <Input
-          size="small"
-          disabled
-          label="Latest HbA1c Reading"
-          value={item.latest_hba1c_reading}
-        />
-      )}
-      {item.latest_hba1c_reading_date && (
-        <Input
-          size="small"
-          disabled
-          label="Latest HbA1c Reading Date"
-          value={item.latest_hba1c_reading_date}
-        />
-      )}
+
+      <Input
+        size="small"
+        disabled
+        label="Diabetes Type"
+        value={item.diabetes_type}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Date Of Diagnosis Of T1D"
+        value={
+          item.date_of_diagnosis_of_t1d &&
+          item.date_of_diagnosis_of_t1d.slice(0, 4)
+        }
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="CHO Counting"
+        value={item.cho_counting}
+      />
+
+      <TextArea
+        size="small"
+        disabled
+        label="CHO Counting Detail"
+        value={item.cho_counting_details}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Exercise Type"
+        value={item.exercise_type}
+      />
+
+      <TextArea
+        size="small"
+        disabled
+        label="Exercise Detail"
+        value={item.exercise_detail}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Current Diabetes Management"
+        value={item.current_diabetes_management}
+      />
+
+      <TextArea
+        size="small"
+        disabled
+        label="Pump Details"
+        value={item.pump_details}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Infusion Line Type"
+        value={item.infusion_line_type}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Current Insulin Use"
+        value={item.current_insulin_use}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Current CGM Wear"
+        value={item.current_cgm_wear}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Past CGM Wear"
+        value={item.past_cgm_wear}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Frequency of Daily Fingerstick"
+        value={item.frequency_of_daily_fingerstick}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Endocrinologist"
+        value={item.endocrinologist}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Diabetes Educator"
+        value={item.diabetes_educator}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Latest HbA1c Reading"
+        value={item.latest_hba1c_reading}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Latest HbA1c Reading Date"
+        value={item.latest_hba1c_reading_date}
+      />
+
       <Switch
         size="small"
         disabled
         label="In the past 12 months, have you had Diabetic Ketoacidosis (DKA) requiring a hospital admission?"
         checked={item.dka_requiring_hospital_admission_past_12_months}
       />
-      {item.dka_requiring_hospital_admission_past_12_months &&
-        item.dka_details && (
-          <TextArea
-            size="small"
-            disabled
-            label="DKA Details"
-            value={item.dka_details}
-          />
-        )}
+
+      <TextArea
+        size="small"
+        disabled
+        label="DKA Details"
+        value={item.dka_details}
+      />
 
       <Switch
         size="small"
@@ -248,14 +224,14 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         label="Have you ever been diagnosed with foot neuropathy?"
         checked={item.foot_neuropathy}
       />
-      {item.other_medical_issue && (
-        <Input
-          size="small"
-          disabled
-          label="Other Medical Issue"
-          value={item.other_medical_issue}
-        />
-      )}
+
+      <Input
+        size="small"
+        disabled
+        label="Other Medical Issue"
+        value={item.other_medical_issue}
+      />
+
       <Switch
         size="small"
         disabled
@@ -270,78 +246,49 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         checked={item.has_internet_access}
       />
 
-      {item.computer_type && (
-        <Input
-          size="small"
-          disabled
-          label="Computer Type"
-          value={item.computer_type}
-        />
-      )}
-      {/* {item.discussion_held_and_what_discussed && (
-        <Input
-          size="small"
-          disabled
-          label="Discussion Held And What Was Discussed"
-          value={item.discussion_held_and_what_discussed}
-        />
-      )} */}
-      {/* {item.contact_date && (
-        <Input
-          size="small"
-          disabled
-          label="Contact Date "
-          value={item.contact_date}
-        />
-      )} */}
-      {item.pwod_referral && (
-        <Input
-          size="small"
-          disabled
-          label="PWOD Referral"
-          value={item.pwod_referral}
-        />
-      )}
-      {item.study_for_consideration && (
-        <Input
-          size="small"
-          disabled
-          label="Study For Consideration"
-          value={item.study_for_consideration}
-        />
-      )}
-      {item.availability && (
-        <Input
-          size="small"
-          disabled
-          label="Availability"
-          value={item.availability}
-        />
-      )}
-      {item.availability_detail && (
-        <TextArea
-          size="small"
-          disabled
-          label="Availability Detail"
-          value={item.availability_detail}
-        />
-      )}
-      {item.next_step && (
-        <Input
-          size="small"
-          disabled
-          label="Next Steps"
-          value={item.next_step}
-        />
-      )}
-      {item.do_not_call_until && (
-        <Input
-          size="small"
-          disabled
-          label="Do Not Call Until"
-          value={item.do_not_call_until}
-        />
-      )}
+      <Input
+        size="small"
+        disabled
+        label="Computer Type"
+        value={item.computer_type}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="PWOD Referral"
+        value={item.pwod_referral}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Study For Consideration"
+        value={item.study_for_consideration}
+      />
+
+      <Input
+        size="small"
+        disabled
+        label="Availability"
+        value={item.availability}
+      />
+
+      <TextArea
+        size="small"
+        disabled
+        label="Availability Detail"
+        value={item.availability_detail}
+      />
+
+      <Input size="small" disabled label="Next Steps" value={item.next_step} />
+
+      <Input
+        size="small"
+        disabled
+        label="Do Not Call Until"
+        value={item.do_not_call_until}
+      />
     </div>
   )
 })
