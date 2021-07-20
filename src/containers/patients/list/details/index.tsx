@@ -8,12 +8,15 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
     <div className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
       <Input size="small" disabled label="Patient Status" value={item.status} />
 
-      <TextArea
-        size="small"
-        disabled
-        label="Patient Status Details"
-        value={item.status_details}
-      />
+      {(item.status == 'Approached - declined' ||
+        item.status == 'Approached - ineligible') && (
+        <TextArea
+          size="small"
+          disabled
+          label="Patient Status Details"
+          value={item.status_details}
+        />
+      )}
 
       <Input
         size="small"
@@ -82,12 +85,14 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         value={item.cho_counting}
       />
 
-      <TextArea
-        size="small"
-        disabled
-        label="CHO Counting Detail"
-        value={item.cho_counting_details}
-      />
+      {item.cho_counting && item.cho_counting.includes('Other') && (
+        <TextArea
+          size="small"
+          disabled
+          label="CHO Counting Detail"
+          value={item.cho_counting_details}
+        />
+      )}
 
       <Input
         size="small"
@@ -110,12 +115,15 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         value={item.current_diabetes_management}
       />
 
-      <TextArea
-        size="small"
-        disabled
-        label="Pump Details"
-        value={item.pump_details}
-      />
+      {(item.current_diabetes_management == 'Looping' ||
+        item.current_diabetes_management == 'Other') && (
+        <TextArea
+          size="small"
+          disabled
+          label="Pump Details"
+          value={item.pump_details}
+        />
+      )}
 
       <Input
         size="small"
@@ -187,12 +195,14 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         checked={item.dka_requiring_hospital_admission_past_12_months}
       />
 
-      <TextArea
-        size="small"
-        disabled
-        label="DKA Details"
-        value={item.dka_details}
-      />
+      {item.dka_requiring_hospital_admission_past_12_months && (
+        <TextArea
+          size="small"
+          disabled
+          label="DKA Details"
+          value={item.dka_details}
+        />
+      )}
 
       <Switch
         size="small"
