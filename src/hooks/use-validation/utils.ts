@@ -1,5 +1,7 @@
 const requiredValidation = (value, required) => {
   if (required && !value) return 'This field is required.'
+  else if (required && value && typeof value === 'object' && value.length === 0)
+    return 'This field is required.'
 }
 
 const maxValidation = (value, max) => {
@@ -45,7 +47,7 @@ const minutesValidation = (value) => {
 const numberValidation = (value) => {
   if (value)
     if (value.match('^[0-9]*$') === null || !value.match('^[0-9]*$').length)
-      return 'This field must be number.'
+      return 'This field must be number without space.'
 }
 
 export {
