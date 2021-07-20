@@ -4,6 +4,10 @@ import { Switch } from 'components/switch'
 import { useUi } from 'hooks/use-ui'
 import { ICDark } from 'icons/dark'
 import { ICLight } from 'icons/light'
+import { Tooltip } from 'components/tooltip'
+import { Button } from 'components/button'
+import { ICPersonDash } from 'icons/person-dash'
+import { useHistory, useLocation } from 'react-router-dom'
 
 export const AdminHeader = memo(() => {
   const {
@@ -13,6 +17,10 @@ export const AdminHeader = memo(() => {
       drawer: { open },
     },
   } = useUi()
+
+  const { push } = useHistory()
+
+  const { pathname } = useLocation()
 
   const dark = useMemo(() => theme === 'dark', [theme])
 
@@ -27,6 +35,20 @@ export const AdminHeader = memo(() => {
     >
       <div />
       <div className="flex items-center">
+        {!pathname.includes('authentication') && (
+          <Tooltip content="Logout">
+            <Button
+              icon
+              className="mr-6 peer"
+              onClick={() => {
+                localStorage.removeItem('token')
+                push('/authentication/login')
+              }}
+            >
+              <ICPersonDash className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+            </Button>
+          </Tooltip>
+        )}
         {dark && <ICLight className="w-5 h-5 text-gray-300 mr-2" />}
         <Switch
           onChange={(value) => toggleDark(value)}
