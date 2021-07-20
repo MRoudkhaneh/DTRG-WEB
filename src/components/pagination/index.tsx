@@ -1,81 +1,61 @@
 import { FC, memo, useMemo } from 'react'
 import { Button } from 'components/button'
 import { classNames } from 'utils/classes'
-import { ICChevronLeft } from 'icons/chevron-left'
-import { ICChevronRight } from 'icons/chevron-right'
 
 export const Pagination: FC<IPagination> = memo(
-  ({ className, total, page, onPaginate, disabled }) => {
-    const totalPages = useMemo(
-      () =>
-        total % 10 > 0 ? Math.floor(total / 10) + 1 : Math.floor(total / 10),
-      [total]
-    )
+  ({ className, page, onPaginate, disabled, total }) => {
+    const totalPages = useMemo(() => Math.ceil(total / 10), [total])
 
     const pages = useMemo(
       () => Array.from(new Array(totalPages)).map((item, index) => index),
-      [page, total]
+      [totalPages]
+    )
+
+    const startPage = useMemo(
+      () =>
+        totalPages <= 10
+          ? 1
+          : page <= 6
+          ? 1
+          : page + 4 >= totalPages
+          ? totalPages - 9
+          : page - 5,
+      [page]
+    )
+
+    const endPage = useMemo(
+      () =>
+        totalPages <= 10
+          ? totalPages
+          : page <= 6
+          ? 10
+          : page + 4 >= totalPages
+          ? totalPages
+          : page + 4,
+      [page]
     )
 
     if (totalPages > 1)
       return (
         <div
-          className={`w-full flex items-center justify-end space-x-16 ${className}`}
+          className={`w-full flex items-center justify-end ${className}`}
           slot="wrapper"
         >
           <div />
-          {!disabled && page != 1 ? (
-            <Button
-              disabled={disabled}
-              onClick={() => onPaginate(1)}
-              className={classNames(
-                'w-6 h-6 disabled:opacity-30 bg-secondary text-white text-sm'
-              )}
-            >
-              {1}
-            </Button>
-          ) : (
-            <div className="w-6 h-6" />
-          )}
-          <div className="flex items-center space-x-4">
-            <Button
-              icon
-              disabled={page == 1}
-              onClick={() => onPaginate(page - 1)}
-              className="disabled:cursor-not-allowed"
-            >
-              <ICChevronLeft className="w-5 h-5 text-primary" />
-            </Button>
-            <div
-              className={classNames(
-                ' disabled:opacity-30 text-gray-600 dark:text-gray-300 text-lg '
-              )}
-            >
-              {page}
-            </div>
-            <Button
-              icon
-              disabled={totalPages == page}
-              onClick={() => onPaginate(page + 1)}
-              className="disabled:cursor-not-allowed"
-            >
-              <ICChevronRight className="w-5 h-5  text-primary" />
-            </Button>
-          </div>
-          {!disabled && page != pages.length ? (
-            <Button
-              onClick={() => onPaginate(pages.length)}
-              disabled={disabled}
-              className={classNames(
-                'w-6 h-6 disabled:opacity-30 bg-secondary text-white text-sm'
-              )}
-            >
-              {pages.length}
-            </Button>
-          ) : (
-            <div className="w-6 h-6" />
-          )}
-          {/*pages.map((item, index) => (
+
+          <Button
+            onClick={() => onPaginate(1)}
+            disabled={disabled}
+            className={classNames(
+              'w-8 h-8  disabled:opacity-30 mr-6',
+              page === 1
+                ? 'bg-secondary text-white'
+                : ' dark:text-gray-300 dark:bg-gray-600'
+            )}
+          >
+            {1}
+          </Button>
+          {pages.slice(startPage, endPage - 1).map((item, index) => (
             <Button
               key={index}
               onClick={() => onPaginate(item + 1)}
@@ -89,7 +69,19 @@ export const Pagination: FC<IPagination> = memo(
             >
               {item + 1}
             </Button>
-              ))*/}
+          ))}
+          <Button
+            onClick={() => onPaginate(totalPages)}
+            disabled={disabled}
+            className={classNames(
+              'w-8 h-8  disabled:opacity-30 ml-6',
+              page === totalPages
+                ? 'bg-secondary text-white'
+                : ' dark:text-gray-300 dark:bg-gray-600'
+            )}
+          >
+            {totalPages}
+          </Button>
         </div>
       )
     else return null
