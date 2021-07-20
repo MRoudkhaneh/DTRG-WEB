@@ -20,11 +20,11 @@ export const Pagination: FC<IPagination> = memo(
     if (totalPages > 1)
       return (
         <div
-          className={`w-full flex items-center justify-end space-x-4 ${className}`}
+          className={`w-full flex items-center justify-end space-x-16 ${className}`}
           slot="wrapper"
         >
           <div />
-          {page != 1 && (
+          {page != 1 ? (
             <Button
               disabled={disabled}
               onClick={() => onPaginate(1)}
@@ -34,29 +34,33 @@ export const Pagination: FC<IPagination> = memo(
             >
               {1}
             </Button>
+          ) : (
+            <div className="w-6 h-6" />
           )}
-          <Button
-            icon
-            disabled={page == 1}
-            onClick={() => onPaginate(page - 1)}
-          >
-            <ICChevronLeft className="w-4 h-4 text-primary" />
-          </Button>
-          <div
-            className={classNames(
-              ' disabled:opacity-30 text-gray-600 dark:text-gray-300 text-sm '
-            )}
-          >
-            {page}
+          <div className="flex items-center space-x-4">
+            <Button
+              icon
+              disabled={page == 1}
+              onClick={() => onPaginate(page - 1)}
+            >
+              <ICChevronLeft className="w-5 h-5 text-primary" />
+            </Button>
+            <div
+              className={classNames(
+                ' disabled:opacity-30 text-gray-600 dark:text-gray-300 text-lg '
+              )}
+            >
+              {page}
+            </div>
+            <Button
+              icon
+              disabled={totalPages == page}
+              onClick={() => onPaginate(page + 1)}
+            >
+              <ICChevronRight className="w-5 h-5  text-primary" />
+            </Button>
           </div>
-          <Button
-            icon
-            disabled={totalPages == page}
-            onClick={() => onPaginate(page + 1)}
-          >
-            <ICChevronRight className="w-4 h-4  text-primary" />
-          </Button>
-          {page != pages.length && (
+          {page != pages.length ? (
             <Button
               onClick={() => onPaginate(pages.length)}
               disabled={disabled}
@@ -66,6 +70,8 @@ export const Pagination: FC<IPagination> = memo(
             >
               {pages.length}
             </Button>
+          ) : (
+            <div className="w-6 h-6" />
           )}
           {/*pages.map((item, index) => (
             <Button
