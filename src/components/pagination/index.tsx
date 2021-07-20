@@ -24,7 +24,7 @@ export const Pagination: FC<IPagination> = memo(
           slot="wrapper"
         >
           <div />
-          {page != 1 ? (
+          {!disabled && page != 1 ? (
             <Button
               disabled={disabled}
               onClick={() => onPaginate(1)}
@@ -42,6 +42,7 @@ export const Pagination: FC<IPagination> = memo(
               icon
               disabled={page == 1}
               onClick={() => onPaginate(page - 1)}
+              className="disabled:cursor-not-allowed"
             >
               <ICChevronLeft className="w-5 h-5 text-primary" />
             </Button>
@@ -56,11 +57,12 @@ export const Pagination: FC<IPagination> = memo(
               icon
               disabled={totalPages == page}
               onClick={() => onPaginate(page + 1)}
+              className="disabled:cursor-not-allowed"
             >
               <ICChevronRight className="w-5 h-5  text-primary" />
             </Button>
           </div>
-          {page != pages.length ? (
+          {!disabled && page != pages.length ? (
             <Button
               onClick={() => onPaginate(pages.length)}
               disabled={disabled}
