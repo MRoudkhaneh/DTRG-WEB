@@ -20,7 +20,7 @@ export const Pagination: FC<IPagination> = memo(
           : page + 4 >= totalPages
           ? totalPages - 9
           : page - 5,
-      [page]
+      [page, totalPages]
     )
 
     const endPage = useMemo(
@@ -32,7 +32,7 @@ export const Pagination: FC<IPagination> = memo(
           : page + 4 >= totalPages
           ? totalPages
           : page + 4,
-      [page]
+      [page, totalPages]
     )
 
     if (totalPages > 1)
