@@ -1,41 +1,36 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, memo } from 'react'
 import { Button } from 'components/button'
 import { classNames } from 'utils/classes'
 
+const pager = (total, page) => {
+  const totalPages = Math.ceil(total / 10)
+
+  const pages = Array.from(new Array(totalPages)).map((item, index) => index)
+
+  const startPage =
+    totalPages <= 10
+      ? 1
+      : page <= 6
+      ? 1
+      : page + 4 >= totalPages
+      ? totalPages - 9
+      : page - 5
+
+  const endPage =
+    totalPages <= 10
+      ? totalPages
+      : page <= 6
+      ? 10
+      : page + 4 >= totalPages
+      ? totalPages
+      : page + 4
+
+  return pages.slice(startPage, endPage - 1)
+}
+
 export const Pagination: FC<IPagination> = memo(
   ({ className, page, onPaginate, disabled, total }) => {
-    const totalPages = useMemo(() => Math.ceil(total / 10), [total])
-
-    const pages = useMemo(
-      () => Array.from(new Array(totalPages)).map((item, index) => index),
-      [totalPages]
-    )
-
-    const startPage = useMemo(
-      () =>
-        totalPages <= 10
-          ? 1
-          : page <= 6
-          ? 1
-          : page + 4 >= totalPages
-          ? totalPages - 9
-          : page - 5,
-      [page, totalPages]
-    )
-
-    const endPage = useMemo(
-      () =>
-        totalPages <= 10
-          ? totalPages
-          : page <= 6
-          ? 10
-          : page + 4 >= totalPages
-          ? totalPages
-          : page + 4,
-      [page, totalPages]
-    )
-
-    if (totalPages > 1)
+    if (Math.ceil(total / 10) > 1)
       return (
         <div
           className={`w-full flex items-center justify-end ${className}`}
@@ -55,7 +50,7 @@ export const Pagination: FC<IPagination> = memo(
           >
             {1}
           </Button>
-          {pages.slice(startPage, endPage - 1).map((item, index) => (
+          {pager(total, page).map((item, index) => (
             <Button
               key={index}
               onClick={() => onPaginate(item + 1)}
@@ -71,16 +66,16 @@ export const Pagination: FC<IPagination> = memo(
             </Button>
           ))}
           <Button
-            onClick={() => onPaginate(totalPages)}
+            onClick={() => onPaginate(Math.ceil(total / 10))}
             disabled={disabled}
             className={classNames(
               'w-8 h-8  disabled:opacity-30 ml-6',
-              page === totalPages
+              page === Math.ceil(total / 10)
                 ? 'bg-secondary text-white'
                 : ' dark:text-gray-300 dark:bg-gray-600'
             )}
           >
-            {totalPages}
+            {Math.ceil(total / 10)}
           </Button>
         </div>
       )
