@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useEffect, useRef } from 'react'
 import { classNames } from 'utils/classes'
 import { SelectBoxActions } from './select-box-actions'
 import { SelectBoxValue } from './select-box-value'
@@ -15,9 +15,13 @@ export const SelectBox: FC<ISelect> = memo(
     label,
     fieldRef,
   }) => {
+    const ref = useRef(null)
+    useEffect(() => {
+      if (error) ref.current.scrollIntoView()
+    }, [error])
     return (
       <div
-        //ref={fieldRef}
+        ref={ref}
         onClick={() => toggle()}
         defaultValue={value}
         className={classNames(
