@@ -37,7 +37,7 @@ import {
   PumpDetail,
   State,
   Suburb,
-  Surename,
+  LastName,
   DateOfDiagnosisOfT1D,
   OtherMedicalIssue,
   WillComeToSt,
@@ -54,8 +54,9 @@ import {
   PhoneType,
   InfusionLineType,
   Deceased,
+  StudyStatus,
+  StatusDetails,
   PatientStatus,
-  PatientStatusDetails,
 } from './fields'
 
 import { classNames } from 'utils/classes'
@@ -77,11 +78,12 @@ export const PatientForm = memo((props?: IPatientForm) => {
         >
           <Grid className="mt-4">
             <PatientStatus control={control} setValue={setValue} />
-            <PatientStatusDetails control={control} />
+            <StudyStatus control={control} setValue={setValue} />
+            <StatusDetails control={control} />
           </Grid>
           <Grid className="mt-4">
-            <Surename control={control} />
             <FirstName control={control} />
+            <LastName control={control} />
           </Grid>
 
           <Grid className=" pt-6 mt-4">
