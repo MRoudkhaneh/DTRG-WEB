@@ -13,7 +13,6 @@ interface ISelect {
   setValue?: any
   onCancel?: any
   toggle?: any
-  ref?: any
+  fieldRef?: any
   open?: any
-  dark?: boolean
 }

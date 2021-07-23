@@ -17,4 +17,5 @@ interface ITextArea {
   size?: 'small' | 'large'
   disabled?: boolean
   expanded?: boolean
+  fieldRef?: any
 }

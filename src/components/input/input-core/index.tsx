@@ -18,6 +18,7 @@ export const InputCore: FC<IInput> = memo(
     icon,
     onChange,
     control,
+    fieldRef,
   }) => {
     const actualValue = useMemo(() => {
       switch (typeof value) {
@@ -38,6 +39,7 @@ export const InputCore: FC<IInput> = memo(
           slot="input"
           type={type}
           name={name}
+          ref={fieldRef}
           placeholder={placeholder}
           disabled={disabled}
           value={fieldValue || ''}

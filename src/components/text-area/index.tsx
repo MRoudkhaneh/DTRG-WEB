@@ -18,7 +18,10 @@ export const TextArea: FC<ITextArea> = memo((props) => {
         name={name}
         control={control}
         rules={{ validate }}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
+        render={({
+          field: { onChange, value, ref: fieldRef },
+          fieldState: { error },
+        }) => (
           <div
             className={classNames(
               'w-full col-start resize-y relative',
@@ -30,6 +33,7 @@ export const TextArea: FC<ITextArea> = memo((props) => {
               onChange={onChange}
               value={value}
               error={error}
+              fieldRef={fieldRef}
               {...props}
             />
             <Error

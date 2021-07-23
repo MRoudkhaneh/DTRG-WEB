@@ -42,7 +42,7 @@ export const Input: FC<IInput> = memo((props) => {
         rules={{ validate }}
         control={control}
         render={({
-          field: { onChange: fieldChange, value: fieldValue },
+          field: { onChange: fieldChange, value: fieldValue, ref: fieldRef },
           fieldState: { error: fieldError },
         }) => (
           <div
@@ -55,6 +55,7 @@ export const Input: FC<IInput> = memo((props) => {
               fieldChange={fieldChange}
               fieldValue={fieldValue}
               fieldError={fieldError}
+              fieldRef={fieldRef}
               {...props}
             />
 

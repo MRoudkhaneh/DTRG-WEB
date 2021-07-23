@@ -4,13 +4,24 @@ import { SelectBoxActions } from './select-box-actions'
 import { SelectBoxValue } from './select-box-value'
 
 export const SelectBox: FC<ISelect> = memo(
-  ({ toggle, value, error, multiple, setValue, name, open, label }) => {
+  ({
+    toggle,
+    value,
+    error,
+    multiple,
+    setValue,
+    name,
+    open,
+    label,
+    fieldRef,
+  }) => {
     return (
       <div
-        role="toggler"
+        //ref={fieldRef}
         onClick={() => toggle()}
+        defaultValue={value}
         className={classNames(
-          ' w-full row-between focus:outline-none overflow-hidden cursor-pointer text-gray-900 bg-white dark:bg-gray-400 ',
+          'w-full row-between focus:outline-none overflow-hidden cursor-pointer text-gray-900 bg-white dark:bg-gray-400 ',
           open
             ? 'rounded-t border-t-2 border-r-2 border-l-2 border-indigo-400'
             : error

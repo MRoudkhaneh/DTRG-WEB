@@ -38,7 +38,10 @@ export const Select: FC<ISelect> = memo(
           name={name}
           control={control}
           rules={{ validate }}
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
+          render={({
+            field: { onChange, value, ref: fieldRef },
+            fieldState: { error },
+          }) => (
             <div className={`w-full flex-col relative`} slot="controlled">
               <SelectBox
                 onChange={onChange}
@@ -50,6 +53,7 @@ export const Select: FC<ISelect> = memo(
                 name={name}
                 open={open}
                 label={label}
+                fieldRef={fieldRef}
               />
               {open && (
                 <SelectDropBox

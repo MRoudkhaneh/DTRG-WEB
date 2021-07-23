@@ -27,6 +27,7 @@ interface IInput {
   fieldChange?: any
   fieldValue?: any
   fieldError?: any
+  fieldRef?: any
   hours?: boolean
   minutes?: boolean
   number?: boolean
