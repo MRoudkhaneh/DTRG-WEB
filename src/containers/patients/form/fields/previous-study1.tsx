@@ -39,6 +39,9 @@ export const PreviousStudy1: FC<IPatientField> = memo(
         <SelectOption value="Biocap Feasibility">
           Biocap Feasibility
         </SelectOption>
+        <SelectOption value="No previous study involvement">
+          No previous study involvement
+        </SelectOption>
         <SelectOption value="Other">Other</SelectOption>
       </Select>
     )

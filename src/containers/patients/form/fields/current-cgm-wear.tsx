@@ -13,11 +13,10 @@ export const CurrentCGMWear: FC<IPatientField> = memo(
       >
         <SelectOption value="Libre">Libre</SelectOption>
         <SelectOption value="Guardian Connect">Guardian Connect</SelectOption>
-        <SelectOption value=" Guardian Sensor 3">
-          Guardian Sensor 3
-        </SelectOption>
-        <SelectOption value=" Dexcom G5">Dexcom G5</SelectOption>
-        <SelectOption value=" Dexcom G6">Dexcom G6</SelectOption>
+        <SelectOption value="Guardian Sensor 3">Guardian Sensor 3</SelectOption>
+        <SelectOption value="Dexcom G5">Dexcom G5</SelectOption>
+        <SelectOption value="Dexcom G6">Dexcom G6</SelectOption>
+        <SelectOption value="None">None</SelectOption>
       </Select>
     )
   }

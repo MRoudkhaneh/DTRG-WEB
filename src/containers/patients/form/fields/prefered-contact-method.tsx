@@ -10,7 +10,6 @@ export const PreferedContactMethod: FC<IPatientField> = memo(
         name="preferred_contact_method"
         control={control}
         setValue={setValue}
-        required
       >
         <SelectOption value="Email">Email</SelectOption>
         <SelectOption value="Phone">Phone</SelectOption>

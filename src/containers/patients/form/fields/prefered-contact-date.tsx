@@ -7,7 +7,6 @@ export const PreferedContactDate: FC<IPatientField> = memo(({ control }) => {
       label="Prefered Contact Date"
       name="preferred_contact_time"
       control={control}
-      required
     />
   )
 })

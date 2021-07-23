@@ -10,7 +10,6 @@ export const PhoneNumber: FC<IPatientField> = memo(({ control }) => {
       control={control}
       max={20}
       required
-      number
     />
   )
 })

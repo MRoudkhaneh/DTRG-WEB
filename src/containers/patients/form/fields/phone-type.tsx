@@ -10,7 +10,6 @@ export const PhoneType: FC<IPatientField> = memo(({ control, setValue }) => {
       control={control}
       setValue={setValue}
       multiple
-      required
     >
       <SelectOption value="Android">Android</SelectOption>
       <SelectOption value=" IOS">IOS</SelectOption>

@@ -46,7 +46,10 @@ const minutesValidation = (value) => {
 
 const numberValidation = (value) => {
   if (value)
-    if (value.match('^[0-9]*$') === null || !value.match('^[0-9]*$').length)
+    if (
+      value.match('^[+-]?([0-9]+.?[0-9]*|.[0-9]+)$') === null ||
+      !value.match('^[+-]?([0-9]+.?[0-9]*|.[0-9]+)$').length
+    )
       return 'This field must be number without space.'
 }
 

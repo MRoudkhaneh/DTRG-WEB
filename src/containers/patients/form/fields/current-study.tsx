@@ -27,6 +27,9 @@ export const CurrentStudy: FC<IPatientField> = memo(({ control, setValue }) => {
       <SelectOption value="FLASH">FLASH</SelectOption>
       <SelectOption value="Insulet">Insulet</SelectOption>
       <SelectOption value="Zeus">Zeus</SelectOption>
+      <SelectOption value="Not currently enrolled in a study">
+        Not currently enrolled in a study
+      </SelectOption>
       <SelectOption value="Other">Other</SelectOption>
     </Select>
   )
