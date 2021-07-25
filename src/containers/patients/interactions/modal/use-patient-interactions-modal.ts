@@ -47,11 +47,8 @@ export const usePatientInteractionModal = () => {
           client.setQueryData(queryKey, context.snapshot)
           onError(error)
         },
-        onSettled: (data, error) => {
-          if (error) onError(error)
-          success('You successfully deleted this patient.')
-          client.invalidateQueries(queryKey)
-        },
+        onSuccess: () => success('You successfully deleted this patient.'),
+        onSettled: () => client.invalidateQueries(queryKey),
       }),
   }
 }

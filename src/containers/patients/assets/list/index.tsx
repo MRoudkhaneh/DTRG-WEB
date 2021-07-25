@@ -17,7 +17,7 @@ export const PatientAssets: FC<{ item?: any }> = memo(() => {
         data={data.results}
         page={page}
         onPaginate={onPaginate}
-        expand={(item) => <PatientAssetsDetails />}
+        expand={(item) => <PatientAssetsDetails item={item} />}
         loading={isLoading}
       />
     </div>

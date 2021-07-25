@@ -6,7 +6,7 @@ export const LastName: FC<IPatientField> = memo(({ control }) => {
     <Input
       label="Last Name "
       placeholder="Enter Last Name"
-      name="last_name"
+      name="surename"
       control={control}
       max={64}
       required
