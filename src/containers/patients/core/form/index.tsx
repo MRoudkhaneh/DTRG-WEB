@@ -70,26 +70,20 @@ export const PatientForm = memo((props?: IPatientForm) => {
     <div className="w-full">
       {!isEditing && <PatientFormToolbar />}
       <Form className="w-full  px-5" onSubmit={onSubmit}>
-        <Tab
-          // expandable
-          initialIsOpen={!isEditing}
-          text="Patient Bio"
-          className="mt-10"
-        >
+        <Tab text="Patient Bio" className="mt-10">
           <Grid className="mt-4">
             <PatientStatus control={control} setValue={setValue} />
-            <StudyStatus control={control} setValue={setValue} />
-            <StatusDetails control={control} />
-          </Grid>
-          <Grid className="mt-4">
             <FirstName control={control} />
             <LastName control={control} />
           </Grid>
 
           <Grid className=" pt-6 mt-4">
             <CurrentStudy control={control} setValue={setValue} />
+            <StudyStatus control={control} setValue={setValue} />
+            <StatusDetails control={control} />
             <PreviousStudy1 control={control} setValue={setValue} />
           </Grid>
+
           <Grid className=" pt-6 mt-4">
             <DateOfBirth control={control} setValue={setValue} />
             <Gender control={control} setValue={setValue} />

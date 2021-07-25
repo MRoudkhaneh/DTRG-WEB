@@ -5,7 +5,7 @@ import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
 
 const PatientForm = lazy(() =>
-  import('containers/patients/form').then((module) => ({
+  import('containers/patients/core/form').then((module) => ({
     default: module.PatientForm,
   }))
 )

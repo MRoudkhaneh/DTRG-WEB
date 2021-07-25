@@ -1,8 +1,8 @@
 import { Suspense } from 'react'
 import { useUi } from 'hooks/use-ui'
-import { PatientList } from 'containers/patients/list'
 import { Skeleton } from 'components/skeleton'
-import { PatientModal } from 'containers/patients/modal'
+import { PatientList } from 'containers/patients/core/list'
+import { PatientModal } from 'containers/patients/core/modal'
 
 const Patients = () => {
   const {

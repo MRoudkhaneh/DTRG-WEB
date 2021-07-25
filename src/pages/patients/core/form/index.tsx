@@ -1,4 +1,4 @@
-import { PatientForm } from 'containers/patients/form'
+import { PatientForm } from 'containers/patients/core/form'
 
 const AddPatient = () => {
   return <PatientForm />

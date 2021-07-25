@@ -8,7 +8,8 @@ export const StatusDetails: FC<IPatientField> = memo(({ control }) => {
     return (
       <TextArea
         label="Study Status Details"
-        name="status_details"
+        name="Study_status_details"
+        placeholder="Enter Study Status Details"
         control={control}
         max={250}
         required

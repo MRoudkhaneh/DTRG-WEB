@@ -1,7 +1,8 @@
+import { Skeleton } from 'components/skeleton'
 import { PatientAssets } from 'containers/patients/assets/list'
 import { AssetModal } from 'containers/patients/assets/modal'
 import { useUi } from 'hooks/use-ui'
-import { Fragment } from 'react'
+import { Suspense } from 'react'
 
 const Assets = () => {
   const {
@@ -11,10 +12,10 @@ const Assets = () => {
   } = useUi()
 
   return (
-    <Fragment>
+    <Suspense fallback={<Skeleton />}>
       <PatientAssets />
       {open && <AssetModal />}
-    </Fragment>
+    </Suspense>
   )
 }
 
