@@ -32,7 +32,7 @@ export const PatientListToolbar: FC<{ onSearch?: any }> = memo(
             <Button
               icon
               className="peer"
-              onClick={() => push('/admin/patients/add')}
+              onClick={() => push('/admin/patients/form')}
             >
               <ICPersonPlus className="w-8 h-8 text-primary" />
             </Button>
