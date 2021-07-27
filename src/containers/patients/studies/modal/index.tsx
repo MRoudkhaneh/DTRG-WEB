@@ -26,7 +26,7 @@ export const PatientStudiesModal = memo(() => {
       return (
         <Modal
           size="sm"
-          className="px-10 "
+          className="px-10"
           onClose={() => toggleDialog({ open: false, type: null, data: null })}
           header={
             dialog.data && dialog.data.isEditing

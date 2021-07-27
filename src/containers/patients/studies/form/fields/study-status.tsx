@@ -10,7 +10,7 @@ export const StudyStatus: FC<IPatientField> = memo(({ control, setValue }) => {
       control={control}
       setValue={setValue}
       required
-      className="mb-6"
+      className="my-6"
     >
       <SelectOption value="Approached - ineligible">
         Approached - ineligible

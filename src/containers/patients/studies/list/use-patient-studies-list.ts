@@ -35,17 +35,13 @@ export const usePatientStudiesList = () => {
         {
           head: 'Cuurent Study',
           key: 'interaction_type',
-          width: 'w-1/4',
+          width: 'w-1/3',
         },
-        {
-          head: 'Previous Study',
-          key: 'interaction_datetime',
-          width: 'w-1/4',
-        },
+
         {
           head: 'Study Status',
           key: 'contact_details',
-          width: 'w-1/4',
+          width: 'w-1/3',
         },
         {
           head: 'Details',
