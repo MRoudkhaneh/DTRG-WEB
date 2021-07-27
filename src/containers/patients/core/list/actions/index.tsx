@@ -6,6 +6,7 @@ import { ICDelete } from 'icons/delete'
 import { ICEdit } from 'icons/edit'
 import { ICEyeFill } from 'icons/eye-fill'
 import { ICInteractions } from 'icons/interactions'
+import { ICStudies } from 'icons/studies'
 
 export const PatientListActions = ({ item, queryKey }) => {
   const { toggleDialog } = useUi()
@@ -13,6 +14,21 @@ export const PatientListActions = ({ item, queryKey }) => {
 
   return (
     <div className=" hidden group-hover:flex  items-center justify-end ">
+      <Tooltip content="Studies">
+        <Button
+          className="peer"
+          icon
+          onClick={(e) => {
+            e.stopPropagation()
+            push({
+              pathname: `patients/studies/${item.id}`,
+              state: { patient: `${item.first_name} ${item.surename}` },
+            })
+          }}
+        >
+          <ICStudies className="text-yellow-300 w-4 h-4 mr-3" />
+        </Button>
+      </Tooltip>
       <Tooltip content="Interactions">
         <Button
           className="peer"
@@ -25,7 +41,7 @@ export const PatientListActions = ({ item, queryKey }) => {
             })
           }}
         >
-          <ICInteractions className="text-green-300 w-5 h-5 mr-3" />
+          <ICInteractions className="text-green-300 w-4 h-4 mr-3" />
         </Button>
       </Tooltip>
       <Tooltip content="Assets">
@@ -40,7 +56,7 @@ export const PatientListActions = ({ item, queryKey }) => {
             })
           }}
         >
-          <ICEyeFill className="text-blue-300 w-5 h-5 mr-3 " />
+          <ICEyeFill className="text-blue-300 w-4 h-4 mr-3 " />
         </Button>
       </Tooltip>
       <Tooltip content="Edit">
@@ -57,7 +73,7 @@ export const PatientListActions = ({ item, queryKey }) => {
             })
           }}
         >
-          <ICEdit className="text-gray-500 w-5 h-5 mr-3 " />
+          <ICEdit className="text-gray-500 w-4 h-4 mr-3 " />
         </Button>
       </Tooltip>
       <Tooltip content="Delete">
@@ -75,7 +91,7 @@ export const PatientListActions = ({ item, queryKey }) => {
               })
           }}
         >
-          <ICDelete className="text-red-500 w-5 h-5  " />
+          <ICDelete className="text-red-500 w-4 h-4  " />
         </Button>
       </Tooltip>
     </div>
