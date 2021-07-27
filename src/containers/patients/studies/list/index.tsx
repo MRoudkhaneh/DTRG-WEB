@@ -9,11 +9,11 @@ export const PatientStudiesList = memo(() => {
   const { data, isLoading, columns, onPaginate, page } = usePatientStudiesList()
 
   return (
-    <div className="w-full flex flex-col items-end">
-      <PatientStudiesListToolbar />
-      <div className="w-full flex my-10 space-x-14">
+    <div className="w-full flex space-x-14">
+      <div className="w-full flex flex-col">
+        <PatientStudiesListToolbar />
         <Table
-          className="w-3/4 "
+          className="w-full my-10"
           data={data.results}
           total={data.count}
           page={page}
@@ -21,8 +21,8 @@ export const PatientStudiesList = memo(() => {
           onPaginate={onPaginate}
           loading={isLoading}
         />
-        <PreviousStudy />
       </div>
+      <PreviousStudy />
     </div>
   )
 })

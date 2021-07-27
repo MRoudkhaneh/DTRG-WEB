@@ -5,8 +5,8 @@ import { memo } from 'react'
 
 export const PreviousStudy = memo(() => {
   return (
-    <div className="w-1/4 h-full flex flex-col mt-10 space-y-3">
-      <Text size="title" className="text-light dark:text-dark">
+    <div className="w-1/4 h-full flex flex-col space-y-5">
+      <Text size="title" className="text-light dark:text-dark pb-6">
         Previous Studies
       </Text>
 
@@ -45,7 +45,7 @@ export const PreviousStudy = memo(() => {
       <Button
         type="submit"
         icon
-        className=" w-1/2 h-10 text-white shadow-blue bg-secondary dark:bg-primary self-end"
+        className=" w-1/2 h-10 my-10 text-white shadow-blue bg-secondary dark:bg-primary self-end"
       >
         Save Previous Studies
       </Button>
