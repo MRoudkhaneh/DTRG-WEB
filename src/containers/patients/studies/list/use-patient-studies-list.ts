@@ -4,9 +4,7 @@ import { useService } from 'hooks/use-service'
 import { useError } from 'hooks/use-error'
 import { Api } from 'utils/api'
 
-import { PatientInteractionListActions } from './actions'
-import { PatientInteractionListDate } from './date'
-import { PatientInteractionListDetails } from './details'
+import { PatientStudiesListActions } from './actions'
 
 export const usePatientStudiesList = () => {
   const routerParams = useParams() as any
@@ -18,11 +16,11 @@ export const usePatientStudiesList = () => {
   const { useGet } = useService()
   const { onError } = useError()
 
-  const queryKey = useMemo(() => ['PATIENT_INTERACTION_LIST', params], [params])
+  const queryKey = useMemo(() => ['PATIENT_STUDIES_LIST', params], [params])
 
   const { data, isLoading, isFetching } = useGet({
-    key: ['PATIENT_INTERACTION_LIST', params],
-    url: `${Api.interactions}`,
+    key: queryKey,
+    url: `${Api.studies}`,
     onFocus: false,
     keepPreviousData: true,
     onError,
@@ -51,7 +49,7 @@ export const usePatientStudiesList = () => {
         {
           head: '',
           width: 'w-[100px]',
-          render: (item) => PatientInteractionListActions({ item, queryKey }),
+          render: (item) => PatientStudiesListActions({ item, queryKey }),
         },
       ],
       [queryKey]

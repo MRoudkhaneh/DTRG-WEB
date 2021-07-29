@@ -25,17 +25,12 @@ export const usePatientInteractionForm = () => {
         ? {
             interaction_type: data.interaction_type,
             interaction_date: data.interaction_datetime.slice(0, 10),
-            // interaction_hours: data.interaction_datetime.slice(11, 13),
-            interaction_minutes: data.interaction_datetime.slice(11, 13),
             contact_admin: data.contact_admin,
             contact_details: data.contact_details,
           }
         : {
             interaction_type: '',
             interaction_date: new Date().toISOString().slice(0, 10),
-            // interaction_hours: new Date().toISOString().slice(11, 13),
-            //interaction_minutes: new Date().toISOString().slice(14, 16),
-            interaction_minutes: '',
             contact_admin: '',
             contact_details: '',
           },
@@ -57,10 +52,8 @@ export const usePatientInteractionForm = () => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },
-    onSettled: (data, error) => {
-      client.invalidateQueries(queryKey)
-      if (!error) success('You successfully add an interaction.')
-    },
+    onSuccess: () => success('You successfully add an interaction.'),
+    onSettled: () => client.invalidateQueries(queryKey),
   })
 
   const { mutate: edit, isLoading: editLoading } = usePut({
@@ -81,11 +74,8 @@ export const usePatientInteractionForm = () => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },
-    onSettled: (data, error) => {
-      if (error) onError(error)
-      success('You successfully edit this interaction.')
-      client.invalidateQueries(queryKey)
-    },
+    onSuccess: () => success('You successfully edit this interaction.'),
+    onSettled: () => client.invalidateQueries(queryKey),
   })
 
   return {

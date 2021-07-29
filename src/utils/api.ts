@@ -3,4 +3,5 @@ export const Api = {
   users: `users/`,
   assets: 'assets/',
   interactions: 'interactions/',
+  studies: 'studies/',
 }

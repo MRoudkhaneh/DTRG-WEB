@@ -21,7 +21,7 @@ export const usePatientInteractionList = () => {
   const queryKey = useMemo(() => ['PATIENT_INTERACTION_LIST', params], [params])
 
   const { data, isLoading, isFetching } = useGet({
-    key: ['PATIENT_INTERACTION_LIST', params],
+    key: queryKey,
     url: `${Api.interactions}`,
     onFocus: false,
     keepPreviousData: true,

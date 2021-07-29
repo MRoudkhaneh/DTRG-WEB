@@ -6,7 +6,7 @@ export const StudyStatus: FC<IPatientField> = memo(({ control, setValue }) => {
   return (
     <Select
       label="Study Status"
-      name="status"
+      name="study_status"
       control={control}
       setValue={setValue}
       required

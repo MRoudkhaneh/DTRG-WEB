@@ -20,7 +20,7 @@ export const usePatientStudiesModal = () => {
   return {
     deleteInteraction: () =>
       useDelete({
-        url: data ? `${Api.interactions}${data.id}/` : '',
+        url: data ? `${Api.studies}${data.id}/` : '',
         params: { patient_id: id },
         onMutate: async () => {
           await client.cancelQueries(queryKey)
@@ -30,10 +30,9 @@ export const usePatientStudiesModal = () => {
               item.id == data.id
                 ? {
                     ...item,
-                    interaction_type: '',
-                    interaction_datetime: '',
-                    contact_admin: '',
-                    contact_details: '',
+                    current_study: '',
+                    study_status: '',
+                    status_details: '',
                   }
                 : item
             )
@@ -47,7 +46,7 @@ export const usePatientStudiesModal = () => {
           client.setQueryData(queryKey, context.snapshot)
           onError(error)
         },
-        onSuccess: () => success('You successfully deleted this patient.'),
+        onSuccess: () => success('You successfully deleted this study.'),
         onSettled: () => client.invalidateQueries(queryKey),
       }),
   }

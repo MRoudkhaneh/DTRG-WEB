@@ -7,7 +7,7 @@ import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
 
-export const usePatientInteractionForm = () => {
+export const usePatientStudyForm = () => {
   const { id } = useParams() as any
   const { usePost, usePut, client } = useService()
   const { onError } = useError()
@@ -23,26 +23,19 @@ export const usePatientInteractionForm = () => {
     defaultValues:
       data && data.isEditing
         ? {
-            interaction_type: data.interaction_type,
-            interaction_date: data.interaction_datetime.slice(0, 10),
-            // interaction_hours: data.interaction_datetime.slice(11, 13),
-            interaction_minutes: data.interaction_datetime.slice(11, 13),
-            contact_admin: data.contact_admin,
-            contact_details: data.contact_details,
+            current_study: data.current_study,
+            study_status: data.study_status,
+            status_details: data.status_details,
           }
         : {
-            interaction_type: '',
-            interaction_date: new Date().toISOString().slice(0, 10),
-            // interaction_hours: new Date().toISOString().slice(11, 13),
-            //interaction_minutes: new Date().toISOString().slice(14, 16),
-            interaction_minutes: '',
-            contact_admin: '',
-            contact_details: '',
+            current_study: '',
+            study_status: '',
+            status_details: '',
           },
   })
 
   const { mutate: save, isLoading: saveLoading } = usePost({
-    url: Api.interactions,
+    url: Api.studies,
     onMutate: async ({ payload }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
@@ -57,14 +50,12 @@ export const usePatientInteractionForm = () => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },
-    onSettled: (data, error) => {
-      client.invalidateQueries(queryKey)
-      if (!error) success('You successfully add an interaction.')
-    },
+    onSuccess: () => success('You successfully add an study.'),
+    onSettled: () => client.invalidateQueries(queryKey),
   })
 
   const { mutate: edit, isLoading: editLoading } = usePut({
-    url: data ? `${Api.interactions}/${data.id}/` : '',
+    url: data ? `${Api.studies}/${data.id}/` : '',
     onMutate: async ({ payload }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
@@ -81,11 +72,8 @@ export const usePatientInteractionForm = () => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },
-    onSettled: (data, error) => {
-      if (error) onError(error)
-      success('You successfully edit this interaction.')
-      client.invalidateQueries(queryKey)
-    },
+    onSuccess: () => success('You successfully edit this study.'),
+    onSettled: () => client.invalidateQueries(queryKey),
   })
 
   return {
@@ -99,7 +87,6 @@ export const usePatientInteractionForm = () => {
       const payload = {
         ...state,
         patient: parseInt(id),
-        interaction_datetime: `${state.interaction_date}`,
       }
       data && data.isEditing ? edit({ payload }) : save({ payload })
     }),
