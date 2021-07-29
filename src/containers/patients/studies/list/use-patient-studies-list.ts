@@ -31,19 +31,19 @@ export const usePatientStudiesList = () => {
     columns: useMemo(
       () => [
         {
-          head: 'Cuurent Study',
-          key: 'interaction_type',
+          head: 'Current Study',
+          key: 'current_study',
           width: 'w-1/3',
         },
 
         {
           head: 'Study Status',
-          key: 'contact_details',
+          key: 'study_status',
           width: 'w-1/3',
         },
         {
-          head: 'Details',
-          key: 'contact_details',
+          head: 'Status Details',
+          key: 'status_details',
           width: 'w-1/2',
         },
         {
