@@ -25,7 +25,7 @@ export const usePatientAssetForm = () => {
   })
 
   const { mutate: edit, isLoading: editLoading } = usePut({
-    url: data ? `${Api.assets}/${data.id}/` : '',
+    url: data ? `${Api.assets}${data.id}/` : '',
     onMutate: async ({ payload }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)

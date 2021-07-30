@@ -66,7 +66,7 @@ export const usepreviousStudy = () => {
     control,
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     onSubmit: useCallback(
-      handleSubmit((state) => console.log(state)),
+      handleSubmit((payload) => save({ payload })),
       []
     ),
   }

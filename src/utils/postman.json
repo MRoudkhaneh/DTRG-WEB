@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "eebd72cc-c7cb-4cbd-99b3-3d250145eb0c",
+    "_postman_id": "adf55c0c-4432-4600-9023-91729c957486",
     "name": "DTRG CRM",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
@@ -50,7 +50,7 @@
                 }
               },
               "_postman_previewlanguage": "json",
-              "header": null,
+              "header": [],
               "cookie": [],
               "body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyNzA1OTkwOSwianRpIjoiOTgwOTgzNzVmMjlmNDRmZmIyZTA4YTg2MDg2MmZiYzYiLCJ1c2VyX2lkIjoyfQ.IO8dJfqcxfFAOLv07AQXfaiELTofIHmvVy5Ueg2bku0\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI2MTk1OTA5LCJqdGkiOiI0MDA1YTM4MWIwYmI0YTcwYmRiNjFkMjEwZWQ4YzhiMiIsInVzZXJfaWQiOjJ9.RoTqO0krm0Ots72tOLPkr-3MbXyv8kTtkoL2Tbu358s\"\n}"
             }
@@ -487,12 +487,12 @@
               "formdata": [
                 {
                   "key": "expiration_date",
-                  "value": "2021-07-03",
+                  "value": "2021-07-11",
                   "type": "text"
                 },
                 {
                   "key": "patient",
-                  "value": "1",
+                  "value": "1316",
                   "type": "text"
                 },
                 {
@@ -503,7 +503,12 @@
                 {
                   "key": "image",
                   "type": "file",
-                  "src": "/home/mehran/Pictures/Wallpapers/krimkerre_3_endy.jpg"
+                  "src": "/home/mehran/Desktop/depositphotos_30273183-stock-illustration-example-stamp.jpg"
+                },
+                {
+                  "key": "serial_number",
+                  "value": "458754",
+                  "type": "text"
                 }
               ],
               "options": {
@@ -539,13 +544,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{endpoint}}/assets?patient_id=1",
+              "raw": "{{endpoint}}/assets?patient_id=1316",
               "host": ["{{endpoint}}"],
               "path": ["assets"],
               "query": [
                 {
                   "key": "patient_id",
-                  "value": "1"
+                  "value": "1316"
                 }
               ]
             }
@@ -974,9 +979,249 @@
                 }
               ],
               "cookie": [],
-              "body": null
+              "body": ""
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "Studies",
+      "item": [
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8000/studies/",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["studies", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"current_study\": \"some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"previous_study\": {\n        \"All in One\": true,\n        \"Glysens PAVE\": false,\n        \"Glysens FREE\": false,\n        \"Additional Signals PWOD\": false,\n        \"Fiasp Original V1\": false,\n        \"Fiasp Extension V2\": true,\n        \"Clear\": false,\n        \"FAME 1 EYE\": false,\n        \"MEWS\": false,\n        \"Serodus\": true,\n        \"FLASH\": false,\n        \"Additional Signals\": false,\n        \"Optimapp\": false,\n        \"Biocap Feasibility\": false,\n        \"No previous study involvement\": false,\n        \"Other\": false\n    },\n    \"patient\": 1316\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8000/studies/",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["studies", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "Create",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"current_study\": \"some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"previous_study\": {\n        \"All in One\": true,\n        \"Glysens PAVE\": false,\n        \"Glysens FREE\": false,\n        \"Additional Signals PWOD\": false,\n        \"Fiasp Original V1\": false,\n        \"Fiasp Extension V2\": true,\n        \"Clear\": false,\n        \"FAME 1 EYE\": false,\n        \"MEWS\": false,\n        \"Serodus\": true,\n        \"FLASH\": false,\n        \"Additional Signals\": false,\n        \"Optimapp\": false,\n        \"Biocap Feasibility\": false,\n        \"No previous study involvement\": false,\n        \"Other\": false\n    },\n    \"patient\": 1316\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:8000/studies/",
+                  "host": ["localhost"],
+                  "port": "8000",
+                  "path": ["studies", ""]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Thu, 29 Jul 2021 19:54:39 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.9.5"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, Origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, POST, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "474"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"current_study\": \"some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"previous_study\": {\n        \"All in One\": true,\n        \"Glysens PAVE\": false,\n        \"Glysens FREE\": false,\n        \"Additional Signals PWOD\": false,\n        \"Fiasp Original V1\": false,\n        \"Fiasp Extension V2\": true,\n        \"Clear\": false,\n        \"FAME 1 EYE\": false,\n        \"MEWS\": false,\n        \"Serodus\": true,\n        \"FLASH\": false,\n        \"Additional Signals\": false,\n        \"Optimapp\": false,\n        \"Biocap Feasibility\": false,\n        \"No previous study involvement\": false,\n        \"Other\": false\n    },\n    \"patient\": 1316\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8000/studies/1?patient_id=1316",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["studies", "1"],
+              "query": [
+                {
+                  "key": "patient_id",
+                  "value": "1316"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:8000/studies/1?patient_id=1316",
+                  "host": ["localhost"],
+                  "port": "8000",
+                  "path": ["studies", "1"],
+                  "query": [
+                    {
+                      "key": "patient_id",
+                      "value": "1316"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Thu, 29 Jul 2021 20:06:05 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.9.5"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, Origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "474"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"current_study\": \"some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"previous_study\": {\n        \"MEWS\": false,\n        \"Clear\": false,\n        \"FLASH\": false,\n        \"Other\": false,\n        \"Serodus\": true,\n        \"Optimapp\": false,\n        \"All in One\": true,\n        \"FAME 1 EYE\": false,\n        \"Glysens FREE\": false,\n        \"Glysens PAVE\": false,\n        \"Fiasp Original V1\": false,\n        \"Additional Signals\": false,\n        \"Biocap Feasibility\": false,\n        \"Fiasp Extension V2\": true,\n        \"Additional Signals PWOD\": false,\n        \"No previous study involvement\": false\n    },\n    \"patient\": 1316\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"current_study\": \"new some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"previous_study\": {\n        \"All in One\": true,\n        \"Glysens PAVE\": false,\n        \"Glysens FREE\": false,\n        \"Additional Signals PWOD\": false,\n        \"Fiasp Original V1\": false,\n        \"Fiasp Extension V2\": true,\n        \"Clear\": false,\n        \"FAME 1 EYE\": false,\n        \"MEWS\": false,\n        \"Serodus\": true,\n        \"FLASH\": false,\n        \"Additional Signals\": false,\n        \"Optimapp\": false,\n        \"Biocap Feasibility\": false,\n        \"No previous study involvement\": false,\n        \"Other\": false\n    },\n    \"patient\": 1316\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8000/studies/1/?patient_id=1316",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["studies", "1", ""],
+              "query": [
+                {
+                  "key": "patient_id",
+                  "value": "1316"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8000/studies/1/?patient_id=1316",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["studies", "1", ""],
+              "query": [
+                {
+                  "key": "patient_id",
+                  "value": "1316"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     }
