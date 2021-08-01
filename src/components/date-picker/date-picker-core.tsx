@@ -18,9 +18,9 @@ export const DatePickerCore: FC<IDatePicker> = ({
 }) => {
   const ref = useRef(null)
   const id = useMemo(() => uuid(), [])
-  useEffect(() => {
-    error && ref.current.scrollIntoView()
-  }, [error])
+  // useEffect(() => {
+  //   error && ref.current.scrollIntoView()
+  // }, [error])
 
   return (
     <div className={`w-full col-start relative ${className}`} ref={ref}>
@@ -29,7 +29,7 @@ export const DatePickerCore: FC<IDatePicker> = ({
           {label}
         </label>
       )}
-      <Error error={error} className=" absolute left-0 top-2 mt-20" />
+      <Error error={error} className=" absolute left-0 top-24 -mt-2" />
       <DatePickerReact
         id={id}
         closeOnScroll={true}
