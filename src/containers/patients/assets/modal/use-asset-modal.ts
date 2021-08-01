@@ -16,7 +16,7 @@ export const useAssetModal = () => {
   return {
     deletePatient: () =>
       useDelete({
-        url: dialog.data ? `${Api.assets}${dialog.data.id}/` : '',
+        url: dialog.data ? `${Api.assets}${dialog.data.id}` : '',
         onMutate: async () => {
           await client.cancelQueries(dialog.queryKey)
           const snapshot = client.getQueryData(dialog.queryKey)
