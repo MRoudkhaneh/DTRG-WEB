@@ -18,7 +18,7 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         />
       )}
 
-      <Input
+      {/* <Input
         size="small"
         disabled
         label="Current Study"
@@ -29,7 +29,7 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
         disabled
         label="Previous Study"
         value={item.previous_study}
-      />
+      /> */}
       <Input size="small" disabled label="Gender" value={item.gender} />
       <Input
         size="small"

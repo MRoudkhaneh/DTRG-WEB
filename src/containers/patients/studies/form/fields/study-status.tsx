@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 
 export const StudyStatus: FC<IPatientField> = memo(({ control, setValue }) => {
   return (
@@ -12,25 +11,13 @@ export const StudyStatus: FC<IPatientField> = memo(({ control, setValue }) => {
       required
       className="my-6"
     >
-      <SelectOption value="Approached - ineligible">
-        Approached - ineligible
-      </SelectOption>
-      <SelectOption value="Approached - declined">
-        Approached - declined
-      </SelectOption>
-      <SelectOption value="Approached - recruited">
-        Approached - recruited
-      </SelectOption>
-      <SelectOption value="Screening - ineligible">
-        Screening - ineligible
-      </SelectOption>
-      <SelectOption value="Screening - drop out">
-        Screening - drop out
-      </SelectOption>
-      <SelectOption value="Consented and Active">
-        Consented and Active
-      </SelectOption>
-      <SelectOption value="Drop out">Drop out</SelectOption>
+      <option value="Approached - ineligible">Approached - ineligible</option>
+      <option value="Approached - declined">Approached - declined</option>
+      <option value="Approached - recruited">Approached - recruited</option>
+      <option value="Screening - ineligible">Screening - ineligible</option>
+      <option value="Screening - drop out">Screening - drop out</option>
+      <option value="Consented and Active">Consented and Active</option>
+      <option value="Drop out">Drop out</option>
     </Select>
   )
 })

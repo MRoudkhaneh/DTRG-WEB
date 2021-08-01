@@ -4,7 +4,6 @@ import { Button } from 'components/button'
 import { Form } from 'components/form'
 import { Input } from 'components/input'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 import { TextArea } from 'components/text-area'
 
 import { usePatientInteractionForm } from './use-patient-interaction-form'
@@ -22,9 +21,9 @@ export const PatientInteractionsForm = memo(() => {
         setValue={setValue}
         required
       >
-        <SelectOption value="email">Email</SelectOption>
-        <SelectOption value="phone call">Phone call</SelectOption>
-        <SelectOption value="in person">In person</SelectOption>
+        <option value="email">Email</option>
+        <option value="phone call">Phone call</option>
+        <option value="in person">In person</option>
       </Select>
       <DatePicker
         control={control}

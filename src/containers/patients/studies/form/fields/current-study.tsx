@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 
 export const CurrentStudy: FC<IPatientField> = memo(({ control, setValue }) => {
   return (
@@ -12,26 +11,24 @@ export const CurrentStudy: FC<IPatientField> = memo(({ control, setValue }) => {
       setValue={setValue}
       className="mt-6"
     >
-      <SelectOption value="Biocapillary Pilot">Biocapillary Pilot</SelectOption>
-      <SelectOption value="All in One">All in One</SelectOption>
-      <SelectOption value="Glysens PAVE">Glysens PAVE</SelectOption>
-      <SelectOption value="Glysens FREE">Glysens FREE</SelectOption>
-      <SelectOption value="Additional Signals PWOD">
-        Additional Signals PWOD
-      </SelectOption>
-      <SelectOption value="Fiasp Original V1">Fiasp Original V1</SelectOption>
-      <SelectOption value="Fiasp Extension V2">Fiasp Extension V2</SelectOption>
-      <SelectOption value="Clear">Clear</SelectOption>
-      <SelectOption value="FAME 1 EYE">FAME 1 EYE</SelectOption>
-      <SelectOption value="MEWS">MEWS</SelectOption>
-      <SelectOption value="Serodus">Serodus</SelectOption>
-      <SelectOption value="FLASH">FLASH</SelectOption>
-      <SelectOption value="Insulet">Insulet</SelectOption>
-      <SelectOption value="Zeus">Zeus</SelectOption>
-      <SelectOption value="Not currently enrolled in a study">
+      <option value="Biocapillary Pilot">Biocapillary Pilot</option>
+      <option value="All in One">All in One</option>
+      <option value="Glysens PAVE">Glysens PAVE</option>
+      <option value="Glysens FREE">Glysens FREE</option>
+      <option value="Additional Signals PWOD">Additional Signals PWOD</option>
+      <option value="Fiasp Original V1">Fiasp Original V1</option>
+      <option value="Fiasp Extension V2">Fiasp Extension V2</option>
+      <option value="Clear">Clear</option>
+      <option value="FAME 1 EYE">FAME 1 EYE</option>
+      <option value="MEWS">MEWS</option>
+      <option value="Serodus">Serodus</option>
+      <option value="FLASH">FLASH</option>
+      <option value="Insulet">Insulet</option>
+      <option value="Zeus">Zeus</option>
+      <option value="Not currently enrolled in a study">
         Not currently enrolled in a study
-      </SelectOption>
-      <SelectOption value="Other">Other</SelectOption>
+      </option>
+      <option value="Other">Other</option>
     </Select>
   )
 })

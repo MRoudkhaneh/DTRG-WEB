@@ -4,24 +4,9 @@ import { SelectBoxActions } from './select-box-actions'
 import { SelectBoxValue } from './select-box-value'
 
 export const SelectBox: FC<ISelect> = memo(
-  ({
-    toggle,
-    value,
-    error,
-    multiple,
-    setValue,
-    name,
-    open,
-    label,
-    fieldRef,
-  }) => {
-    const ref = useRef(null)
-    useEffect(() => {
-      if (error) ref.current.scrollIntoView()
-    }, [error])
+  ({ toggle, value, error, multiple, setValue, name, open, label }) => {
     return (
       <div
-        ref={ref}
         onClick={() => toggle()}
         defaultValue={value}
         className={classNames(

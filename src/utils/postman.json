@@ -556,6 +556,41 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"expiration_date\": \"2021-07-11\",\n    \"patient\": 1316,\n    \"lot_number\": 11,\n    \"serial_number\": 4587549\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/assets/35",
+              "host": ["{{endpoint}}"],
+              "path": ["assets", "35"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{endpoint}}/assets/35",
+              "host": ["{{endpoint}}"],
+              "path": ["assets", "35"]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -1009,7 +1044,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"current_study\": \"some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"previous_study\": {\n        \"All in One\": true,\n        \"Glysens PAVE\": false,\n        \"Glysens FREE\": false,\n        \"Additional Signals PWOD\": false,\n        \"Fiasp Original V1\": false,\n        \"Fiasp Extension V2\": true,\n        \"Clear\": false,\n        \"FAME 1 EYE\": false,\n        \"MEWS\": false,\n        \"Serodus\": true,\n        \"FLASH\": false,\n        \"Additional Signals\": false,\n        \"Optimapp\": false,\n        \"Biocap Feasibility\": false,\n        \"No previous study involvement\": false,\n        \"Other\": false\n    },\n    \"patient\": 1316\n}",
+              "raw": "{\n    \"current_study\": \"some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"patient\": 1316\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1097,10 +1132,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "localhost:8000/studies/1?patient_id=1316",
+              "raw": "localhost:8000/studies/4?patient_id=1316",
               "host": ["localhost"],
               "port": "8000",
-              "path": ["studies", "1"],
+              "path": ["studies", "4"],
               "query": [
                 {
                   "key": "patient_id",
@@ -1181,7 +1216,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"current_study\": \"new some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"previous_study\": {\n        \"All in One\": true,\n        \"Glysens PAVE\": false,\n        \"Glysens FREE\": false,\n        \"Additional Signals PWOD\": false,\n        \"Fiasp Original V1\": false,\n        \"Fiasp Extension V2\": true,\n        \"Clear\": false,\n        \"FAME 1 EYE\": false,\n        \"MEWS\": false,\n        \"Serodus\": true,\n        \"FLASH\": false,\n        \"Additional Signals\": false,\n        \"Optimapp\": false,\n        \"Biocap Feasibility\": false,\n        \"No previous study involvement\": false,\n        \"Other\": false\n    },\n    \"patient\": 1316\n}",
+              "raw": "{\n    \"current_study\": \"new some study\",\n    \"study_status\": \"some status\",\n    \"status_details\": \"some details\",\n    \"patient\": 1316\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1189,16 +1224,10 @@
               }
             },
             "url": {
-              "raw": "localhost:8000/studies/1/?patient_id=1316",
+              "raw": "localhost:8000/studies/1/",
               "host": ["localhost"],
               "port": "8000",
-              "path": ["studies", "1", ""],
-              "query": [
-                {
-                  "key": "patient_id",
-                  "value": "1316"
-                }
-              ]
+              "path": ["studies", "1", ""]
             }
           },
           "response": []
@@ -1213,6 +1242,65 @@
               "host": ["localhost"],
               "port": "8000",
               "path": ["studies", "1", ""],
+              "query": [
+                {
+                  "key": "patient_id",
+                  "value": "1316"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Previous Studies",
+      "item": [
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n        \"all_in_one\": false,\n        \"glysens_pave\": false,\n        \"glysens_free\": false,\n        \"Additional_Signals_PWOD\": false,\n        \"fiasp_original_v1\": false,\n        \"fiasp_extension_v2\": false,\n        \"clear\": false,\n        \"fame_1_eye\": false,\n        \"mews\": false,\n        \"serodus\": false,\n        \"flash\": false,\n        \"additional_signals\": false,\n        \"optimapp\": false,\n        \"biocap_feasibility\": false,\n        \"no_previous_study_involvement\": false,\n        \"other\": false,\n        \"patient\": 1316\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/prev-studies/",
+              "host": ["{{endpoint}}"],
+              "path": ["prev-studies", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{endpoint}}/prev-studies/",
+              "host": ["{{endpoint}}"],
+              "path": ["prev-studies", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{endpoint}}/prev-studies/1?patient_id=1316",
+              "host": ["{{endpoint}}"],
+              "path": ["prev-studies", "1"],
               "query": [
                 {
                   "key": "patient_id",

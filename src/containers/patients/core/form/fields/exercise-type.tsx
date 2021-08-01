@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 
 export const ExerciseType: FC<IPatientField> = memo(({ control, setValue }) => {
   return (
@@ -10,9 +9,9 @@ export const ExerciseType: FC<IPatientField> = memo(({ control, setValue }) => {
       control={control}
       setValue={setValue}
     >
-      <SelectOption value="Casual">Casual</SelectOption>
-      <SelectOption value="Structured">Structured</SelectOption>
-      <SelectOption value="None">None</SelectOption>
+      <option value="Casual">Casual</option>
+      <option value="Structured">Structured</option>
+      <option value="None">None</option>
     </Select>
   )
 })

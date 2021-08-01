@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 
 export const FrequencyOfDailyFingerstick: FC<IPatientField> = memo(
   ({ control, setValue }) => {
@@ -11,11 +10,11 @@ export const FrequencyOfDailyFingerstick: FC<IPatientField> = memo(
         control={control}
         setValue={setValue}
       >
-        <SelectOption value="0">0</SelectOption>
-        <SelectOption value="0-2">0-2</SelectOption>
-        <SelectOption value=" 2-4">2-4</SelectOption>
-        <SelectOption value="4-8">4-8</SelectOption>
-        <SelectOption value=">8">{'>8'}</SelectOption>
+        <option value="0">0</option>
+        <option value="0-2">0-2</option>
+        <option value=" 2-4">2-4</option>
+        <option value="4-8">4-8</option>
+        <option value=">8">{'>8'}</option>
       </Select>
     )
   }

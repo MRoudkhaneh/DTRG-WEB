@@ -77,12 +77,12 @@ export const PatientForm = memo((props?: IPatientForm) => {
             <LastName control={control} />
           </Grid>
 
-          <Grid className=" pt-6 mt-4">
+          {/* <Grid className=" pt-6 mt-4">
             <CurrentStudy control={control} setValue={setValue} />
             <StudyStatus control={control} setValue={setValue} />
             <StatusDetails control={control} />
             <PreviousStudy1 control={control} setValue={setValue} />
-          </Grid>
+          </Grid> */}
 
           <Grid className=" pt-6 mt-4">
             <DateOfBirth control={control} setValue={setValue} />

@@ -9,4 +9,7 @@ interface IDatePicker {
   year?: boolean
   defaultValue?: string
   time?: boolean
+  onChange?: any
+  error?: any
+  value?: any
 }

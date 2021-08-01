@@ -55,7 +55,7 @@ export const usePatientStudyForm = () => {
   })
 
   const { mutate: edit, isLoading: editLoading } = usePut({
-    url: data ? `${Api.studies}${data.id}/?patient_id=${id}` : '',
+    url: data ? `${Api.studies}${data.id}/` : '',
     onMutate: async ({ payload }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)

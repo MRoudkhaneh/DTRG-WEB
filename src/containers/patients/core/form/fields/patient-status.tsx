@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 
 export const PatientStatus: FC<IPatientField> = memo(
   ({ control, setValue }) => {
@@ -12,10 +11,8 @@ export const PatientStatus: FC<IPatientField> = memo(
         setValue={setValue}
         required
       >
-        <SelectOption value="potential candidate">
-          potential candidate
-        </SelectOption>
-        <SelectOption value="enrolled">enrolled</SelectOption>
+        <option value="potential candidate">Potential candidate</option>
+        <option value="enrolled">Enrolled</option>
       </Select>
     )
   }

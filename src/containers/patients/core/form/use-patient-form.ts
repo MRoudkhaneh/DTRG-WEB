@@ -110,11 +110,8 @@ export const usePatientForm = (props: IPatientForm) => {
       client.setQueryData(dialog.queryKey, context.snapshot)
       onError(error)
     },
-    onSettled: (data, error) => {
-      if (error) onError(error)
-      success('You successfully edited this patient.')
-      client.invalidateQueries(dialog.queryKey)
-    },
+    onSuccess: () => success('You successfully edited this patient.'),
+    onSettled: () => client.invalidateQueries(dialog.queryKey),
   })
 
   return {

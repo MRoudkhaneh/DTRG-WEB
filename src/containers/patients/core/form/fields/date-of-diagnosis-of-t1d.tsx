@@ -1,7 +1,6 @@
 import { FC, memo } from 'react'
 import { useWatch } from 'react-hook-form'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 import { years } from 'utils/constants'
 
 export const DateOfDiagnosisOfT1D: FC<IPatientField> = memo(
@@ -16,9 +15,9 @@ export const DateOfDiagnosisOfT1D: FC<IPatientField> = memo(
           setValue={setValue}
         >
           {years.map((year, index) => (
-            <SelectOption key={index} value={year}>
+            <option key={index} value={year}>
               {year}
-            </SelectOption>
+            </option>
           ))}
         </Select>
       )

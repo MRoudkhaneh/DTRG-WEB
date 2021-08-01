@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 
 export const InfusionLineType: FC<IPatientField> = memo(
   ({ control, setValue }) => {
@@ -11,9 +10,9 @@ export const InfusionLineType: FC<IPatientField> = memo(
         control={control}
         setValue={setValue}
       >
-        <SelectOption value=" 90 Degree">90 Degree</SelectOption>
-        <SelectOption value="45 Degree">45 Degree</SelectOption>
-        <SelectOption value="Metal">Metal</SelectOption>
+        <option value=" 90 Degree">90 Degree</option>
+        <option value="45 Degree">45 Degree</option>
+        <option value="Metal">Metal</option>
       </Select>
     )
   }

@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
 
 export const PreferedContactMethod: FC<IPatientField> = memo(
   ({ control, setValue }) => {
@@ -11,9 +10,9 @@ export const PreferedContactMethod: FC<IPatientField> = memo(
         control={control}
         setValue={setValue}
       >
-        <SelectOption value="Email">Email</SelectOption>
-        <SelectOption value="Phone">Phone</SelectOption>
-        <SelectOption value="Either">Either</SelectOption>
+        <option value="Email">Email</option>
+        <option value="Phone">Phone</option>
+        <option value="Either">Either</option>
       </Select>
     )
   }
