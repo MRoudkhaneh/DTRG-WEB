@@ -32,7 +32,7 @@ export const PatientAssetActions = ({ item, queryKey }) => {
           className="peer"
           onClick={(e) => {
             e.stopPropagation()
-            if (e.ctrlKey)
+            if (e.shiftKey)
               toggleDialog({
                 open: true,
                 type: 'asset-delete',
