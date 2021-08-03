@@ -27,7 +27,7 @@ const defaultValues = {
 
 export const usepreviousStudy = () => {
   const { id } = useParams() as any
-  const { useGet, usePost, client } = useService()
+  const { useGet, usePost } = useService()
   const { onError } = useError()
   const { success } = useToast()
 

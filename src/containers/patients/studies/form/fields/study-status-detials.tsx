@@ -4,7 +4,12 @@ import { useWatch } from 'react-hook-form'
 
 export const StatusDetails: FC<IPatientField> = memo(({ control }) => {
   const state = useWatch({ control, name: 'study_status' })
-  if (state === 'Approached - declined' || state === 'Approached - ineligible')
+  if (
+    state === 'Approached - declined' ||
+    state === 'Approached - ineligible' ||
+    state === 'Screening - drop out' ||
+    state === 'Drop out'
+  )
     return (
       <TextArea
         label="Status Details"
