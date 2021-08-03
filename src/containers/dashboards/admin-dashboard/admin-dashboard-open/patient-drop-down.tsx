@@ -32,8 +32,8 @@ export const PatientDropDown: FC<{
         List
       </DropDownOption>
       <DropDownOption
-        onClick={() => push('/admin/patients/add')}
-        active={pathname === '/admin/patients/add'}
+        onClick={() => push('/admin/patients/form')}
+        active={pathname === '/admin/patients/form'}
       >
         Add
       </DropDownOption>
