@@ -31,13 +31,12 @@ export const PatientInteractionListActions = ({ item, queryKey }) => {
           className="peer "
           onClick={(e) => {
             e.stopPropagation()
-            if (e.shiftKey)
-              toggleDialog({
-                open: true,
-                type: 'patient-interaction-delete',
-                data: item,
-                queryKey,
-              })
+            toggleDialog({
+              open: true,
+              type: 'patient-interaction-delete',
+              data: item,
+              queryKey,
+            })
           }}
         >
           <ICDelete className="text-red-500 w-5 h-5" />
