@@ -6,6 +6,25 @@ import { useToast } from 'hooks/use-toast'
 import { useParams } from 'react-router-dom'
 import { Api } from 'utils/api'
 
+const defaultValues = {
+  flash: false,
+  optimapp: false,
+  other: false,
+  serodus: false,
+  all_in_one: false,
+  glysens_pave: false,
+  glysens_free: false,
+  Additional_Signals_PWOD: false,
+  fiasp_original_v1: false,
+  fiasp_extension_v2: false,
+  clear: false,
+  fame_1_eye: false,
+  mews: false,
+  additional_signals: false,
+  biocap_feasibility: false,
+  no_previous_study_involvement: false,
+}
+
 export const usepreviousStudy = () => {
   const { id } = useParams() as any
   const { useGet, usePost, client } = useService()
@@ -17,37 +36,17 @@ export const usepreviousStudy = () => {
     [id]
   )
 
-  const { data, isLoading, isFetching } = useGet({
+  const { control, handleSubmit, reset } = useForm({
+    defaultValues,
+  })
+
+  const { isLoading, isFetching } = useGet({
     key: queryKey,
     url: `${Api.prevStudies}`,
     onFocus: false,
     keepPreviousData: true,
+    onSuccess: (data) => reset(data.data),
     onError,
-  })
-
-  const { control, handleSubmit, reset } = useForm({
-    defaultValues:
-      data && data.data && data.data.results
-        ? {
-            ...data.data.results[0],
-            // flash: true,
-            // optimapp: true,
-            // other: true,
-            // serodus: true,
-            // all_in_one: true,
-            // glysens_pave: true,
-            // glysens_free: true,
-            // Additional_Signals_PWOD: true,
-            // fiasp_original_v1: true,
-            // fiasp_extension_v2: true,
-            // clear: true,
-            // fame_1_eye: true,
-            // mews: true,
-            // additional_signals: true,
-            // biocap_feasibility: true,
-            // no_previous_study_involvement: true,
-          }
-        : {},
   })
 
   const { mutate: save, isLoading: saveLoading } = usePost({
@@ -57,7 +56,7 @@ export const usepreviousStudy = () => {
       success('You successfully save previous studies.')
       reset({ ...result.data })
     },
-    onSettled: () => client.invalidateQueries(queryKey),
+    // onSettled: () => client.invalidateQueries(queryKey),
   })
 
   return {
