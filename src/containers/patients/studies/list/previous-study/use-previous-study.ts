@@ -64,7 +64,7 @@ export const usepreviousStudy = () => {
     saveLoading,
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     onSubmit: handleSubmit((state) => {
-      const payload = { patient: id, ...state }
+      const payload = { ...state, patient: id }
       save({ payload })
     }),
   }
