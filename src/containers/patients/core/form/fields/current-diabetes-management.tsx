@@ -18,6 +18,7 @@ export const CurrentDiabetesManagement: FC<IPatientField> = memo(
         <option value="Tslim BasallQ">Tslim BasallQ</option>
         <option value="Ypsomed">Ypsomed</option>
         <option value="Looping">Looping</option>
+        <option value="Oral Agents">Oral Agents</option>
         <option value="Multiple Daily Injections">
           Multiple Daily Injections
         </option>

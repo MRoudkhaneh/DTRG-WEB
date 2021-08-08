@@ -8,7 +8,7 @@ export const StatusDetails: FC<IPatientField> = memo(({ control }) => {
     state === 'Approached - declined' ||
     state === 'Approached - ineligible' ||
     state === 'Screening - drop out' ||
-    state === 'Drop out'
+    state === 'Withdrawn'
   )
     return (
       <TextArea
