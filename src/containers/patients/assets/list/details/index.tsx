@@ -5,7 +5,10 @@ export const PatientAssetsDetails: FC<{ item?: any }> = memo(({ item }) => {
     <div className="w-full h-[500px]">
       <img
         className="w-[440px] h-[490px] rounded mx-auto "
-        src={item.image.url || 'https://picsum.photos/200/300'}
+        src={
+          (item && item.image && item.image.url) ||
+          'https://picsum.photos/200/300'
+        }
       />
     </div>
   )
