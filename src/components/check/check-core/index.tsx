@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
 export const CheckCore: FC<ICheck> = memo(
-  ({ id, disabled, checked, onClick, className, onChange }) => {
+  ({ id, disabled, checked, onClick, className, onChange }): JSX.Element => {
     return (
       <input
         id={id}

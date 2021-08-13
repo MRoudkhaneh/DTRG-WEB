@@ -5,7 +5,15 @@ import { CheckCore } from './check-core'
 import { CheckLabel } from './check-label'
 
 export const Check: FC<ICheck> = memo(
-  ({ onClick, className, disabled, checked, label, control, name }) => {
+  ({
+    onClick,
+    className,
+    disabled,
+    checked,
+    label,
+    control,
+    name,
+  }): JSX.Element => {
     const id = useMemo(() => uuid(), [])
 
     if (control)

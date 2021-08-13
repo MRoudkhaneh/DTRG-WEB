@@ -13,7 +13,7 @@ export const Button: FC<IButton> = memo(
     loading,
     onMouseEnter,
     onMouseLeave,
-  }) => {
+  }): JSX.Element => {
     return (
       <button
         type={type}
