@@ -57,7 +57,7 @@ export const Input: FC<IInput> = memo((props) => {
             />
 
             <InputIcon {...props} />
-            <Error error={fieldError} className="absolute top-[75px] left-0" />
+            <Error error={fieldError} className="absolute top-[78px] left-0" />
           </div>
         )}
       />
