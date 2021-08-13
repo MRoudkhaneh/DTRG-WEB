@@ -8,14 +8,15 @@ const wrapper = ({ children }) => (
   </QueryClientProvider>
 )
 
+const { result: service } = renderHook(() => useService(), {
+  wrapper,
+})
+
 describe('Use service', () => {
-  it('Should return proper data', async () => {
-    const { result } = renderHook(() => useService(), {
-      wrapper,
-    })
-    const { result: getResult, waitFor } = renderHook(
+  it('Should return proper data on get', async () => {
+    const { result, waitFor } = renderHook(
       () =>
-        result.current.useGet({
+        service.current.useGet({
           key: ['test'],
           url: 'https://jsonplaceholder.typicode.com/posts',
         }),
@@ -23,7 +24,7 @@ describe('Use service', () => {
         wrapper,
       }
     )
-    await waitFor(() => getResult.current.isSuccess)
-    expect(getResult.current.data.data.length).toBe(100)
+    await waitFor(() => result.current.isSuccess)
+    expect(result.current.data.data.length).toBe(100)
   })
 })
