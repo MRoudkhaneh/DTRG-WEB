@@ -1,6 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import { renderHook, act } from '@testing-library/react-hooks'
 import { UiProvider } from 'provider/ui-provider'
 import { useUi } from '.'
+
+const initialState = {
+  drawer: { open: false },
+  dialog: { open: false, data: {}, type: null },
+  toast: { open: false, type: null, title: null, description: null },
+  theme: 'dark',
+}
 
 const MockProvider = ({ children }): JSX.Element => (
   <UiProvider>{children}</UiProvider>
@@ -34,6 +42,16 @@ const MockComponent = (): JSX.Element => (
 )
 
 describe('Use ui hook', () => {
+  it('Should render hook properly', () => {
+    const { result } = renderHook(() => useUi(), { wrapper: MockProvider })
+    expect(result.current.uiState).toStrictEqual(initialState)
+    act(() => result.current.toggleDialog({ open: true }))
+    expect(result.current.uiState.dialog.open).toBeTruthy()
+    act(() => result.current.toggleToast({ open: true }))
+    expect(result.current.uiState.toast.open).toBeTruthy()
+    act(() => result.current.toggleDrawer())
+    expect(result.current.uiState.drawer.open).toBeTruthy()
+  })
   it('Should show theme properly', () => {
     render(<MockComponent />)
     const theme = screen.getByTestId('theme')
