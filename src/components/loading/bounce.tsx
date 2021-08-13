@@ -11,7 +11,7 @@ export const LoaidngBounce: FC<{ size?: 'small' | 'large' }> = ({
     [size]
   )
   return (
-    <div className="flex">
+    <div className="flex" data-testid="loading-bounce">
       <div className={`${circleCommonClasses} mr-1 animate-bounce`}></div>
       <div className={`${circleCommonClasses} mr-1 animate-bounce200`}></div>
       <div className={`${circleCommonClasses} animate-bounce400`}></div>

@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
-import { classNames } from 'utils/classes'
 import { LoaidngBounce } from 'components/loading/bounce'
+import { buttonClassName } from './helper'
 
 export const Button: FC<IButton> = memo(
   ({
@@ -9,8 +9,6 @@ export const Button: FC<IButton> = memo(
     onClick,
     disabled,
     type,
-    role,
-    id,
     icon,
     loading,
     onMouseEnter,
@@ -18,21 +16,12 @@ export const Button: FC<IButton> = memo(
   }) => {
     return (
       <button
-        disabled={disabled || loading}
+        type={type}
         onClick={onClick}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        type={type}
-        id={id}
-        role={role}
-        className={classNames(
-          ' flex items-center justify-center transition rounded focus:outline-none  disabled:opacity-50 ',
-          !icon && 'shadow',
-          loading
-            ? 'cursor-wait '
-            : !disabled && 'transform hover:-translate-y-1 hover:scale-105',
-          className
-        )}
+        disabled={disabled || loading}
+        className={buttonClassName(icon, loading, disabled, className)}
       >
         {loading ? <LoaidngBounce /> : children}
       </button>
