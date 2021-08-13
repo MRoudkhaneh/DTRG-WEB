@@ -1,7 +1,8 @@
 import { FC, memo, useMemo } from 'react'
 import { Controller } from 'react-hook-form'
-import { classNames } from 'utils/classes'
 import { v4 as uuid } from 'uuid'
+import { CheckCore } from './check-core'
+import { CheckLabel } from './check-label'
 
 export const Check: FC<ICheck> = memo(
   ({ onClick, className, disabled, checked, label, control, name }) => {
@@ -14,44 +15,31 @@ export const Check: FC<ICheck> = memo(
           control={control}
           render={({ field: { onChange: filedChange, value } }) => (
             <div className="flex items-center space-x-4">
-              <input
+              <CheckCore
                 id={id}
-                slot="wrapper"
-                type="checkbox"
                 disabled={disabled}
                 checked={value}
                 onChange={(e) => filedChange(e.target.checked)}
-                className={classNames(
-                  'w-5 h-5 checked:bg-indigo-600',
-                  className
-                )}
+                onClick={onClick}
+                className={className}
               />
-              {label && (
-                <label className="text-light dark:text-dark" htmlFor={id}>
-                  {label}
-                </label>
-              )}
+
+              <CheckLabel label={label} id={id} />
             </div>
           )}
         />
       )
     return (
       <div className="flex items-center space-x-4">
-        <input
+        <CheckCore
           id={id}
-          slot="wrapper"
-          type="checkbox"
           disabled={disabled}
           checked={checked}
           onChange={() => {}}
-          className={classNames('w-5 h-5 checked:bg-indigo-600', className)}
-          onClick={(e) => !disabled && onClick && onClick(e)}
+          onClick={onClick}
+          className={className}
         />
-        {label && (
-          <label className="text-light dark:text-dark" htmlFor={id}>
-            {label}
-          </label>
-        )}
+        <CheckLabel label={label} id={id} />
       </div>
     )
   }

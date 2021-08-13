@@ -6,4 +6,6 @@ interface ICheck {
   label?: string
   control?: any
   name?: any
+  id?: any
+  onChange?: any
 }
