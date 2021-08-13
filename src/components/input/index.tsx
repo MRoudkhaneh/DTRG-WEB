@@ -45,10 +45,7 @@ export const Input: FC<IInput> = memo((props) => {
           field: { onChange: fieldChange, value: fieldValue, ref: fieldRef },
           fieldState: { error: fieldError },
         }) => (
-          <div
-            className={`w-full col-start relative ${className}`}
-            slot="wrapper"
-          >
+          <div className={`w-full col-start relative ${className}`}>
             <InputLabel {...props} />
             <InputCore
               validate={validate}
@@ -67,7 +64,7 @@ export const Input: FC<IInput> = memo((props) => {
     )
   else
     return (
-      <div className={`w-full col-start relative ${className}`} slot="wrapper">
+      <div className={`w-full col-start relative ${className}`}>
         <InputLabel {...props} />
         <InputCore validate={validate} {...props} />
         <InputIcon {...props} />
