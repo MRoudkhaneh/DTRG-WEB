@@ -2,24 +2,27 @@ import axios from 'axios'
 
 const isProd = process.env.variable === 'prod'
 
-axios.defaults.baseURL = isProd
-  ? 'https://wa-syd-prod-kl-dtrgcrmbe.azurewebsites.net'
-  : 'https://wa-syd-dev-kl-dtrgcrmbe.azurewebsites.net'
+let Request
 
-const Request = axios.create()
+if (axios.defaults) {
+  axios.defaults.baseURL = isProd
+    ? 'https://wa-syd-prod-kl-dtrgcrmbe.azurewebsites.net'
+    : 'https://wa-syd-dev-kl-dtrgcrmbe.azurewebsites.net'
 
-Request.interceptors.request.use(
-  async (config) => {
-    const token = localStorage.getItem('token')
-    // config.headers['Content-Type'] = 'application/json'
-    if (token) {
-      config.headers.Authorization = 'Bearer ' + token
+  Request = axios.create()
+
+  Request.interceptors.request.use(
+    async (config) => {
+      const token = localStorage.getItem('token')
+      if (token) {
+        config.headers.Authorization = 'Bearer ' + token
+      }
+      return config
+    },
+    (error) => {
+      return Promise.reject(error)
     }
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
+  )
+} else Request = axios
 
 export { Request }

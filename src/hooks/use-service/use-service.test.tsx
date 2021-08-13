@@ -1,9 +1,20 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { QueryClient, QueryClientProvider } from 'react-query'
+
 import { useService } from '.'
 
 const wrapper = ({ children }) => (
-  <QueryClientProvider client={new QueryClient()}>
+  <QueryClientProvider
+    client={
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: false,
+          },
+        },
+      })
+    }
+  >
     {children}
   </QueryClientProvider>
 )
@@ -18,13 +29,13 @@ describe('Use service', () => {
       () =>
         service.current.useGet({
           key: ['test'],
-          url: 'https://jsonplaceholder.typicode.com/posts',
+          url: 'whatever',
         }),
       {
         wrapper,
       }
     )
     await waitFor(() => result.current.isSuccess)
-    expect(result.current.data.data.length).toBe(100)
+    expect(result.current.data.data).toBe('Did it')
   })
 })
