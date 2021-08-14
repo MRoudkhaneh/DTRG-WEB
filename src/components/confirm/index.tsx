@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { Modal } from 'components/modal'
-import { classNames } from 'utils/classes'
 
 import { ConfirmActions } from './confirm-actions'
 import { ConfirmBody } from './confirm-body'
@@ -16,10 +15,7 @@ export const Confirm: FC<IConfirm> = memo(
     return (
       <Modal
         size="sm"
-        className={classNames(
-          'col-center px-4 md:px-10 xl:px-26 py-10  bg-white dark:bg-dark'
-        )}
-        slot="dialog"
+        className="col-center px-4 md:px-10 xl:px-26 py-10  bg-white dark:bg-dark"
       >
         <ConfirmBody title={title} description={description} />
         <ConfirmActions
