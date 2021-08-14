@@ -1,16 +1,13 @@
 import { memo } from 'react'
-import { useHistory } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Tab } from 'components/tab'
 import { Input } from 'components/input'
 import { Form } from 'components/form'
-import { classNames } from 'utils/classes'
 
 import { usePassword } from './use-password'
 
 export const PasswordForm = memo(() => {
-  const { push } = useHistory()
-  const { control, handleSubmit, isLoading, onSubmit } = usePassword()
+  const { control, handleSubmit, isLoading, onSubmit, onPush } = usePassword()
 
   return (
     <Form
@@ -26,26 +23,22 @@ export const PasswordForm = memo(() => {
             required
             placeholder="Enter your email"
             className="mt-10"
-            interactive
           />
-          <div className="col-center space-y-4 w-full mb-6" slot="actions">
+          <div className="col-center space-y-4 w-full mb-6">
             <Button
               icon
               className="w-full h-12 text-white shadow-blue bg-secondary dark:bg-primary mt-4"
-              role="confirm"
               type="submit"
               loading={isLoading}
+              data-testid="submit"
             >
               Submit
             </Button>
             <Button
               icon
-              role="cancel"
-              className={classNames(
-                'w-full h-12 text-secondary dark:text-primary'
-              )}
+              className="w-full h-12 text-secondary dark:text-primary"
               type="button"
-              onClick={() => push('/authentication/login')}
+              onClick={onPush}
             >
               Login instead
             </Button>
