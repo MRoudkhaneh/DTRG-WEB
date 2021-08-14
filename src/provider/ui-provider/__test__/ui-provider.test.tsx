@@ -1,13 +1,8 @@
 import { UiProvider, UiContext } from '..'
 import { act, renderHook } from '@testing-library/react-hooks'
 import { useContext } from 'react'
-
-const initialState = {
-  drawer: { open: false },
-  dialog: { open: false, data: {}, type: null },
-  toast: { open: false, type: null, title: null, description: null },
-  theme: 'dark',
-}
+import { initialState } from '../state'
+import { uiTypes } from '../types'
 
 const wrapper = ({ children }) => <UiProvider>{children}</UiProvider>
 
@@ -18,14 +13,14 @@ describe('UI Provider', () => {
   })
   it('Should toggle drawer', () => {
     const { result } = renderHook(() => useContext(UiContext), { wrapper })
-    act(() => result.current.uiDispatch({ type: 'TOGGLE_DRAWER' }))
+    act(() => result.current.uiDispatch({ type: uiTypes.TOGGLE_DRAWER }))
     expect(result.current.uiState.drawer.open).toBeTruthy()
   })
   it('Should toggle toast', () => {
     const { result } = renderHook(() => useContext(UiContext), { wrapper })
     act(() =>
       result.current.uiDispatch({
-        type: 'TOGGLE_TOAST',
+        type: uiTypes.TOGGLE_TOAST,
         payload: { open: true },
       })
     )
@@ -35,7 +30,7 @@ describe('UI Provider', () => {
     const { result } = renderHook(() => useContext(UiContext), { wrapper })
     act(() =>
       result.current.uiDispatch({
-        type: 'TOGGLE_DIALOG',
+        type: uiTypes.TOGGLE_DIALOG,
         payload: { open: true },
       })
     )
@@ -45,7 +40,7 @@ describe('UI Provider', () => {
     const { result } = renderHook(() => useContext(UiContext), { wrapper })
     act(() =>
       result.current.uiDispatch({
-        type: 'TOGGLE_DARK',
+        type: uiTypes.TOGGLE_DARK,
         payload: false,
       })
     )
