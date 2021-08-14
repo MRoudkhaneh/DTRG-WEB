@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { useState } from 'react'
-import { InputCore } from '.'
+import { InputCore } from '..'
 
 const Input = () => {
   const [value, setvalue] = useState('')

@@ -1,4 +1,4 @@
-import { CheckCore } from '.'
+import { CheckCore } from '..'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { useState } from 'react'
 

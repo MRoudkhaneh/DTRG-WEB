@@ -1,4 +1,4 @@
-import { CheckLabel } from '.'
+import { CheckLabel } from '..'
 import { render, screen } from '@testing-library/react'
 
 describe('Check box label', () => {
