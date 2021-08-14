@@ -1,10 +1,12 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
+
+const isProd = process.env.variable === 'prod'
 
 const defaultValues = { email: '', password: '' }
 
@@ -19,13 +21,13 @@ export const useLogin = () => {
 
   const { onError } = useError()
 
-  const { mutate, isLoading } = usePost({
+  const { mutate, isLoading, isSuccess, data } = usePost({
     url: `${Api.users}login/`,
     onError,
     onSuccess: (res) => {
-      localStorage.setItem('token', res.data.access)
-      success('You successfully loged in.')
+      localStorage.setItem('token', res.data ? res.data.access : null)
       push('/admin/patients')
+      success('You successfully loged in.')
     },
   })
 
@@ -33,6 +35,16 @@ export const useLogin = () => {
     control,
     handleSubmit,
     isLoading,
+    isSuccess,
+    data,
     onSubmit: useCallback((payload) => mutate({ payload }), []),
+    onPush: useCallback(() => push('/authentication/register'), []),
+    href: useMemo(
+      () =>
+        isProd
+          ? 'https://wa-syd-prod-kl-dtrgcrmbe.azurewebsites.net/web/password-reset/'
+          : 'https://wa-syd-dev-kl-dtrgcrmbe.azurewebsites.net/web/password-reset/',
+      []
+    ),
   }
 }

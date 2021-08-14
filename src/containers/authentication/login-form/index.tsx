@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import { useHistory } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Tab } from 'components/tab'
 import { Input } from 'components/input'
@@ -7,11 +6,9 @@ import { Form } from 'components/form'
 
 import { useLogin } from './use-login'
 
-const isProd = process.env.variable === 'prod'
-
 export const LoginForm = memo(() => {
-  const { push } = useHistory()
-  const { control, handleSubmit, isLoading, onSubmit } = useLogin()
+  const { control, handleSubmit, isLoading, onSubmit, onPush, href } =
+    useLogin()
 
   return (
     <Form
@@ -47,11 +44,7 @@ export const LoginForm = memo(() => {
               login
             </Button>
             <a
-              href={
-                isProd
-                  ? 'https://wa-syd-prod-kl-dtrgcrmbe.azurewebsites.net/web/password-reset/'
-                  : 'https://wa-syd-dev-kl-dtrgcrmbe.azurewebsites.net/web/password-reset/'
-              }
+              href={href}
               className=" text-secondary dark:text-primary text-center my-4 "
             >
               Forgot password
@@ -60,7 +53,7 @@ export const LoginForm = memo(() => {
               icon
               className="w-full h-12 text-secondary dark:text-primary"
               type="button"
-              onClick={() => push('/authentication/register')}
+              onClick={onPush}
             >
               Create a new account
             </Button>
