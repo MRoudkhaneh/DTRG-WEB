@@ -41,7 +41,6 @@ export const LoginForm = memo(() => {
             <Button
               icon
               className="w-full h-12 text-white shadow-blue bg-secondary dark:bg-primary my-4"
-              role="confirm"
               type="submit"
               loading={isLoading}
             >
@@ -59,7 +58,6 @@ export const LoginForm = memo(() => {
             </a>
             <Button
               icon
-              role="cancel"
               className="w-full h-12 text-secondary dark:text-primary"
               type="button"
               onClick={() => push('/authentication/register')}

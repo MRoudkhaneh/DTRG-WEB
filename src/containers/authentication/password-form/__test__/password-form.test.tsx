@@ -1,13 +1,16 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { BrowserRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import { UiProvider } from 'provider/ui-provider'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { createMemoryHistory } from 'history'
 import { PasswordForm } from '..'
+
+const history = createMemoryHistory()
 
 const wrapper = ({ children }) => (
   <UiProvider>
     <QueryClientProvider client={new QueryClient()}>
-      <BrowserRouter>{children}</BrowserRouter>
+      <Router history={history}>{children}</Router>
     </QueryClientProvider>
   </UiProvider>
 )
@@ -29,5 +32,12 @@ describe('Password form', () => {
       expect(screen.queryByTestId('loading-bounce')).toBeInTheDocument()
     )
     expect(loading).not.toBeInTheDocument()
+    expect(history.location.pathname).toBe('/authentication/login')
+  })
+  it('Should push properly', async () => {
+    render(<PasswordForm />, { wrapper })
+    const pusher = screen.getByRole('button', { name: /Login instead/i })
+    fireEvent.click(pusher)
+    expect(history.location.pathname).toBe('/authentication/login')
   })
 })
