@@ -12,4 +12,5 @@ interface IDatePicker {
   onChange?: any
   error?: any
   value?: any
+  id?: any
 }
