@@ -1,6 +1,6 @@
 import { UiProvider } from 'provider/ui-provider/index'
 import { renderHook, act } from '@testing-library/react-hooks'
-import { useToast } from '.'
+import { useToast } from '..'
 
 const initialToast = { description: null, open: false, title: null, type: null }
 
