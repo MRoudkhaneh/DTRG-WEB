@@ -6,17 +6,17 @@ import { Api } from 'utils/api'
 import { PatientAssetActions } from './actions'
 
 export const usePatientAssets = () => {
-  const routerParams = useParams() as any
+  const { id } = useParams() as any
   const [params, setParams] = useState({
     page: 1,
-    patient_id: routerParams.id,
+    patient_id: id,
   })
   const { useGet } = useService()
   const { onError } = useError()
 
   const queryKey = useMemo(() => ['PATIENTS_ASSETS_LIST', params], [params])
 
-  const { data, isLoading, isFetching } = useGet({
+  const { data, isLoading, isFetching ,isSuccess} = useGet({
     key: queryKey,
     url: Api.assets,
     onFocus: false,
@@ -25,6 +25,7 @@ export const usePatientAssets = () => {
   })
 
   return {
+    isSuccess,
     data: data ? data.data : { count: 0, results: [] },
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     page: useMemo(() => params.page, [params.page]),
