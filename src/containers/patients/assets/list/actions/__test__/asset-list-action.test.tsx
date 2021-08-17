@@ -1,19 +1,13 @@
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
-import { PatientAssetActions } from '..'
+import { render, screen } from '@testing-library/react'
 import { wrapper } from 'test'
-import { renderHook } from '@testing-library/react-hooks'
-import { useUi } from 'hooks/use-ui'
+import { PatientAssetActions } from '..'
 
 describe('Asset actions', () => {
-  it('Should click edit properly', async () => {
+  it('Should render properly', async () => {
     render(<PatientAssetActions item="ITEM" queryKey="KEY" />, { wrapper })
-    const { result } = renderHook(() => useUi(), { wrapper })
     const edit = screen.getByTestId('edit')
-    act(() => edit.click())
-    // fireEvent.click(edit)
-    // await waitFor(() => result.current.uiState.dialog.open)
-    console.log(result.current.uiState)
-
-    //expect(result.current.uiState.dialog.open).toBeTruthy()
+    const remove = screen.getByTestId('edit')
+    expect(edit).toBeVisible()
+    expect(remove).toBeVisible()
   })
 })

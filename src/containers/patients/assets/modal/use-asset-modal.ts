@@ -13,37 +13,40 @@ export const useAssetModal = () => {
     toggleDialog,
   } = useUi()
 
+  const { mutate: deleteAsset } = useDelete({
+    url: dialog.data ? `${Api.assets}${dialog.data.id}` : '',
+    onMutate: async () => {
+      await client.cancelQueries(dialog.queryKey)
+      const snapshot = client.getQueryData(dialog.queryKey)
+      client.setQueryData(dialog.queryKey, (old: any) => {
+        old.data.results = old.data.results.map((item) =>
+          item.id == dialog.data.id
+            ? {
+                ...item,
+                lot_number: '',
+                serial_number: '',
+                expiration_date: '',
+              }
+            : item
+        )
+        return old
+      })
+      toggleDialog({ open: false, type: null, data: {} })
+      return { snapshot }
+    },
+    onError: (error, data, context) => {
+      client.setQueryData(dialog.queryKey, context.snapshot)
+      onError(error)
+    },
+    onSuccess: () => success('You successfully deleted this asset.'),
+    onSettled: (data, error) => {
+      client.invalidateQueries(dialog.queryKey)
+    },
+  })
+
   return {
-    deletePatient: () =>
-      useDelete({
-        url: dialog.data ? `${Api.assets}${dialog.data.id}` : '',
-        onMutate: async () => {
-          await client.cancelQueries(dialog.queryKey)
-          const snapshot = client.getQueryData(dialog.queryKey)
-          client.setQueryData(dialog.queryKey, (old: any) => {
-            old.data.results = old.data.results.map((item) =>
-              item.id == dialog.data.id
-                ? {
-                    ...item,
-                    lot_number: '',
-                    serial_number: '',
-                    expiration_date: '',
-                  }
-                : item
-            )
-            return old
-          })
-          toggleDialog({ open: false, type: null, data: {} })
-          return { snapshot }
-        },
-        onError: (error, data, context) => {
-          client.setQueryData(dialog.queryKey, context.snapshot)
-          onError(error)
-        },
-        onSuccess: () => success('You successfully deleted this asset.'),
-        onSettled: (data, error) => {
-          client.invalidateQueries(dialog.queryKey)
-        },
-      }),
+    deleteAsset,
+    dialog,
+    toggleDialog,
   }
 }

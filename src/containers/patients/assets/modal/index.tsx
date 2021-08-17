@@ -1,4 +1,3 @@
-import { useUi } from 'hooks'
 import { lazy, memo } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
@@ -11,14 +10,7 @@ const PatientAssetForm = lazy(() =>
 )
 
 export const AssetModal = memo(() => {
-  const { deletePatient } = useAssetModal()
-
-  const { mutate } = deletePatient()
-
-  const {
-    uiState: { dialog },
-    toggleDialog,
-  } = useUi()
+  const { deleteAsset, dialog, toggleDialog } = useAssetModal()
 
   switch (dialog.type) {
     case 'asset-edit':
@@ -39,7 +31,7 @@ export const AssetModal = memo(() => {
         <Confirm
           type="delete"
           description="You are about to delete this asset."
-          onConfirm={() => mutate()}
+          onConfirm={() => deleteAsset()}
           onCancel={() => toggleDialog({ open: false, type: null })}
         />
       )
