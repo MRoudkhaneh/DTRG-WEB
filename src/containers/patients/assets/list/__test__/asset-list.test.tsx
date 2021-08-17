@@ -1,19 +1,6 @@
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { Router } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
-import { UiProvider } from 'provider/ui-provider'
 import { render, screen, waitFor } from '@testing-library/react'
+import { wrapper } from 'test'
 import { PatientAssets } from '..'
-
-const history = createMemoryHistory()
-
-const wrapper = ({ children }) => (
-  <QueryClientProvider client={new QueryClient()}>
-    <UiProvider>
-      <Router history={history}>{children}</Router>
-    </UiProvider>
-  </QueryClientProvider>
-)
 
 describe('Asset list', () => {
   it('Should render properly', () => {

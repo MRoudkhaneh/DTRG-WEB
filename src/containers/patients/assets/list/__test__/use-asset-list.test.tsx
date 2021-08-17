@@ -1,19 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { Router } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
+import { wrapper } from 'test'
 import { usePatientAssets } from '../use-patient-assets'
-import { UiProvider } from 'provider/ui-provider'
-
-const history = createMemoryHistory()
-
-const wrapper = ({ children }) => (
-  <QueryClientProvider client={new QueryClient()}>
-    <UiProvider>
-      <Router history={history}>{children}</Router>
-    </UiProvider>
-  </QueryClientProvider>
-)
 
 describe('Use patient asset list', () => {
   it('Should return data properly', async () => {

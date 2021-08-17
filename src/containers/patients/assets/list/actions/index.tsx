@@ -11,9 +11,9 @@ export const PatientAssetActions = ({ item, queryKey }) => {
     <div className=" hidden group-hover:flex  items-center justify-end ">
       <Tooltip content="Edit">
         <Button
-          id="edit"
           icon
           className="peer"
+          id="edit"
           onClick={(e) => {
             e.stopPropagation()
             toggleDialog({
