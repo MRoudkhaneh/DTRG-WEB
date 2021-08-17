@@ -19,6 +19,7 @@ export const TableRow: FC<ITableRow> = memo(
       >
         {item ? (
           <div
+            data-testid="table-row"
             onClick={() => (expand ? toggle() : {})}
             className={classNames(
               'w-full row-start h-14 px-6 ',

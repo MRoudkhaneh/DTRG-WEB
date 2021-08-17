@@ -8,4 +8,5 @@ interface IButton {
   loading?: boolean
   onMouseEnter?: any
   onMouseLeave?: any
+  id?: string
 }

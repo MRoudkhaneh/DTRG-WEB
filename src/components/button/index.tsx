@@ -13,9 +13,11 @@ export const Button: FC<IButton> = memo(
     loading,
     onMouseEnter,
     onMouseLeave,
+    id,
   }): JSX.Element => {
     return (
       <button
+        data-testid={id}
         type={type}
         onClick={onClick}
         onMouseEnter={onMouseEnter}

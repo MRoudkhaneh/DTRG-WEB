@@ -4,6 +4,7 @@ import { classNames } from 'utils/classes'
 
 import { TableHead } from './table-head'
 import { TableRow } from './table-row'
+import { TableBody } from './table-body'
 
 export const Table: FC<ITable> = memo(
   ({ className, columns, data, expand, onPaginate, loading, page, total }) => {
@@ -13,34 +14,7 @@ export const Table: FC<ITable> = memo(
         slot="wrapper"
       >
         <TableHead columns={columns} loading={loading} />
-
-        {loading && (!data || data.length === 0) ? (
-          Array.from(new Array(10)).map((item, index) => (
-            <TableRow
-              key={index}
-              item={item}
-              columns={columns}
-              index={index}
-              expand={expand}
-              loading={loading}
-            />
-          ))
-        ) : data && data.length > 0 ? (
-          (data || []).map((item, index) => (
-            <TableRow
-              key={index}
-              item={item}
-              columns={columns}
-              index={index}
-              expand={expand}
-              loading={loading}
-              length={data.length}
-            />
-          ))
-        ) : (
-          <span className="text-gray-600 pt-6 text-lg">No items</span>
-        )}
-
+        <TableBody columns={columns} data={data} loading={loading} />
         {data && onPaginate && (
           <Pagination
             className="mt-10"

@@ -11,6 +11,7 @@ export const PatientAssetActions = ({ item, queryKey }) => {
     <div className=" hidden group-hover:flex  items-center justify-end ">
       <Tooltip content="Edit">
         <Button
+          id="edit"
           icon
           className="peer"
           onClick={(e) => {
@@ -28,6 +29,7 @@ export const PatientAssetActions = ({ item, queryKey }) => {
       </Tooltip>
       <Tooltip content="Delete">
         <Button
+          id="delete"
           icon
           className="peer"
           onClick={(e) => {

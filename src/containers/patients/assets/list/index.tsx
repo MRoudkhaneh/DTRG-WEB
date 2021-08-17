@@ -1,5 +1,6 @@
-import { Table } from 'components/table'
 import { FC, memo } from 'react'
+import { Table } from 'components/table'
+
 import { PatientAssetsDetails } from './details'
 import { usePatientAssets } from './use-patient-assets'
 import { PatientAssetsToolbar } from './toolbar'
