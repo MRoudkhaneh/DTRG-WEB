@@ -14,7 +14,12 @@ export const Table: FC<ITable> = memo(
         slot="wrapper"
       >
         <TableHead columns={columns} loading={loading} />
-        <TableBody columns={columns} data={data} loading={loading} />
+        <TableBody
+          columns={columns}
+          data={data}
+          loading={loading}
+          expand={expand}
+        />
         {data && onPaginate && (
           <Pagination
             className="mt-10"
