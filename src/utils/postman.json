@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "adf55c0c-4432-4600-9023-91729c957486",
+    "_postman_id": "500a8278-4251-4e6d-b4a0-af17ca317602",
     "name": "DTRG CRM",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
@@ -15,7 +15,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"admin@dtrgcrm.com\",\n  \"password\": \"aXKnK4yT\"\n}",
+              "raw": "{\n  \"email\": \"dev@here.com\",\n  \"password\": \"dev_admin\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -478,6 +478,49 @@
       "name": "Assets",
       "item": [
         {
+          "name": "filters",
+          "item": [
+            {
+              "name": "by status",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{endpoint}}/assets?status=allocated",
+                  "host": ["{{endpoint}}"],
+                  "path": ["assets"],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "allocated"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "by lot_number",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{endpoint}}/assets?lot_number=11",
+                  "host": ["{{endpoint}}"],
+                  "path": ["assets"],
+                  "query": [
+                    {
+                      "key": "lot_number",
+                      "value": "11"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Create",
           "request": {
             "method": "POST",
@@ -493,7 +536,9 @@
                 {
                   "key": "patient",
                   "value": "1316",
-                  "type": "text"
+                  "description": "this field can be send or not. if it's not send then the asset will be assigned to default warehouse patient with status warehouse, otherwise asset will be assigned to given patient with status allocated.",
+                  "type": "text",
+                  "disabled": true
                 },
                 {
                   "key": "lot_number",
@@ -503,11 +548,31 @@
                 {
                   "key": "image",
                   "type": "file",
-                  "src": "/home/mehran/Desktop/depositphotos_30273183-stock-illustration-example-stamp.jpg"
+                  "src": "/home/mehran/Desktop/otdzarzwtrc41.jpg"
                 },
                 {
                   "key": "serial_number",
                   "value": "458754",
+                  "type": "text"
+                },
+                {
+                  "key": "ownership",
+                  "value": "investigational_sponsor",
+                  "type": "text"
+                },
+                {
+                  "key": "category",
+                  "value": "hardware",
+                  "type": "text"
+                },
+                {
+                  "key": "type",
+                  "value": "sensors",
+                  "type": "text"
+                },
+                {
+                  "key": "study",
+                  "value": "opal",
                   "type": "text"
                 }
               ],
@@ -572,9 +637,9 @@
               }
             },
             "url": {
-              "raw": "{{endpoint}}/assets/35",
+              "raw": "{{endpoint}}/assets/40",
               "host": ["{{endpoint}}"],
-              "path": ["assets", "35"]
+              "path": ["assets", "40"]
             }
           },
           "response": []
@@ -588,6 +653,101 @@
               "raw": "{{endpoint}}/assets/35",
               "host": ["{{endpoint}}"],
               "path": ["assets", "35"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{endpoint}}/assets/export/",
+              "host": ["{{endpoint}}"],
+              "path": ["assets", "export", ""]
+            }
+          },
+          "response": [
+            {
+              "name": "Export",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{endpoint}}/assets/export/",
+                  "host": ["{{endpoint}}"],
+                  "path": ["assets", "export", ""]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Sun, 29 Aug 2021 23:48:48 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "WSGIServer/0.2 CPython/3.9.6"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                },
+                {
+                  "key": "Content-Disposition",
+                  "value": "attachment; filename=\"assets_export.csv\""
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept, Origin"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET, HEAD, OPTIONS"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1020"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "same-origin"
+                }
+              ],
+              "cookie": [],
+              "body": "status,ownership,category,type,patient_id,lot_number,expiration_date,serial_number,created_at\r\nwarehouse,,,1316,1407,2021-07-11,796484,2021-08-09 12:55:16.404755+00:00\r\nwarehouse,,,1316,14078754,2021-07-11,21479694,2021-08-09 12:57:14.727423+00:00\r\nwarehouse,,,1316,413678,2021-07-11,4512687,2021-08-09 12:57:27.965310+00:00\r\nwarehouse,,,1316,45066777,2021-07-11,1469745,2021-08-09 13:36:28.385336+00:00\r\nwarehouse,hi,hi,1316,11,2021-07-11,458754,2021-08-29 23:01:41.264700+00:00\r\nwarehouse,,,1316,11,2021-07-11,458754,2021-08-29 23:03:33.027597+00:00\r\nwarehouse,investigational,sensors,1316,11,2021-07-11,458754,2021-08-29 23:06:27.101385+00:00\r\nwarehouse,investigational,sensors,142,11,2021-07-11,458754,2021-08-29 23:15:18.349554+00:00\r\nwarehouse,investigational,sensors,142,11,2021-07-11,458754,2021-08-29 23:16:07.075101+00:00\r\nwarehouse,investigational,sensors,142,11,2021-07-11,458754,2021-08-29 23:22:02.307554+00:00\r\nallocated,investigational,sensors,1316,11,2021-07-11,458754,2021-08-29 23:28:43.929056+00:00\r\n"
+            }
+          ]
+        },
+        {
+          "name": "Change Ownership",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"patient\": 1316\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}/assets/40",
+              "host": ["{{endpoint}}"],
+              "path": ["assets", "40"]
             }
           },
           "response": []

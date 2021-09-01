@@ -23,6 +23,9 @@ export const usePatientAssetForm = () => {
       lot_number: data.lot_number,
       serial_number: data.serial_number,
       expiration_date: data.expiration_date?.slice(0, 10),
+      ownership: data.ownership,
+      category: data.category,
+      type: data.type,
     },
   })
 

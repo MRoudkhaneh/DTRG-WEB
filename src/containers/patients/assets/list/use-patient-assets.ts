@@ -16,7 +16,7 @@ export const usePatientAssets = () => {
 
   const queryKey = useMemo(() => ['PATIENTS_ASSETS_LIST', params], [params])
 
-  const { data, isLoading, isFetching ,isSuccess} = useGet({
+  const { data, isLoading, isFetching, isSuccess } = useGet({
     key: queryKey,
     url: Api.assets,
     onFocus: false,
@@ -31,12 +31,15 @@ export const usePatientAssets = () => {
     page: useMemo(() => params.page, [params.page]),
     columns: useMemo(
       () => [
-        { head: 'Lot number', key: 'lot_number', width: 'w-1/2' },
-        { head: 'Serial Number', key: 'serial_number', width: 'w-1/2' },
-        { head: 'Expiration date', key: 'expiration_date', width: 'w-1/2' },
+        { head: 'Lot number', key: 'lot_number', width: 'w-1/6' },
+        { head: 'Serial Number', key: 'serial_number', width: 'w-1/6' },
+        { head: 'Ownership', key: 'ownership', width: 'w-1/5' },
+        { head: 'Category', key: 'category', width: 'w-1/6' },
+        { head: 'Type', key: 'type', width: 'w-1/6' },
+        { head: 'Expiration date', key: 'expiration_date', width: 'w-1/6' },
         {
           head: '',
-          width: 'w-[20px]',
+          width: 'w-[0px]',
           render: (item: any) => PatientAssetActions({ item, queryKey }),
         },
       ],
