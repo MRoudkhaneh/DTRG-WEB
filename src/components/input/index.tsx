@@ -6,6 +6,7 @@ import { Error } from 'components/error'
 import { InputLabel } from './input-label'
 import { InputCore } from './input-core'
 import { InputIcon } from './input-icon'
+import { classNames } from 'utils/classes'
 
 export const Input: FC<IInput> = memo((props) => {
   const {
@@ -22,6 +23,7 @@ export const Input: FC<IInput> = memo((props) => {
     hours,
     minutes,
     number,
+    label,
   } = props
   const { validate } = useValidation({
     required,
@@ -57,7 +59,13 @@ export const Input: FC<IInput> = memo((props) => {
             />
 
             <InputIcon {...props} />
-            <Error error={fieldError} className="absolute top-[78px] left-0" />
+            <Error
+              error={fieldError}
+              className={classNames(
+                'absolute left-0',
+                label ? ' top-[78px]' : 'top-[45px]'
+              )}
+            />
           </div>
         )}
       />
