@@ -42,7 +42,7 @@ export const Pagination: FC<IPagination> = memo(
             onClick={() => onPaginate(1)}
             disabled={disabled}
             className={classNames(
-              'w-8 h-8  disabled:opacity-30 mr-6',
+              'w-8 h-8  disabled:opacity-30 mr-2',
               page === 1
                 ? 'bg-secondary text-white'
                 : ' dark:text-gray-300 dark:bg-gray-600'
@@ -69,7 +69,7 @@ export const Pagination: FC<IPagination> = memo(
             onClick={() => onPaginate(Math.ceil(total / 10))}
             disabled={disabled}
             className={classNames(
-              'w-8 h-8  disabled:opacity-30 ml-6',
+              'w-8 h-8  disabled:opacity-30',
               page === Math.ceil(total / 10)
                 ? 'bg-secondary text-white'
                 : ' dark:text-gray-300 dark:bg-gray-600'

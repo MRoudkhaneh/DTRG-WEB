@@ -24,23 +24,37 @@ export const PatientAssetForm = memo(() => {
         name="serial_number"
         label="Serial Number"
         placeholder="Enter contact admin"
-        className="mt-4"
+        className="mt-6"
         required
       />
       <DatePicker
         control={control}
         name="expiration_date"
         label="Expiration Date"
-        className="mt-4"
+        className="mt-6"
         required
       />
-
+      <Select
+        control={control}
+        setValue={setValue}
+        name="status"
+        label="Status"
+        className="mt-10"
+        required
+      >
+        <option value="warehouse">Warehouse</option>
+        <option value="allocated_not_dispensed">Allocated-not-dispensed</option>
+        <option value="allocated_dispensed">Allocated-dispensed</option>
+        <option value="recalled">Recalled</option>
+        <option value="returned">Returned</option>
+        <option value="complaint">Complaint</option>
+      </Select>
       <Select
         control={control}
         setValue={setValue}
         name="category"
         label="Category"
-        className="mt-10"
+        className="mt-6"
         required
       >
         <option value="consumable">consumable</option>
@@ -51,7 +65,7 @@ export const PatientAssetForm = memo(() => {
         setValue={setValue}
         name="ownership"
         label="Owner ship"
-        className="mt-4"
+        className="mt-6"
         required
       >
         <option value="investigational_sponsor">investigational sponsor</option>
@@ -67,7 +81,7 @@ export const PatientAssetForm = memo(() => {
         setValue={setValue}
         name="type"
         label="Type"
-        className="mt-4"
+        className="mt-6"
         required
       >
         <option value="sensors">sensors</option>

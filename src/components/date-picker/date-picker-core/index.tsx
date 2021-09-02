@@ -27,7 +27,7 @@ export const DatePickerCore: FC<IDatePicker> = ({
   return (
     <div className={`w-full col-start relative ${className}`} ref={ref}>
       <DatePickerLable label={label} />
-      <Error error={error} className=" absolute left-0 top-20 -mt-2" />
+      <Error error={error} className=" absolute left-0 top-20 mt-1" />
       <DatePickerReact
         id={id}
         closeOnScroll={true}

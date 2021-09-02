@@ -8,6 +8,7 @@ import { Button } from 'components/button'
 import { classNames } from 'utils/classes'
 import { useUi } from 'hooks/use-ui'
 import { useAuth } from 'hooks/use-auth'
+import { ICEyeFill } from 'icons/eye-fill'
 
 export const AdminDashboardClose = memo(() => {
   const { push } = useHistory()
@@ -35,6 +36,16 @@ export const AdminDashboardClose = memo(() => {
             className={classNames(
               'w-6 h-6 ',
               pathname.includes('patients')
+                ? 'text-gray-500 dark:text-white'
+                : 'text-gray-400'
+            )}
+          />
+        </Button>
+        <Button icon onClick={() => push('/admin/assets')}>
+          <ICEyeFill
+            className={classNames(
+              'w-6 h-6 ',
+              pathname.includes('admin/assets')
                 ? 'text-gray-500 dark:text-white'
                 : 'text-gray-400'
             )}

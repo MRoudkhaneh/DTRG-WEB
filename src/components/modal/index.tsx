@@ -1,4 +1,4 @@
-import { FC, memo, useLayoutEffect, useRef } from 'react'
+import { FC, memo } from 'react'
 import { createPortal } from 'react-dom'
 import { ModalCore } from './modal-core'
 
@@ -10,11 +10,5 @@ if (!modalRoot) {
 }
 
 export const Modal: FC<IModal> = memo((props) => {
-  const el = useRef(document.createElement('div'))
-
-  useLayoutEffect(() => {
-    modalRoot.appendChild(el.current)
-    return () => modalRoot.removeChild(el.current)
-  }, []) as any
-  return createPortal(<ModalCore {...props} />, el.current)
+  return createPortal(<ModalCore {...props} />, modalRoot)
 })

@@ -9,6 +9,7 @@ import { ICChevronLeft } from 'icons/chevron-left'
 
 import { AuthDropDown } from './auth-drop-down'
 import { PatientDropDown } from './patient-drop-down'
+import { AssetDropDown } from './asset-drop-down'
 
 export const AdminDashboardOpen = memo(() => {
   const { push } = useHistory()
@@ -20,6 +21,7 @@ export const AdminDashboardOpen = memo(() => {
     <div className="w-full flex flex-col space-y-4 px-4 relative">
       {token ? null : <AuthDropDown pathname={pathname} push={push} />}
       <PatientDropDown pathname={pathname} push={push} />
+      <AssetDropDown pathname={pathname} push={push} />
       <Text
         className={classNames(
           'fixed bottom-12 self-center text-secondary dark:text-primary'

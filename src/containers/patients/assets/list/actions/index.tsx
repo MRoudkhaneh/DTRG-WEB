@@ -20,6 +20,7 @@ export const PatientAssetActions = ({ item, queryKey }) => {
               open: true,
               type: 'asset-edit',
               data: item,
+              isEditing: true,
               queryKey,
             })
           }}

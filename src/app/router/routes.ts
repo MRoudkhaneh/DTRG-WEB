@@ -8,4 +8,5 @@ export const routes = [
   require('pages/patients/assets/routes').route,
   require('pages/patients/interactions/routes').route,
   require('pages/patients/studies/routes').route,
+  require('pages/assets/routes').route,
 ]

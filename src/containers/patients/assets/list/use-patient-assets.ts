@@ -6,13 +6,14 @@ import { Api } from 'utils/api'
 import { PatientAssetActions } from './actions'
 
 export const usePatientAssets = () => {
-  const { id } = useParams() as any
-  const [params, setParams] = useState({
-    page: 1,
-    patient_id: id,
-  })
+  const routeParams: { id: string } = useParams()
   const { useGet } = useService()
   const { onError } = useError()
+  const [params, setParams] = useState({
+    page: 1,
+    search: null,
+    patient_id: routeParams.id || null,
+  })
 
   const queryKey = useMemo(() => ['PATIENTS_ASSETS_LIST', params], [params])
 
@@ -25,6 +26,7 @@ export const usePatientAssets = () => {
   })
 
   return {
+    queryKey,
     isSuccess,
     data: data ? data.data : { count: 0, results: [] },
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
@@ -50,6 +52,18 @@ export const usePatientAssets = () => {
         setParams((prev) => ({ ...prev, page: index }))
       },
       [params.page]
+    ),
+    onSearch: useCallback(
+      (event) => {
+        setTimeout(() => {
+          setParams((prev) => ({
+            ...prev,
+            page: 1,
+            search: event.target.value,
+          }))
+        }, 500)
+      },
+      [params.search]
     ),
   }
 }

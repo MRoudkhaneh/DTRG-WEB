@@ -19,7 +19,7 @@ export const AssetModal = memo(() => {
           size="sm"
           className="px-10 "
           onClose={() => toggleDialog({ open: false, type: null, data: null })}
-          header="Edit asset"
+          header={dialog.isEditing ? 'Edit asset' : 'Add an new asset'}
           withHeader
         >
           <PatientAssetForm />
