@@ -31,4 +31,7 @@ interface IInput {
   hours?: boolean
   minutes?: boolean
   number?: boolean
+  onFocus?: any
+  url?: any
+  onBlur?: any
 }

@@ -33,6 +33,8 @@ export const InputCore: FC<IInput> = memo((props) => {
         value={inputCoreActualValue(props.value)}
         onClick={props.onClick}
         onChange={props.onChange}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
         className={inputCoreClassName(
           props.error,
           props.withError,

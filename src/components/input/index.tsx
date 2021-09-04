@@ -76,7 +76,13 @@ export const Input: FC<IInput> = memo((props) => {
         <InputLabel {...props} />
         <InputCore validate={validate} {...props} />
         <InputIcon {...props} />
-        <Error error={error} />
+        <Error
+          error={props.error}
+          className={classNames(
+            'absolute left-0',
+            label ? ' top-[78px]' : 'top-[45px]'
+          )}
+        />
       </div>
     )
 })

@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form'
-import { useParams } from 'react-router-dom'
 import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
@@ -7,7 +6,6 @@ import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
 
 export const usePatientAssetForm = () => {
-  const params: { id: string } = useParams()
   const { usePut, usePost, client } = useService()
   const { onError } = useError()
   const { success } = useToast()
@@ -28,6 +26,7 @@ export const usePatientAssetForm = () => {
             ownership: data.ownership,
             category: data.category,
             type: data.type,
+            status: data.status,
           }
         : {
             lot_number: '',
@@ -36,7 +35,8 @@ export const usePatientAssetForm = () => {
             ownership: '',
             category: '',
             type: '',
-            owner: '',
+            owner: null,
+            status: '',
           },
   })
 
@@ -62,32 +62,47 @@ export const usePatientAssetForm = () => {
     onSettled: () => client.invalidateQueries(queryKey),
   })
 
-  const { mutate: save } = usePost({
+  const { mutate: save, isLoading } = usePost({
     url: `${Api.assets}`,
-    onMutate: async ({ payload }) => {
-      await client.cancelQueries(queryKey)
-      const snapshot = client.getQueryData(queryKey)
-      client.setQueryData(queryKey, (old: any) => [payload, ...old])
+    onSuccess: () => {
+      success('You successfully save an interaction.')
       toggleDialog({ open: false, type: null, data: {} })
-      return { snapshot }
+      client.invalidateQueries(queryKey)
     },
-    onError: (error, data, context) => {
-      client.setQueryData(queryKey, context.snapshot)
-      onError(error)
-    },
-    onSuccess: () => success('You successfully save an interaction.'),
-    onSettled: () => client.invalidateQueries(queryKey),
+    onError,
   })
 
   return {
     control,
     setValue,
+    isLoading,
+    isEditing,
     onSubmit: handleSubmit((state) => {
       if (isEditing) {
-        const payload = { ...state, patient: params.id }
+        const payload = {
+          patient: data.patient,
+          lot_number: state.lot_number,
+          serial_number: state.serial_number,
+          expiration_date: state.expiration_date,
+          status: state.status,
+          category: state.category,
+          ownership: state.ownership,
+          type: state.type,
+        }
         edit({ payload })
       } else {
-        save({ payload: state })
+        const payload = {
+          owner: state.owner.id,
+          patient: state.owner.id,
+          lot_number: state.lot_number,
+          serial_number: state.serial_number,
+          expiration_date: state.expiration_date,
+          status: state.status,
+          category: state.category,
+          ownership: state.ownership,
+          type: state.type,
+        }
+        save({ payload })
       }
     }),
   }

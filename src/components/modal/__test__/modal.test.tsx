@@ -6,6 +6,6 @@ describe('Modal', () => {
     render(<Modal>modal children</Modal>, {
       baseElement: document.getElementById('modal'),
     })
-    expect(screen.getByText(/modal children/i)).toBeVisible()
+    expect(screen.getByText(/modal children/i)).toBeVisible()-
   })
 })

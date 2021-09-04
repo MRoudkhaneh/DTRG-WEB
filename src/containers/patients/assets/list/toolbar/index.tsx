@@ -15,6 +15,7 @@ export const PatientAssetsToolbar: FC<{ onSearch?: any; queryKey?: any }> =
     const { state } = useLocation() as any
     const { push } = useHistory()
     const { toggleDialog } = useUi()
+    const { pathname } = useLocation()
 
     return (
       <Toolbar>
@@ -36,6 +37,7 @@ export const PatientAssetsToolbar: FC<{ onSearch?: any; queryKey?: any }> =
               <ICArrowLeft className="w-7 h-7 text-primary" />
             </Button>
           </Tooltip>
+
           <Input
             className="mx-4"
             placeholder="Search by status or lot number ..."
@@ -43,22 +45,25 @@ export const PatientAssetsToolbar: FC<{ onSearch?: any; queryKey?: any }> =
             icon={() => <ICSearch className="w-5 h-5 text-gray-600 " />}
             size="small"
           />
-          <Tooltip content="Create">
-            <Button
-              icon
-              className="peer"
-              onClick={(e) => {
-                e.stopPropagation()
-                toggleDialog({
-                  open: true,
-                  type: 'asset-edit',
-                  queryKey,
-                })
-              }}
-            >
-              <ICPlus className="w-8 h-8 text-primary" />
-            </Button>
-          </Tooltip>
+
+          {!pathname.includes('patients') && (
+            <Tooltip content="Create">
+              <Button
+                icon
+                className="peer"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  toggleDialog({
+                    open: true,
+                    type: 'asset-edit',
+                    queryKey,
+                  })
+                }}
+              >
+                <ICPlus className="w-8 h-8 text-primary" />
+              </Button>
+            </Tooltip>
+          )}
         </div>
       </Toolbar>
     )
