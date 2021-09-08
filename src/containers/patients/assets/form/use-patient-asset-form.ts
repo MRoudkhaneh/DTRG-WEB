@@ -4,9 +4,11 @@ import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
+import { useLocation } from 'react-router'
 
 export const usePatientAssetForm = () => {
   const { usePut, usePost, client } = useService()
+  const { pathname } = useLocation()
   const { onError } = useError()
   const { success } = useToast()
   const {
@@ -27,6 +29,7 @@ export const usePatientAssetForm = () => {
             category: data.category,
             type: data.type,
             status: data.status,
+            owner: { first_name: data.patient_name, id: data.patient },
           }
         : {
             lot_number: '',
@@ -77,10 +80,12 @@ export const usePatientAssetForm = () => {
     setValue,
     isLoading,
     isEditing,
+    pathname,
     onSubmit: handleSubmit((state) => {
       if (isEditing) {
         const payload = {
-          patient: data.patient,
+          patient: state.owner.id,
+          owner: state.owner.id,
           lot_number: state.lot_number,
           serial_number: state.serial_number,
           expiration_date: state.expiration_date,
@@ -101,6 +106,7 @@ export const usePatientAssetForm = () => {
           category: state.category,
           ownership: state.ownership,
           type: state.type,
+          //image: { mimetypes: 'dsf' },
         }
         save({ payload })
       }

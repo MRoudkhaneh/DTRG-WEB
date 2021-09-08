@@ -25,14 +25,13 @@ export const SearchBoxCore: FC<ISearch> = (props) => {
         onFocus={() => props.setIsOpen(true)}
         onChange={(e) => props.setParams({ [props.paramKey]: e.target.value })}
         error={props.error}
+        value={
+          props.value && props.value[props.valueKey]
+            ? props.value[props.valueKey]
+            : ''
+        }
       />
-      {/* <Error
-        error={props.error}
-        className={classNames(
-          'absolute left-0',
-          props.label ? ' top-[78px]' : 'top-[45px]'
-        )}
-      /> */}
+
       {props.isOpen && props.isLoading ? (
         <SearchBoxLoading />
       ) : props.isOpen &&

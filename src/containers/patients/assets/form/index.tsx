@@ -9,13 +9,13 @@ import { SearchBox } from 'components/search-box'
 import { Api } from 'utils/api'
 
 export const PatientAssetForm = memo(() => {
-  const { control, onSubmit, setValue, isLoading, isEditing } =
+  const { control, onSubmit, setValue, isLoading, pathname } =
     usePatientAssetForm()
 
   return (
     <Form onSubmit={onSubmit}>
       <div className="w-full grid grid-cols-2 gap-8 mt-6">
-        {!isEditing && (
+        {!pathname.includes('patient') && (
           <SearchBox
             label="Owner"
             url={Api.patients}
