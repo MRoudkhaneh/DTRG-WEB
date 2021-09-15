@@ -11,6 +11,7 @@ export const SearchBoxDropBox: FC<ISearch> = memo((props) => {
             onClick={() => {
               props.onChange(item)
               props.setIsOpen(false)
+              props.setParams({ search: '' })
             }}
           >
             <span className="text-gray-600 cursor-pointer">

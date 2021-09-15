@@ -7,6 +7,7 @@ import { Select } from 'components/select'
 import { usePatientAssetForm } from './use-patient-asset-form'
 import { SearchBox } from 'components/search-box'
 import { Api } from 'utils/api'
+import { TypeDetails } from './type-details'
 
 export const PatientAssetForm = memo(() => {
   const { control, onSubmit, setValue, isLoading, pathname } =
@@ -17,13 +18,11 @@ export const PatientAssetForm = memo(() => {
       <div className="w-full grid grid-cols-2 gap-8 mt-6">
         {!pathname.includes('patient') && (
           <SearchBox
-            label="Owner"
             url={Api.patients}
             control={control}
+            label="Owner"
             name="owner"
-            valueKey="first_name"
             placeholder="Search for patients"
-            paramKey="search"
             required
           />
         )}
@@ -92,6 +91,7 @@ export const PatientAssetForm = memo(() => {
           placeholder="Enter contact admin"
           required
         />
+        <TypeDetails control={control} />
         <Input
           control={control}
           name="serial_number"
@@ -112,7 +112,7 @@ export const PatientAssetForm = memo(() => {
         type="submit"
         loading={isLoading}
         icon
-        className=" w-full h-12 mt-14 mb-10 text-white shadow-blue bg-secondary dark:bg-primary"
+        className=" w-1/2 mx-auto h-12 mt-14 mb-10 text-white shadow-blue bg-secondary dark:bg-primary"
       >
         Save Asset
       </Button>

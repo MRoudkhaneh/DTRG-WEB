@@ -1,13 +1,19 @@
-import { Error } from 'components/error'
+import { FC, useMemo } from 'react'
 import { Input } from 'components/input'
 import { InputLabel } from 'components/input/input-label'
-import { FC } from 'react'
 import { classNames } from 'utils/classes'
 import { SearchBoxDropBox } from '../search-drop-box'
 import { SearchBoxLoading } from '../search-loading.tsx'
 import { SearchBoxNoItems } from '../search-no-items'
 
 export const SearchBoxCore: FC<ISearch> = (props) => {
+  const placeholder = useMemo(
+    () =>
+      (props.value ? props.value.first_name : '') +
+      ' ' +
+      (props.value ? props.value.surename || '' : ''),
+    [props.value]
+  )
   return (
     <div
       className={classNames(
@@ -17,19 +23,11 @@ export const SearchBoxCore: FC<ISearch> = (props) => {
     >
       <InputLabel label={props.label} />
       <Input
-        placeholder={
-          props.value && props.value[props.valueKey]
-            ? props.value[props.valueKey]
-            : props.placeholder
-        }
-        onFocus={() => props.setIsOpen(true)}
-        onChange={(e) => props.setParams({ [props.paramKey]: e.target.value })}
+        placeholder={placeholder}
         error={props.error}
-        value={
-          props.value && props.value[props.valueKey]
-            ? props.value[props.valueKey]
-            : ''
-        }
+        onFocus={() => props.setIsOpen(true)}
+        onChange={(e) => props.setParams({ search: e.target.value })}
+        value={props.params.search}
       />
 
       {props.isOpen && props.isLoading ? (

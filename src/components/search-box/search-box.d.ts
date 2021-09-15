@@ -19,4 +19,5 @@ interface ISearch {
   data?: any
   setIsOpen?: any
   setParams?: any
+  params?: any
 }

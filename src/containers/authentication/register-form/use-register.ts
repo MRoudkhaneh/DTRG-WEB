@@ -26,7 +26,7 @@ export const useRegister = () => {
   const { onError } = useError()
 
   const { mutate, isLoading } = usePost({
-    url: `${Api.users}register/`,
+    url: `${Api.users}`,
     onError,
     onSuccess: (res) => {
       localStorage.setItem('token', res.data.access)

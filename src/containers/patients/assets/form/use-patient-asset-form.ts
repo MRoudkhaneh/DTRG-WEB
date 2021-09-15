@@ -28,8 +28,17 @@ export const usePatientAssetForm = () => {
             ownership: data.ownership,
             category: data.category,
             type: data.type,
+            type_details: data.type_details,
             status: data.status,
-            owner: { first_name: data.patient_name, id: data.patient },
+            owner: {
+              first_name: data.patient_name
+                ? data.patient_name.split(' ')[0]
+                : '',
+              suername: data.patient_name
+                ? data.patient_name.split(' ')[1]
+                : '',
+              id: data.patient,
+            },
           }
         : {
             lot_number: '',
@@ -40,6 +49,7 @@ export const usePatientAssetForm = () => {
             type: '',
             owner: null,
             status: '',
+            type_details: '',
           },
   })
 
@@ -93,6 +103,7 @@ export const usePatientAssetForm = () => {
           category: state.category,
           ownership: state.ownership,
           type: state.type,
+          type_details: state.type_details,
         }
         edit({ payload })
       } else {
@@ -106,7 +117,7 @@ export const usePatientAssetForm = () => {
           category: state.category,
           ownership: state.ownership,
           type: state.type,
-          //image: { mimetypes: 'dsf' },
+          type_details: state.type_details,
         }
         save({ payload })
       }

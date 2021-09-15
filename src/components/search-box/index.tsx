@@ -42,6 +42,7 @@ export const SearchBox: FC<ISearch> = memo((props) => {
             label={props.label}
             paramKey={props.paramKey}
             valueKey={props.valueKey}
+            params={params}
           />
         )}
       />
