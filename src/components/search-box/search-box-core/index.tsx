@@ -1,6 +1,5 @@
 import { FC, useMemo } from 'react'
 import { Input } from 'components/input'
-import { InputLabel } from 'components/input/input-label'
 import { classNames } from 'utils/classes'
 import { SearchBoxDropBox } from '../search-drop-box'
 import { SearchBoxLoading } from '../search-loading.tsx'
@@ -21,8 +20,8 @@ export const SearchBoxCore: FC<ISearch> = (props) => {
         props.className
       )}
     >
-      <InputLabel label={props.label} />
       <Input
+        label={props.label}
         placeholder={placeholder}
         error={props.error}
         onFocus={() => props.setIsOpen(true)}

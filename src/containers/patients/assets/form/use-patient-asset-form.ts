@@ -34,7 +34,7 @@ export const usePatientAssetForm = () => {
               first_name: data.patient_name
                 ? data.patient_name.split(' ')[0]
                 : '',
-              suername: data.patient_name
+              surename: data.patient_name
                 ? data.patient_name.split(' ')[1]
                 : '',
               id: data.patient,
