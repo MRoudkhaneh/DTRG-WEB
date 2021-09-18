@@ -12,7 +12,6 @@ export const TypeDetails: FC<{ control?: any }> = memo(({ control }) => {
         label="Type details"
         placeholder="Enter type details"
         required
-        className="col-span-2"
       />
     )
   else return null

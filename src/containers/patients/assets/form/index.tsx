@@ -84,6 +84,7 @@ export const PatientAssetForm = memo(() => {
           <option value="pdm">pdm</option>
           <option value="other">other</option>
         </Select>
+        <TypeDetails control={control} />
         <Input
           control={control}
           name="lot_number"
@@ -91,7 +92,7 @@ export const PatientAssetForm = memo(() => {
           placeholder="Enter contact admin"
           required
         />
-        <TypeDetails control={control} />
+
         <Input
           control={control}
           name="serial_number"

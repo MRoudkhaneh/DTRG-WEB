@@ -28,10 +28,9 @@ export const useRegister = () => {
   const { mutate, isLoading } = usePost({
     url: `${Api.users}`,
     onError,
-    onSuccess: (res) => {
-      localStorage.setItem('token', res.data.access)
+    onSuccess: () => {
       success('You successfully created an account.')
-      push('/admin/patients')
+      push('/authentication/login')
     },
   })
 
