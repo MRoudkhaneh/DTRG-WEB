@@ -3,7 +3,6 @@ import { Pagination } from 'components/pagination'
 import { classNames } from 'utils/classes'
 
 import { TableHead } from './table-head'
-import { TableRow } from './table-row'
 import { TableBody } from './table-body'
 
 export const Table: FC<ITable> = memo(

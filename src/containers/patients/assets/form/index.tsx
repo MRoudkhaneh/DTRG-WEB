@@ -49,8 +49,8 @@ export const PatientAssetForm = memo(() => {
           label="Category"
           required
         >
-          <option value="consumable">consumable</option>
-          <option value="hardware">hardware</option>
+          <option value="consumable">Consumable</option>
+          <option value="hardware">Hardware</option>
         </Select>
         <Select
           control={control}
@@ -60,13 +60,13 @@ export const PatientAssetForm = memo(() => {
           required
         >
           <option value="investigational_sponsor">
-            investigational sponsor
+            Investigational sponsor
           </option>
           <option value="non_investigational_sponsor">
-            non investigational sponsor
+            Non investigational sponsor
           </option>
           <option value="non_investigational_dtrg">
-            non investigational dtrg
+            Non investigational dtrg
           </option>
         </Select>
         <Select
@@ -76,13 +76,13 @@ export const PatientAssetForm = memo(() => {
           label="Type"
           required
         >
-          <option value="sensors">sensors</option>
-          <option value="transmitters">transmitters</option>
-          <option value="pump">pump</option>
-          <option value="meters">meters</option>
-          <option value="receivers">receivers</option>
-          <option value="pdm">pdm</option>
-          <option value="other">other</option>
+          <option value="sensors">Sensors</option>
+          <option value="transmitters">Transmitters</option>
+          <option value="pump">Pump</option>
+          <option value="meters">Meters</option>
+          <option value="receivers">Receivers</option>
+          <option value="pdm">PDM</option>
+          <option value="other">Other</option>
         </Select>
         <TypeDetails control={control} />
         <Input
