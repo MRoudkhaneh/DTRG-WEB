@@ -23,6 +23,11 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         theme: payload ? 'dark' : 'light',
       }
+    case uiTypes.SET_PARAMS:
+      return {
+        ...state,
+        params: { ...state.params, ...payload },
+      }
     default:
       return state
   }

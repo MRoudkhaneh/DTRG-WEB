@@ -1,15 +1,13 @@
 import { FC, memo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { ICPersonPlus } from 'icons/person-plus'
-import { ICSearch } from 'icons/search'
 import { Button } from 'components/button'
 import { Toolbar } from 'components/toolbar'
-import { Input } from 'components/input'
 import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 
-export const PatientListToolbar: FC<{ onSearch?: any }> = memo(
-  ({ onSearch }) => {
+export const PatientListToolbar: FC<{ onSearch?: any; search?: any }> = memo(
+  ({ onSearch, search }) => {
     const { push } = useHistory()
     return (
       <Toolbar>
@@ -21,12 +19,11 @@ export const PatientListToolbar: FC<{ onSearch?: any }> = memo(
           Patients
         </Text>
         <div className="flex items-center w-1/4 " slot="end">
-          <Input
-            className="mr-4"
-            placeholder="Search ..."
+          <input
+            className=" w-full h-8 text-[13px] mr-4 px-2  rounded focus:outline-none focus:shadow  text-gray-900 bg-white placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 border border-gray-300 focus:ring-2 focus:ring-indigo-400 dark:border-gray-700 dark:focus:ring-indigo-600  "
+            placeholder="Search here ..."
             onChange={onSearch}
-            icon={() => <ICSearch className="w-5 h-5 text-gray-600 " />}
-            size="small"
+            value={search}
           />
           <Tooltip content="Create">
             <Button

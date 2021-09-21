@@ -2,13 +2,16 @@ import { useCallback, useMemo, useState } from 'react'
 import { useService } from 'hooks/use-service'
 import { useError } from 'hooks/use-error'
 import { Api } from 'utils/api'
-
+import { useUi } from 'hooks/use-ui'
 import { PatientListActions } from './actions'
 
 export const usePatientList = () => {
-  const [params, setParams] = useState({ page: 1, search: null })
   const { useGet } = useService()
   const { onError } = useError()
+  const {
+    uiState: { params },
+    setParams,
+  } = useUi()
 
   const queryKey = useMemo(() => ['PATIENTS_LIST', params], [params])
 
@@ -21,6 +24,7 @@ export const usePatientList = () => {
   })
 
   return {
+    search: params.search,
     data: data ? data.data : { count: 0, results: [] },
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     page: useMemo(() => params.page, [params.page]),
@@ -38,21 +42,13 @@ export const usePatientList = () => {
       [queryKey]
     ),
     onPaginate: useCallback(
-      (index) => {
-        setParams((prev) => ({ ...prev, page: index }))
+      (page) => {
+        setParams({ page })
       },
       [params.page]
     ),
     onSearch: useCallback(
-      (event) => {
-        setTimeout(() => {
-          setParams((prev) => ({
-            ...prev,
-            page: 1,
-            search: event.target.value,
-          }))
-        }, 500)
-      },
+      (event) => setParams({ search: event.target.value }),
       [params.search]
     ),
   }

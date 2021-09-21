@@ -32,11 +32,17 @@ export const useUi = () => {
     [uiState.dark]
   )
 
+  const setParams = useCallback(
+    (payload) => uiDispatch({ type: uiTypes.SET_PARAMS, payload }),
+    [uiState.params]
+  )
+
   return {
     uiState,
     toggleDrawer,
     toggleDialog,
     toggleToast,
     toggleDark,
+    setParams,
   }
 }

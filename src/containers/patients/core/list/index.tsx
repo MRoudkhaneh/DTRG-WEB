@@ -10,12 +10,12 @@ const PatientListDetails = lazy(() =>
 )
 
 export const PatientList = memo(() => {
-  const { data, columns, onPaginate, isLoading, page, onSearch } =
+  const { data, columns, onPaginate, isLoading, page, onSearch, search } =
     usePatientList()
 
   return (
     <div className="w-full">
-      <PatientListToolbar onSearch={onSearch} />
+      <PatientListToolbar onSearch={onSearch} search={search} />
       <Suspense fallback={<Skeleton />}>
         <Table
           className="w-full my-10"
