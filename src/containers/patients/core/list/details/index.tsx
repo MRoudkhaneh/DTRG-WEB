@@ -7,29 +7,6 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
   return (
     <div className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
       <Input size="small" disabled label="Patient Status" value={item.status} />
-
-      {/* {(item.status == 'Approached - declined' ||
-        item.status == 'Approached - ineligible') && (
-        <TextArea
-          size="small"
-          disabled
-          label="Patient Status Details"
-          value={item.status_details}
-        />
-      )} */}
-
-      {/* <Input
-        size="small"
-        disabled
-        label="Current Study"
-        value={item.current_study}
-      />
-      <Input
-        size="small"
-        disabled
-        label="Previous Study"
-        value={item.previous_study}
-      /> */}
       <Input size="small" disabled label="Gender" value={item.gender} />
       <Input
         size="small"
@@ -52,6 +29,7 @@ export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
       />
       <Input size="small" disabled label="Email Address" value={item.email} />
       <Input size="small" disabled label="Suburb" value={item.suburb} />
+      <Input size="small" disabled label="Post Code" value={item.post_code} />
       <Input size="small" disabled label="State" value={item.state} />
       <Input
         size="small"

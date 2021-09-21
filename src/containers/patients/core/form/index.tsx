@@ -9,7 +9,7 @@ import {
   CHOCounting,
   FirstName,
   CurrentCGMWear,
-  CurrentStudy,
+  PostCode,
   DateOfBirth,
   DiabetesEducator,
   CurrentDiabetesManagement,
@@ -33,7 +33,6 @@ import {
   PhoneNumber,
   PreferedContactMethod,
   PreferedContactDate,
-  PreviousStudy1,
   PumpDetail,
   State,
   Suburb,
@@ -54,8 +53,6 @@ import {
   PhoneType,
   InfusionLineType,
   Deceased,
-  StudyStatus,
-  StatusDetails,
   PatientStatus,
 } from './fields'
 
@@ -95,6 +92,7 @@ export const PatientForm = memo((props?: IPatientForm) => {
           <Grid className=" pt-6 mt-4 ">
             <EmailAddress control={control} />
             <Suburb control={control} />
+            <PostCode control={control} />
             <State control={control} />
           </Grid>
           {isEditing && (

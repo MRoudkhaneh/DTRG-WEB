@@ -57,6 +57,7 @@ const initialState = {
   hypoglycemic_event_past_12_month: false,
   will_come_to_st_vincent: false,
   deceased: 'No',
+  post_code: null,
 }
 
 export const usePatientForm = (props: IPatientForm) => {
