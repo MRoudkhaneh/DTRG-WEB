@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import { classNames } from 'utils/classes'
 import { useToggle } from 'hooks/use-toggle'
 
@@ -6,8 +6,21 @@ import { TableCell } from '../table-cell'
 import { TableRowLoading } from './table-row-loading'
 
 export const TableRow: FC<ITableRow> = memo(
-  ({ item, columns, expand, loading, index, length }) => {
-    const { open, toggle } = useToggle()
+  ({
+    item,
+    columns,
+    expand,
+    loading,
+    index,
+    length,
+    onRowClick,
+    expanded = { id: null },
+  }) => {
+    const isOpen = useMemo(
+      () => (item ? item.id === expanded.id : false),
+      [expanded, item]
+    )
+    const { open, toggle } = useToggle(isOpen)
 
     return (
       <div
@@ -20,7 +33,10 @@ export const TableRow: FC<ITableRow> = memo(
         {item ? (
           <div
             data-testid="table-row"
-            onClick={() => (expand ? toggle() : {})}
+            onClick={() => {
+              if (expand) toggle()
+              if (onRowClick) onRowClick(item)
+            }}
             className={classNames(
               'w-full row-start h-14 px-6 ',
               open

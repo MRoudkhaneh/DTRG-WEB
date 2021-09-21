@@ -10,8 +10,17 @@ const PatientListDetails = lazy(() =>
 )
 
 export const PatientList = memo(() => {
-  const { data, columns, onPaginate, isLoading, page, onSearch, search } =
-    usePatientList()
+  const {
+    data,
+    columns,
+    onPaginate,
+    isLoading,
+    page,
+    onSearch,
+    search,
+    onRowClick,
+    current,
+  } = usePatientList()
 
   return (
     <div className="w-full">
@@ -25,6 +34,8 @@ export const PatientList = memo(() => {
           columns={columns}
           onPaginate={onPaginate}
           loading={isLoading}
+          onRowClick={onRowClick}
+          expanded={current}
           expand={(item) => <PatientListDetails item={item} />}
         />
       </Suspense>

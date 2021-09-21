@@ -28,6 +28,11 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         params: { ...state.params, ...payload },
       }
+    case uiTypes.SET_CURRENT:
+      return {
+        ...state,
+        current: payload,
+      }
     default:
       return state
   }

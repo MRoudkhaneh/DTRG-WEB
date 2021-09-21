@@ -6,7 +6,18 @@ import { TableHead } from './table-head'
 import { TableBody } from './table-body'
 
 export const Table: FC<ITable> = memo(
-  ({ className, columns, data, expand, onPaginate, loading, page, total }) => {
+  ({
+    className,
+    columns,
+    data,
+    expand,
+    onPaginate,
+    loading,
+    page,
+    total,
+    onRowClick,
+    expanded,
+  }) => {
     return (
       <div
         className={classNames('w-full flex flex-col items-center', className)}
@@ -18,6 +29,8 @@ export const Table: FC<ITable> = memo(
           data={data}
           loading={loading}
           expand={expand}
+          onRowClick={onRowClick}
+          expanded={expanded}
         />
         {data && onPaginate && (
           <Pagination

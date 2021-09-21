@@ -37,6 +37,11 @@ export const useUi = () => {
     [uiState.params]
   )
 
+  const setCurrent = useCallback(
+    (payload) => uiDispatch({ type: uiTypes.SET_CURRENT, payload }),
+    [uiState.current]
+  )
+
   return {
     uiState,
     toggleDrawer,
@@ -44,5 +49,6 @@ export const useUi = () => {
     toggleToast,
     toggleDark,
     setParams,
+    setCurrent,
   }
 }

@@ -1,7 +1,14 @@
 import { FC } from 'react'
 import { TableRow } from '../table-row'
 
-export const TableBody: FC<ITable> = ({ loading, data, columns, expand }) => {
+export const TableBody: FC<ITable> = ({
+  loading,
+  data,
+  columns,
+  expand,
+  onRowClick,
+  expanded,
+}) => {
   return loading && (!data || typeof data === 'string' || data.length === 0) ? (
     Array.from(new Array(10)).map((item, index) => (
       <TableRow
@@ -23,6 +30,8 @@ export const TableBody: FC<ITable> = ({ loading, data, columns, expand }) => {
         expand={expand}
         loading={loading}
         length={data.length}
+        onRowClick={onRowClick}
+        expanded={expanded}
       />
     ))
   ) : (

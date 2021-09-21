@@ -16,6 +16,8 @@ interface ITable {
   fetching?: boolean
   page?: number
   total?: number
+  onRowClick?: any
+  expanded?: any
 }
 
 interface ITableCell {
@@ -32,6 +34,8 @@ interface ITableRow {
   expand?: any
   loading?: boolean
   length?: any
+  onRowClick?: any
+  expanded?: any
 }
 
 interface ITableHead {
