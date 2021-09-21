@@ -14,6 +14,7 @@ export const PastCGMWear: FC<IPatientField> = memo(({ control, setValue }) => {
       <option value="Guardian Sensor 3">Guardian Sensor 3</option>
       <option value="Dexcom G5">Dexcom G5</option>
       <option value="Dexcom G6">Dexcom G6</option>
+      <option value="Libre 2">Libre 2</option>
       <option value="None">None</option>
     </Select>
   )

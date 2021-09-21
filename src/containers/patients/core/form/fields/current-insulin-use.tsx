@@ -18,10 +18,11 @@ export const CurrentInsulinUse: FC<IPatientField> = memo(
         <SelectOption value="Lantus">Lantus</SelectOption>
         <SelectOption value="Fiasp">Fiasp</SelectOption>
         <SelectOption value="Toujeo">Toujeo</SelectOption>
-        <SelectOption value=" Tjoa">Tjoa</SelectOption>
-        <SelectOption value="Solostar">Solostar</SelectOption>
         <SelectOption value="Ryzodeg">Ryzodeg</SelectOption>
-        <SelectOption value="optisulin">Optisulin</SelectOption>
+        <SelectOption value="Optisulin">Optisulin</SelectOption>
+        <SelectOption value="Mixtard 30/70">Mixtard 30/70</SelectOption>
+        <SelectOption value="Actrapid">Actrapid</SelectOption>
+        <SelectOption value="Protophane">Protophane</SelectOption>
       </Select>
     )
   }
