@@ -4,11 +4,13 @@ import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { Api } from 'utils/api'
 import { PatientAssetActions } from './actions'
+import * as FileSaver from 'file-saver'
 
 export const usePatientAssets = () => {
   const routeParams: { id: string } = useParams()
   const { useGet } = useService()
   const { onError } = useError()
+  const [isExport, setIsExport] = useState(false)
   const [params, setParams] = useState({
     page: 1,
     search: null,
@@ -25,9 +27,26 @@ export const usePatientAssets = () => {
     onError,
   })
 
+  const { isFetching: exportLoading } = useGet({
+    url: `${Api.assets}/export/`,
+    key: ['ASSET_EXPORT'],
+    onFocus: false,
+    keepPreviousData: false,
+    enabled: isExport,
+    onSuccess: ({ data }) => {
+      const fileType =
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+      const fileExtension = '.csv'
+      const newData = new Blob([data], { type: fileType })
+      setIsExport(false)
+      FileSaver.saveAs(newData, 'Assets' + fileExtension)
+    },
+  })
+
   return {
     queryKey,
     isSuccess,
+    exportLoading,
     data: data ? data.data : { count: 0, results: [] },
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     page: useMemo(() => params.page, [params.page]),
@@ -66,5 +85,6 @@ export const usePatientAssets = () => {
       },
       [params.search]
     ),
+    onExport: useCallback(() => setIsExport(true), [isExport]),
   }
 }

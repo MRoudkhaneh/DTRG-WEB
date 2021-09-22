@@ -6,12 +6,26 @@ import { usePatientAssets } from './use-patient-assets'
 import { PatientAssetsToolbar } from './toolbar'
 
 export const PatientAssets: FC<{ item?: any }> = memo(() => {
-  const { data, columns, page, onPaginate, isLoading, onSearch, queryKey } =
-    usePatientAssets()
+  const {
+    data,
+    columns,
+    page,
+    onPaginate,
+    isLoading,
+    onSearch,
+    queryKey,
+    onExport,
+    exportLoading,
+  } = usePatientAssets()
 
   return (
     <div className="w-full">
-      <PatientAssetsToolbar onSearch={onSearch} queryKey={queryKey} />
+      <PatientAssetsToolbar
+        onSearch={onSearch}
+        queryKey={queryKey}
+        onExport={onExport}
+        exportLoading={exportLoading}
+      />
       <Table
         className="w-full my-10"
         columns={columns}
