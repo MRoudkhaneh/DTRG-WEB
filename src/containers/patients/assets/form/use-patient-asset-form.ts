@@ -64,7 +64,7 @@ export const usePatientAssetForm = () => {
         )
         return old
       })
-      toggleDialog({ open: false, type: null, data: {} })
+      toggleDialog({ open: false, type: null, data: {}, isEditing: false })
       return { snapshot }
     },
     onError: (error, data, context) => {
@@ -79,7 +79,7 @@ export const usePatientAssetForm = () => {
     url: `${Api.assets}`,
     onSuccess: () => {
       success('You successfully save an interaction.')
-      toggleDialog({ open: false, type: null, data: {} })
+      toggleDialog({ open: false, type: null, data: {}, isEditing: false })
       client.invalidateQueries(queryKey)
     },
     onError,
