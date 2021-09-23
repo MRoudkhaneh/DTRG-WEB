@@ -20,13 +20,11 @@ export const AdminLayout = ({ children }) => {
       <AdminHeader />
       <div
         className={classNames(
-          'w-full trans col-center my-4 px-10 md:px-20',
-          open
-            ? 'md:transform md:translate-x-72 md:w-[calc(100%-18rem)]'
-            : 'md:transform md:translate-x-20 md:w-[calc(100%-5rem)]'
+          'w-full col-center my-4  transition-padding duration-500 ease-in-out',
+          open ? 'pl-72' : 'pl-20'
         )}
       >
-        {children}
+        <div className="px-20 w-full">{children}</div>
       </div>
     </div>
   )

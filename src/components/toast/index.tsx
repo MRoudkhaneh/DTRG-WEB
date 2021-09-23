@@ -16,7 +16,7 @@ export const Toast: FC<IToast> = ({ title, description, type }) => {
   return (
     <div
       className={classNames(
-        'fixed col-start top-4 right-4 z-50 w-[400px] h-22 rounded px-4 py-2 shadow-xl ',
+        'fixed col-start top-4 right-4 z-50 w-[400px] h-22 rounded px-4 py-2 shadow-xl animate-fade-in-right',
         type === 'error' ? 'bg-red-500' : 'bg-green-600'
       )}
     >

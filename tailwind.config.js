@@ -20,6 +20,36 @@ module.exports = {
       boxShadow: {
         blue: '0 5px 5px -3px rgba(0, 0, 50, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
+      transitionProperty: {
+        width: 'width',
+        spacing: 'padding',
+      },
+      keyframes: {
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(+100px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        'fade-in-right': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(+300px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)',
+          },
+        },
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.4s ease-out',
+        'fade-in-right': 'fade-in-right 0.4s ease-in-out',
+      },
     },
   },
   variants: {

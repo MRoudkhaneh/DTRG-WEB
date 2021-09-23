@@ -27,7 +27,7 @@ export const ModalCore: FC<IModal> = memo(
         <div
           slot="modal"
           className={classNames(
-            'col-center z-50 rounded overflow-hidden max-h-[85%] bg-light dark:bg-dark ',
+            'col-center z-50 rounded overflow-hidden max-h-[85%] bg-light dark:bg-dark animate-fade-in-up  ',
             size === 'xl'
               ? 'w-10/12'
               : size === 'lg'
