@@ -14,9 +14,13 @@ export const TableCell: FC<ITableCell> = memo(
       >
         {column.render ? (
           column.render(item)
-        ) : (
+        ) : item[column.key] ? (
           <span className={classNames('text-gray-600 dark:text-gray-100')}>
             {item[column.key]}
+          </span>
+        ) : (
+          <span className={classNames('text-gray-600 dark:text-gray-100')}>
+            N/A
           </span>
         )}
       </div>

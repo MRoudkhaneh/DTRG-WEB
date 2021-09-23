@@ -1,4 +1,4 @@
-import { FC, memo, useMemo } from 'react'
+import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 import { useToggle } from 'hooks/use-toggle'
 
@@ -16,11 +16,9 @@ export const TableRow: FC<ITableRow> = memo(
     onRowClick,
     expanded = { id: null },
   }) => {
-    const isOpen = useMemo(
-      () => (item ? item.id === expanded.id : false),
-      [expanded, item]
+    const { open, toggle } = useToggle((): boolean =>
+      item ? item.id === expanded.id : false
     )
-    const { open, toggle } = useToggle(isOpen)
 
     return (
       <div
@@ -47,7 +45,7 @@ export const TableRow: FC<ITableRow> = memo(
           >
             {(columns || []).map((column, index) => (
               <TableCell
-                key={index}
+                key={column.key}
                 item={item}
                 index={index}
                 column={column}

@@ -23,7 +23,7 @@ export const TableBody: FC<ITable> = ({
   ) : data && data.length > 0 ? (
     (data || []).map((item, index) => (
       <TableRow
-        key={index}
+        key={item.id}
         item={item}
         columns={columns}
         index={index}
