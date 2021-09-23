@@ -1,15 +1,10 @@
-import { lazy, memo } from 'react'
+import { memo } from 'react'
 import { useUi } from 'hooks/use-ui'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 
 import { usePatientStudiesModal } from './use-patient-studies-modal'
-
-const PatientStudiesForm = lazy(() =>
-  import('containers/patients/studies/form').then((module) => ({
-    default: module.PatientInteractionsForm,
-  }))
-)
+import { PatientStudiesForm } from '../form'
 
 export const PatientStudiesModal = memo(() => {
   const { deleteInteraction } = usePatientStudiesModal()

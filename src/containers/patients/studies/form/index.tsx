@@ -5,7 +5,7 @@ import { CurrentStudy, StatusDetails, StudyStatus } from './fields'
 
 import { usePatientStudyForm } from './use-patient-study-form'
 
-export const PatientInteractionsForm = memo(() => {
+export const PatientStudiesForm = memo(() => {
   const { control, onSubmit, setValue } = usePatientStudyForm()
 
   return (
