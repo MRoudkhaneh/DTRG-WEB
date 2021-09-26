@@ -61,6 +61,7 @@ module.exports = {
         'fade-in-up': 'fade-in-up 0.4s ease-out',
         'fade-in-right': 'fade-in-right 0.4s ease-in-out',
         'fade-in': 'fade-in 0.4s ease-out',
+        'fade-in-right-fast': 'fade-in-right 0.1s ease-in-out',
       },
     },
   },

@@ -13,7 +13,7 @@ export const PatientListActions = ({ item, queryKey }) => {
   const { push } = useHistory()
 
   return (
-    <div className=" hidden group-hover:flex  items-center justify-end ">
+    <div className="list-action">
       <Tooltip content="Studies">
         <Button
           className="peer"

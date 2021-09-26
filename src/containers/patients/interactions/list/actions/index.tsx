@@ -7,7 +7,7 @@ import { ICEdit } from 'icons/edit'
 export const PatientInteractionListActions = ({ item, queryKey }) => {
   const { toggleDialog } = useUi()
   return (
-    <div className=" hidden group-hover:flex  items-center justify-end ">
+    <div className="list-action">
       <Tooltip content="Edit">
         <Button
           icon

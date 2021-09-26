@@ -51,4 +51,7 @@
   .border-light {
     @apply border-gray-300;
   }
+  .list-action {
+    @apply hidden group-hover:flex  items-center justify-end animate-fade-in-right-fast;
+  }
 }
