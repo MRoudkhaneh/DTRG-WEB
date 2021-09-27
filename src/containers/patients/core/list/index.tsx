@@ -20,11 +20,18 @@ export const PatientList = memo(() => {
     search,
     onRowClick,
     current,
+    onExport,
+    exportLoading,
   } = usePatientList()
 
   return (
     <div className="w-full">
-      <PatientListToolbar onSearch={onSearch} search={search} />
+      <PatientListToolbar
+        onSearch={onSearch}
+        search={search}
+        onExport={onExport}
+        exportLoading={exportLoading}
+      />
       <Suspense fallback={<Skeleton />}>
         <Table
           className="w-full my-10"
