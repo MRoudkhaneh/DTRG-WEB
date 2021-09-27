@@ -1,8 +1,9 @@
 import { useUi } from 'hooks'
-import { lazy, memo } from 'react'
+import { memo } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
+import { lazy } from 'utils/lazy'
 
 const PatientForm = lazy(() =>
   import('containers/patients/core/form').then((module) => ({

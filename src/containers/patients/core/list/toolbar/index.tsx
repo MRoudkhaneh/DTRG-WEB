@@ -23,7 +23,7 @@ export const PatientListToolbar: FC<{
       >
         Patients
       </Text>
-      <div className="flex items-center w-1/2 space-x-2" slot="end">
+      <div className="flex items-center w-1/2 lg:w-1/3 space-x-2" slot="end">
         <input
           className=" w-full h-8 text-[13px] mr-4 px-2  rounded focus:outline-none focus:shadow  text-gray-900 bg-white placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 border border-gray-300 focus:ring-2 focus:ring-indigo-400 dark:border-gray-700 dark:focus:ring-indigo-600  "
           placeholder="Search here ..."

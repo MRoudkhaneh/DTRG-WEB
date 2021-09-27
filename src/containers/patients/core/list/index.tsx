@@ -1,7 +1,7 @@
-import { lazy, memo, Suspense } from 'react'
+import { memo, Suspense } from 'react'
 import { Table } from 'components/table'
 import { Skeleton } from 'components/skeleton'
-
+import { lazy } from 'utils/lazy'
 import { usePatientList } from './use-patient-list'
 import { PatientListToolbar } from './toolbar'
 

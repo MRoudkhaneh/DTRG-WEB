@@ -1,10 +1,10 @@
-import { lazy } from "react";
+import { lazy } from 'utils/lazy'
 
 export const route = {
-  path: "/",
-  name: "ROUTE:HOME",
+  path: '/',
+  name: 'ROUTE:HOME',
   exact: true,
-  layout: "admin",
+  layout: 'admin',
   authorize: true,
-  component: lazy(() => import(".")),
-};
+  component: lazy(() => import('.')),
+}

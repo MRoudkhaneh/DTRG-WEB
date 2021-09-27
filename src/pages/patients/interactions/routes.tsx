@@ -1,4 +1,4 @@
-import { lazy } from 'react'
+import { lazy } from 'utils/lazy'
 
 export const route = {
   path: '/admin/patients/interactions/:id',
