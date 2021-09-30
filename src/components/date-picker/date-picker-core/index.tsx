@@ -5,8 +5,8 @@ import { v4 as uuid } from 'uuid'
 
 import 'react-datepicker/dist/react-datepicker.css'
 import { DatePickerLable } from '../date-picker-label'
-import { datePickerOnChange } from './helper'
 import { DatePickerBox } from '../date-picker-box'
+import moment from 'moment'
 
 export const DatePickerCore: FC<IDatePicker> = ({
   className,
@@ -39,7 +39,7 @@ export const DatePickerCore: FC<IDatePicker> = ({
         dropdownMode="select"
         className=" z-50 opacity-0"
         showTimeSelect={time}
-        onChange={(date) => datePickerOnChange(date, time, onChange)}
+        onChange={(date) => onChange(moment(date).format().slice(0, 10))}
       />
       <DatePickerBox
         id={id}
