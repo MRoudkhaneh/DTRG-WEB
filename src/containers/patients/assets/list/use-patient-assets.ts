@@ -52,13 +52,9 @@ export const usePatientAssets = () => {
     page: useMemo(() => params.page, [params.page]),
     columns: useMemo(
       () => [
-        { head: 'Lot number', key: 'lot_number', width: 'w-1/6' },
-        { head: 'Serial Number', key: 'serial_number', width: 'w-1/6' },
-        { head: 'Ownership', key: 'ownership', width: 'w-1/5' },
-        { head: 'Category', key: 'category', width: 'w-1/6' },
-        { head: 'Type', key: 'type', width: 'w-1/6' },
-        { head: 'Status', key: 'status', width: 'w-1/6' },
-        { head: 'Expiration date', key: 'expiration_date', width: 'w-1/6' },
+        { head: 'Owner', key: 'patient_name', width: 'w-1/3' },
+        { head: 'Ownership', key: 'ownership', width: 'w-1/3' },
+        { head: 'Serial Number', key: 'serial_number', width: 'w-1/3' },
         {
           head: '',
           width: 'w-[0px]',

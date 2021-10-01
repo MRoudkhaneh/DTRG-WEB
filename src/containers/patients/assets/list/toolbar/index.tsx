@@ -45,7 +45,7 @@ export const PatientAssetsToolbar: FC<{
 
         <Input
           className="mx-4"
-          placeholder="Search by status or lot number ..."
+          placeholder="Search by owner, status or lot number ..."
           onChange={onSearch}
           icon={() => <ICSearch className="w-5 h-5 text-gray-600 " />}
           size="small"
