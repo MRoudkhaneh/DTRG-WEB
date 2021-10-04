@@ -10,14 +10,17 @@ export const usePatientList = () => {
   const { useGet } = useService()
   const { onError } = useError()
   const {
-    uiState: { params, current },
+    uiState: { params, current, advanceParams },
     setParams,
     setCurrent,
   } = useUi()
 
   const [isExport, setIsExport] = useState(false)
 
-  const queryKey = useMemo(() => ['PATIENTS_LIST', params], [params])
+  const queryKey = useMemo(
+    () => ['PATIENTS_LIST', { ...params, ...advanceParams }],
+    [params, advanceParams]
+  )
 
   const { data, isLoading, isFetching } = useGet({
     key: queryKey,

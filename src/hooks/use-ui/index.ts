@@ -37,6 +37,11 @@ export const useUi = () => {
     [uiState.params]
   )
 
+  const setAdvanceParams = useCallback(
+    (payload) => uiDispatch({ type: uiTypes.SET_ADVANCE_PARAMS, payload }),
+    [uiState.advanceParams]
+  )
+
   const setCurrent = useCallback(
     (payload) => uiDispatch({ type: uiTypes.SET_CURRENT, payload }),
     [uiState.current]
@@ -50,5 +55,6 @@ export const useUi = () => {
     toggleDark,
     setParams,
     setCurrent,
+    setAdvanceParams,
   }
 }

@@ -42,7 +42,7 @@ export const SelectBoxSingle: FC<ISelect> = memo(
               )}
             >
               <option value="" selected disabled hidden>
-                Select {label}
+                Select an option
               </option>
               {children}
             </select>

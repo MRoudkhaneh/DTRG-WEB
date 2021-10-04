@@ -4,6 +4,7 @@ import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
 import { lazy } from 'utils/lazy'
+import { PatientAdvanceSearch } from '../advance-search'
 
 const PatientForm = lazy(() =>
   import('containers/patients/core/form').then((module) => ({
@@ -51,6 +52,19 @@ export const PatientModal = memo(() => {
           onConfirm={() => mutate()}
           onCancel={() => toggleDialog({ open: false, type: null })}
         />
+      )
+
+    case 'patient-advance-search':
+      return (
+        <Modal
+          size="md"
+          className="px-10 "
+          onClose={() => toggleDialog({ open: false, type: null, data: null })}
+          header="Search for patient"
+          withHeader
+        >
+          <PatientAdvanceSearch />
+        </Modal>
       )
 
     default:
