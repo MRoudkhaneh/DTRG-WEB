@@ -1,4 +1,4 @@
-type TTextOwn = {
+type TTextOwn<E extends ElementType> = {
   className?: string
   size?: 'header' | 'title'
   children?: ReactNode
