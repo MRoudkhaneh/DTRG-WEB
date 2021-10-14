@@ -1,9 +1,9 @@
-import { FC, memo } from "react";
+import { FC, memo } from 'react'
 
-export const Form: FC<IForm> = memo(({ className, onSubmit, children }) => {
+export const Form: FC<TForm> = memo(({ children, ...rest }) => {
   return (
-    <form onSubmit={onSubmit} className={className} slot="wrapper">
+    <form slot="wrapper" {...rest}>
       {children && <div slot="children">{children}</div>}
     </form>
-  );
-});
+  )
+})

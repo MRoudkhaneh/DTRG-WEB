@@ -8,7 +8,7 @@ import { InputCore } from './input-core'
 import { InputIcon } from './input-icon'
 import { classNames } from 'utils/classes'
 
-export const Input: FC<IInput> = memo((props) => {
+export const Input: FC<TInput> = memo((props) => {
   const {
     required,
     max,

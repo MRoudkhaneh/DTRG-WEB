@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 import { CheckCore } from './check-core'
 import { CheckLabel } from './check-label'
 
-export const Check: FC<ICheck> = memo(
+export const Check: FC<TCheck> = memo(
   ({
     onClick,
     className,

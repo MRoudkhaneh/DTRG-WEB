@@ -1,12 +1,5 @@
-interface IButton {
-  className?: string
-  onClick?: any
-  children?: any
-  disabled?: boolean
-  type?: 'submit' | 'button' | 'reset'
+type TButton = {
   icon?: boolean
   loading?: boolean
-  onMouseEnter?: any
-  onMouseLeave?: any
   id?: string
-}
+} & ComponentProps<'button'>

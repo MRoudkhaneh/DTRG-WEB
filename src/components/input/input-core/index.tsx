@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { inputCoreActualValue, inputCoreClassName } from './helper'
 
-export const InputCore: FC<IInput> = memo((props) => {
+export const InputCore: FC<TInput> = memo((props) => {
   if (props.control)
     return (
       <input

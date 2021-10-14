@@ -1,5 +1,1 @@
-interface IForm {
-  className?: string;
-  children?: any;
-  onSubmit?: any;
-}
+type TForm = ComponentProps<'form'>

@@ -2,28 +2,22 @@ import { FC, memo } from 'react'
 import { LoaidngBounce } from 'components/loading/bounce'
 import { buttonClassName } from './helper'
 
-export const Button: FC<IButton> = memo(
+export const Button: FC<TButton> = memo(
   ({
-    className,
-    children,
-    onClick,
-    disabled,
-    type,
+    id,
     icon,
     loading,
-    onMouseEnter,
-    onMouseLeave,
-    id,
+    disabled,
+    className,
+    children,
+    ...rest
   }): JSX.Element => {
     return (
       <button
         data-testid={id}
-        type={type}
-        onClick={onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
         disabled={disabled || loading}
         className={buttonClassName(icon, loading, disabled, className)}
+        {...rest}
       >
         {loading ? <LoaidngBounce /> : children}
       </button>

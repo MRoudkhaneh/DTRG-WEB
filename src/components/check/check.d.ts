@@ -1,11 +1,5 @@
-interface ICheck {
-  checked?: boolean
-  onClick?: any
-  className?: string
-  disabled?: boolean
+type TCheck = {
   label?: string
   control?: any
-  name?: any
   id?: any
-  onChange?: any
-}
+} & ComponentProps<'input'>
