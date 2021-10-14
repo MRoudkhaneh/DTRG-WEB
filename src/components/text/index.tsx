@@ -1,8 +1,15 @@
-import { FC, memo } from 'react'
+import { ElementType } from 'react'
 
-export const Text: FC<IText> = memo(({ className, size, children, slot }) => {
+export const Text = <E extends ElementType = 'span'>({
+  className,
+  size,
+  children,
+  slot,
+  as,
+}: TText<E>) => {
+  const Component = as || 'span'
   return (
-    <span
+    <Component
       slot={slot}
       className={`${
         !className ||
@@ -16,6 +23,6 @@ export const Text: FC<IText> = memo(({ className, size, children, slot }) => {
       } ${className}`}
     >
       {children}
-    </span>
+    </Component>
   )
-})
+}

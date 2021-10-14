@@ -1,6 +1,10 @@
-interface IText {
-  className?: string;
-  size?: "header" | "title";
-  children?: any;
-  slot?: any;
+type TTextOwn = {
+  className?: string
+  size?: 'header' | 'title'
+  children?: ReactNode
+  slot?: string
+  as?: E
 }
+
+type TText<E extends ElementType> = TTextOwn<E> &
+  Omit<ComponentProps<E>, keyof TTextOwn<E>>
