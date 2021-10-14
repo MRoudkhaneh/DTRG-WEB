@@ -34,16 +34,11 @@ export const PatientAdvanceSearch = memo(() => {
       <div className="w-full grid grid-cols-3 gap-8 mt-6">
         <Input
           control={control}
-          name="first_name"
-          placeholder="Enter first name"
-          label="First name"
+          name="name"
+          placeholder="Enter name"
+          label="Name"
         />
-        <Input
-          control={control}
-          name="last_name"
-          placeholder="Enter last name"
-          label="Last name"
-        />
+
         <Input
           control={control}
           name="post_code"
@@ -83,7 +78,7 @@ export const PatientAdvanceSearch = memo(() => {
         </Select>
         <Input
           control={control}
-          name="date_of_diagnosis"
+          name="date_of_diagnosis_of"
           placeholder="Enter date of diagnosis"
           label="Date of diagnosis"
         />
@@ -143,8 +138,8 @@ export const PatientAdvanceSearch = memo(() => {
         </Select>
         <div className="col-span-2" />
         <Switch
-          label="In the past 12 months, have you had a severe Hypoglycaemic event requiring 3rd party assistance?"
-          name="hypoglycemic_event_past_12_months"
+          label="In the past 12 months, have you had Diabetic Ketoacidosis (DKA) requiring a hospital admission?"
+          name="dka_requiring_hospital_admission_past_12_months"
           control={control}
           className="col-span-3"
         />
@@ -166,7 +161,7 @@ export const PatientAdvanceSearch = memo(() => {
         />
         <Switch label="HadRetinopathy?" name="retinopathy" control={control} />
         <Switch
-          label="Had Hypo-unawareness?"
+          label="Had Hypo unawareness?"
           name="hypo_unawareness"
           control={control}
         />

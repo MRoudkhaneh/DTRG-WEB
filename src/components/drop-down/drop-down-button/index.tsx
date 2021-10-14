@@ -17,9 +17,13 @@ export const DropDownButton: FC<IDropdown> = memo(
       >
         <div className="row-items-center">
           {icon && icon()}
-          <span className={classNames('text-lg text-light dark:text-dark ')}>
+          <div
+            className={classNames(
+              'text-lg text-light dark:text-dark whitespace-nowrap '
+            )}
+          >
             {label}
-          </span>
+          </div>
         </div>
 
         {open ? (

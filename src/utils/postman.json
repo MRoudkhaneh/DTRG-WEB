@@ -1,4 +1,5 @@
 {
+  
   "info": {
     "_postman_id": "500a8278-4251-4e6d-b4a0-af17ca317602",
     "name": "DTRG CRM",
@@ -1510,4 +1511,126 @@
       "value": ""
     }
   ]
+}
+
+
+
+  {
+	"info": {
+		"_postman_id": "f2e41f98-13ce-4469-accf-5e4030707572",
+		"name": "CRM Patients Advanced Search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List with filters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/patients/",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"patients",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "",
+							"description": "string type",
+							"disabled": true
+						},
+						{
+							"key": "diabetes_type",
+							"value": "",
+							"description": "string type",
+							"disabled": true
+						},
+						{
+							"key": "current_diabetes_management",
+							"value": "",
+							"description": "string type",
+							"disabled": true
+						},
+						{
+							"key": "latest_hba1c_reading",
+							"value": null,
+							"description": "string type",
+							"disabled": true
+						},
+						{
+							"key": "current_cgm_wear",
+							"value": null,
+							"description": "string type",
+							"disabled": true
+						},
+						{
+							"key": "date_of_diagnosis_of",
+							"value": null,
+							"description": "string type",
+							"disabled": true
+						},
+						{
+							"key": "dka_requiring_hospital_admission_past_12_months",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "hypoglycemic_event_past_12_months",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "hypo_unawareness",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "abnormal_kidney_function",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "retinopathy",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "foot_neuropathy",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "will_come_to_st_vincent",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "has_internet_access",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						},
+						{
+							"key": "warehouse_account",
+							"value": null,
+							"description": "boolean",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }
