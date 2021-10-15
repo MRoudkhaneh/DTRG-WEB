@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const CheckCore: FC<TCheck> = memo(
+export const CheckCore: FC<Partial<TCheck>> = memo(
   ({ onClick, className, disabled, ...rest }): JSX.Element => {
     return (
       <input

@@ -4,7 +4,7 @@ import { Modal } from 'components/modal'
 import { ConfirmActions } from './confirm-actions'
 import { ConfirmBody } from './confirm-body'
 
-export const Confirm: FC<IConfirm> = memo(
+export const Confirm: FC<Partial<IConfirm>> = memo(
   ({
     onConfirm,
     onCancel,

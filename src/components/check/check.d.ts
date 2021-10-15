@@ -1,5 +1,5 @@
 type TCheck = {
-  label?: string
-  control?: any
-  id?: any
+  label: string
+  control: any
+  id: any
 } & ComponentProps<'input'>

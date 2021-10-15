@@ -4,16 +4,8 @@ import { v4 as uuid } from 'uuid'
 import { CheckCore } from './check-core'
 import { CheckLabel } from './check-label'
 
-export const Check: FC<TCheck> = memo(
-  ({
-    onClick,
-    className,
-    disabled,
-    checked,
-    label,
-    control,
-    name,
-  }): JSX.Element => {
+export const Check: FC<Partial<TCheck>> = memo(
+  ({ label, control, name, ...rest }): JSX.Element => {
     const id = useMemo(() => uuid(), [])
 
     if (control)
@@ -25,11 +17,9 @@ export const Check: FC<TCheck> = memo(
             <div className="flex items-center space-x-4">
               <CheckCore
                 id={id}
-                disabled={disabled}
                 checked={value}
                 onChange={(e) => filedChange(e.target.checked)}
-                onClick={onClick}
-                className={className}
+                {...rest}
               />
 
               <CheckLabel label={label} id={id} />
@@ -39,14 +29,7 @@ export const Check: FC<TCheck> = memo(
       )
     return (
       <div className="flex items-center space-x-4">
-        <CheckCore
-          id={id}
-          disabled={disabled}
-          checked={checked}
-          onChange={() => {}}
-          onClick={onClick}
-          className={className}
-        />
+        <CheckCore id={id} onChange={() => {}} {...rest} />
         <CheckLabel label={label} id={id} />
       </div>
     )

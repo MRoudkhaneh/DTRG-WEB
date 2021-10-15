@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { LoaidngBounce } from 'components/loading/bounce'
 import { buttonClassName } from './helper'
 
-export const Button: FC<TButton> = memo(
+export const Button: FC<Partial<TButton>> = memo(
   ({
     id,
     icon,

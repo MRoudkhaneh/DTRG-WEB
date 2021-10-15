@@ -2,8 +2,8 @@ interface IDatePicker {
   className?: string
   label?: string
   name?: any
-  later?: boolean | undefined
-  required?: boolean | undefined
+  later?: boolean
+  required?: boolean
   validation?: any
   control?: any
   year?: boolean
