@@ -7,30 +7,38 @@ import { Select } from 'components/select'
 
 import { useForm } from 'react-hook-form'
 import { Switch } from 'components/switch'
+import { useUi } from 'hooks/use-ui'
 
 export const PatientAdvanceSearch = memo(() => {
   const { control, setValue, handleSubmit } = useForm({
     defaultValues: {
-      abnormal_kidney_function: null,
-      age_category: null,
-      current_cgm_wear: null,
-      current_diabetes_management: null,
-      date_of_diagnosis: null,
+      name: null,
       diabetes_type: null,
-      first_name: null,
-      foot_neuropathy: null,
-      hypo_unawareness: null,
+      current_diabetes_management: null,
+      current_cgm_wear: null,
+      date_of_diagnosis_of: null,
+      dka_requiring_hospital_admission_past_12_months: null,
       hypoglycemic_event_past_12_months: null,
-      last_name: null,
-      latest_hba1c_reading_max: null,
-      latest_hba1c_reading_min: null,
-      post_code: null,
+      hypo_unawareness: null,
+      abnormal_kidney_function: null,
       retinopathy: null,
+      foot_neuropathy: null,
+      latest_hba1c_reading_min: null,
+      latest_hba1c_reading_max: null,
+      age_category: null,
+      post_code: null,
     },
   })
 
+  const { setParams, toggleDialog } = useUi()
+
   return (
-    <Form onSubmit={handleSubmit((state) => console.log(state))}>
+    <Form
+      onSubmit={handleSubmit((state) => {
+        setParams({ ...state })
+        toggleDialog({ open: false, data: null, type: null })
+      })}
+    >
       <div className="w-full grid grid-cols-3 gap-8 mt-6">
         <Input
           control={control}
@@ -79,8 +87,8 @@ export const PatientAdvanceSearch = memo(() => {
         <Input
           control={control}
           name="date_of_diagnosis_of"
-          placeholder="Enter date of diagnosis"
-          label="Date of diagnosis"
+          placeholder="Enter date of diagnosis of"
+          label="Date of diagnosis of"
         />
         <Select
           control={control}

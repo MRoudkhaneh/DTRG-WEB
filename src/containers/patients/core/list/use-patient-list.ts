@@ -10,17 +10,14 @@ export const usePatientList = () => {
   const { useGet } = useService()
   const { onError } = useError()
   const {
-    uiState: { params, current, advanceParams },
+    uiState: { params, current },
     setParams,
     setCurrent,
   } = useUi()
 
   const [isExport, setIsExport] = useState(false)
 
-  const queryKey = useMemo(
-    () => ['PATIENTS_LIST', { ...params, ...advanceParams }],
-    [params, advanceParams]
-  )
+  const queryKey = useMemo(() => ['PATIENTS_LIST', { ...params }], [params])
 
   const { data, isLoading, isFetching } = useGet({
     key: queryKey,
@@ -49,7 +46,7 @@ export const usePatientList = () => {
   return {
     current,
     exportLoading,
-    search: params.search,
+    search: params.name,
     data: data ? data.data : { count: 0, results: [] },
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     page: useMemo(() => params.page, [params.page]),
@@ -73,7 +70,7 @@ export const usePatientList = () => {
       [params.page]
     ),
     onSearch: useCallback(
-      (event) => setParams({ search: event.target.value }),
+      (event) => setParams({ name: event.target.value }),
       [params.search]
     ),
     onRowClick: useCallback((item) => setCurrent(item), [current]),

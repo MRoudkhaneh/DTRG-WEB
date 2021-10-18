@@ -1515,9 +1515,9 @@
 
 
 
-  {
+{
 	"info": {
-		"_postman_id": "f2e41f98-13ce-4469-accf-5e4030707572",
+		"_postman_id": "09da70e7-3728-4d2d-80f6-15a050acafcb",
 		"name": "CRM Patients Advanced Search",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1552,12 +1552,6 @@
 						{
 							"key": "current_diabetes_management",
 							"value": "",
-							"description": "string type",
-							"disabled": true
-						},
-						{
-							"key": "latest_hba1c_reading",
-							"value": null,
 							"description": "string type",
 							"disabled": true
 						},
@@ -1626,11 +1620,68 @@
 							"value": null,
 							"description": "boolean",
 							"disabled": true
+						},
+						{
+							"key": "latest_hba1c_reading_min",
+							"value": "10",
+							"description": "date",
+							"disabled": true
+						},
+						{
+							"key": "latest_hba1c_reading_max",
+							"value": "100",
+							"description": "date",
+							"disabled": true
+						},
+						{
+							"key": "age_category",
+							"value": "21-26",
+							"disabled": true
 						}
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "endpoint",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
 		}
 	]
 }
