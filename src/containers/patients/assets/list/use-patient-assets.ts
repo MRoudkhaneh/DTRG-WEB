@@ -6,12 +6,22 @@ import { Api } from 'utils/api'
 import { PatientAssetActions } from './actions'
 import * as FileSaver from 'file-saver'
 
+type TAssetParmas = {
+  page: number
+  search: string
+  patient_id: string
+}
+
 export const usePatientAssets = () => {
-  const routeParams: { id: string } = useParams()
   const { useGet } = useService()
+
   const { onError } = useError()
-  const [isExport, setIsExport] = useState(false)
-  const [params, setParams] = useState({
+
+  const routeParams: { id: string } = useParams()
+
+  const [isExport, setIsExport] = useState<boolean>(false)
+
+  const [params, setParams] = useState<TAssetParmas>({
     page: 1,
     search: null,
     patient_id: routeParams.id || null,

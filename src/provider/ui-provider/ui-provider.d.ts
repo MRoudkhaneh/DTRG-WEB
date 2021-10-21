@@ -41,3 +41,8 @@ type TProviderTypes =
 type TUiProvider = {
   children?: ReactNode
 }
+
+type TUiContext = {
+  uiState: TProviderState
+  uiDispatch: Dispatch<TProviderAction>
+}
