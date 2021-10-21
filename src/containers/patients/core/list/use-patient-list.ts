@@ -71,7 +71,7 @@ export const usePatientList = () => {
     ),
     onSearch: useCallback(
       (event) => setParams({ name: event.target.value }),
-      [params.search]
+      [params.name]
     ),
     onRowClick: useCallback((item) => setCurrent(item), [current]),
     onExport: useCallback(() => setIsExport(true), [isExport]),

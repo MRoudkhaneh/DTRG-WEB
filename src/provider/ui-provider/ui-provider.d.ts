@@ -1,6 +1,6 @@
 type TProviderState = {
   drawer: { open: boolean }
-  dialog: { open: boolean; data: any; type: any }
+  dialog: { open: boolean; data: any; type: any; queryKey: any }
   toast: { open: boolean; type: any; title: any; description: any }
   current: any
   theme: string
