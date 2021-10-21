@@ -1,7 +1,10 @@
 import { uiTypes } from './types'
 import { initialState } from './state'
 
-export const reducer = (state = initialState, { type, payload }) => {
+export const reducer = (
+  state = initialState,
+  { type, payload }: TProviderAction
+) => {
   switch (type) {
     case uiTypes.TOGGLE_DRAWER:
       return {
@@ -27,11 +30,6 @@ export const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         params: { ...state.params, ...payload },
-      }
-    case uiTypes.SET_ADVANCE_PARAMS:
-      return {
-        ...state,
-        advanceParams: { ...state.advanceParams, ...payload },
       }
     case uiTypes.SET_CURRENT:
       return {

@@ -29,17 +29,12 @@ export const useUi = () => {
       }
       uiDispatch({ type: uiTypes.TOGGLE_DARK, payload })
     },
-    [uiState.dark]
+    [uiState.theme]
   )
 
   const setParams = useCallback(
     (payload) => uiDispatch({ type: uiTypes.SET_PARAMS, payload }),
     [uiState.params]
-  )
-
-  const setAdvanceParams = useCallback(
-    (payload) => uiDispatch({ type: uiTypes.SET_ADVANCE_PARAMS, payload }),
-    [uiState.advanceParams]
   )
 
   const setCurrent = useCallback(
@@ -55,6 +50,5 @@ export const useUi = () => {
     toggleDark,
     setParams,
     setCurrent,
-    setAdvanceParams,
   }
 }
