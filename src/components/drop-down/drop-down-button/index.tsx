@@ -1,6 +1,5 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
-import { ICChevronDown } from 'icons/chevron-down'
 import { ICChevronRight } from 'icons/chevron-right'
 
 export const DropDownButton: FC<IDropdown> = memo(
@@ -26,11 +25,14 @@ export const DropDownButton: FC<IDropdown> = memo(
           </div>
         </div>
 
-        {open ? (
-          <ICChevronDown className="w-3 h-3" role="close" id="close" />
-        ) : (
-          <ICChevronRight className="w-3 h-3 " />
-        )}
+        <ICChevronRight
+          className={classNames(
+            'w-3 h-3 transition-all duration-300 ease-in-out',
+            open && 'transform rotate-90'
+          )}
+          role="close"
+          id="close"
+        />
       </button>
     )
   }
