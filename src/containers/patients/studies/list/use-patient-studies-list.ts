@@ -21,7 +21,7 @@ export const usePatientStudiesList = () => {
   const { data, isLoading, isFetching } = useGet({
     key: queryKey,
     url: `${Api.studies}`,
-    onFocus: false,
+    refetchOnWindowFocus: false,
     keepPreviousData: true,
     onError,
   })

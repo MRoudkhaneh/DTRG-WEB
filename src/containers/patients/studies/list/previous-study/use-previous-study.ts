@@ -43,7 +43,7 @@ export const usepreviousStudy = () => {
   const { isLoading, isFetching } = useGet({
     key: queryKey,
     url: `${Api.prevStudies}`,
-    onFocus: false,
+    refetchOnWindowFocus: false,
     keepPreviousData: true,
     onSuccess: (data) => reset(data.data),
     onError,

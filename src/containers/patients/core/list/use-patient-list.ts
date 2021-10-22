@@ -22,7 +22,7 @@ export const usePatientList = () => {
   const { data, isLoading, isFetching } = useGet({
     key: queryKey,
     url: Api.patients,
-    onFocus: false,
+    refetchOnWindowFocus: false,
     keepPreviousData: true,
     onError,
   })
@@ -30,7 +30,7 @@ export const usePatientList = () => {
   const { isFetching: exportLoading } = useGet({
     url: `${Api.patients}export`,
     key: ['ASSET_EXPORT'],
-    onFocus: false,
+    refetchOnWindowFocus: false,
     keepPreviousData: false,
     enabled: isExport,
     onSuccess: ({ data }) => {

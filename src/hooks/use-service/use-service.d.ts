@@ -6,8 +6,7 @@ interface IUseService {
   onMutate?: any
   key?: any
   params?: any
-  onFocus?: boolean
-  onMount?: boolean
+  refetchOnWindowFocus?: boolean
   enabled?: boolean
   initialData?: any
   keepPreviousData?: boolean

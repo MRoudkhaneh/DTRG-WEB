@@ -32,7 +32,7 @@ export const usePatientAssets = () => {
   const { data, isLoading, isFetching, isSuccess } = useGet({
     key: queryKey,
     url: Api.assets,
-    onFocus: false,
+    refetchOnWindowFocus: false,
     keepPreviousData: true,
     onError,
   })
@@ -40,7 +40,7 @@ export const usePatientAssets = () => {
   const { isFetching: exportLoading } = useGet({
     url: `${Api.assets}/export/`,
     key: ['ASSET_EXPORT'],
-    onFocus: false,
+    refetchOnWindowFocus: false,
     keepPreviousData: false,
     enabled: isExport,
     onSuccess: ({ data }) => {

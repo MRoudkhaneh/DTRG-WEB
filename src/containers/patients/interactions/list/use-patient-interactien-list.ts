@@ -23,7 +23,7 @@ export const usePatientInteractionList = () => {
   const { data, isLoading, isFetching } = useGet({
     key: queryKey,
     url: `${Api.interactions}`,
-    onFocus: false,
+    refetchOnWindowFocus: false,
     keepPreviousData: true,
     onError,
   })
