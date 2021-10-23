@@ -1,15 +1,24 @@
 import { FC, memo } from 'react'
+import { classNames } from 'utils'
 
 export const PatientAssetsDetails: FC<{ item?: any }> = memo(({ item }) => {
   return (
-    <div className="w-full h-[500px]">
-      <img
-        className="w-[440px] h-[490px] rounded mx-auto "
-        src={
-          (item && item.image && item.image.url) ||
-          'https://picsum.photos/200/300'
-        }
-      />
+    <div
+      className={classNames(
+        'w-full ',
+        item && item.image && item.image.url && 'h-[500px]'
+      )}
+    >
+      {item && item.image && item.image.url ? (
+        <img
+          className="w-[440px] h-[490px] rounded mx-auto "
+          src={item.image.url}
+        />
+      ) : (
+        <div className=" text-gray-100 text-2xl flex  items-center justify-center py-10">
+          No image was uploaded
+        </div>
+      )}
     </div>
   )
 })
