@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { TInput } from '../input'
 import { inputIconClassName } from './helper'
 
 export const InputIcon: FC<TInput> = memo(({ label, icon, size }) => {

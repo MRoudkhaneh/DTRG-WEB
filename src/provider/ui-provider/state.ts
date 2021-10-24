@@ -1,6 +1,6 @@
 export const initialState: TProviderState = {
   drawer: { open: false },
-  dialog: { open: false, data: {}, type: null },
+  dialog: { open: false, data: {}, type: null, queryKey: null },
   toast: { open: false, type: null, title: null, description: null },
   current: {},
   theme: 'dark',

@@ -1,4 +1,6 @@
-type TInput = {
+import { ComponentProps } from 'react'
+
+export type TInput = {
   label?: string
   error?: string
   later?: boolean | undefined

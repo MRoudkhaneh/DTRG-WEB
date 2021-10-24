@@ -7,6 +7,7 @@ import { InputLabel } from './input-label'
 import { InputCore } from './input-core'
 import { InputIcon } from './input-icon'
 import { classNames } from 'utils/classes'
+import { TInput } from './input'
 
 export const Input: FC<TInput> = memo((props) => {
   const {

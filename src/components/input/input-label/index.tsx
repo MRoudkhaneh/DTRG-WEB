@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { TInput } from '../input'
 import { inputLabelClassName } from './helper'
 
 export const InputLabel: FC<TInput> = memo(({ label, size }) => {
