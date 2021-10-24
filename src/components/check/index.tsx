@@ -1,6 +1,7 @@
 import { FC, memo, useMemo } from 'react'
 import { Controller } from 'react-hook-form'
 import { v4 as uuid } from 'uuid'
+import { TCheck } from './check'
 import { CheckCore } from './check-core'
 import { CheckLabel } from './check-label'
 

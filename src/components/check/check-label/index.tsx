@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { TCheck } from '../check'
 
 export const CheckLabel: FC<Partial<TCheck>> = ({ label, id }): JSX.Element => {
   if (label)

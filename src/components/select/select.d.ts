@@ -15,4 +15,5 @@ interface ISelect {
   toggle?: any
   fieldRef?: any
   open?: any
+  ref?: any
 }

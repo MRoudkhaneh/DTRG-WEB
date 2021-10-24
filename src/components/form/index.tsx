@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { TForm } from './form'
 
 export const Form: FC<TForm> = memo(({ children, ...rest }) => {
   return (

@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
 import { LoaidngBounce } from 'components/loading/bounce'
 import { buttonClassName } from './helper'
+import { TButton } from './button'
 
 export const Button: FC<Partial<TButton>> = memo(
   ({

@@ -52,7 +52,7 @@ export const Pagination: FC<IPagination> = memo(
           </Button>
           {pager(total, page).map((item, index) => (
             <Button
-              key={index}
+              key={item}
               onClick={() => onPaginate(item + 1)}
               disabled={disabled}
               className={classNames(
