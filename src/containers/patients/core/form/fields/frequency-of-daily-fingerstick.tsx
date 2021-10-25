@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
 
-export const FrequencyOfDailyFingerstick: FC<IPatientField> = memo(
-  ({ control, setValue }) => {
+export const FrequencyOfDailyFingerstick = memo(
+  ({ control, setValue }: IPatientField) => {
     return (
       <Select
         label="Frequency of Daily Fingerstick"

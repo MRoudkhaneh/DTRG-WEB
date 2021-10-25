@@ -3,8 +3,8 @@ import { useWatch } from 'react-hook-form'
 import { Select } from 'components/select'
 import { years } from 'utils/constants'
 
-export const DateOfDiagnosisOfT1D: FC<IPatientField> = memo(
-  ({ control, setValue }) => {
+export const DateOfDiagnosisOfT1D = memo(
+  ({ control, setValue }: IPatientField) => {
     const state = useWatch({ control, name: 'diabetes_type' })
     if (state === 'Type 1')
       return (

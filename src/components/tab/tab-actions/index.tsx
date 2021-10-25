@@ -3,7 +3,7 @@ import { Button } from 'components/button'
 import { ICChevronDown } from 'icons/chevron-down'
 import { ICChevronRight } from 'icons/chevron-right'
 
-export const TabActions: FC<ITab> = memo(({ expandable, open }) => {
+export const TabActions = memo(({ expandable, open }: ITab) => {
   if (expandable) {
     if (open)
       return (

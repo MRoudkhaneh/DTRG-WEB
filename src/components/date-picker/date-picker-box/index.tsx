@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { datePickerBoxClassName, datePickerBoxValue } from './helper'
 
-export const DatePickerBox: FC<IDatePicker> = memo(
-  ({ id, value, time, defaultValue, error }) => {
+export const DatePickerBox = memo(
+  ({ id, value, time, defaultValue, error }: IDatePicker) => {
     return (
       <label
         htmlFor={id}

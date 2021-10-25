@@ -1,7 +1,7 @@
-import { Input } from "components/input";
-import { FC, memo } from "react";
+import { Input } from 'components/input'
+import { FC, memo } from 'react'
 
-export const EmailAddress: FC<IPatientField> = memo(({ control }) => {
+export const EmailAddress = memo(({ control }: IPatientField) => {
   return (
     <Input
       label="Email Address"
@@ -12,5 +12,5 @@ export const EmailAddress: FC<IPatientField> = memo(({ control }) => {
       max={64}
       required
     />
-  );
-});
+  )
+})

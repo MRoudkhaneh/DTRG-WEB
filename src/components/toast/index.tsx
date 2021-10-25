@@ -3,7 +3,7 @@ import { ICClose } from 'icons'
 import { classNames } from 'utils'
 import { useToast } from 'hooks'
 
-export const Toast: FC<IToast> = ({ title, description, type }) => {
+export const Toast = ({ title, description, type }: IToast) => {
   const { toast, close } = useToast()
 
   useEffect(() => {

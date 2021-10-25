@@ -1,4 +1,4 @@
 interface IListItem {
-  className?: string;
-  children?: any;
+  className?: string
+  children?: any
 }

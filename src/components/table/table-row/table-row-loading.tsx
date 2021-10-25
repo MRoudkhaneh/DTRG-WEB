@@ -1,7 +1,7 @@
 import { FC, Fragment, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const TableRowLoading: FC<ITable> = memo(({ columns }) => {
+export const TableRowLoading = memo(({ columns }: ITable) => {
   return (
     <div
       className="w-full row-start h-14 px-6 py-4"

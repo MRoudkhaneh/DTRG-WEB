@@ -5,7 +5,7 @@ import { ModalBackDrop } from '../modal-back-drop'
 import { ModalBody } from '../modal-body'
 import { ModalHeader } from '../modal-header'
 
-export const ModalCore: FC<IModal> = memo(
+export const ModalCore = memo(
   ({
     children,
     onClose,
@@ -16,7 +16,7 @@ export const ModalCore: FC<IModal> = memo(
     id,
     header,
     withHeader,
-  }) => {
+  }: IModal) => {
     return (
       <div
         className="fixed inset-0 row-items-start z-40 pt-10 md:pt-32 "

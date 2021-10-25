@@ -1,9 +1,17 @@
-import { Button } from "components/button";
-import { FC, memo, useState } from "react";
+import { Button } from 'components/button'
+import { FC, memo, useState } from 'react'
 
-export const Menu: FC<{ icon?: boolean; render?: any; activator?: any }> = memo(
-  ({ icon, render, activator }) => {
-    const [open, setOpen] = useState(false);
+export const Menu = memo(
+  ({
+    icon,
+    render,
+    activator,
+  }: {
+    icon?: boolean
+    render?: any
+    activator?: any
+  }) => {
+    const [open, setOpen] = useState(false)
 
     return (
       <div className="relative w-32">
@@ -16,6 +24,6 @@ export const Menu: FC<{ icon?: boolean; render?: any; activator?: any }> = memo(
           </div>
         )}
       </div>
-    );
+    )
   }
-);
+)

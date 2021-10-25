@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const DropDownBox: FC<IDropdown> = memo(({ open, children }) => {
+export const DropDownBox = memo(({ open, children }: IDropdown) => {
   return (
     <div
       className={classNames(

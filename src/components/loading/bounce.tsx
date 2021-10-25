@@ -1,7 +1,9 @@
 import { FC, useMemo } from 'react'
 
-export const LoaidngBounce: FC<{ size?: 'small' | 'large' }> = ({
+export const LoaidngBounce = ({
   size = 'small',
+}: {
+  size?: 'small' | 'large'
 }) => {
   const circleCommonClasses = useMemo(
     () =>

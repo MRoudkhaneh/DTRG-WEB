@@ -5,7 +5,7 @@ import { SearchBoxDropBox } from '../search-drop-box'
 import { SearchBoxLoading } from '../search-loading.tsx'
 import { SearchBoxNoItems } from '../search-no-items'
 
-export const SearchBoxCore: FC<ISearch> = (props) => {
+export const SearchBoxCore = (props: ISearch) => {
   const placeholder = useMemo(
     () =>
       (props.value ? props.value.first_name : '') +

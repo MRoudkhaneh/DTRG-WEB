@@ -28,8 +28,8 @@ const pager = (total, page) => {
   return pages.slice(startPage, endPage - 1)
 }
 
-export const Pagination: FC<IPagination> = memo(
-  ({ className, page, onPaginate, disabled, total }) => {
+export const Pagination = memo(
+  ({ className, page, onPaginate, disabled, total }: IPagination) => {
     if (Math.ceil(total / 10) > 1)
       return (
         <div

@@ -5,7 +5,7 @@ import { classNames } from 'utils/classes'
 import { TableHead } from './table-head'
 import { TableBody } from './table-body'
 
-export const Table: FC<ITable> = memo(
+export const Table = memo(
   ({
     className,
     columns,
@@ -17,7 +17,7 @@ export const Table: FC<ITable> = memo(
     total,
     onRowClick,
     expanded,
-  }) => {
+  }: ITable) => {
     return (
       <div
         className={classNames('w-full flex flex-col items-center', className)}

@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const TableHead: FC<ITableHead> = memo(({ columns, loading }) => {
+export const TableHead = memo(({ columns, loading }: ITableHead) => {
   return (
     <div className="w-full flex flex-col">
       <div

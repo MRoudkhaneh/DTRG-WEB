@@ -1,7 +1,7 @@
 import { Input } from 'components/input'
 import { FC, memo } from 'react'
 
-export const PhoneNumber: FC<IPatientField> = memo(({ control }) => {
+export const PhoneNumber = memo(({ control }: IPatientField) => {
   return (
     <Input
       label="Phone Number (Mobile)"

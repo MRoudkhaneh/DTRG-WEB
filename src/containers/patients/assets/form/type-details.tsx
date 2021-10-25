@@ -2,7 +2,7 @@ import { TextArea } from 'components/text-area'
 import { FC, memo } from 'react'
 import { useWatch } from 'react-hook-form'
 
-export const TypeDetails: FC<{ control?: any }> = memo(({ control }) => {
+export const TypeDetails = memo(({ control }: { control?: any }) => {
   const state = useWatch({ control, name: 'type' })
   if (state === 'other')
     return (

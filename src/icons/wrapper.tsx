@@ -1,7 +1,7 @@
-import { FC, memo } from "react";
+import { FC, memo } from 'react'
 
-export const ICWrapper: FC<IIcon> = memo(
-  ({ children, onClick, className, role, id }) => {
+export const ICWrapper = memo(
+  ({ children, onClick, className, role, id }: IIcon) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -14,6 +14,6 @@ export const ICWrapper: FC<IIcon> = memo(
       >
         {children}
       </svg>
-    );
+    )
   }
-);
+)

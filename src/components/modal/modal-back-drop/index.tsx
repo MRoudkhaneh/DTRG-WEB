@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 
-export const ModalBackDrop: FC<IModal> = memo(({ onClose }) => {
+export const ModalBackDrop = memo(({ onClose }: IModal) => {
   return (
     <div
       slot="back-drop"

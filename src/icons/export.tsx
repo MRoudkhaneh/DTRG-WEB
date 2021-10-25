@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { ICWrapper } from './wrapper'
 
-export const ICExport: FC<IIcon> = memo(({ className, onClick }) => {
+export const ICExport = memo(({ className, onClick }: IIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick}>
       <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />

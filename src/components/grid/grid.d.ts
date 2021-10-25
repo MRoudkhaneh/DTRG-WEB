@@ -1,6 +1,6 @@
 interface IGrid {
-  className?: string;
-  children?: any;
-  cols?: string;
-  gap?: string;
+  className?: string
+  children?: any
+  cols?: string
+  gap?: string
 }

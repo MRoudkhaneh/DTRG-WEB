@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
 
-export const Gender: FC<IPatientField> = memo(({ control, setValue }) => {
+export const Gender = memo(({ control, setValue }: IPatientField) => {
   return (
     <Select
       control={control}

@@ -1,7 +1,7 @@
 import { FC, Fragment, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const Toolbar: FC<IToolbar> = memo(({ children }) => {
+export const Toolbar = memo(({ children }: IToolbar) => {
   return (
     <div
       className={classNames(

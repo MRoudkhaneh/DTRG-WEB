@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const TextAreaLabel: FC<IInput> = memo(({ label, size }) => {
+export const TextAreaLabel = memo(({ label, size }: IInput) => {
   if (label)
     return (
       <label

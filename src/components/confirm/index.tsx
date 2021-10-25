@@ -4,14 +4,14 @@ import { Modal } from 'components/modal'
 import { ConfirmActions } from './confirm-actions'
 import { ConfirmBody } from './confirm-body'
 
-export const Confirm: FC<Partial<IConfirm>> = memo(
+export const Confirm = memo(
   ({
     onConfirm,
     onCancel,
     description,
     title = 'Are You Sure?',
     loading = false,
-  }) => {
+  }: Partial<IConfirm>) => {
     return (
       <Modal
         size="sm"

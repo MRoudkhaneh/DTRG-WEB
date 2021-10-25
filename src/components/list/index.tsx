@@ -1,10 +1,10 @@
-import { FC, memo } from "react";
-import { classNames } from "utils";
+import { FC, memo } from 'react'
+import { classNames } from 'utils'
 
-export const List: FC<IList> = memo(({ children, className }) => {
+export const List = memo(({ children, className }: IList) => {
   return (
-    <div className={classNames("w-full col-start", className)} slot="wrapper">
+    <div className={classNames('w-full col-start', className)} slot="wrapper">
       {children}
     </div>
-  );
-});
+  )
+})

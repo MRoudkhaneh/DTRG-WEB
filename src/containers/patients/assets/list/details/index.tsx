@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
 
-export const PatientAssetsDetails: FC<{ item?: any }> = memo(({ item }) => {
+export const PatientAssetsDetails = memo(({ item }: { item?: any }) => {
   return (
     <div
       className={classNames(

@@ -1,3 +1,3 @@
 interface ISuspencer {
-  children?: any;
+  children?: any
 }

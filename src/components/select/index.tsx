@@ -10,7 +10,7 @@ import { SelectBox } from './select-box'
 import { SelectDropBox } from './select-drop-box'
 import { SelectBoxSingle } from './select-box-single'
 
-export const Select: FC<ISelect> = memo(
+export const Select = memo(
   ({
     label,
     control,
@@ -20,7 +20,7 @@ export const Select: FC<ISelect> = memo(
     required,
     multiple,
     setValue,
-  }) => {
+  }: ISelect) => {
     const { open, toggle } = useToggle()
     const { validate } = useValidation({ required })
 

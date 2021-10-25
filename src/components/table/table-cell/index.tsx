@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const TableCell: FC<ITableCell> = memo(
-  ({ column, index, item, columns }) => {
+export const TableCell = memo(
+  ({ column, index, item, columns }: ITableCell) => {
     return (
       <div
         slot="wrapper"

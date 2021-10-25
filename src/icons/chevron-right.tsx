@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { ICWrapper } from "./wrapper";
+import { FC } from 'react'
+import { ICWrapper } from './wrapper'
 
-export const ICChevronRight: FC<IIcon> = ({ className, onClick }) => {
+export const ICChevronRight = ({ className, onClick }: IIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick}>
       <path
@@ -9,5 +9,5 @@ export const ICChevronRight: FC<IIcon> = ({ className, onClick }) => {
         d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
       />
     </ICWrapper>
-  );
-};
+  )
+}

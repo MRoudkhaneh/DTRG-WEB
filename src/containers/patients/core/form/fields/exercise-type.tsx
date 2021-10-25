@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
 
-export const ExerciseType: FC<IPatientField> = memo(({ control, setValue }) => {
+export const ExerciseType = memo(({ control, setValue }: IPatientField) => {
   return (
     <Select
       label="Exercise Type"

@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import { Select } from 'components/select'
 import { SelectOption } from 'components/select-option'
 
-export const PhoneType: FC<IPatientField> = memo(({ control, setValue }) => {
+export const PhoneType = memo(({ control, setValue }: IPatientField) => {
   return (
     <Select
       label="Phone Type"

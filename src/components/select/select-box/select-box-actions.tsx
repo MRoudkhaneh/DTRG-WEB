@@ -4,8 +4,8 @@ import { ICChevronDown } from 'icons/chevron-down'
 import { ICChevronUp } from 'icons/chevron-up'
 import { ICDelete } from 'icons/delete'
 
-export const SelectBoxActions: FC<ISelect> = memo(
-  ({ multiple, value, setValue, name, open }) => {
+export const SelectBoxActions = memo(
+  ({ multiple, value, setValue, name, open }: ISelect) => {
     return (
       <div className=" flex items-center space-x-2">
         {multiple

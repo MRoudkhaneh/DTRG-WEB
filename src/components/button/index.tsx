@@ -3,7 +3,7 @@ import { LoaidngBounce } from 'components/loading/bounce'
 import { buttonClassName } from './helper'
 import { TButton } from './button'
 
-export const Button: FC<Partial<TButton>> = memo(
+export const Button = memo(
   ({
     id,
     icon,
@@ -12,7 +12,7 @@ export const Button: FC<Partial<TButton>> = memo(
     className,
     children,
     ...rest
-  }): JSX.Element => {
+  }: Partial<TButton>): JSX.Element => {
     return (
       <button
         data-testid={id}

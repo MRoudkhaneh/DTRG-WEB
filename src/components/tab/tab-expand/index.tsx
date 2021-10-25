@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const TabExpand: FC<ITab> = memo(({ expandable, children, open }) => {
+export const TabExpand = memo(({ expandable, children, open }: ITab) => {
   if (expandable && open)
     return (
       <div

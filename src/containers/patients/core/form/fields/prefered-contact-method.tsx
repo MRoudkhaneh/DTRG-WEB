@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
 
-export const PreferedContactMethod: FC<IPatientField> = memo(
-  ({ control, setValue }) => {
+export const PreferedContactMethod = memo(
+  ({ control, setValue }: IPatientField) => {
     return (
       <Select
         label="Prefered Contact Method"

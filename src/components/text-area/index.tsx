@@ -7,7 +7,7 @@ import { classNames } from 'utils/classes'
 import { TextAreaLabel } from './text-area-label'
 import { TextAreatCore } from './text-area-core'
 
-export const TextArea: FC<ITextArea> = memo((props) => {
+export const TextArea = memo((props: ITextArea) => {
   const { required, max, min, className, error, control, name, expanded } =
     props
   const { validate } = useValidation({ required, max, min })

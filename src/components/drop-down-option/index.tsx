@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils'
 
-export const DropDownOption: FC<IDropdownOption> = memo(
-  ({ children, onClick, active }) => {
+export const DropDownOption = memo(
+  ({ children, onClick, active }: IDropdownOption) => {
     return (
       <span
         slot="wrapper"

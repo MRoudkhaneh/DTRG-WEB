@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const SelectBoxValue: FC<ISelect> = memo(
-  ({ multiple, value, open, label }) => {
+export const SelectBoxValue = memo(
+  ({ multiple, value, open, label }: ISelect) => {
     if (multiple && value && typeof value === 'object' && value.length > 0)
       return (
         <div

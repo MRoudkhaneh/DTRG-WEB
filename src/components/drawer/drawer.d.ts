@@ -1,4 +1,4 @@
 interface IDrawer {
-  children?: any;
-  open?: boolean;
+  children?: any
+  open?: boolean
 }

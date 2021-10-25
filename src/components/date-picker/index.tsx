@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import { useValidation } from 'hooks/use-validation'
 import { DatePickerCore } from './date-picker-core'
 
-export const DatePicker: FC<IDatePicker> = memo(
+export const DatePicker = memo(
   ({
     name,
     className,
@@ -15,7 +15,7 @@ export const DatePicker: FC<IDatePicker> = memo(
     year,
     defaultValue,
     time,
-  }) => {
+  }: IDatePicker) => {
     const { validate } = useValidation({
       required,
       later,

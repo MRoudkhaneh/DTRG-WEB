@@ -2,8 +2,8 @@ import { FC, memo } from 'react'
 import { useToggle } from 'hooks/use-toggle'
 import { classNames } from 'utils/classes'
 
-export const SwitchBox: FC<ISwitch> = memo(
-  ({ onChange, disabled, withError, checked, size }) => {
+export const SwitchBox = memo(
+  ({ onChange, disabled, withError, checked, size }: ISwitch) => {
     const { open, toggle } = useToggle(checked)
     return (
       <div

@@ -10,7 +10,7 @@ import { Tooltip } from 'components/tooltip'
 
 import { usePatientStudiesList } from '../use-patient-studies-list'
 
-export const PatientStudiesListToolbar: FC<{ onSearch?: any }> = memo(() => {
+export const PatientStudiesListToolbar = memo(() => {
   const { queryKey } = usePatientStudiesList()
   const { toggleDialog } = useUi()
   const {

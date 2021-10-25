@@ -4,7 +4,7 @@ import { initialState } from './state'
 
 export const UiContext = createContext<TUiContext | null>(null)
 
-export const UiProvider: FC<TUiProvider> = ({ children }) => {
+export const UiProvider = ({ children }: TUiProvider) => {
   const [uiState, uiDispatch] = useReducer(reducer, initialState)
 
   return (

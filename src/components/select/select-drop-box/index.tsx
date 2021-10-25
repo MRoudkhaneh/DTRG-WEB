@@ -1,8 +1,8 @@
 import { cloneElement, FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const SelectDropBox: FC<ISelect> = memo(
-  ({ onChange, children, toggle, multiple, value, ref }) => {
+export const SelectDropBox = memo(
+  ({ onChange, children, toggle, multiple, value, ref }: ISelect) => {
     return (
       <div
         className={classNames(

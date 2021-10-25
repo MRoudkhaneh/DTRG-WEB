@@ -1,8 +1,8 @@
 import { Button } from 'components/button'
 import { FC, memo } from 'react'
 
-export const ConfirmActions: FC<Partial<IConfirm>> = memo(
-  ({ onConfirm, onCancel, loading }) => {
+export const ConfirmActions = memo(
+  ({ onConfirm, onCancel, loading }: Partial<IConfirm>) => {
     return (
       <div className="row-around w-full mt-10" slot="actions">
         <Button

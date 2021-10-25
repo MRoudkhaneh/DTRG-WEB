@@ -1,7 +1,7 @@
 import { TextArea } from 'components/text-area'
 import { FC, memo } from 'react'
 
-export const PWODReferal: FC<IPatientField> = memo(({ control }) => {
+export const PWODReferal = memo(({ control }: IPatientField) => {
   return (
     <TextArea
       label="PWOD Referral"

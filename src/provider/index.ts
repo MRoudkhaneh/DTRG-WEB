@@ -1,2 +1,2 @@
-export * from "./ui-provider";
-export * from "./ui-provider/types";
+export * from './ui-provider'
+export * from './ui-provider/types'

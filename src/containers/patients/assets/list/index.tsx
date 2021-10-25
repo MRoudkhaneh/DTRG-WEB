@@ -5,7 +5,7 @@ import { PatientAssetsDetails } from './details'
 import { usePatientAssets } from './use-patient-assets'
 import { PatientAssetsToolbar } from './toolbar'
 
-export const PatientAssets: FC<{ item?: any }> = memo(() => {
+export const PatientAssets = memo(() => {
   const {
     data,
     columns,

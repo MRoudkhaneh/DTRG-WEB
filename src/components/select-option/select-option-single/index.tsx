@@ -1,8 +1,17 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const SelectOptionSingle: FC<ISelectOption> = memo(
-  ({ key, state, disabled, onChange, value, toggle, onClick, children }) => {
+export const SelectOptionSingle = memo(
+  ({
+    key,
+    state,
+    disabled,
+    onChange,
+    value,
+    toggle,
+    onClick,
+    children,
+  }: ISelectOption) => {
     return (
       <span
         slot="wrapper"

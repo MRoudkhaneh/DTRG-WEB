@@ -1,7 +1,7 @@
 import { Input } from 'components/input'
 import { FC, memo } from 'react'
 
-export const NextStep: FC<IPatientField> = memo(({ control }) => {
+export const NextStep = memo(({ control }: IPatientField) => {
   return (
     <Input
       label="Next Steps"

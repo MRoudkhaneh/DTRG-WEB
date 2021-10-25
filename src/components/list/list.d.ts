@@ -1,4 +1,4 @@
 interface IList {
-  className?: string;
-  children?: any;
+  className?: string
+  children?: any
 }

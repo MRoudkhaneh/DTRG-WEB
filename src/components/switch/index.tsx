@@ -1,9 +1,9 @@
-import { FC, memo } from "react";
-import { Controller } from "react-hook-form";
+import { FC, memo } from 'react'
+import { Controller } from 'react-hook-form'
 
-import { SwitchCore } from "./switch-core";
+import { SwitchCore } from './switch-core'
 
-export const Switch: FC<ISwitch> = memo((props) => {
+export const Switch = memo((props: ISwitch) => {
   if (props.control)
     return (
       <Controller
@@ -13,6 +13,6 @@ export const Switch: FC<ISwitch> = memo((props) => {
           <SwitchCore onChange={onChange} checked={value} {...props} />
         )}
       />
-    );
-  else return <SwitchCore {...props} />;
-});
+    )
+  else return <SwitchCore {...props} />
+})

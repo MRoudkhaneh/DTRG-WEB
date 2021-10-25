@@ -2,7 +2,7 @@ import { TextArea } from 'components/text-area'
 import { FC, memo } from 'react'
 import { useWatch } from 'react-hook-form'
 
-export const StatusDetails: FC<IPatientField> = memo(({ control }) => {
+export const StatusDetails = memo(({ control }: IPatientField) => {
   const state = useWatch({ control, name: 'status' })
   if (state === 'Approached - declined' || state === 'Approached - ineligible')
     return (

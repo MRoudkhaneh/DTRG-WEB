@@ -5,8 +5,8 @@ import { TCheck } from './check'
 import { CheckCore } from './check-core'
 import { CheckLabel } from './check-label'
 
-export const Check: FC<Partial<TCheck>> = memo(
-  ({ label, control, name, ...rest }): JSX.Element => {
+export const Check = memo(
+  ({ label, control, name, ...rest }: Partial<TCheck>): JSX.Element => {
     const id = useMemo(() => uuid(), [])
 
     if (control)

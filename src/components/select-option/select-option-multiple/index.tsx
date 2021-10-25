@@ -3,8 +3,8 @@ import { Check } from 'components/check'
 import { classNames } from 'utils/classes'
 import { useSelectOption } from '../use-select-option'
 
-export const SelectOptionMultiple: FC<ISelectOption> = memo(
-  ({ key, disabled, value, children, state, onChange }) => {
+export const SelectOptionMultiple = memo(
+  ({ key, disabled, value, children, state, onChange }: ISelectOption) => {
     const { handleChange } = useSelectOption({ state })
 
     return (

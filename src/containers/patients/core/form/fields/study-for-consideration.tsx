@@ -1,7 +1,7 @@
 import { TextArea } from 'components/text-area'
 import { FC } from 'react'
 
-export const StudyForConsideration: FC<IPatientField> = ({ control }) => {
+export const StudyForConsideration = ({ control }: IPatientField) => {
   return (
     <TextArea
       label="Study For Consideration"

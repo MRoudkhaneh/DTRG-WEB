@@ -8,7 +8,7 @@ import { DatePickerLable } from '../date-picker-label'
 import { DatePickerBox } from '../date-picker-box'
 import moment from 'moment'
 
-export const DatePickerCore: FC<IDatePicker> = ({
+export const DatePickerCore = ({
   className,
   value,
   label,
@@ -17,7 +17,7 @@ export const DatePickerCore: FC<IDatePicker> = ({
   time,
   onChange,
   defaultValue,
-}) => {
+}: IDatePicker) => {
   const ref = useRef(null)
   const id = useMemo(() => uuid(), [])
   // useEffect(() => {

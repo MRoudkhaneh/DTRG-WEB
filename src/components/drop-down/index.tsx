@@ -5,8 +5,8 @@ import { classNames } from 'utils/classes'
 import { DropDownButton } from './drop-down-button'
 import { DropDownBox } from './drop-down-box'
 
-export const DropDown: FC<IDropdown> = memo(
-  ({ className, label, children, active = false, icon }) => {
+export const DropDown = memo(
+  ({ className, label, children, active = false, icon }: IDropdown) => {
     const { open, toggle } = useToggle(active)
 
     return (

@@ -1,6 +1,6 @@
 import { FC, Fragment, memo } from 'react'
 
-export const SearchBoxDropBox: FC<ISearch> = memo((props) => {
+export const SearchBoxDropBox = memo((props: ISearch) => {
   return (
     <Fragment>
       <div className="absolute left-0 top-[80px] bg-white z-50 w-full rounded border border-blue-300  flex flex-col items-start p-3 h-auto space-y-2 max-h-[300px] overflow-y-auto">

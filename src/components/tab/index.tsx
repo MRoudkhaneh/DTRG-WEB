@@ -5,14 +5,14 @@ import { TabExpand } from './tab-expand'
 import { TabActions } from './tab-actions'
 import { useTab } from './use-tab'
 
-export const Tab: FC<ITab> = ({
+export const Tab = ({
   children,
   text,
   className,
   expandable = false,
   initialIsOpen = false,
   justify = 'start',
-}) => {
+}: ITab) => {
   const { open, onExpand } = useTab({ initialIsOpen, expandable })
 
   return (

@@ -9,6 +9,6 @@ if (!modalRoot) {
   document.body.appendChild(modalRoot)
 }
 
-export const Modal: FC<IModal> = memo((props) => {
+export const Modal = memo((props: IModal) => {
   return createPortal(<ModalCore {...props} />, modalRoot)
 })

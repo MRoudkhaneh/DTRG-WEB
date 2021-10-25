@@ -7,8 +7,16 @@ import { FC, memo } from 'react'
 import { Controller } from 'react-hook-form'
 import { classNames } from 'utils/classes'
 
-export const SelectBoxSingle: FC<ISelect> = memo(
-  ({ children, required, label, className, name, control, setValue }) => {
+export const SelectBoxSingle = memo(
+  ({
+    children,
+    required,
+    label,
+    className,
+    name,
+    control,
+    setValue,
+  }: ISelect) => {
     const { validate } = useValidation({ required })
     return (
       <Controller

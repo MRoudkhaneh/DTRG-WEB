@@ -5,7 +5,7 @@ import { useToggle } from 'hooks/use-toggle'
 import { TableCell } from '../table-cell'
 import { TableRowLoading } from './table-row-loading'
 
-export const TableRow: FC<ITableRow> = memo(
+export const TableRow = memo(
   ({
     item,
     columns,
@@ -15,7 +15,7 @@ export const TableRow: FC<ITableRow> = memo(
     length,
     onRowClick,
     expanded = { id: null },
-  }) => {
+  }: ITableRow) => {
     const { open, toggle } = useToggle((): boolean =>
       item ? item.id === expanded.id : false
     )

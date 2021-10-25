@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
 
-export const PastCGMWear: FC<IPatientField> = memo(({ control, setValue }) => {
+export const PastCGMWear = memo(({ control, setValue }: IPatientField) => {
   return (
     <Select
       label="Past CGM Wear"

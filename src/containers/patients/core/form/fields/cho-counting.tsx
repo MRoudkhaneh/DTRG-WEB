@@ -3,7 +3,7 @@ import { Select } from 'components/select'
 import { SelectOption } from 'components/select-option'
 import { useWatch } from 'react-hook-form'
 
-export const CHOCounting: FC<IPatientField> = memo(({ control, setValue }) => {
+export const CHOCounting = memo(({ control, setValue }: IPatientField) => {
   const state = useWatch({ control, name: 'cho_counting' })
   return (
     <Select

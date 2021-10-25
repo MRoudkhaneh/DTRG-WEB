@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 
-export const Tooltip: FC<{ children?: any; content?: any }> = memo(
-  ({ children, content }) => {
+export const Tooltip = memo(
+  ({ children, content }: { children?: any; content?: any }) => {
     return (
       <div>
         {children}

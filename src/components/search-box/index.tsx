@@ -4,7 +4,7 @@ import { FC, memo, useState } from 'react'
 import { Controller } from 'react-hook-form'
 import { SearchBoxCore } from './search-box-core'
 
-export const SearchBox: FC<ISearch> = memo((props) => {
+export const SearchBox = memo((props: ISearch) => {
   const [params, setParams] = useState({ [props.paramKey]: null })
   const [isOpen, setIsOpen] = useState(false)
 

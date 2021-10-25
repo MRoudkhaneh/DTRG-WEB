@@ -1,7 +1,7 @@
 import { Switch } from 'components/switch'
 import { FC, memo } from 'react'
 
-export const HasInternetAccess: FC<IPatientField> = memo(({ control }) => {
+export const HasInternetAccess = memo(({ control }: IPatientField) => {
   return (
     <Switch
       label="Has Internet Access?"

@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import { Select } from 'components/select'
 
-export const ComputerType: FC<IPatientField> = memo(
-  ({ control, state, setValue }) => {
+export const ComputerType = memo(
+  ({ control, state, setValue }: IPatientField) => {
     return (
       <Select
         label="Computer Type"

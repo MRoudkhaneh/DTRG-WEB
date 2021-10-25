@@ -9,7 +9,7 @@ import { InputIcon } from './input-icon'
 import { classNames } from 'utils/classes'
 import { TInput } from './input'
 
-export const Input: FC<TInput> = memo((props) => {
+export const Input = memo((props: TInput) => {
   const {
     required,
     max,

@@ -2,7 +2,7 @@ import { TextArea } from 'components/text-area'
 import { FC, memo } from 'react'
 import { useWatch } from 'react-hook-form'
 
-export const PumpDetail: FC<IPatientField> = memo(({ control }) => {
+export const PumpDetail = memo(({ control }: IPatientField) => {
   const state = useWatch({ control, name: 'current_diabetes_management' })
   if (state === 'Looping' || state === 'Other')
     return (

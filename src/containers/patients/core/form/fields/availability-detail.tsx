@@ -1,7 +1,7 @@
 import { TextArea } from 'components/text-area'
 import { FC, memo } from 'react'
 
-export const AvailabilityDetail: FC<IPatientField> = memo(({ control }) => {
+export const AvailabilityDetail = memo(({ control }: IPatientField) => {
   return (
     <TextArea
       label="Availability Detail"

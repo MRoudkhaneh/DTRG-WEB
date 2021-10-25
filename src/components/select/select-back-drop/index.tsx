@@ -1,6 +1,6 @@
-import { FC, memo } from "react";
+import { FC, memo } from 'react'
 
-export const SelectBackDrop: FC<ISelect> = memo(({ toggle, ref }) => {
+export const SelectBackDrop = memo(({ toggle, ref }: ISelect) => {
   return (
     <div
       slot="wrapper"
@@ -8,5 +8,5 @@ export const SelectBackDrop: FC<ISelect> = memo(({ toggle, ref }) => {
       className="opacity-0 absolute inset-0 z-20"
       onClick={() => toggle()}
     ></div>
-  );
-});
+  )
+})

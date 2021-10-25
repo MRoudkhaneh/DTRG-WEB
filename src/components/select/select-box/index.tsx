@@ -3,8 +3,17 @@ import { classNames } from 'utils/classes'
 import { SelectBoxActions } from './select-box-actions'
 import { SelectBoxValue } from './select-box-value'
 
-export const SelectBox: FC<ISelect> = memo(
-  ({ toggle, value, error, multiple, setValue, name, open, label }) => {
+export const SelectBox = memo(
+  ({
+    toggle,
+    value,
+    error,
+    multiple,
+    setValue,
+    name,
+    open,
+    label,
+  }: ISelect) => {
     return (
       <div
         onClick={() => toggle()}

@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const TextAreatCore: FC<ITextArea> = memo(
+export const TextAreatCore = memo(
   ({
     placeholder,
     name,
@@ -12,7 +12,7 @@ export const TextAreatCore: FC<ITextArea> = memo(
     disabled,
     expanded,
     fieldRef,
-  }) => {
+  }: ITextArea) => {
     return (
       <textarea
         placeholder={placeholder}

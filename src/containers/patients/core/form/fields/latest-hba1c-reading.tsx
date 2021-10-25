@@ -1,7 +1,7 @@
 import { Input } from 'components/input'
 import { FC, memo } from 'react'
 
-export const LatestHBA1CReading: FC<IPatientField> = memo(({ control }) => {
+export const LatestHBA1CReading = memo(({ control }: IPatientField) => {
   return (
     <Input
       label="Latest HbA1c Reading"

@@ -1,4 +1,4 @@
 interface IPatientForm {
-  isEditing?: boolean;
-  editInitials?: any;
+  isEditing?: boolean
+  editInitials?: any
 }

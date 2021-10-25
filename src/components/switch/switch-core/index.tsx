@@ -2,8 +2,16 @@ import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
 import { SwitchBox } from '../switch-box'
 
-export const SwitchCore: FC<ISwitch> = memo(
-  ({ className, onChange, size, disabled, withError, label, checked }) => {
+export const SwitchCore = memo(
+  ({
+    className,
+    onChange,
+    size,
+    disabled,
+    withError,
+    label,
+    checked,
+  }: ISwitch) => {
     return (
       <div
         className={classNames(

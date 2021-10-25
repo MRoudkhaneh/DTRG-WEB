@@ -3,7 +3,7 @@ import { Input } from 'components/input'
 import { TextArea } from 'components/text-area'
 import { Switch } from 'components/switch'
 
-export const PatientListDetails: FC<{ item?: any }> = memo(({ item }) => {
+export const PatientListDetails = memo(({ item }: { item?: any }) => {
   return (
     <div className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
       <Input size="small" disabled label="Patient Status" value={item.status} />
