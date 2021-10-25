@@ -15,7 +15,6 @@ export const Input = memo((props: TInput) => {
     max,
     min,
     later,
-    error,
     className,
     validation,
     precent,

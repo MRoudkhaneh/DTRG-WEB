@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react'
 
-export type TInput = {
+type TInputOwn = {
   label?: string
   error?: string
   later?: boolean | undefined
@@ -25,4 +25,7 @@ export type TInput = {
   minutes?: boolean
   number?: boolean
   url?: any
-} & ComponentProps<'input'>
+  ref?: any
+}
+
+export type TInput = TInputOwn & Omit<ComponentProps<'input'>, keyof TInputOwn>
