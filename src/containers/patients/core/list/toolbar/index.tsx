@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Toolbar } from 'components/toolbar'
@@ -6,8 +6,8 @@ import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 import { ICExport } from 'icons/export'
 import { ICPlus } from 'icons/plus'
-import { ICSearch } from 'icons/search'
 import { useUi } from 'hooks/use-ui'
+import { ICFilter } from 'icons/filter'
 
 export const PatientListToolbar = memo(
   ({
@@ -50,7 +50,7 @@ export const PatientListToolbar = memo(
                 })
               }
             >
-              <ICSearch className="w-5 h-5 text-primary mr-2" />
+              <ICFilter className="w-5 h-5 text-primary mr-2" />
             </Button>
           </Tooltip>
           <Tooltip content="Export">
