@@ -42,7 +42,7 @@ export const SelectBoxSingle = memo(
               defaultValue={value || ''}
               onChange={onChange}
               className={classNames(
-                'w-full row-between focus:outline-none overflow-hidden cursor-pointer text-gray-900 bg-white dark:bg-gray-400 h-12  px-4 appearance-none',
+                'w-full row-between focus:outline-none overflow-hidden cursor-pointer text-gray-900 bg-white dark:bg-gray-400 h-12  px-4',
                 error
                   ? 'rounded border-2 border-red-400 shadow'
                   : 'rounded border border-light dark:border-dark',
@@ -58,6 +58,7 @@ export const SelectBoxSingle = memo(
               {value && setValue && (
                 <Button
                   type="button"
+                  className="mr-1"
                   icon
                   onClick={(e) => {
                     e.stopPropagation()
@@ -72,7 +73,7 @@ export const SelectBoxSingle = memo(
                   />
                 </Button>
               )}
-              <ICChevronDown className="w-4 h-4 text-gray-900" />
+              {/* <ICChevronDown className="w-4 h-4 text-gray-900" /> */}
             </div>
             <Error error={error} className="absolute top-0 left-0 mt-[87px]" />
           </div>

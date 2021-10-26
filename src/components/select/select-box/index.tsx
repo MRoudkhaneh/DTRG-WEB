@@ -19,13 +19,13 @@ export const SelectBox = memo(
         onClick={() => toggle()}
         defaultValue={value}
         className={classNames(
-          'w-full row-between focus:outline-none overflow-hidden cursor-pointer text-gray-900 bg-white dark:bg-gray-400 ',
+          'w-full row-between focus:outline-none overflow-hidden cursor-pointer  bg-white dark:bg-gray-400 ',
           open
             ? 'rounded-t border-t-2 border-r-2 border-l-2 border-indigo-400'
             : error
             ? 'rounded border-2 border-red-400 shadow'
             : 'rounded border border-light dark:border-dark',
-          multiple && value ? 'min-h-[3rem]  py-2 pl-2 pr-4' : 'h-12  px-4'
+          multiple && value ? 'min-h-[3rem]  py-2 pl-2 ' : 'h-12  pl-4'
         )}
       >
         <SelectBoxValue

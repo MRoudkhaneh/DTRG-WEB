@@ -39,7 +39,7 @@ export const PatientListToolbar = memo(
             onChange={onSearch}
             value={search}
           />
-          <Tooltip content="Advance search">
+          <Tooltip content="Advanced search">
             <Button
               icon
               className="peer"

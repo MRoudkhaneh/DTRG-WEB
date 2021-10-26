@@ -7,13 +7,14 @@ import { ICDelete } from 'icons/delete'
 export const SelectBoxActions = memo(
   ({ multiple, value, setValue, name, open }: ISelect) => {
     return (
-      <div className=" flex items-center space-x-2">
+      <div className=" flex items-center ">
         {multiple
           ? value &&
             !open &&
             value.length > 0 && (
               <Button
                 type="button"
+                className="mr-1"
                 icon
                 onClick={(e) => {
                   e.stopPropagation()
@@ -32,6 +33,7 @@ export const SelectBoxActions = memo(
             !open && (
               <Button
                 type="button"
+                className="mr-1"
                 icon
                 onClick={(e) => {
                   e.stopPropagation()
@@ -46,12 +48,15 @@ export const SelectBoxActions = memo(
                 />
               </Button>
             )}
-        <Button icon type="button">
+        <Button icon type="button" className="mr-[4px]">
           {open ? (
-            <ICChevronUp className="w-4 h-4 text-gray-900" role="arrow-down" />
+            <ICChevronUp
+              className="w-[10px] h-[10px] text-black"
+              role="arrow-down"
+            />
           ) : (
             <ICChevronDown
-              className="w-4 h-4 text-gray-900"
+              className="w-[10px] h-[10px] text-black"
               role="arrow-down"
             />
           )}
