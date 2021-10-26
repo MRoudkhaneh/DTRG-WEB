@@ -156,7 +156,7 @@ export const PatientListDetails = memo(({ item }: { item?: any }) => {
         size="small"
         disabled
         label="Latest HbA1c Reading"
-        value={item.latest_hba1c_reading}
+        value={item.latest_hba1c_reading?.toString()}
       />
 
       <Input
