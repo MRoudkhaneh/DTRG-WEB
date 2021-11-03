@@ -54,7 +54,7 @@ export const SelectBoxSingle = memo(
               </option>
               {children}
             </select>
-            <div className="flex items-center absolute top-0 right-0 mt-12 mr-4 space-x-3">
+            <div className="flex items-center absolute top-0 right-0 mt-12 mr-8">
               {value && setValue && (
                 <Button
                   type="button"

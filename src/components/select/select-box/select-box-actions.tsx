@@ -14,7 +14,7 @@ export const SelectBoxActions = memo(
             value.length > 0 && (
               <Button
                 type="button"
-                className="mr-1"
+                className="mr-2"
                 icon
                 onClick={(e) => {
                   e.stopPropagation()
@@ -33,7 +33,7 @@ export const SelectBoxActions = memo(
             !open && (
               <Button
                 type="button"
-                className="mr-1"
+                className="mr-2"
                 icon
                 onClick={(e) => {
                   e.stopPropagation()
@@ -48,15 +48,15 @@ export const SelectBoxActions = memo(
                 />
               </Button>
             )}
-        <Button icon type="button" className="mr-[4px]">
+        <Button icon type="button" className="mr-[12px]">
           {open ? (
             <ICChevronUp
-              className="w-[10px] h-[10px] text-black"
+              className="w-[13px] h-[13px] text-gray-600"
               role="arrow-down"
             />
           ) : (
             <ICChevronDown
-              className="w-[10px] h-[10px] text-black"
+              className="w-[13px] h-[13px] text-gray-600"
               role="arrow-down"
             />
           )}
