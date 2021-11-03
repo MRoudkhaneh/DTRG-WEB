@@ -42,7 +42,7 @@ export const SelectBoxSingle = memo(
               defaultValue={value || ''}
               onChange={onChange}
               className={classNames(
-                'w-full row-between focus:outline-none overflow-hidden cursor-pointer text-gray-900 bg-white dark:bg-gray-400 h-12  px-4',
+                ' h-12',
                 error
                   ? 'rounded border-2 border-red-400 shadow'
                   : 'rounded border border-light dark:border-dark',

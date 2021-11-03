@@ -7,7 +7,7 @@ export const InputCore = memo((props: TInput) => {
     return (
       <input
         data-testid="input-core"
-        type={props.type}
+        type={props.type || 'text'}
         name={props.name}
         ref={props.fieldRef}
         placeholder={props.placeholder}
@@ -27,7 +27,7 @@ export const InputCore = memo((props: TInput) => {
     return (
       <input
         data-testid="input-core"
-        type={props.type}
+        type={props.type || 'text'}
         name={props.name}
         placeholder={props.placeholder}
         disabled={props.disabled}
