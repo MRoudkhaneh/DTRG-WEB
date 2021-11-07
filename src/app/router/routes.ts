@@ -9,4 +9,5 @@ export const routes = [
   require('pages/patients/interactions/routes').route,
   require('pages/patients/studies/routes').route,
   require('pages/assets/routes').route,
+  require('pages/audits/routes').route,
 ]

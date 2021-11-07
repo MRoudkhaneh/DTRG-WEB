@@ -10,4 +10,5 @@ interface IUseService {
   enabled?: boolean
   initialData?: any
   keepPreviousData?: boolean
+  select?: any
 }

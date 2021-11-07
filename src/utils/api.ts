@@ -5,4 +5,5 @@ export const Api = {
   interactions: 'interactions/',
   studies: 'studies/',
   prevStudies: 'prev-studies/',
+  audits: 'reports/audit/patients/',
 }
