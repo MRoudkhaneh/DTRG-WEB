@@ -6,6 +6,7 @@ import { Skeleton } from 'components/skeleton'
 import { useUi } from 'hooks/use-ui'
 import { AdminLayout } from 'layouts/admin'
 import { routes } from './routes'
+import { NotFound } from './not-found'
 
 export const Router = memo(() => {
   const {
@@ -22,6 +23,7 @@ export const Router = memo(() => {
                 <Page route={route} />
               </Route>
             ))}
+            <Route component={NotFound} />
           </Switch>
         </Suspense>
       </AdminLayout>
