@@ -39,7 +39,7 @@ export const usePatientList = () => {
       const fileExtension = '.csv'
       const newData = new Blob([data], { type: fileType })
       setIsExport(false)
-      FileSaver.saveAs(newData, 'Assets' + fileExtension)
+      FileSaver.saveAs(newData, 'Patients' + fileExtension)
     },
   })
 
