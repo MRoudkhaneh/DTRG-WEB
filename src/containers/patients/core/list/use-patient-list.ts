@@ -29,7 +29,7 @@ export const usePatientList = () => {
 
   const { isFetching: exportLoading } = useGet({
     url: `${Api.patients}export`,
-    key: ['ASSET_EXPORT'],
+    key: ['PATIENT_EXPORT'],
     refetchOnWindowFocus: false,
     keepPreviousData: false,
     enabled: isExport,
