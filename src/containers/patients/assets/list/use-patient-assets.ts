@@ -73,24 +73,18 @@ export const usePatientAssets = () => {
       ],
       [queryKey]
     ),
-    onPaginate: useCallback(
-      (index) => {
-        setParams((prev) => ({ ...prev, page: index }))
-      },
-      [params.page]
-    ),
-    onSearch: useCallback(
-      (event) => {
-        setTimeout(() => {
-          setParams((prev) => ({
-            ...prev,
-            page: 1,
-            search: event.target.value,
-          }))
-        }, 500)
-      },
-      [params.search]
-    ),
-    onExport: useCallback(() => setIsExport(true), [isExport]),
+    onPaginate: useCallback((index) => {
+      setParams((prev) => ({ ...prev, page: index }))
+    }, []),
+    onSearch: useCallback((event) => {
+      setTimeout(() => {
+        setParams((prev) => ({
+          ...prev,
+          page: 1,
+          search: event.target.value,
+        }))
+      }, 500)
+    }, []),
+    onExport: useCallback(() => setIsExport(true), []),
   }
 }

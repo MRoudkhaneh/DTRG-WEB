@@ -63,17 +63,14 @@ export const usePatientList = () => {
       ],
       [queryKey]
     ),
-    onPaginate: useCallback(
-      (page) => {
-        setParams({ page })
-      },
-      [params.page]
-    ),
+    onPaginate: useCallback((page) => {
+      setParams({ page })
+    }, []),
     onSearch: useCallback(
-      (event) => setParams({ name: event.target.value }),
-      [params.name]
+      (event) => setParams({ name: event.target.value, page: 1 }),
+      []
     ),
-    onRowClick: useCallback((item) => setCurrent(item), [current]),
-    onExport: useCallback(() => setIsExport(true), [isExport]),
+    onRowClick: useCallback((item) => setCurrent(item), []),
+    onExport: useCallback(() => setIsExport(true), []),
   }
 }
