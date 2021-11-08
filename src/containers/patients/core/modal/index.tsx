@@ -57,7 +57,7 @@ export const PatientModal = memo(() => {
     case 'patient-advance-search':
       return (
         <Modal
-          size="md"
+          size="lg"
           className="px-10 "
           onClose={() => toggleDialog({ open: false, type: null, data: null })}
           header="Search for patient"

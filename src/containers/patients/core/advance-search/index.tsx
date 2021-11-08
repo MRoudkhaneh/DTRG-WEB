@@ -4,10 +4,11 @@ import { Button } from 'components/button'
 import { Form } from 'components/form'
 import { Input } from 'components/input'
 import { Select } from 'components/select'
-
 import { Switch } from 'components/switch'
 
 import { usePatientAdvanceSearch } from './use-patient-advance-search'
+import { AgeCategory } from './age-category'
+import { CurrentDiabetes } from './current-diabetes'
 
 export const PatientAdvanceSearch = memo(() => {
   const { onSubmit, control, setValue } = usePatientAdvanceSearch()
@@ -39,26 +40,7 @@ export const PatientAdvanceSearch = memo(() => {
           <option value="LADA">LADA</option>
           <option value="Other">Other</option>
         </Select>
-        <Select
-          label="Current Diabetes Management"
-          name="current_diabetes_management"
-          control={control}
-          setValue={setValue}
-        >
-          <option value="640G">640G</option>
-          <option value="670G">670G</option>
-          <option value="770G">770G</option>
-          <option value="MDT AHCL">MDT AHCL</option>
-          <option value="Tslim X2">Tslim X2</option>
-          <option value="Tslim BasallQ">Tslim BasallQ</option>
-          <option value="Ypsomed">Ypsomed</option>
-          <option value="Looping">Looping</option>
-          <option value="Oral Agents">Oral Agents</option>
-          <option value="Multiple Daily Injections">
-            Multiple Daily Injections
-          </option>
-          <option value="Other">Other</option>
-        </Select>
+        <CurrentDiabetes control={control} setValue={setValue} />
         <Input
           control={control}
           name="date_of_diagnosis_of"
@@ -66,30 +48,7 @@ export const PatientAdvanceSearch = memo(() => {
           label="Number of months since diagnosis"
           number
         />
-        <Select
-          control={control}
-          setValue={setValue}
-          name="age_category"
-          label="Age category"
-        >
-          <option value="18-20">18-20</option>
-          <option value="21-25">21-25</option>
-          <option value="26-30">26-30</option>
-          <option value="31-35">31-35</option>
-          <option value="36-40">36-40</option>
-          <option value="41-45">41-45</option>
-          <option value="46-50">46-50</option>
-          <option value="51-55">51-55</option>
-          <option value="56-60">56-60</option>
-          <option value="61-65">61-65</option>
-          <option value="66-70">66-70</option>
-          <option value="71-75">71-75</option>
-          <option value="76-80">76-80</option>
-          <option value="81-85">81-85</option>
-          <option value="86-90">86-90</option>
-          <option value="91-95">91-95</option>
-          <option value="96-100">96-100</option>
-        </Select>
+        <AgeCategory control={control} setValue={setValue} />
         <Input
           label="Latest HbA1c Reading min"
           placeholder="Enter Latest HbA1c Reading min"
