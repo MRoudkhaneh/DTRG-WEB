@@ -11,6 +11,7 @@ export const usePatientList = () => {
   const { onError } = useError()
   const {
     uiState: { params, current },
+    initialState,
     setParams,
     setCurrent,
   } = useUi()
@@ -70,6 +71,9 @@ export const usePatientList = () => {
       (event) => setParams({ name: event.target.value, page: 1 }),
       []
     ),
+    onResetFilter: useCallback(() => {
+      setParams({ ...initialState.params })
+    }, []),
     onRowClick: useCallback((item) => setCurrent(item), []),
     onExport: useCallback(() => setIsExport(true), []),
   }

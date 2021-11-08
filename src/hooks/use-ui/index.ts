@@ -1,6 +1,7 @@
 import { useCallback, useContext } from 'react'
 import { UiContext } from 'provider/ui-provider'
 import { uiTypes } from 'provider/ui-provider/types'
+import { initialState } from 'provider/ui-provider/state'
 
 export const useUi = () => {
   const { uiState, uiDispatch } = useContext(UiContext)
@@ -43,6 +44,7 @@ export const useUi = () => {
   )
 
   return {
+    initialState,
     uiState,
     toggleDrawer,
     toggleDialog,

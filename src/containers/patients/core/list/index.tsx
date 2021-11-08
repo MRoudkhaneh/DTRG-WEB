@@ -22,6 +22,7 @@ export const PatientList = memo(() => {
     current,
     onExport,
     exportLoading,
+    onResetFilter,
   } = usePatientList()
 
   return (
@@ -31,6 +32,7 @@ export const PatientList = memo(() => {
         search={search}
         onExport={onExport}
         exportLoading={exportLoading}
+        onResetFilter={onResetFilter}
       />
       <Suspense fallback={<Skeleton />}>
         <Table
