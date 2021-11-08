@@ -12,7 +12,21 @@ const columns = [
   { head: 'First name', key: 'first_name', width: 'w-1/4' },
   { head: 'Last name', key: 'last_name', width: 'w-1/4' },
   { head: 'Type', key: 'history_type', width: 'w-1/4' },
-  { head: 'Date', key: 'history_date', width: 'w-1/4' },
+  {
+    head: 'Date',
+    key: 'history_date',
+    width: 'w-1/4',
+    render: (item) => (
+      <div className="flex items-center space-x-4">
+        <span className="text-gray-600 dark:text-gray-300">
+          {item.history_date?.slice(0, 10)}
+        </span>
+        <span className="text-gray-600 dark:text-gray-300 text-sm">
+          {item.history_date?.slice(11, 19)}
+        </span>
+      </div>
+    ),
+  },
 ]
 
 export const useAuditsList = () => {

@@ -23,7 +23,6 @@ export const LoginForm = memo(() => {
             required
             placeholder="Enter your email"
             className="mt-10"
-            interactive
             control={control}
           />
           <Input
@@ -32,7 +31,6 @@ export const LoginForm = memo(() => {
             type="password"
             required
             placeholder="Enter your password"
-            interactive
           />
           <div className="col-center w-full mb-6" slot="actions">
             <Button
