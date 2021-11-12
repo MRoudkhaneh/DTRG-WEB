@@ -14,32 +14,35 @@ export const AgeCategory = memo(
         label="Age category"
         multiple
       >
-        <SelectOption value="18-28" selected={state && state.includes('18-28')}>
-          18-28
+        <SelectOption value="18-20" selected={state && state.includes('18-20')}>
+          18-20
         </SelectOption>
-        <SelectOption value="28-38" selected={state && state.includes('28-38')}>
-          28-38
+        <SelectOption value="21-30" selected={state && state.includes('21-30')}>
+          21-30
         </SelectOption>
-        <SelectOption value="38-48" selected={state && state.includes('38-48')}>
-          38-48
+        <SelectOption value="31-40" selected={state && state.includes('31-40')}>
+          31-40
         </SelectOption>
-        <SelectOption value="48-58" selected={state && state.includes('48-58')}>
-          48-58
+        <SelectOption value="41-50" selected={state && state.includes('41-50')}>
+          41-50
         </SelectOption>
-        <SelectOption value="58-68" selected={state && state.includes('58-68')}>
-          58-68
+        <SelectOption value="51-60" selected={state && state.includes('51-60')}>
+          51-60
         </SelectOption>
-        <SelectOption value="68-78" selected={state && state.includes('68-78')}>
-          68-78
+        <SelectOption value="61-70" selected={state && state.includes('61-70')}>
+          61-70
         </SelectOption>
-        <SelectOption value="78-88" selected={state && state.includes('78-88')}>
-          78-88
+        <SelectOption value="71-80" selected={state && state.includes('71-80')}>
+          71-80
+        </SelectOption>
+        <SelectOption value="81-90" selected={state && state.includes('81-90')}>
+          81-90
         </SelectOption>
         <SelectOption
-          value="88-100"
-          selected={state && state.includes('88-100')}
+          value="91-100"
+          selected={state && state.includes('91-100')}
         >
-          88-100
+          91-100
         </SelectOption>
       </Select>
     )

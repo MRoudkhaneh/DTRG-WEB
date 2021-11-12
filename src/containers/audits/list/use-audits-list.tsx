@@ -1,5 +1,4 @@
 import { useCallback, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { Api } from 'utils/api'
@@ -9,22 +8,32 @@ type TAssetParmas = {
 }
 
 const columns = [
-  { head: 'First name', key: 'first_name', width: 'w-1/4' },
-  { head: 'Last name', key: 'last_name', width: 'w-1/4' },
-  { head: 'Type', key: 'history_type', width: 'w-1/4' },
+  { head: 'First name', key: 'first_name', width: 'w-1/6' },
+  { head: 'Last name', key: 'last_name', width: 'w-1/6' },
+  { head: 'Type', key: 'history_type', width: 'w-1/6' },
   {
     head: 'Date',
     key: 'history_date',
-    width: 'w-1/4',
+    width: 'w-1/6',
     render: (item) => (
       <div className="flex items-center space-x-4">
         <span className="text-gray-600 dark:text-gray-300">
           {item.history_date?.slice(0, 10)}
         </span>
-        <span className="text-gray-600 dark:text-gray-300 text-sm">
+        {/* <span className="text-gray-600 dark:text-gray-300 text-sm">
           {item.history_date?.slice(11, 19)}
-        </span>
+        </span> */}
       </div>
+    ),
+  },
+  {
+    head: 'Reason for change',
+    key: 'history_change_reason',
+    width: 'w-1/3',
+    render: (item) => (
+      <span className="text-gray-600 dark:text-gray-300 text-sm">
+        {item.history_change_reason}
+      </span>
     ),
   },
 ]
@@ -48,6 +57,7 @@ export const useAuditsList = () => {
     onError,
   })
 
+  console.log('data', data)
   return {
     queryKey,
     isSuccess,
