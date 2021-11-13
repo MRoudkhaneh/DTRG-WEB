@@ -12,7 +12,7 @@ export const PhoneType = memo(({ control, setValue }: IPatientField) => {
       multiple
     >
       <SelectOption value="Android">Android</SelectOption>
-      <SelectOption value=" IOS">IOS</SelectOption>
+      <SelectOption value="IOS">IOS</SelectOption>
       <SelectOption value="Windows">Windows</SelectOption>
       <SelectOption value="Other">Other</SelectOption>
     </Select>
