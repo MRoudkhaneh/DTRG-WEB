@@ -1,9 +1,9 @@
 import { useAuth } from 'hooks'
 import { Fragment, useLayoutEffect } from 'react'
-import { useHistory, useLocation } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 
 export const AuthGuard = ({ authorize = false, children }) => {
-  const { push } = useHistory()
+  const push = useNavigate()
   const { pathname } = useLocation()
   const { token } = useAuth()
 

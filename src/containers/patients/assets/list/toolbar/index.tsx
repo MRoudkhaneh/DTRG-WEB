@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { ICArrowLeft } from 'icons/arrow-left'
 import { Button } from 'components/button'
 import { Toolbar } from 'components/toolbar'
@@ -24,7 +24,7 @@ export const PatientAssetsToolbar = memo(
     exportLoading?: boolean
   }) => {
     const { state } = useLocation() as any
-    const { push } = useHistory()
+    const navigate = useNavigate()
     const { toggleDialog } = useUi()
     const { pathname } = useLocation()
 
@@ -41,7 +41,7 @@ export const PatientAssetsToolbar = memo(
           <Tooltip content="Go back">
             <Button
               className="peer"
-              onClick={() => push('/admin/patients')}
+              onClick={() => navigate(-1)}
               icon
               id="previous"
             >

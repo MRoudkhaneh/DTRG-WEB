@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const View = () => {
-  const { push } = useHistory()
+  const push = useNavigate()
   useEffect(() => {
     push('/admin/patients')
   }, [])

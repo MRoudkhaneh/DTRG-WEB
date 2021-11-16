@@ -7,7 +7,7 @@ import { ICLight } from 'icons/light'
 import { Tooltip } from 'components/tooltip'
 import { Button } from 'components/button'
 import { ICPersonDash } from 'icons/person-dash'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export const AdminHeader = memo(() => {
   const {
@@ -18,7 +18,7 @@ export const AdminHeader = memo(() => {
     },
   } = useUi()
 
-  const { push } = useHistory()
+  const push = useNavigate()
 
   const { pathname } = useLocation()
 

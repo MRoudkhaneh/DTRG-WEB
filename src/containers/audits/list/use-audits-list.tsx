@@ -57,7 +57,6 @@ export const useAuditsList = () => {
     onError,
   })
 
-  console.log('data', data)
   return {
     queryKey,
     isSuccess,

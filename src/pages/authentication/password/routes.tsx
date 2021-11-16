@@ -1,9 +1,8 @@
 import { lazy } from 'utils/lazy'
-
+const View = lazy(() => import('.'))
 export const route = {
   path: '/authentication/password',
   name: 'ROUTE:FORGOT_PASSWORD',
-  exact: true,
   layout: 'admin',
-  component: lazy(() => import('.')),
+  element: <View />,
 }

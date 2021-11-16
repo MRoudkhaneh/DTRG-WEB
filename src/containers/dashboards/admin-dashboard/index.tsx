@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Drawer } from 'components/drawer'
 import { useUi } from 'hooks/use-ui'
 import Logo from 'assets/images/logo.jpg'
@@ -8,7 +8,7 @@ import { AdminDashboardOpen } from './admin-dashboard-open'
 import { AdminDashboardClose } from './admin-dashboard-close'
 
 export const AdminDashboard = memo(() => {
-  const { push } = useHistory()
+  const push = useNavigate()
   const {
     uiState: {
       drawer: { open },

@@ -1,10 +1,9 @@
 import { lazy } from 'utils/lazy'
-
+const View = lazy(() => import('.'))
 export const route = {
   path: '/',
   name: 'ROUTE:HOME',
-  exact: true,
   layout: 'admin',
   authorize: true,
-  component: lazy(() => import('.')),
+  element: <View />,
 }

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useMemo } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
@@ -62,7 +62,7 @@ const initialState = {
 
 export const usePatientForm = (props: IPatientForm) => {
   const { usePost, usePut, client } = useService()
-  const { push } = useHistory()
+  const push = useNavigate()
   const { success } = useToast()
   const { onError } = useError()
   const {

@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useHistory, useLocation } from 'react-router'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { classNames } from 'utils/classes'
 import { Text } from 'components/text'
 import { Button } from 'components/button'
@@ -13,7 +13,7 @@ import { AssetDropDown } from './asset-drop-down'
 import { AuditDropDown } from './audit-drop-down'
 
 export const AdminDashboardOpen = memo(() => {
-  const { push } = useHistory()
+  const push = useNavigate()
   const { pathname } = useLocation()
   const { token } = useAuth()
   const { toggleDrawer } = useUi()

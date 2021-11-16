@@ -1,7 +1,6 @@
 import { memo, Suspense } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Toast } from 'components/toast'
-import { Page } from 'components/page'
 import { Skeleton } from 'components/skeleton'
 import { useUi } from 'hooks/use-ui'
 import { AdminLayout } from 'layouts/admin'
@@ -17,14 +16,12 @@ export const Router = memo(() => {
     <BrowserRouter>
       <AdminLayout>
         <Suspense fallback={<Skeleton />}>
-          <Switch>
-            {routes.map((route, index) => (
-              <Route key={index} {...route}>
-                <Page route={route} />
-              </Route>
+          <Routes>
+            {routes.map((route) => (
+              <Route key={route.path} {...route} />
             ))}
-            <Route component={NotFound} />
-          </Switch>
+            <Route element={<NotFound />} />
+          </Routes>
         </Suspense>
       </AdminLayout>
       {toast.open && <Toast {...toast} />}

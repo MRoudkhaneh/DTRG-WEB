@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useUi } from 'hooks/use-ui'
 import { Button } from 'components/button'
 import { Tooltip } from 'components/tooltip'
@@ -10,7 +10,7 @@ import { ICStudies } from 'icons/studies'
 
 export const PatientListActions = ({ item, queryKey }) => {
   const { toggleDialog } = useUi()
-  const { push } = useHistory()
+  const push = useNavigate()
 
   return (
     <div className="list-action">
@@ -20,8 +20,7 @@ export const PatientListActions = ({ item, queryKey }) => {
           icon
           onClick={(e) => {
             e.stopPropagation()
-            push({
-              pathname: `patients/studies/${item.id}`,
+            push(`studies/${item.id}`, {
               state: { patient: `${item.first_name} ${item.surename}` },
             })
           }}
@@ -35,8 +34,7 @@ export const PatientListActions = ({ item, queryKey }) => {
           icon
           onClick={(e) => {
             e.stopPropagation()
-            push({
-              pathname: `patients/interactions/${item.id}`,
+            push(`interactions/${item.id}`, {
               state: { patient: `${item.first_name} ${item.surename}` },
             })
           }}
@@ -50,8 +48,7 @@ export const PatientListActions = ({ item, queryKey }) => {
           className="peer"
           onClick={(e) => {
             e.stopPropagation()
-            push({
-              pathname: `patients/assets/${item.id}`,
+            push(`assets/${item.id}`, {
               state: { patient: `${item.first_name} ${item.surename}` },
             })
           }}

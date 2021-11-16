@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { ICMenu } from 'icons/menu'
 import { ICPeoples } from 'icons/peoples'
 import { ICPerson } from 'icons/person'
@@ -12,7 +12,7 @@ import { ICEyeFill } from 'icons/eye-fill'
 import { ICActivity } from 'icons/activity'
 
 export const AdminDashboardClose = memo(() => {
-  const { push } = useHistory()
+  const push = useNavigate()
   const { pathname } = useLocation()
   const { token } = useAuth()
   const { toggleDrawer } = useUi()

@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Tab } from 'components/tab'
 import { Input } from 'components/input'
@@ -9,7 +9,7 @@ import { classNames } from 'utils/classes'
 import { useRegister } from './use-register'
 
 export const RegisterForm = memo(() => {
-  const { push } = useHistory()
+  const push = useNavigate()
   const { control, handleSubmit, isLoading, onSubmit } = useRegister()
 
   return (

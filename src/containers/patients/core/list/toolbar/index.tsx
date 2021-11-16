@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Toolbar } from 'components/toolbar'
 import { Text } from 'components/text'
@@ -26,7 +26,7 @@ export const PatientListToolbar = memo(
     onExport?: any
     onResetFilter?: any
   }) => {
-    const { push } = useHistory()
+    const push = useNavigate()
     const { toggleDialog } = useUi()
     return (
       <Toolbar>

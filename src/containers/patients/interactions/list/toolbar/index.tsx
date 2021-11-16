@@ -1,5 +1,5 @@
 import { FC, memo } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useUi } from 'hooks/use-ui'
 import { ICPlus } from 'icons/plus'
 import { ICArrowLeft } from 'icons/arrow-left'
@@ -13,10 +13,10 @@ import { usePatientInteractionList } from '../use-patient-interactien-list'
 export const PatientinteractionListToolbar = memo(() => {
   const { queryKey } = usePatientInteractionList()
   const { toggleDialog } = useUi()
+  const navigate = useNavigate()
   const {
     state: { patient },
   } = useLocation() as any
-  const { push } = useHistory()
 
   return (
     <Toolbar>
@@ -29,7 +29,7 @@ export const PatientinteractionListToolbar = memo(() => {
       </Text>
       <div className="flex items-center justify-end w-1/4 " slot="end">
         <Tooltip content="Go back">
-          <Button className="peer" onClick={() => push('/admin/patients')} icon>
+          <Button className="peer" onClick={() => navigate(-1)} icon>
             <ICArrowLeft className="w-7 h-7 text-primary" />
           </Button>
         </Tooltip>

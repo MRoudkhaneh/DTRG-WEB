@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
@@ -12,7 +12,7 @@ const defaultValues = { email: '' }
 export const usePassword = () => {
   const { success } = useToast()
   const { usePost } = useService()
-  const { push } = useHistory()
+  const push = useNavigate()
   const { onError } = useError()
   const { uiState } = useUi()
 

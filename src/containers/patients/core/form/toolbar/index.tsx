@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ICArrowLeft } from 'icons/arrow-left'
 import { Button } from 'components/button'
 import { Toolbar } from 'components/toolbar'
@@ -7,7 +7,7 @@ import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 
 export const PatientFormToolbar = memo(() => {
-  const { push } = useHistory()
+  const navigate = useNavigate()
   return (
     <Toolbar>
       <Text
@@ -19,7 +19,7 @@ export const PatientFormToolbar = memo(() => {
       </Text>
       <div className="flex items-center" slot="end">
         <Tooltip content="Go back">
-          <Button className="peer" onClick={() => push('/admin/patients')} icon>
+          <Button className="peer" onClick={() => navigate(-1)} icon>
             <ICArrowLeft className="w-7 h-7 text-primary" />
           </Button>
         </Tooltip>
