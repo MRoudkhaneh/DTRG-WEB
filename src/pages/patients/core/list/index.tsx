@@ -1,15 +1,13 @@
 import { Suspense } from 'react'
-import { useUi } from 'hooks/use-ui'
 import { Skeleton } from 'components/skeleton'
 import { PatientList } from 'containers/patients/core/list'
 import { PatientModal } from 'containers/patients/core/modal'
+import { useDialog } from 'hooks/use-dialog'
 
 const Patients = () => {
   const {
-    uiState: {
-      dialog: { open },
-    },
-  } = useUi()
+    dialog: { open },
+  } = useDialog()
   return (
     <Suspense fallback={<Skeleton />}>
       <PatientList />

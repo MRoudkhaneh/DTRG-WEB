@@ -1,15 +1,13 @@
 import { Skeleton } from 'components/skeleton'
 import { PatientAssets } from 'containers/patients/assets/list'
 import { AssetModal } from 'containers/patients/assets/modal'
-import { useUi } from 'hooks/use-ui'
+import { useDialog } from 'hooks/use-dialog'
 import { Suspense } from 'react'
 
 const Assets = () => {
   const {
-    uiState: {
-      dialog: { open },
-    },
-  } = useUi()
+    dialog: { open },
+  } = useDialog()
 
   return (
     <Suspense fallback={<Skeleton />}>

@@ -3,8 +3,8 @@ import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
 import { lazy } from 'utils/lazy'
-import { useUi } from 'hooks/use-ui'
 import { PatientAdvanceSearch } from '../advance-search'
+import { useDialog } from 'hooks/use-dialog'
 
 const PatientForm = lazy(() =>
   import('containers/patients/core/form').then((module) => ({
@@ -17,10 +17,7 @@ export const PatientModal = memo(() => {
 
   const { mutate } = deletePatient()
 
-  const {
-    uiState: { dialog },
-    toggleDialog,
-  } = useUi()
+  const { dialog, reset } = useDialog()
 
   switch (dialog.type) {
     case 'patient-edit':
@@ -28,7 +25,7 @@ export const PatientModal = memo(() => {
         <Modal
           size="xl"
           className="px-10 "
-          onClose={() => toggleDialog({ open: false, type: null, data: null })}
+          onClose={reset}
           header={
             dialog.data
               ? `Edit ${dialog.data.first_name} ${dialog.data.surename}'s informations`
@@ -50,7 +47,7 @@ export const PatientModal = memo(() => {
               : 'You are about to delete this patient.'
           }
           onConfirm={() => mutate()}
-          onCancel={() => toggleDialog({ open: false, type: null })}
+          onCancel={reset}
         />
       )
 
@@ -59,7 +56,7 @@ export const PatientModal = memo(() => {
         <Modal
           size="lg"
           className="px-10 "
-          onClose={() => toggleDialog({ open: false, type: null, data: null })}
+          onClose={reset}
           header="Search for patient"
           withHeader
         >

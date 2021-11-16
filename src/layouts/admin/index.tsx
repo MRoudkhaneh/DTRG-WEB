@@ -1,14 +1,11 @@
-import { useUi } from 'hooks/use-ui'
 import { classNames } from 'utils/classes'
 import { AdminHeader } from 'containers/header/admin-header'
 import { AdminDashboard } from 'containers/dashboards/admin-dashboard'
+import { useRecoilValue } from 'recoil'
+import { drawerAtom } from 'provider/recoil/atoms'
 
 export const AdminLayout = ({ children }) => {
-  const {
-    uiState: {
-      drawer: { open },
-    },
-  } = useUi()
+  const open = useRecoilValue(drawerAtom)
 
   return (
     <div

@@ -8,8 +8,8 @@ import { Tooltip } from 'components/tooltip'
 import { ICSearch } from 'icons/search'
 import { Input } from 'components/input'
 import { ICPlus } from 'icons/plus'
-import { useUi } from 'hooks/use-ui'
 import { ICExport } from 'icons/export'
+import { useDialog } from 'hooks/use-dialog'
 
 type TPatientsAssetsToolbar = {
   onSearch?: any
@@ -22,7 +22,7 @@ export const PatientAssetsToolbar = memo(
   ({ onSearch, queryKey, onExport, exportLoading }: TPatientsAssetsToolbar) => {
     const { state } = useLocation() as any
     const navigate = useNavigate()
-    const { toggleDialog } = useUi()
+    const { toggleDialog } = useDialog()
     const { pathname } = useLocation()
 
     return (

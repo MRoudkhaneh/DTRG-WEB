@@ -1,17 +1,14 @@
-import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
+import { useDialog } from 'hooks/use-dialog'
 
 export const usePatientModal = () => {
   const { success } = useToast()
   const { onError } = useError()
   const { useDelete, client } = useService()
-  const {
-    uiState: { dialog },
-    toggleDialog,
-  } = useUi()
+  const { dialog, reset } = useDialog()
 
   return {
     deletePatient: () =>
@@ -34,7 +31,7 @@ export const usePatientModal = () => {
             return old
           })
 
-          toggleDialog({ open: false, type: null, data: {} })
+          reset()
           return { snapshot }
         },
         onError: (error, data, context) => {

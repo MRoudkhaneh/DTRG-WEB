@@ -4,53 +4,53 @@ import { uiTypes } from 'provider/ui-provider/types'
 import { initialState } from 'provider/ui-provider/state'
 
 export const useUi = () => {
-  const { uiState, uiDispatch } = useContext(UiContext)
+  //const { uiState, uiDispatch } = useContext(UiContext)
 
-  const toggleDrawer = useCallback(
-    () => uiDispatch({ type: uiTypes.TOGGLE_DRAWER }),
-    [uiState.drawer.open]
-  )
+  // const toggleDrawer = useCallback(
+  //   () => uiDispatch({ type: uiTypes.TOGGLE_DRAWER }),
+  //   [uiState.drawer.open]
+  // )
 
-  const toggleDialog = useCallback(
-    (payload) => uiDispatch({ type: uiTypes.TOGGLE_DIALOG, payload }),
-    [uiState.dialog]
-  )
+  // const toggleDialog = useCallback(
+  //   (payload) => uiDispatch({ type: uiTypes.TOGGLE_DIALOG, payload }),
+  //   [uiState.dialog]
+  // )
 
-  const toggleToast = useCallback(
-    (payload) => uiDispatch({ type: uiTypes.TOGGLE_TOAST, payload }),
-    [uiState.toast]
-  )
+  // const toggleToast = useCallback(
+  //   (payload) => uiDispatch({ type: uiTypes.TOGGLE_TOAST, payload }),
+  //   [uiState.toast]
+  // )
 
-  const toggleDark = useCallback(
-    (payload) => {
-      if (payload) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-      uiDispatch({ type: uiTypes.TOGGLE_DARK, payload })
-    },
-    [uiState.theme]
-  )
+  // const toggleDark = useCallback(
+  //   (payload) => {
+  //     if (payload) {
+  //       document.documentElement.classList.add('dark')
+  //     } else {
+  //       document.documentElement.classList.remove('dark')
+  //     }
+  //     uiDispatch({ type: uiTypes.TOGGLE_DARK, payload })
+  //   },
+  //   [uiState.theme]
+  // )
 
-  const setParams = useCallback(
-    (payload) => uiDispatch({ type: uiTypes.SET_PARAMS, payload }),
-    [uiState.params]
-  )
+  // const setParams = useCallback(
+  //   (payload) => uiDispatch({ type: uiTypes.SET_PARAMS, payload }),
+  //   [uiState.params]
+  // )
 
-  const setCurrent = useCallback(
-    (payload) => uiDispatch({ type: uiTypes.SET_CURRENT, payload }),
-    [uiState.current]
-  )
+  // const setCurrent = useCallback(
+  //   (payload) => uiDispatch({ type: uiTypes.SET_CURRENT, payload }),
+  //   [uiState.current]
+  // )
 
   return {
-    initialState,
-    uiState,
-    toggleDrawer,
-    toggleDialog,
-    toggleToast,
-    toggleDark,
-    setParams,
-    setCurrent,
+    // initialState,
+    //uiState,
+    // toggleDrawer,
+    //toggleDialog,
+    // toggleToast,
+    // toggleDark,
+    //setParams,
+    // setCurrent,
   }
 }

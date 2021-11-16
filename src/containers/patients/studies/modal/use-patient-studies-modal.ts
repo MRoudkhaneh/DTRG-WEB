@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom'
-import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
+import { useDialog } from 'hooks/use-dialog'
 
 export const usePatientStudiesModal = () => {
   const { success } = useToast()
@@ -11,11 +11,9 @@ export const usePatientStudiesModal = () => {
   const { useDelete, client } = useService()
   const { id } = useParams() as any
   const {
-    uiState: {
-      dialog: { data, queryKey },
-    },
-    toggleDialog,
-  } = useUi()
+    dialog: { data, queryKey },
+    reset,
+  } = useDialog()
 
   return {
     deleteInteraction: () =>
@@ -39,7 +37,7 @@ export const usePatientStudiesModal = () => {
             return old
           })
 
-          toggleDialog({ open: false, type: null, data: {} })
+          reset()
           return { snapshot }
         },
         onError: (error, data, context) => {

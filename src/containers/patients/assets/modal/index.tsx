@@ -5,7 +5,7 @@ import { useAssetModal } from './use-asset-modal'
 import { PatientAssetForm } from '../form'
 
 export const AssetModal = memo(() => {
-  const { deleteAsset, dialog, toggleDialog } = useAssetModal()
+  const { deleteAsset, dialog, reset } = useAssetModal()
 
   switch (dialog.type) {
     case 'asset-edit':
@@ -13,14 +13,7 @@ export const AssetModal = memo(() => {
         <Modal
           size="md"
           className="px-10 "
-          onClose={() =>
-            toggleDialog({
-              open: false,
-              type: null,
-              data: null,
-              isEditing: false,
-            })
-          }
+          onClose={reset}
           header={dialog.isEditing ? 'Edit asset' : 'Add an new asset'}
           withHeader
         >
@@ -33,8 +26,8 @@ export const AssetModal = memo(() => {
         <Confirm
           type="delete"
           description="You are about to delete this asset."
-          onConfirm={() => deleteAsset()}
-          onCancel={() => toggleDialog({ open: false, type: null })}
+          onConfirm={deleteAsset}
+          onCancel={reset}
         />
       )
 

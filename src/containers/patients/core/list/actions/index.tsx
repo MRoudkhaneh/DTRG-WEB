@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { useUi } from 'hooks/use-ui'
 import { Button } from 'components/button'
 import { Tooltip } from 'components/tooltip'
 import { ICDelete } from 'icons/delete'
@@ -7,9 +6,10 @@ import { ICEdit } from 'icons/edit'
 import { ICEyeFill } from 'icons/eye-fill'
 import { ICInteractions } from 'icons/interactions'
 import { ICStudies } from 'icons/studies'
+import { useDialog } from 'hooks/use-dialog'
 
 export const PatientListActions = ({ item, queryKey }) => {
-  const { toggleDialog } = useUi()
+  const { toggleDialog } = useDialog()
   const push = useNavigate()
 
   return (

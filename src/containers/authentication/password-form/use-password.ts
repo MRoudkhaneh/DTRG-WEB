@@ -1,10 +1,9 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
-import { useUi } from 'hooks/use-ui'
 import { Api } from 'utils/api'
 
 const defaultValues = { email: '' }
@@ -14,7 +13,7 @@ export const usePassword = () => {
   const { usePost } = useService()
   const push = useNavigate()
   const { onError } = useError()
-  const { uiState } = useUi()
+  const { toast } = useToast()
 
   const { control, handleSubmit } = useForm({ defaultValues })
 
@@ -33,7 +32,7 @@ export const usePassword = () => {
     isLoading,
     isSuccess,
     data,
-    toast: useMemo(() => uiState.toast, [uiState.toast]),
+    toast,
     onSubmit: useCallback((payload) => mutate({ payload }), []),
     onPush: useCallback(() => push('/authentication/login'), []),
   }

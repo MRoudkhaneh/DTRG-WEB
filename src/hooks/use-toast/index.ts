@@ -1,40 +1,46 @@
-import { useUi } from 'hooks/use-ui'
-import { useCallback, useMemo } from 'react'
+import { toastAtom } from 'provider/recoil/atoms'
+import { useCallback } from 'react'
+import { useRecoilState } from 'recoil'
 
 export const useToast = () => {
-  const { toggleToast, uiState } = useUi()
+  const [toast, setToast] = useRecoilState(toastAtom)
 
   return {
-    toast: useMemo(() => uiState.toast, [uiState.toast]),
+    toast,
     error: useCallback(
       (description) =>
-        toggleToast({
+        setToast((prev) => ({
+          ...prev,
           open: true,
           type: 'error',
           title: 'Error',
           description,
-        }),
-      [uiState.toast]
+        })),
+      []
     ),
     success: useCallback(
       (description) =>
-        toggleToast({
+        setToast((prev) => ({
+          ...prev,
           open: true,
           type: 'success',
           title: 'Success',
           description,
-        }),
-      [uiState.toast]
+        })),
+
+      []
     ),
     close: useCallback(
       () =>
-        toggleToast({
+        setToast((prev) => ({
+          ...prev,
           open: false,
           type: null,
           title: null,
           description: null,
-        }),
-      [uiState.toast]
+        })),
+
+      []
     ),
   }
 }

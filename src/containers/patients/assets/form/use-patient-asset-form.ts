@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form'
-import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
 import { useLocation } from 'react-router'
+import { useDialog } from 'hooks/use-dialog'
 
 export const usePatientAssetForm = () => {
   const { usePut, usePost, client } = useService()
@@ -12,11 +12,9 @@ export const usePatientAssetForm = () => {
   const { onError } = useError()
   const { success } = useToast()
   const {
-    toggleDialog,
-    uiState: {
-      dialog: { data, queryKey, isEditing },
-    },
-  } = useUi()
+    reset,
+    dialog: { data, queryKey, isEditing },
+  } = useDialog()
 
   const { control, handleSubmit, setValue } = useForm({
     defaultValues:
@@ -64,7 +62,7 @@ export const usePatientAssetForm = () => {
         )
         return old
       })
-      toggleDialog({ open: false, type: null, data: {}, isEditing: false })
+      reset()
       return { snapshot }
     },
     onError: (error, data, context) => {
@@ -79,7 +77,7 @@ export const usePatientAssetForm = () => {
     url: `${Api.assets}`,
     onSuccess: () => {
       success('You successfully save an interaction.')
-      toggleDialog({ open: false, type: null, data: {}, isEditing: false })
+      reset()
       client.invalidateQueries(queryKey)
     },
     onError,

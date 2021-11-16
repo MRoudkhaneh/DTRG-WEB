@@ -5,15 +5,16 @@ import { ICPerson } from 'icons/person'
 import { Text } from 'components/text'
 import { Button } from 'components/button'
 import { classNames } from 'utils/classes'
-import { useUi } from 'hooks/use-ui'
 import { useAuth } from 'hooks/use-auth'
 import { ICEyeFill } from 'icons/eye-fill'
 import { ICActivity } from 'icons/activity'
 import { NavLink } from 'react-router-dom'
+import { useRecoilState } from 'recoil'
+import { drawerAtom } from 'provider/recoil/atoms'
 
 export const AdminDashboardClose = memo(() => {
   const { token } = useAuth()
-  const { toggleDrawer } = useUi()
+  const [_, setDrawer] = useRecoilState(drawerAtom)
 
   return (
     <div className="col-center mt-6 relative">
@@ -68,7 +69,11 @@ export const AdminDashboardClose = memo(() => {
       >
         DORIS
       </Text>
-      <Button icon onClick={() => toggleDrawer()} className="fixed bottom-3">
+      <Button
+        icon
+        onClick={() => setDrawer((prev) => !prev)}
+        className="fixed bottom-3"
+      >
         <ICMenu
           id="menu"
           className={classNames('w-6 h-6 text-gray-500 dark:text-gray-300')}

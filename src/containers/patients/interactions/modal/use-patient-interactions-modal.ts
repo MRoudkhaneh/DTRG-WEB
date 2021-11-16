@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom'
-import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
+import { useDialog } from 'hooks/use-dialog'
 
 export const usePatientInteractionModal = () => {
   const { success } = useToast()
@@ -11,11 +11,9 @@ export const usePatientInteractionModal = () => {
   const { useDelete, client } = useService()
   const { id } = useParams() as any
   const {
-    uiState: {
-      dialog: { data, queryKey },
-    },
-    toggleDialog,
-  } = useUi()
+    dialog: { data, queryKey },
+    reset,
+  } = useDialog()
 
   return {
     deleteInteraction: () =>
@@ -40,14 +38,14 @@ export const usePatientInteractionModal = () => {
             return old
           })
 
-          toggleDialog({ open: false, type: null, data: {} })
+          reset()
           return { snapshot }
         },
         onError: (error, data, context) => {
           client.setQueryData(queryKey, context.snapshot)
           onError(error)
         },
-        onSuccess: () => success('You successfully deleted this patient.'),
+        onSuccess: () => success('You successfully deleted this interaction.'),
         onSettled: () => client.invalidateQueries(queryKey),
       }),
   }

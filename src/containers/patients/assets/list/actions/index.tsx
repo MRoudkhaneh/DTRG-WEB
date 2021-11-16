@@ -1,11 +1,11 @@
-import { useUi } from 'hooks/use-ui'
 import { Button } from 'components/button'
 import { Tooltip } from 'components/tooltip'
 import { ICDelete } from 'icons/delete'
 import { ICEdit } from 'icons/edit'
+import { useDialog } from 'hooks/use-dialog'
 
 export const PatientAssetActions = ({ item, queryKey }) => {
-  const { toggleDialog } = useUi()
+  const { toggleDialog } = useDialog()
 
   return (
     <div className="list-action">

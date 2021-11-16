@@ -1,20 +1,17 @@
 import { memo } from 'react'
-import { useUi } from 'hooks/use-ui'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 
 import { usePatientInteractionModal } from './use-patient-interactions-modal'
 import { PatientInteractionsForm } from '../form'
+import { useDialog } from 'hooks/use-dialog'
 
 export const PatientInteractionsModal = memo(() => {
   const { deleteInteraction } = usePatientInteractionModal()
 
   const { mutate } = deleteInteraction()
 
-  const {
-    uiState: { dialog },
-    toggleDialog,
-  } = useUi()
+  const { dialog, reset } = useDialog()
 
   switch (dialog.type) {
     case 'patient-interactions-form':
@@ -22,7 +19,7 @@ export const PatientInteractionsModal = memo(() => {
         <Modal
           size="sm"
           className="px-10 "
-          onClose={() => toggleDialog({ open: false, type: null, data: null })}
+          onClose={reset}
           header={
             dialog.data && dialog.data.isEditing
               ? 'Edit interaction'
@@ -40,7 +37,7 @@ export const PatientInteractionsModal = memo(() => {
           type="delete"
           description={`You are about to delete this interaction.`}
           onConfirm={() => mutate()}
-          onCancel={() => toggleDialog({ open: false, type: null, data: null })}
+          onCancel={reset}
         />
       )
     default:

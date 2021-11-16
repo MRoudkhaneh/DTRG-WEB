@@ -1,17 +1,16 @@
 import { memo } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Toolbar } from 'components/toolbar'
 import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 import { ICExport } from 'icons/export'
 import { ICPlus } from 'icons/plus'
-import { useUi } from 'hooks/use-ui'
-import { ICFilter } from 'icons/filter'
 import { Menu } from '@headlessui/react'
 import { ICFilterOutline } from 'icons/filter-outline'
 import { ICEraser } from 'icons/eraser'
 import { Link } from 'react-router-dom'
+import { useDialog } from 'hooks/use-dialog'
+import { ICFilter } from 'icons/filter'
 
 type TPatientsToolbar = {
   onSearch?: any
@@ -29,7 +28,7 @@ export const PatientListToolbar = memo(
     onExport,
     onResetFilter,
   }: TPatientsToolbar) => {
-    const { toggleDialog } = useUi()
+    const { toggleDialog } = useDialog()
 
     return (
       <Toolbar>

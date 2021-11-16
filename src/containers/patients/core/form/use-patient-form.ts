@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
+import { useDialog } from 'hooks/use-dialog'
 
 const initialState = {
   status: '',
@@ -65,10 +65,7 @@ export const usePatientForm = (props: IPatientForm) => {
   const push = useNavigate()
   const { success } = useToast()
   const { onError } = useError()
-  const {
-    toggleDialog,
-    uiState: { dialog },
-  } = useUi()
+  const { dialog, reset } = useDialog()
 
   const { isEditing, editInitials } = props
 
@@ -101,7 +98,7 @@ export const usePatientForm = (props: IPatientForm) => {
         )
         return old
       })
-      toggleDialog({ open: false, type: null, data: {} })
+      reset()
       return { snapshot }
     },
     onError: (error, data, context) => {

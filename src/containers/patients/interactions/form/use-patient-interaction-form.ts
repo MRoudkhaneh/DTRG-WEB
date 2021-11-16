@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
-import { useUi } from 'hooks/use-ui'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
+import { useDialog } from 'hooks/use-dialog'
 
 export const usePatientInteractionForm = () => {
   const { id } = useParams() as any
@@ -13,11 +13,9 @@ export const usePatientInteractionForm = () => {
   const { onError } = useError()
   const { success } = useToast()
   const {
-    toggleDialog,
-    uiState: {
-      dialog: { data, queryKey },
-    },
-  } = useUi()
+    reset,
+    dialog: { data, queryKey },
+  } = useDialog()
 
   const { control, handleSubmit, setValue } = useForm({
     defaultValues:
@@ -45,7 +43,7 @@ export const usePatientInteractionForm = () => {
         old.data.results = [payload, ...old.data.results]
         return old
       })
-      toggleDialog({ open: false, type: null, data: {} })
+      reset()
       return { snapshot }
     },
     onError: (error, data, context) => {
@@ -67,7 +65,7 @@ export const usePatientInteractionForm = () => {
         )
         return old
       })
-      toggleDialog({ open: false, type: null, data: {} })
+      reset()
       return { snapshot }
     },
     onError: (error, data, context) => {

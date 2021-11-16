@@ -1,28 +1,32 @@
-import { memo, useMemo } from 'react'
+import { memo, useCallback, useState } from 'react'
 import { classNames } from 'utils/classes'
 import { Switch } from 'components/switch'
-import { useUi } from 'hooks/use-ui'
 import { ICDark } from 'icons/dark'
 import { ICLight } from 'icons/light'
 import { Tooltip } from 'components/tooltip'
 import { Button } from 'components/button'
 import { ICPersonDash } from 'icons/person-dash'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
+import { drawerAtom } from 'provider/recoil/atoms'
 
 export const AdminHeader = memo(() => {
-  const {
-    toggleDark,
-    uiState: {
-      theme,
-      drawer: { open },
-    },
-  } = useUi()
+  const [dark, setDark] = useState(true)
 
   const push = useNavigate()
 
   const { pathname } = useLocation()
 
-  const dark = useMemo(() => theme === 'dark', [theme])
+  const open = useRecoilValue(drawerAtom)
+
+  const toggleDark = useCallback((payload) => {
+    if (payload) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    setDark(payload)
+  }, [])
 
   return (
     <header

@@ -1,6 +1,6 @@
 import { useService } from 'hooks/use-service'
 import { useValidation } from 'hooks/use-validation'
-import { FC, memo, useState } from 'react'
+import { memo, useState } from 'react'
 import { Controller } from 'react-hook-form'
 import { SearchBoxCore } from './search-box-core'
 
@@ -15,7 +15,7 @@ export const SearchBox = memo((props: ISearch) => {
     key: [props.url, params],
     url: props.url,
     enabled: isOpen,
-    onFocus: false,
+    refetchOnWindowFocus: false,
   })
 
   if (props.control)

@@ -2,19 +2,17 @@ import { useCallback, useMemo, useState } from 'react'
 import { useService } from 'hooks/use-service'
 import { useError } from 'hooks/use-error'
 import { Api } from 'utils/api'
-import { useUi } from 'hooks/use-ui'
 import { PatientListActions } from './actions'
 import * as FileSaver from 'file-saver'
+import { useRecoilState, useResetRecoilState } from 'recoil'
+import { patientParamsAtom, patientCurrentAtom } from 'provider/recoil/atoms'
 
 export const usePatientList = () => {
   const { useGet } = useService()
   const { onError } = useError()
-  const {
-    uiState: { params, current },
-    initialState,
-    setParams,
-    setCurrent,
-  } = useUi()
+  const [params, setParams] = useRecoilState(patientParamsAtom)
+  const [current, setCurrent] = useRecoilState(patientCurrentAtom)
+  const onResetFilter = useResetRecoilState(patientParamsAtom)
 
   const [isExport, setIsExport] = useState(false)
 
@@ -45,6 +43,7 @@ export const usePatientList = () => {
   })
 
   return {
+    onResetFilter,
     current,
     exportLoading,
     search: params.name,
@@ -65,15 +64,13 @@ export const usePatientList = () => {
       [queryKey]
     ),
     onPaginate: useCallback((page) => {
-      setParams({ page })
+      setParams((prev) => ({ ...prev, page }))
     }, []),
     onSearch: useCallback(
-      (event) => setParams({ name: event.target.value, page: 1 }),
+      (event) =>
+        setParams((prev) => ({ ...prev, name: event.target.value, page: 1 })),
       []
     ),
-    onResetFilter: useCallback(() => {
-      setParams({ ...initialState.params })
-    }, []),
     onRowClick: useCallback((item) => setCurrent(item), []),
     onExport: useCallback(() => setIsExport(true), []),
   }

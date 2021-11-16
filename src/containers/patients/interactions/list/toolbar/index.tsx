@@ -1,6 +1,5 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useUi } from 'hooks/use-ui'
 import { ICPlus } from 'icons/plus'
 import { ICArrowLeft } from 'icons/arrow-left'
 import { Button } from 'components/button'
@@ -9,10 +8,11 @@ import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 
 import { usePatientInteractionList } from '../use-patient-interactien-list'
+import { useDialog } from 'hooks/use-dialog'
 
 export const PatientinteractionListToolbar = memo(() => {
   const { queryKey } = usePatientInteractionList()
-  const { toggleDialog } = useUi()
+  const { toggleDialog } = useDialog()
   const navigate = useNavigate()
   const {
     state: { patient },
