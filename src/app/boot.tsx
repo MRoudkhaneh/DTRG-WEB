@@ -1,14 +1,15 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { UiProvider } from 'provider/ui-provider'
 import { Router } from './router'
-import { useMemo } from 'react'
+import { RecoilRoot } from 'recoil'
 
 const Boot = () => {
-  const client = useMemo(() => new QueryClient(), [])
   return (
-    <QueryClientProvider client={client}>
+    <QueryClientProvider client={new QueryClient()}>
       <UiProvider>
-        <Router />
+        <RecoilRoot>
+          <Router />
+        </RecoilRoot>
       </UiProvider>
     </QueryClientProvider>
   )

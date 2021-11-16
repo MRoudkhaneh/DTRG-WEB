@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useToast } from 'hooks'
+import { useToast } from 'hooks/use-toast'
 
 export const useError = () => {
   const { error: errorToast } = useToast()

@@ -1,4 +1,4 @@
-import { useUi } from 'hooks'
+import { useUi } from 'hooks/use-ui'
 import { useCallback, useMemo } from 'react'
 
 export const useToast = () => {

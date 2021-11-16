@@ -8,9 +8,9 @@ import { NotFound } from './not-found'
 import { AdminLayout } from 'layouts'
 
 export const Router = memo(() => {
-  const {
-    uiState: { toast },
-  } = useUi()
+  // const {
+  //   uiState: { toast },
+  // } = useUi()
 
   return (
     <BrowserRouter>
@@ -23,7 +23,7 @@ export const Router = memo(() => {
             <Route element={<NotFound />} />
           </Routes>
         </Suspense>
-        {toast.open && <Toast {...toast} />}
+        {/*toast.open && <Toast {...toast} />*/}
       </AdminLayout>
     </BrowserRouter>
   )
