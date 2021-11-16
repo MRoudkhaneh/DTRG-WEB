@@ -11,6 +11,15 @@ import { ICFilter } from 'icons/filter'
 import { Menu } from '@headlessui/react'
 import { ICFilterOutline } from 'icons/filter-outline'
 import { ICEraser } from 'icons/eraser'
+import { Link } from 'react-router-dom'
+
+type TPatientsToolbar = {
+  onSearch?: any
+  search?: any
+  exportLoading?: boolean
+  onExport?: any
+  onResetFilter?: any
+}
 
 export const PatientListToolbar = memo(
   ({
@@ -19,15 +28,9 @@ export const PatientListToolbar = memo(
     exportLoading,
     onExport,
     onResetFilter,
-  }: {
-    onSearch?: any
-    search?: any
-    exportLoading?: boolean
-    onExport?: any
-    onResetFilter?: any
-  }) => {
-    const push = useNavigate()
+  }: TPatientsToolbar) => {
     const { toggleDialog } = useUi()
+
     return (
       <Toolbar>
         <Text
@@ -91,16 +94,13 @@ export const PatientListToolbar = memo(
               <ICExport className="w-5 h-5 text-primary" />
             </Button>
           </Tooltip>
-
-          <Tooltip content="Create">
-            <Button
-              icon
-              className="peer"
-              onClick={() => push('/admin/patients/form')}
-            >
-              <ICPlus className="w-8 h-8 text-primary" />
-            </Button>
-          </Tooltip>
+          <Link to="/admin/patients/form">
+            <Tooltip content="Create">
+              <Button icon className="peer">
+                <ICPlus className="w-8 h-8 text-primary" />
+              </Button>
+            </Tooltip>
+          </Link>
         </div>
       </Toolbar>
     )

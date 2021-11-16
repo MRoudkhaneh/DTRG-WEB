@@ -1,54 +1,34 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { DropDown } from 'components/drop-down'
 import { DropDownOption } from 'components/drop-down-option'
 import { ICPerson } from 'icons/person'
-import { classNames } from 'utils/classes'
+import { NavLink } from 'react-router-dom'
 
-export const AuthDropDown = memo(
-  ({
-    pathname,
-    push,
-    dark,
-  }: {
-    pathname?: string
-    push?: any
-    dark?: boolean
-  }) => {
-    return (
-      <DropDown
-        label="Sign in"
-        active={pathname.includes('authentication')}
-        icon={() => (
-          <ICPerson
-            className={classNames(
-              'w-6 h-6 mx-3  cursor-pointer text-gray-500 dark:text-gray-300'
-            )}
-            onClick={(e) => {
-              e.stopPropagation()
-              push('/authentication/login')
-            }}
-          />
-        )}
-      >
-        <DropDownOption
-          onClick={() => push('/authentication/login')}
-          active={pathname === '/authentication/login'}
-        >
+export const AuthDropDown = memo(({ pathname }: { pathname?: string }) => {
+  return (
+    <DropDown
+      label="Sign in"
+      icon={() => (
+        <NavLink to="/authentication/login">
+          <ICPerson className="w-6 h-6 mx-3  cursor-pointer text-gray-500 dark:text-gray-300" />
+        </NavLink>
+      )}
+    >
+      <NavLink to="/authentication/login">
+        <DropDownOption active={pathname === '/authentication/login'}>
           Login
         </DropDownOption>
-        <DropDownOption
-          onClick={() => push('/authentication/register')}
-          active={pathname === '/authentication/register'}
-        >
+      </NavLink>
+      <NavLink to="/authentication/register">
+        <DropDownOption active={pathname === '/authentication/register'}>
           Register
         </DropDownOption>
-        <DropDownOption
-          onClick={() => push('/authentication/password')}
-          active={pathname === '/authentication/password'}
-        >
+      </NavLink>
+      <NavLink to="/authentication/password">
+        <DropDownOption active={pathname === '/authentication/password'}>
           Password Recovery
         </DropDownOption>
-      </DropDown>
-    )
-  }
-)
+      </NavLink>
+    </DropDown>
+  )
+})

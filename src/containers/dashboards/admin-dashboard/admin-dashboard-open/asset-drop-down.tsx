@@ -1,34 +1,24 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { DropDown } from 'components/drop-down'
 import { DropDownOption } from 'components/drop-down-option'
-import { classNames } from 'utils/classes'
 import { ICEyeFill } from 'icons/eye-fill'
+import { NavLink } from 'react-router-dom'
 
-export const AssetDropDown = memo(
-  ({ pathname, push }: { pathname?: string; push?: any; dark?: boolean }) => {
-    return (
-      <DropDown
-        label="Assets"
-        active={pathname.includes('admin/assets')}
-        icon={() => (
-          <ICEyeFill
-            className={classNames(
-              'w-6 h-6 mx-3 cursor-pointer text-gray-500 dark:text-gray-300 '
-            )}
-            onClick={(e) => {
-              e.stopPropagation()
-              push('/admin/assets')
-            }}
-          />
-        )}
-      >
-        <DropDownOption
-          onClick={() => push('/admin/assets')}
-          active={pathname === '/admin/assets'}
-        >
+export const AssetDropDown = memo(({ pathname }: { pathname?: string }) => {
+  return (
+    <DropDown
+      label="Assets"
+      icon={() => (
+        <NavLink to="/admin/assets">
+          <ICEyeFill className="w-6 h-6 mx-3 cursor-pointer text-gray-500 dark:text-gray-300 " />
+        </NavLink>
+      )}
+    >
+      <NavLink to="/admin/assets">
+        <DropDownOption active={pathname === '/admin/assets'}>
           List
         </DropDownOption>
-      </DropDown>
-    )
-  }
-)
+      </NavLink>
+    </DropDown>
+  )
+})

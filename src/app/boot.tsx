@@ -1,30 +1,17 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { persistQueryClient } from 'react-query/persistQueryClient-experimental'
-import { createWebStoragePersistor } from 'react-query/createWebStoragePersistor-experimental'
 import { UiProvider } from 'provider/ui-provider'
 import { Router } from './router'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime: 1000 * 60 * 60 * 24,
-    },
-  },
-})
-
-const localStoragePersistor = createWebStoragePersistor({
-  storage: window.localStorage,
-})
-
-persistQueryClient({
-  queryClient,
-  persistor: localStoragePersistor,
-})
+import { BrowserRouter } from 'react-router-dom'
+import { AdminLayout } from 'layouts'
 
 const Boot = () => (
-  <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={new QueryClient()}>
     <UiProvider>
-      <Router />
+      <BrowserRouter>
+        <AdminLayout>
+          <Router />
+        </AdminLayout>
+      </BrowserRouter>
     </UiProvider>
   </QueryClientProvider>
 )

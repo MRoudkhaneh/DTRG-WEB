@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
 import { ICMenu } from 'icons/menu'
 import { ICPeoples } from 'icons/peoples'
 import { ICPerson } from 'icons/person'
@@ -10,10 +9,9 @@ import { useUi } from 'hooks/use-ui'
 import { useAuth } from 'hooks/use-auth'
 import { ICEyeFill } from 'icons/eye-fill'
 import { ICActivity } from 'icons/activity'
+import { NavLink } from 'react-router-dom'
 
 export const AdminDashboardClose = memo(() => {
-  const push = useNavigate()
-  const { pathname } = useLocation()
   const { token } = useAuth()
   const { toggleDrawer } = useUi()
 
@@ -21,47 +19,47 @@ export const AdminDashboardClose = memo(() => {
     <div className="col-center mt-6 relative">
       <div className="col-center space-y-4 ">
         {token ? null : (
-          <Button icon onClick={() => push('/authentication/login')}>
-            <ICPerson
-              className={classNames(
-                'w-6 h-6',
-                pathname.includes('authentication')
-                  ? 'text-gray-500 dark:text-white'
-                  : 'text-gray-400'
-              )}
-            />
-          </Button>
+          <NavLink
+            to="/authentication/login"
+            className={({ isActive }) =>
+              isActive ? 'text-gray-500 dark:text-white' : 'text-gray-400'
+            }
+          >
+            <Button icon>
+              <ICPerson className="w-6 h-6" />
+            </Button>
+          </NavLink>
         )}
-        <Button icon onClick={() => push('/admin/patients')}>
-          <ICPeoples
-            className={classNames(
-              'w-6 h-6 ',
-              pathname.includes('patients')
-                ? 'text-gray-500 dark:text-white'
-                : 'text-gray-400'
-            )}
-          />
-        </Button>
-        <Button icon onClick={() => push('/admin/assets')}>
-          <ICEyeFill
-            className={classNames(
-              'w-6 h-6 ',
-              pathname.includes('admin/assets')
-                ? 'text-gray-500 dark:text-white'
-                : 'text-gray-400'
-            )}
-          />
-        </Button>
-        <Button icon onClick={() => push('/admin/audits')}>
-          <ICActivity
-            className={classNames(
-              'w-6 h-6 ',
-              pathname.includes('admin/audits')
-                ? 'text-gray-500 dark:text-white'
-                : 'text-gray-400'
-            )}
-          />
-        </Button>
+        <NavLink
+          to="/admin/patients"
+          className={({ isActive }) =>
+            isActive ? 'text-gray-500 dark:text-white' : 'text-gray-400'
+          }
+        >
+          <Button icon>
+            <ICPeoples className="w-6 h-6 " />
+          </Button>
+        </NavLink>
+        <NavLink
+          to="admin/assets"
+          className={({ isActive }) =>
+            isActive ? 'text-gray-500 dark:text-white' : 'text-gray-400'
+          }
+        >
+          <Button icon>
+            <ICEyeFill className="w-6 h-6 " />
+          </Button>
+        </NavLink>
+        <NavLink
+          to="/admin/audits"
+          className={({ isActive }) =>
+            isActive ? 'text-gray-500 dark:text-white' : 'text-gray-400'
+          }
+        >
+          <Button icon>
+            <ICActivity className="w-6 h-6 " />
+          </Button>
+        </NavLink>
       </div>
       <Text
         className={classNames(

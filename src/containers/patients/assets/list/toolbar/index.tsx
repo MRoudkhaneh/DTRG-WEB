@@ -11,18 +11,15 @@ import { ICPlus } from 'icons/plus'
 import { useUi } from 'hooks/use-ui'
 import { ICExport } from 'icons/export'
 
+type TPatientsAssetsToolbar = {
+  onSearch?: any
+  queryKey?: any
+  onExport?: any
+  exportLoading?: boolean
+}
+
 export const PatientAssetsToolbar = memo(
-  ({
-    onSearch,
-    queryKey,
-    onExport,
-    exportLoading,
-  }: {
-    onSearch?: any
-    queryKey?: any
-    onExport?: any
-    exportLoading?: boolean
-  }) => {
+  ({ onSearch, queryKey, onExport, exportLoading }: TPatientsAssetsToolbar) => {
     const { state } = useLocation() as any
     const navigate = useNavigate()
     const { toggleDialog } = useUi()
