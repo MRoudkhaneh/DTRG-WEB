@@ -1,5 +1,4 @@
-import { useMemo } from 'react'
-import { useForm } from 'react-hook-form'
+import { useCallback, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
@@ -17,24 +16,7 @@ export const usePatientInteractionForm = () => {
     dialog: { data, queryKey },
   } = useDialog()
 
-  const { control, handleSubmit, setValue } = useForm({
-    defaultValues:
-      data && data.isEditing
-        ? {
-            interaction_type: data.interaction_type,
-            interaction_date: data.interaction_datetime.slice(0, 10),
-            contact_admin: data.contact_admin,
-            contact_details: data.contact_details,
-          }
-        : {
-            interaction_type: '',
-            interaction_date: new Date().toISOString().slice(0, 10),
-            contact_admin: '',
-            contact_details: '',
-          },
-  })
-
-  const { mutate: save, isLoading: saveLoading } = usePost({
+  const { mutate: save } = usePost({
     url: Api.interactions,
     onMutate: async ({ payload }) => {
       await client.cancelQueries(queryKey)
@@ -54,7 +36,7 @@ export const usePatientInteractionForm = () => {
     onSettled: () => client.invalidateQueries(queryKey),
   })
 
-  const { mutate: edit, isLoading: editLoading } = usePut({
+  const { mutate: edit } = usePut({
     url: data ? `${Api.interactions}/${data.id}/` : '',
     onMutate: async ({ payload }) => {
       await client.cancelQueries(queryKey)
@@ -77,19 +59,33 @@ export const usePatientInteractionForm = () => {
   })
 
   return {
-    control,
-    setValue,
-    isLoading: useMemo(
-      () => saveLoading || editLoading,
-      [saveLoading, editLoading]
+    onSubmit: useCallback(
+      (state) => {
+        const payload = {
+          ...state,
+          patient: parseInt(id),
+          interaction_datetime: `${state.interaction_date}`,
+        }
+        data && data.isEditing ? edit({ payload }) : save({ payload })
+      },
+      [data]
     ),
-    onSubmit: handleSubmit((state) => {
-      const payload = {
-        ...state,
-        patient: parseInt(id),
-        interaction_datetime: `${state.interaction_date}`,
-      }
-      data && data.isEditing ? edit({ payload }) : save({ payload })
-    }),
+    defaultValues: useMemo(
+      () =>
+        data && data.isEditing
+          ? {
+              interaction_type: data.interaction_type,
+              interaction_date: data.interaction_datetime.slice(0, 10),
+              contact_admin: data.contact_admin,
+              contact_details: data.contact_details,
+            }
+          : {
+              interaction_type: '',
+              interaction_date: new Date().toISOString().slice(0, 10),
+              contact_admin: '',
+              contact_details: '',
+            },
+      [data]
+    ),
   }
 }
