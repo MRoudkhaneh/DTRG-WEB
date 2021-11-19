@@ -1,20 +1,16 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
+import { FormMultiSelect } from 'components/form-multi-select'
 
-export const PhoneType = memo(({ control, setValue }: IPatientField) => {
+export const PhoneType = () => {
   return (
-    <Select
+    <FormMultiSelect
       label="Phone Type"
       name="phone_type"
-      control={control}
-      setValue={setValue}
-      multiple
-    >
-      <SelectOption value="Android">Android</SelectOption>
-      <SelectOption value="IOS">IOS</SelectOption>
-      <SelectOption value="Windows">Windows</SelectOption>
-      <SelectOption value="Other">Other</SelectOption>
-    </Select>
+      options={[
+        { id: 'Android', title: 'Android' },
+        { id: 'IOS', title: 'IOS' },
+        { id: 'Windows', title: 'Windows' },
+        { id: 'Other', title: 'Other' },
+      ]}
+    />
   )
-})
+}

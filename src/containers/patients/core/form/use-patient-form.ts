@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
@@ -30,7 +30,7 @@ const initialState = {
   diabetes_educator: null,
   diabetes_type: null,
   discussion_held_and_what_discussed: null,
-  dka_detials: null,
+  dka_details: null,
   do_not_call_until: null,
   email: '',
   endocrinologist: null,
@@ -54,7 +54,7 @@ const initialState = {
   retinopathy: false,
   has_internet_access: false,
   hypo_unawareness: false,
-  hypoglycemic_event_past_12_month: false,
+  hypoglycemic_event_past_12_months: false,
   will_come_to_st_vincent: false,
   deceased: 'No',
   post_code: null,
@@ -68,15 +68,6 @@ export const usePatientForm = (props: IPatientForm) => {
   const { dialog, reset } = useDialog()
 
   const { isEditing, editInitials } = props
-
-  const defaultValues = useMemo(
-    () => (isEditing && editInitials ? editInitials : initialState),
-    [isEditing, editInitials]
-  )
-
-  const { handleSubmit, control, setValue } = useForm({
-    defaultValues,
-  })
 
   const { mutate: save, isLoading: saveLoading } = usePost({
     url: `${Api.patients}`,
@@ -110,12 +101,17 @@ export const usePatientForm = (props: IPatientForm) => {
   })
 
   return {
-    control,
-    setValue,
     saveLoading,
     editLoading,
-    onSubmit: handleSubmit((payload) => {
-      isEditing ? edit({ payload }) : save({ payload })
-    }),
+    onSubmit: useCallback(
+      (payload) => {
+        isEditing ? edit({ payload }) : save({ payload })
+      },
+      [isEditing]
+    ),
+    defaultValues: useMemo(
+      () => (isEditing && editInitials ? editInitials : initialState),
+      [isEditing, editInitials]
+    ),
   }
 }

@@ -1,26 +1,23 @@
-import { FC, memo } from 'react'
-import { useWatch } from 'react-hook-form'
-import { Select } from 'components/select'
+import { memo } from 'react'
+import { useFormContext, useWatch } from 'react-hook-form'
 import { years } from 'utils/constants'
+import { FormSelect } from 'components/form-select'
 
-export const DateOfDiagnosisOfT1D = memo(
-  ({ control, setValue }: IPatientField) => {
-    const state = useWatch({ control, name: 'diabetes_type' })
-    if (state === 'Type 1')
-      return (
-        <Select
-          label="Date Of Diagnosis Of T1D"
-          name="date_of_diagnosis_of_t1d"
-          control={control}
-          setValue={setValue}
-        >
-          {years.map((year, index) => (
-            <option key={index} value={year}>
-              {year}
-            </option>
-          ))}
-        </Select>
-      )
-    else return null
-  }
-)
+export const DateOfDiagnosisOfT1D = memo(() => {
+  const { control } = useFormContext()
+  const state = useWatch({ control, name: 'diabetes_type' })
+  if (state === 'Type 1')
+    return (
+      <FormSelect
+        label="Date Of Diagnosis Of T1D"
+        name="date_of_diagnosis_of_t1d"
+      >
+        {years.map((year, index) => (
+          <option key={index} value={year}>
+            {year}
+          </option>
+        ))}
+      </FormSelect>
+    )
+  else return null
+})

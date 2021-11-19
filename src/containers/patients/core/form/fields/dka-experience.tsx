@@ -1,12 +1,10 @@
-import { Switch } from 'components/switch'
-import { FC, memo } from 'react'
+import { FormSwitch } from 'components/form-switch'
 
-export const DKAExperience = memo(({ control }: IPatientField) => {
+export const DKAExperience = () => {
   return (
-    <Switch
+    <FormSwitch
       label="In the past 12 months, have you had Diabetic Ketoacidosis (DKA) requiring a hospital admission?"
       name="dka_requiring_hospital_admission_past_12_months"
-      control={control}
     />
   )
-})
+}

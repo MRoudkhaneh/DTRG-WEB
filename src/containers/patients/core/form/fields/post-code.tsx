@@ -1,14 +1,12 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const PostCode = memo(({ control }: IPatientField) => {
+export const PostCode = () => {
   return (
-    <Input
+    <FormInput
       label="Post Code"
       placeholder="Enter Post Code"
       name="post_code"
-      control={control}
       required
     />
   )
-})
+}

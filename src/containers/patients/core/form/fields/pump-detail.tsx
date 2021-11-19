@@ -1,15 +1,16 @@
-import { TextArea } from 'components/text-area'
-import { FC, memo } from 'react'
-import { useWatch } from 'react-hook-form'
+import { FormTextArea } from 'components/form-textarea'
 
-export const PumpDetail = memo(({ control }: IPatientField) => {
+import { memo } from 'react'
+import { useFormContext, useWatch } from 'react-hook-form'
+
+export const PumpDetail = memo(() => {
+  const { control } = useFormContext()
   const state = useWatch({ control, name: 'current_diabetes_management' })
   if (state === 'Looping' || state === 'Other')
     return (
-      <TextArea
+      <FormTextArea
         label="Pump Details"
         name="pump_details"
-        control={control}
         required
         max={250}
       />

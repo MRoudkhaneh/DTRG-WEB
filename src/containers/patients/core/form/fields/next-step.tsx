@@ -1,13 +1,11 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const NextStep = memo(({ control }: IPatientField) => {
+export const NextStep = () => {
   return (
-    <Input
+    <FormInput
       label="Next Steps"
       placeholder="Enter Next Steps"
       name="next_step"
-      control={control}
     />
   )
-})
+}

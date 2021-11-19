@@ -1,14 +1,12 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const DoNotCallUntil = memo(({ control }: IPatientField) => {
+export const DoNotCallUntil = () => {
   return (
-    <Input
+    <FormInput
       label="Do Not Call Until"
       placeholder="Enter Do Not Call Until"
       name="do_not_call_until"
       type="text"
-      control={control}
     />
   )
-})
+}

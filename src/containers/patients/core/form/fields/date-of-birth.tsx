@@ -1,13 +1,5 @@
-import { DatePicker } from 'components/date-picker'
-import { FC, memo } from 'react'
+import { FormDatePicker } from 'components/form-datepicker'
 
-export const DateOfBirth = memo(({ control }: IPatientField) => {
-  return (
-    <DatePicker
-      label="Date Of Birth"
-      name="date_of_birth"
-      control={control}
-      required
-    />
-  )
-})
+export const DateOfBirth = () => {
+  return <FormDatePicker label="Date Of Birth" name="date_of_birth" required />
+}

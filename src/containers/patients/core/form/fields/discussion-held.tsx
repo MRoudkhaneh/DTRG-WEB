@@ -1,13 +1,11 @@
-import { TextArea } from 'components/text-area'
-import { FC, memo } from 'react'
+import { FormTextArea } from 'components/form-textarea'
 
-export const DiscussionHeld = memo(({ control }: IPatientField) => {
+export const DiscussionHeld = () => {
   return (
-    <TextArea
+    <FormTextArea
       label="Discussion Held And What Was Discussed"
       placeholder="Enter Discussion Held And What Was Discussed"
       name="discussion_held_and_what_discussed"
-      control={control}
     />
   )
-})
+}

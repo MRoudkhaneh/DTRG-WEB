@@ -1,12 +1,5 @@
-import { Switch } from 'components/switch'
-import { FC, memo } from 'react'
+import { FormSwitch } from 'components/form-switch'
 
-export const HasInternetAccess = memo(({ control }: IPatientField) => {
-  return (
-    <Switch
-      label="Has Internet Access?"
-      name="has_internet_access"
-      control={control}
-    />
-  )
-})
+export const HasInternetAccess = () => {
+  return <FormSwitch label="Has Internet Access?" name="has_internet_access" />
+}

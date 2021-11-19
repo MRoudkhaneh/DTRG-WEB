@@ -1,29 +1,29 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
-import { SelectOption } from 'components/select-option'
-import { useWatch } from 'react-hook-form'
+import { memo } from 'react'
+import { useFormContext, useWatch } from 'react-hook-form'
+import { FormMultiSelect } from 'components/form-multi-select'
 
-export const CHOCounting = memo(({ control, setValue }: IPatientField) => {
+export const CHOCounting = memo(() => {
+  const { control } = useFormContext()
   const state = useWatch({ control, name: 'cho_counting' })
+
   return (
-    <Select
+    <FormMultiSelect
       label="CHO Counting"
       name="cho_counting"
-      control={control}
-      setValue={setValue}
-      multiple
-    >
-      <SelectOption value="DAFNE" selected={state && state.includes('DAFNE')}>
-        DAFNE
-      </SelectOption>
-      <SelectOption value="Food App">Food App</SelectOption>
-      <SelectOption value="Yes" disabled={state && state.includes('No')}>
-        Yes
-      </SelectOption>
-      <SelectOption disabled={state && state.includes('Yes')} value="No">
-        No
-      </SelectOption>
-      <SelectOption value="Other">Other</SelectOption>
-    </Select>
+      options={[
+        { id: 'DAFNE', title: 'DAFNE' },
+        {
+          id: 'Yes',
+          title: 'Yes',
+          disabled: state && state.includes('No'),
+        },
+        {
+          id: 'No',
+          title: 'No',
+          disabled: state && state.includes('Yes'),
+        },
+        { id: 'Other', title: 'Other' },
+      ]}
+    />
   )
 })

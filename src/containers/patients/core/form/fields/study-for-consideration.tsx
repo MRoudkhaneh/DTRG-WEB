@@ -1,13 +1,11 @@
-import { TextArea } from 'components/text-area'
-import { FC } from 'react'
+import { FormTextArea } from 'components/form-textarea'
 
-export const StudyForConsideration = ({ control }: IPatientField) => {
+export const StudyForConsideration = () => {
   return (
-    <TextArea
+    <FormTextArea
       label="Study For Consideration"
       placeholder="Enter Study For Consideration"
       name="study_for_consideration"
-      control={control}
     />
   )
 }

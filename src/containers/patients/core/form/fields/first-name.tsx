@@ -1,15 +1,13 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const FirstName = memo(({ control }: IPatientField) => {
+export const FirstName = () => {
   return (
-    <Input
+    <FormInput
       label="First Name"
       placeholder="Enter First Name"
       name="first_name"
-      control={control}
       required
       max={64}
     />
   )
-})
+}

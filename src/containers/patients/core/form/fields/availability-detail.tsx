@@ -1,14 +1,12 @@
-import { TextArea } from 'components/text-area'
-import { FC, memo } from 'react'
+import { FormTextArea } from 'components/form-textarea'
 
-export const AvailabilityDetail = memo(({ control }: IPatientField) => {
+export const AvailabilityDetail = () => {
   return (
-    <TextArea
+    <FormTextArea
       label="Availability Detail"
       placeholder="Enter Availability Detail"
       name="availability_detail"
-      control={control}
       max={2000}
     />
   )
-})
+}

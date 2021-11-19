@@ -1,17 +1,10 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
+import { FormSelect } from 'components/form-select'
 
-export const Gender = memo(({ control, setValue }: IPatientField) => {
+export const Gender = () => {
   return (
-    <Select
-      control={control}
-      label="Gender"
-      name="gender"
-      setValue={setValue}
-      required
-    >
+    <FormSelect label="Gender" name="gender" required>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
-    </Select>
+    </FormSelect>
   )
-})
+}

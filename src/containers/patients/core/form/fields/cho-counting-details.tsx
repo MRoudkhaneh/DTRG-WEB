@@ -1,15 +1,15 @@
-import { TextArea } from 'components/text-area'
-import { FC, memo } from 'react'
-import { useWatch } from 'react-hook-form'
+import { FormTextArea } from 'components/form-textarea'
+import { memo } from 'react'
+import { useFormContext, useWatch } from 'react-hook-form'
 
-export const CHOCountingDetails = memo(({ control }: IPatientField) => {
+export const CHOCountingDetails = memo(() => {
+  const { control } = useFormContext()
   const state = useWatch({ control, name: 'cho_counting' })
   if (state && state.includes('Other'))
     return (
-      <TextArea
+      <FormTextArea
         label="CHO Counting Details"
         name="cho_counting_details"
-        control={control}
         required
       />
     )

@@ -1,18 +1,12 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
+import { FormSelect } from 'components/form-select'
 
-export const Availability = memo(({ control, setValue }: IPatientField) => {
+export const Availability = () => {
   return (
-    <Select
-      label="Availability"
-      name="availability"
-      control={control}
-      setValue={setValue}
-    >
+    <FormSelect label="Availability" name="availability">
       <option value="Daily">Daily</option>
       <option value="Weekly">Weekly</option>
       <option value="Fortnightly">Fortnightly</option>
       <option value="Monthly">Monthly</option>
-    </Select>
+    </FormSelect>
   )
-})
+}

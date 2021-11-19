@@ -1,15 +1,13 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const LatestHBA1CReading = memo(({ control }: IPatientField) => {
+export const LatestHBA1CReading = () => {
   return (
-    <Input
+    <FormInput
       label="Latest HbA1c Reading"
       placeholder="Enter Latest HbA1c Reading"
       name="latest_hba1c_reading"
-      control={control}
       precent
       number
     />
   )
-})
+}

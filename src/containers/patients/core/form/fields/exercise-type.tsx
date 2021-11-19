@@ -1,17 +1,11 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
+import { FormSelect } from 'components/form-select'
 
-export const ExerciseType = memo(({ control, setValue }: IPatientField) => {
+export const ExerciseType = () => {
   return (
-    <Select
-      label="Exercise Type"
-      name="exercise_type"
-      control={control}
-      setValue={setValue}
-    >
+    <FormSelect label="Exercise Type" name="exercise_type">
       <option value="Casual">Casual</option>
       <option value="Structured">Structured</option>
       <option value="None">None</option>
-    </Select>
+    </FormSelect>
   )
-})
+}

@@ -1,10 +1,10 @@
 import { memo } from 'react'
-import { Form } from 'components/form'
 import { Tab } from 'components/tab'
 import { Grid } from 'components/grid'
 import { usePatientForm } from './use-patient-form'
 import { PatientFormToolbar } from './toolbar'
-import { PatientFormSubmit } from './submit'
+import { classNames } from 'utils/classes'
+import { FormControl } from 'components/form-control'
 import {
   CHOCounting,
   FirstName,
@@ -54,104 +54,102 @@ import {
   InfusionLineType,
   Deceased,
   PatientStatus,
+  PatientFormSubmit,
 } from './fields'
 
-import { classNames } from 'utils/classes'
-
 export const PatientForm = memo((props?: IPatientForm) => {
-  const { isEditing, editInitials } = props
-  const { onSubmit, control, setValue, saveLoading, editLoading } =
-    usePatientForm({ isEditing, editInitials })
+  const { onSubmit, saveLoading, editLoading, defaultValues } =
+    usePatientForm(props)
 
   return (
     <div className="w-full">
-      {!isEditing && <PatientFormToolbar />}
-      <Form className="w-full  px-5" onSubmit={onSubmit}>
+      {!props.isEditing && <PatientFormToolbar />}
+      <FormControl
+        className="w-full  px-5"
+        onSubmit={onSubmit}
+        defaultValues={defaultValues}
+      >
         <Tab text="Patient Bio" className="mt-10">
           <Grid className="mt-4">
-            <PatientStatus control={control} setValue={setValue} />
+            <PatientStatus />
           </Grid>
 
           <Grid className=" pt-6 mt-4 ">
-            <FirstName control={control} />
-            <LastName control={control} />
+            <FirstName />
+            <LastName />
           </Grid>
 
           <Grid className=" pt-6 mt-4">
-            <DateOfBirth control={control} setValue={setValue} />
-            <Gender control={control} setValue={setValue} />
+            <DateOfBirth />
+            <Gender />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <PhoneNumber control={control} />
-            <PhoneType control={control} setValue={setValue} />
+            <PhoneNumber />
+            <PhoneType />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <PreferedContactDate control={control} setValue={setValue} />
-            <PreferedContactMethod control={control} setValue={setValue} />
+            <PreferedContactDate />
+            <PreferedContactMethod />
           </Grid>
           <Grid className=" pt-6 mt-4 ">
-            <EmailAddress control={control} />
-            <Suburb control={control} />
-            <PostCode control={control} />
-            <State control={control} />
+            <EmailAddress />
+            <Suburb />
+            <PostCode />
+            <State />
           </Grid>
-          {isEditing && (
+          {props.isEditing && (
             <Grid className=" pt-6 mt-4">
-              <Deceased control={control} setValue={setValue} />
+              <Deceased />
             </Grid>
           )}
         </Tab>
 
         <Tab
-          //expandable
-          initialIsOpen={!isEditing}
+          initialIsOpen={!props.isEditing}
           text="Medical History"
           className="mt-10"
         >
           <Grid className=" mt-4 ">
-            <DiabetesType control={control} setValue={setValue} />
-            <DateOfDiagnosisOfT1D control={control} setValue={setValue} />
+            <DiabetesType />
+            <DateOfDiagnosisOfT1D />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <CHOCounting control={control} setValue={setValue} />
-            <CHOCountingDetails control={control} />
+            <CHOCounting />
+            <CHOCountingDetails />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <ExerciseType control={control} setValue={setValue} />
-            <ExerciseDetail control={control} />
+            <ExerciseType />
+            <ExerciseDetail />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <CurrentDiabetesManagement control={control} setValue={setValue} />
-            <InfusionLineType control={control} setValue={setValue} />
-            <PumpDetail control={control} />
+            <CurrentDiabetesManagement />
+            <InfusionLineType />
+            <PumpDetail />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <CurrentInsulinUse control={control} setValue={setValue} />
+            <CurrentInsulinUse />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <CurrentCGMWear control={control} setValue={setValue} />
-            <PastCGMWear control={control} setValue={setValue} />
+            <CurrentCGMWear />
+            <PastCGMWear />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <FrequencyOfDailyFingerstick
-              control={control}
-              setValue={setValue}
-            />
+            <FrequencyOfDailyFingerstick />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <Endocrinologist control={control} />
-            <DiabetesEducator control={control} />
+            <Endocrinologist />
+            <DiabetesEducator />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <LatestHBA1CReading control={control} />
-            <LatestHBA1CReadingDate control={control} setValue={setValue} />
+            <LatestHBA1CReading />
+            <LatestHBA1CReadingDate />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <DKAExperience control={control} />
+            <DKAExperience />
 
-            <DKADetail control={control} />
+            <DKADetail />
 
-            <HadSevereHypo control={control} />
+            <HadSevereHypo />
           </Grid>
           <Grid className=" pt-6 mt-4">
             <span className={classNames('text-light dark:text-dark')}>
@@ -160,53 +158,49 @@ export const PatientForm = memo((props?: IPatientForm) => {
           </Grid>
           <Grid className="mt-4">
             <div className="col-span-1 grid grid-cols-1 ">
-              <HadUnawareHypo control={control} />
-              <HadAbnormalKidney control={control} />
-              <HadretionopathyDiag control={control} />
-              <HadFeetNeuropathy control={control} />
+              <HadUnawareHypo />
+              <HadAbnormalKidney />
+              <HadretionopathyDiag />
+              <HadFeetNeuropathy />
             </div>
             <div className="col-span-2" />
           </Grid>
           <Grid className="mt-4">
-            <OtherMedicalIssue control={control} />
+            <OtherMedicalIssue />
           </Grid>
         </Tab>
 
         <Tab
-          //expandable
-          initialIsOpen={!isEditing}
+          initialIsOpen={!props.isEditing}
           text="Logistics"
           className="mt-10"
         >
           <Grid className="mt-4 ">
-            <WillComeToSt control={control} />
+            <WillComeToSt />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <HasInternetAccess control={control} />
-            <ComputerType control={control} setValue={setValue} />
+            <HasInternetAccess />
+            <ComputerType />
           </Grid>
-          {/* <Grid className=" pt-6 mt-4">
-            <DiscussionHeld control={control} />
-            <ContactDate control={control} setValue={setValue} />
-          </Grid> */}
+
           <Grid className=" pt-6 mt-4">
-            <PWODReferal control={control} />
-            <StudyForConsideration control={control} />
+            <PWODReferal />
+            <StudyForConsideration />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <Availability control={control} setValue={setValue} />
-            <AvailabilityDetail control={control} />
+            <Availability />
+            <AvailabilityDetail />
           </Grid>
           <Grid className=" pt-6 mt-4">
-            <NextStep control={control} />
-            <DoNotCallUntil control={control} />
+            <NextStep />
+            <DoNotCallUntil />
           </Grid>
         </Tab>
 
         <PatientFormSubmit
-          loading={isEditing ? false : saveLoading || editLoading}
+          loading={props.isEditing ? false : saveLoading || editLoading}
         />
-      </Form>
+      </FormControl>
     </div>
   )
 })

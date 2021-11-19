@@ -1,6 +1,5 @@
-import { Switch } from 'components/switch'
-import { FC, memo } from 'react'
+import { FormSwitch } from 'components/form-switch'
 
-export const HadretionopathyDiag = memo(({ control }: IPatientField) => {
-  return <Switch label="Retinopathy?" name="retinopathy" control={control} />
-})
+export const HadretionopathyDiag = () => {
+  return <FormSwitch label="Retinopathy?" name="retinopathy" />
+}

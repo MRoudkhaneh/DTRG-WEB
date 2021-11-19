@@ -1,26 +1,13 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
+import { memo } from 'react'
 
-export const ComputerType = memo(
-  ({ control, state, setValue }: IPatientField) => {
-    return (
-      <Select
-        label="Computer Type"
-        name="computer_type"
-        control={control}
-        value={state}
-        setValue={setValue}
-      >
-        <option value="Windows" selected={state === 'Windows'}>
-          Windows
-        </option>
-        <option value="Mac" selected={state === 'Mac'}>
-          Mac
-        </option>
-        <option value="Both" selected={state === 'Both'}>
-          Both
-        </option>
-      </Select>
-    )
-  }
-)
+import { FormSelect } from 'components/form-select'
+
+export const ComputerType = () => {
+  return (
+    <FormSelect label="Computer Type" name="computer_type">
+      <option value="Windows">Windows</option>
+      <option value="Mac">Mac</option>
+      <option value="Both">Both</option>
+    </FormSelect>
+  )
+}

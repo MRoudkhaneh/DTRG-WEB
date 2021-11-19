@@ -1,18 +1,12 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
+import { FormSelect } from 'components/form-select'
 
-export const DiabetesType = memo(({ control, setValue }: IPatientField) => {
+export const DiabetesType = () => {
   return (
-    <Select
-      label="Diabetes Type"
-      name="diabetes_type"
-      control={control}
-      setValue={setValue}
-    >
+    <FormSelect label="Diabetes Type" name="diabetes_type">
       <option value="Type 1">Type 1</option>
       <option value="Type 2">Type 2</option>
       <option value="LADA">LADA</option>
       <option value="Other">Other</option>
-    </Select>
+    </FormSelect>
   )
-})
+}

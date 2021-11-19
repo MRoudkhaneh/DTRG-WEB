@@ -1,15 +1,13 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const PhoneNumber = memo(({ control }: IPatientField) => {
+export const PhoneNumber = () => {
   return (
-    <Input
+    <FormInput
       label="Phone Number (Mobile)"
       placeholder="Enter Phone Number"
       name="phone_number"
-      control={control}
       max={20}
       required
     />
   )
-})
+}

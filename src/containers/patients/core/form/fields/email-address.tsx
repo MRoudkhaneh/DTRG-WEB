@@ -1,16 +1,14 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const EmailAddress = memo(({ control }: IPatientField) => {
+export const EmailAddress = () => {
   return (
-    <Input
+    <FormInput
       label="Email Address"
       placeholder="Enter Email Address"
       name="email"
       type="email"
-      control={control}
       max={64}
       required
     />
   )
-})
+}

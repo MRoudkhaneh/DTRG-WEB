@@ -1,14 +1,12 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const DiabetesEducator = memo(({ control }: IPatientField) => {
+export const DiabetesEducator = () => {
   return (
-    <Input
+    <FormInput
       label="Diabetes Educator"
       placeholder="Enter Diabetes Educator"
       name="diabetes_educator"
-      control={control}
       max={50}
     />
   )
-})
+}

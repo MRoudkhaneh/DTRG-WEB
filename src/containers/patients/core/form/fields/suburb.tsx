@@ -1,15 +1,13 @@
-import { Input } from 'components/input'
-import { FC, memo } from 'react'
+import { FormInput } from 'components/form-input'
 
-export const Suburb = memo(({ control }: IPatientField) => {
+export const Suburb = () => {
   return (
-    <Input
+    <FormInput
       label="Suburb"
       placeholder="Enter Suburb"
       name="suburb"
-      control={control}
       max={20}
       required
     />
   )
-})
+}
