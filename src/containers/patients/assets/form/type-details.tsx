@@ -1,13 +1,13 @@
-import { TextArea } from 'components/text-area'
-import { FC, memo } from 'react'
-import { useWatch } from 'react-hook-form'
+import { FormTextArea } from 'components/form-textarea'
+import { memo } from 'react'
+import { useFormContext, useWatch } from 'react-hook-form'
 
-export const TypeDetails = memo(({ control }: { control?: any }) => {
+export const TypeDetails = memo(() => {
+  const { control } = useFormContext()
   const state = useWatch({ control, name: 'type' })
   if (state === 'other')
     return (
-      <TextArea
-        control={control}
+      <FormTextArea
         name="type_details"
         label="Type details"
         placeholder="Enter type details"
