@@ -1,12 +1,11 @@
-import { useMemo } from 'react'
-import { useForm } from 'react-hook-form'
+import { useCallback, useMemo, useState } from 'react'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { useParams } from 'react-router-dom'
 import { Api } from 'utils/api'
 
-const defaultValues = {
+const defaultState = {
   flash: false,
   optimapp: false,
   other: false,
@@ -26,6 +25,7 @@ const defaultValues = {
 }
 
 export const usepreviousStudy = () => {
+  const [defaultValues, setDefaultValues] = useState(defaultState)
   const { id } = useParams() as any
   const { useGet, usePost } = useService()
   const { onError } = useError()
@@ -36,36 +36,31 @@ export const usepreviousStudy = () => {
     [id]
   )
 
-  const { control, handleSubmit, reset } = useForm({
-    defaultValues,
-  })
-
   const { isLoading, isFetching } = useGet({
     key: queryKey,
     url: `${Api.prevStudies}`,
     refetchOnWindowFocus: false,
     keepPreviousData: true,
-    onSuccess: (data) => reset(data.data),
+    onSuccess: ({ data }) => setDefaultValues(data),
     onError,
   })
 
   const { mutate: save, isLoading: saveLoading } = usePost({
     url: Api.prevStudies,
     onError: (error) => onError(error),
-    onSuccess: (result) => {
-      success('You successfully save previous studies.')
-      reset({ ...result.data })
-    },
-    // onSettled: () => client.invalidateQueries(queryKey),
+    onSuccess: () => success('You successfully save previous studies.'),
   })
 
   return {
-    control,
+    defaultValues,
     saveLoading,
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
-    onSubmit: handleSubmit((state) => {
-      const payload = { ...state, patient: id }
-      save({ payload })
-    }),
+    onSubmit: useCallback(
+      (state) => {
+        const payload = { ...state, patient: id }
+        save({ payload })
+      },
+      [id]
+    ),
   }
 }
