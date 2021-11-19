@@ -1,8 +1,9 @@
-import { TextArea } from 'components/text-area'
-import { FC, memo } from 'react'
-import { useWatch } from 'react-hook-form'
+import { FormTextArea } from 'components/form-textarea'
+import { memo } from 'react'
+import { useFormContext, useWatch } from 'react-hook-form'
 
-export const StatusDetails = memo(({ control }: IPatientField) => {
+export const StatusDetails = memo(() => {
+  const { control } = useFormContext()
   const state = useWatch({ control, name: 'study_status' })
   if (
     state === 'Approached - declined' ||
@@ -11,11 +12,10 @@ export const StatusDetails = memo(({ control }: IPatientField) => {
     state === 'Withdrawn'
   )
     return (
-      <TextArea
+      <FormTextArea
         label="Status Details"
         name="status_details"
         placeholder="Enter Study Status Details"
-        control={control}
         max={250}
         required
         expanded

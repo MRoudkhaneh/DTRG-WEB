@@ -1,13 +1,11 @@
-import { FC, memo } from 'react'
-import { Select } from 'components/select'
+import { memo } from 'react'
+import { FormSelect } from 'components/form-select'
 
-export const StudyStatus = memo(({ control, setValue }: IPatientField) => {
+export const StudyStatus = memo(() => {
   return (
-    <Select
+    <FormSelect
       label="Study Status"
       name="study_status"
-      control={control}
-      setValue={setValue}
       required
       className="my-6"
     >
@@ -21,6 +19,6 @@ export const StudyStatus = memo(({ control, setValue }: IPatientField) => {
       <option value="Screening - drop out">Screening - drop out</option>
       <option value="Consented and Active">Consented and Active</option>
       <option value="Withdrawn">Withdrawn</option>
-    </Select>
+    </FormSelect>
   )
 })

@@ -34,14 +34,14 @@ export const usePatientAssetForm = () => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },
-    onSuccess: () => success('You successfully edit this interaction.'),
+    onSuccess: () => success('You successfully edit this asset.'),
     onSettled: () => client.invalidateQueries(queryKey),
   })
 
   const { mutate: save, isLoading } = usePost({
     url: `${Api.assets}`,
     onSuccess: () => {
-      success('You successfully save an interaction.')
+      success('You successfully save an asset.')
       client.invalidateQueries(queryKey)
       reset()
     },

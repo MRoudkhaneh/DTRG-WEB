@@ -1,5 +1,4 @@
-import { useMemo } from 'react'
-import { useForm } from 'react-hook-form'
+import { useCallback, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
@@ -16,21 +15,6 @@ export const usePatientStudyForm = () => {
     reset,
     dialog: { data, queryKey },
   } = useDialog()
-
-  const { control, handleSubmit, setValue } = useForm({
-    defaultValues:
-      data && data.isEditing
-        ? {
-            current_study: data.current_study,
-            study_status: data.study_status,
-            status_details: data.status_details,
-          }
-        : {
-            current_study: '',
-            study_status: '',
-            status_details: '',
-          },
-  })
 
   const { mutate: save, isLoading: saveLoading } = usePost({
     url: Api.studies,
@@ -75,18 +59,34 @@ export const usePatientStudyForm = () => {
   })
 
   return {
-    control,
-    setValue,
     isLoading: useMemo(
       () => saveLoading || editLoading,
       [saveLoading, editLoading]
     ),
-    onSubmit: handleSubmit((state) => {
-      const payload = {
-        ...state,
-        patient: parseInt(id),
-      }
-      data && data.isEditing ? edit({ payload }) : save({ payload })
-    }),
+    onSubmit: useCallback(
+      (state) => {
+        const payload = {
+          ...state,
+          patient: parseInt(id),
+        }
+        data && data.isEditing ? edit({ payload }) : save({ payload })
+      },
+      [data]
+    ),
+    defaultValues: useMemo(
+      () =>
+        data && data.isEditing
+          ? {
+              current_study: data.current_study,
+              study_status: data.study_status,
+              status_details: data.status_details,
+            }
+          : {
+              current_study: '',
+              study_status: '',
+              status_details: '',
+            },
+      [data]
+    ),
   }
 }

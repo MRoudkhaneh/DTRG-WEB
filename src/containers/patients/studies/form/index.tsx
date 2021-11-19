@@ -1,25 +1,17 @@
 import { memo } from 'react'
-import { Button } from 'components/button'
-import { Form } from 'components/form'
-import { CurrentStudy, StatusDetails, StudyStatus } from './fields'
-
+import { CurrentStudy, StatusDetails, StudyStatus, StudySubmit } from './fields'
 import { usePatientStudyForm } from './use-patient-study-form'
+import { FormControl } from 'components/form-control'
 
 export const PatientStudiesForm = memo(() => {
-  const { control, onSubmit, setValue } = usePatientStudyForm()
+  const { onSubmit, defaultValues } = usePatientStudyForm()
 
   return (
-    <Form onSubmit={onSubmit}>
-      <CurrentStudy control={control} setValue={setValue} />
-      <StudyStatus control={control} setValue={setValue} />
-      <StatusDetails control={control} />
-      <Button
-        type="submit"
-        icon
-        className=" w-full h-12 my-10 text-white shadow-blue bg-secondary dark:bg-primary"
-      >
-        Save Study
-      </Button>
-    </Form>
+    <FormControl onSubmit={onSubmit} defaultValues={defaultValues}>
+      <CurrentStudy />
+      <StudyStatus />
+      <StatusDetails />
+      <StudySubmit />
+    </FormControl>
   )
 })
