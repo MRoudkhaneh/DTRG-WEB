@@ -1,88 +1,86 @@
-import { FC, memo } from 'react'
-import { Controller } from 'react-hook-form'
-import { useValidation } from 'hooks/use-validation'
+import { memo } from 'react'
 import { Error } from 'components/error'
-
-import { InputLabel } from './input-label'
-import { InputCore } from './input-core'
-import { InputIcon } from './input-icon'
 import { classNames } from 'utils/classes'
 import { TInput } from './input'
 
+export const inputCoreClassName = (fieldError, withError, size, icon) =>
+  classNames(
+    fieldError || withError
+      ? 'border-2 border-red-400 shadow'
+      : 'border border-gray-300 focus:ring-2 focus:ring-indigo-400 dark:border-gray-700 dark:focus:ring-indigo-600',
+    size === 'large' ? 'h-14 ' : size === 'small' ? 'h-8 text-[13px]' : 'h-12',
+    icon ? 'px-10' : 'px-4'
+  )
+
+export const inputIconClassName = (label, size) =>
+  classNames(
+    'absolute  left-3',
+    label
+      ? size === 'small'
+        ? 'top-6'
+        : 'top-12'
+      : size === 'small'
+      ? 'top-2'
+      : 'top-4'
+  )
+
+export const inputLabelClassName = (size) =>
+  classNames(
+    ' mb-2 text-light dark:text-dark',
+    size === 'small' ? 'text-xs' : 'text-base'
+  )
+
+export const inputCoreActualValue = (value) => {
+  switch (typeof value) {
+    case 'string':
+      return value
+    case 'object':
+      if (value && value.length) {
+        return value.join(',')
+      } else return ''
+    default:
+      break
+  }
+}
+
 export const Input = memo((props: TInput) => {
-  const {
-    required,
-    max,
-    min,
-    later,
-    className,
-    validation,
-    precent,
-    control,
-    name,
-    hours,
-    minutes,
-    number,
-    label,
-  } = props
-  const { validate } = useValidation({
-    required,
-    max,
-    min,
-    later,
-    validation,
-    precent,
-    hours,
-    minutes,
-    number,
-  })
+  const { className, label } = props
 
-  if (control)
-    return (
-      <Controller
-        name={name}
-        rules={{ validate }}
-        control={control}
-        render={({
-          field: { onChange: fieldChange, value: fieldValue, ref: fieldRef },
-          fieldState: { error: fieldError },
-        }) => (
-          <div className={`w-full col-start relative ${className}`}>
-            <InputLabel {...props} />
-            <InputCore
-              validate={validate}
-              fieldChange={fieldChange}
-              fieldValue={fieldValue}
-              fieldError={fieldError}
-              fieldRef={fieldRef}
-              {...props}
-            />
-
-            <InputIcon {...props} />
-            <Error
-              error={fieldError}
-              className={classNames(
-                'absolute left-0',
-                label ? ' top-[78px]' : 'top-[45px]'
-              )}
-            />
-          </div>
+  return (
+    <div className={`w-full col-start relative ${className}`}>
+      {label && (
+        <label className={inputLabelClassName(props.size)}>{label}</label>
+      )}
+      <input
+        data-testid="input-core"
+        type={props.type || 'text'}
+        name={props.name}
+        placeholder={props.placeholder}
+        disabled={props.disabled}
+        value={inputCoreActualValue(props.value)}
+        onClick={props.onClick}
+        onChange={props.onChange}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
+        className={inputCoreClassName(
+          props.error,
+          props.withError,
+          props.size,
+          props.icon
         )}
       />
-    )
-  else
-    return (
-      <div className={`w-full col-start relative ${className}`}>
-        <InputLabel {...props} />
-        <InputCore validate={validate} {...props} />
-        <InputIcon {...props} />
-        <Error
-          error={props.error}
-          className={classNames(
-            'absolute left-0',
-            label ? ' top-[78px]' : 'top-[45px]'
-          )}
-        />
-      </div>
-    )
+      {props.icon && (
+        <div className={inputIconClassName(label, props.size)}>
+          {props.icon()}
+        </div>
+      )}
+      <Error
+        error={props.error}
+        className={classNames(
+          'absolute left-0',
+          label ? ' top-[78px]' : 'top-[45px]'
+        )}
+      />
+    </div>
+  )
 })

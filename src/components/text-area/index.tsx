@@ -1,60 +1,41 @@
-import { FC, memo } from 'react'
-import { Controller } from 'react-hook-form'
-import { useValidation } from 'hooks/use-validation'
+import { memo } from 'react'
 import { Error } from 'components/error'
 import { classNames } from 'utils/classes'
 
-import { TextAreaLabel } from './text-area-label'
-import { TextAreatCore } from './text-area-core'
-
 export const TextArea = memo((props: ITextArea) => {
-  const { required, max, min, className, error, control, name, expanded } =
-    props
-  const { validate } = useValidation({ required, max, min })
+  const { className, error, ...rest } = props
 
-  if (control)
-    return (
-      <Controller
-        name={name}
-        control={control}
-        rules={{ validate }}
-        render={({
-          field: { onChange, value, ref: fieldRef },
-          fieldState: { error },
-        }) => (
-          <div
-            className={classNames(
-              'w-full col-start resize-y relative',
-              className
-            )}
-          >
-            <TextAreaLabel {...props} />
-            <TextAreatCore
-              onChange={onChange}
-              value={value}
-              error={error}
-              fieldRef={fieldRef}
-              {...props}
-            />
-            <Error
-              error={error}
-              className={classNames(
-                'absolute  left-0',
-                expanded ? 'top-[155px]' : 'top-[75px]'
-              )}
-            />
-          </div>
+  return (
+    <div
+      className={classNames('w-full col-start resize-y relative', className)}
+    >
+      {props.label && (
+        <label
+          className={classNames(
+            ' mb-2 text-gray-800 dark:text-gray-300',
+            props.size === 'small' ? 'text-xs' : 'text-base'
+          )}
+        >
+          {props.label}
+        </label>
+      )}
+      <textarea
+        onChange={(e) => {}}
+        className={classNames(
+          error
+            ? 'border-2 border-red-400'
+            : 'border border-gray-300 focus:ring-2  focus:ring-indigo-400 dark:border-gray-700 dark:focus:ring-indigo-600 dark:focus:ring-2',
+          props.size === 'large'
+            ? 'h-14 '
+            : props.size === 'small'
+            ? 'h-8 text-[13px] min-h-[1.6rem] py-1'
+            : props.expanded
+            ? 'h-32 min-h-[3rem] pt-2.5'
+            : 'h-12 min-h-[3rem] pt-2.5'
         )}
+        {...rest}
       />
-    )
-  else
-    return (
-      <div
-        className={classNames('w-full col-start resize-y relative', className)}
-      >
-        <TextAreaLabel {...props} />
-        <TextAreatCore {...props} />
-        <Error error={error} />
-      </div>
-    )
+      <Error error={error} />
+    </div>
+  )
 })
