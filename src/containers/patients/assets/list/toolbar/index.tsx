@@ -68,6 +68,7 @@ export const PatientAssetsToolbar = memo(
               </Tooltip>
               <Tooltip content="Create">
                 <Button
+                  id="form"
                   icon
                   className="peer"
                   onClick={(e) => {

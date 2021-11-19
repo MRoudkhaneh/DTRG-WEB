@@ -11,6 +11,7 @@ export const AssetModal = memo(() => {
     case 'asset-edit':
       return (
         <Modal
+          aria-labelledby="form"
           size="md"
           className="px-10 "
           onClose={reset}

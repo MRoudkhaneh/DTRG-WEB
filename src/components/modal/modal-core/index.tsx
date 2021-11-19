@@ -1,28 +1,20 @@
 import { FC, memo } from 'react'
 import { classNames } from 'utils/classes'
+import { TModal } from '..'
 
 import { ModalBackDrop } from '../modal-back-drop'
 import { ModalBody } from '../modal-body'
 import { ModalHeader } from '../modal-header'
 
 export const ModalCore = memo(
-  ({
-    children,
-    onClose,
-    className,
-    size,
-    slot,
-    role,
-    id,
-    header,
-    withHeader,
-  }: IModal) => {
+  ({ children, onClose, className, size, id, header, withHeader }: TModal) => {
     return (
       <div
         className="fixed inset-0 row-items-start z-40 pt-10 md:pt-32 "
-        slot={slot}
         id={id}
-        role={role}
+        role="dialog"
+        aria-modal="true"
+        aria-label="modal"
       >
         <div
           slot="modal"

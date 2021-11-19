@@ -49,10 +49,13 @@ export const Input = memo((props: TInput) => {
   return (
     <div className={`w-full col-start relative ${className}`}>
       {label && (
-        <label className={inputLabelClassName(props.size)}>{label}</label>
+        <label htmlFor={label} className={inputLabelClassName(props.size)}>
+          {label}
+        </label>
       )}
       <input
         data-testid="input-core"
+        id={label}
         type={props.type || 'text'}
         name={props.name}
         placeholder={props.placeholder}

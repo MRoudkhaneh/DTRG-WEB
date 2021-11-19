@@ -75,3 +75,9 @@
     @apply hidden group-hover:flex  items-center justify-end animate-fade-in-right-fast;
   }
 }
+
+@layer utilities {
+  .sq {
+    aspect-ratio: 1 / 1;
+  }
+}
