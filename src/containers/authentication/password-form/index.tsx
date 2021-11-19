@@ -1,23 +1,23 @@
 import { memo } from 'react'
 import { Button } from 'components/button'
 import { Tab } from 'components/tab'
-import { Input } from 'components/input'
-import { Form } from 'components/form'
 
 import { usePassword } from './use-password'
+import { FormControl } from 'components/form-control'
+import { FormInput } from 'components/form-input'
 
 export const PasswordForm = memo(() => {
-  const { control, handleSubmit, isLoading, onSubmit, onPush } = usePassword()
+  const { isLoading, onSubmit, onPush, defaultValues } = usePassword()
 
   return (
-    <Form
+    <FormControl
       className="w-11/12 md:w-2/3 lg:w-1/3 mx-auto mt-14"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
+      defaultValues={defaultValues}
     >
       <Tab text="Password Recovery" justify="center">
         <div className="col-center space-y-8 ">
-          <Input
-            control={control}
+          <FormInput
             name="email"
             type="email"
             required
@@ -45,6 +45,6 @@ export const PasswordForm = memo(() => {
           </div>
         </div>
       </Tab>
-    </Form>
+    </FormControl>
   )
 })

@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
@@ -15,15 +14,10 @@ const defaultValues = {
 }
 
 export const useRegister = () => {
-  const { control, handleSubmit } = useForm({ defaultValues })
-
   const { success } = useToast()
-
   const { usePost } = useService()
-
-  const push = useNavigate()
-
   const { onError } = useError()
+  const push = useNavigate()
 
   const { mutate, isLoading } = usePost({
     url: `${Api.users}`,
@@ -35,9 +29,9 @@ export const useRegister = () => {
   })
 
   return {
-    control,
-    handleSubmit,
+    defaultValues,
     isLoading,
     onSubmit: useCallback((payload) => mutate({ payload }), []),
+    onPush: useCallback(() => push('/authentication/login'), []),
   }
 }

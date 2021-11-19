@@ -11,8 +11,6 @@ const isProd = process.env.variable === 'prod'
 const defaultValues = { email: '', password: '' }
 
 export const useLogin = () => {
-  const { control, handleSubmit } = useForm({ defaultValues })
-
   const { success } = useToast()
 
   const { usePost } = useService()
@@ -32,8 +30,7 @@ export const useLogin = () => {
   })
 
   return {
-    control,
-    handleSubmit,
+    defaultValues,
     isLoading,
     isSuccess,
     data,

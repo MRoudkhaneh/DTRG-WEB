@@ -2,56 +2,52 @@ import { memo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Tab } from 'components/tab'
-import { Input } from 'components/input'
-import { Form } from 'components/form'
+
 import { classNames } from 'utils/classes'
 
 import { useRegister } from './use-register'
+import { FormControl } from 'components/form-control'
+import { FormInput } from 'components/form-input'
 
 export const RegisterForm = memo(() => {
-  const push = useNavigate()
-  const { control, handleSubmit, isLoading, onSubmit } = useRegister()
+  const { isLoading, onSubmit, defaultValues, onPush } = useRegister()
 
   return (
-    <Form
+    <FormControl
       className="w-11/12 md:w-2/3 lg:w-1/3 mx-auto mt-14 "
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
+      defaultValues={defaultValues}
     >
       <Tab text="Register" justify="center">
         <div className="col-center space-y-8 ">
-          <Input
+          <FormInput
             name="first_name"
             type="text"
             required
             placeholder="Enter your first name"
             className="mt-10"
-            control={control}
           />
-          <Input
+          <FormInput
             name="last_name"
             type="text"
             required
             placeholder="Enter your last name"
             className="mt-10"
-            control={control}
           />
-          <Input
+          <FormInput
             name="email"
             type="email"
             required
             placeholder="Enter your email"
             className="mt-10"
-            control={control}
           />
-          <Input
-            control={control}
+          <FormInput
             name="password"
             type="password"
             required
             placeholder="Enter your password"
           />
-          <Input
-            control={control}
+          <FormInput
             name="verification_code"
             type="number"
             required
@@ -76,13 +72,13 @@ export const RegisterForm = memo(() => {
                 'text-secondary dark:text-primary'
               )}
               type="button"
-              onClick={() => push('/authentication/login')}
+              onClick={onPush}
             >
               Login instead
             </Button>
           </div>
         </div>
       </Tab>
-    </Form>
+    </FormControl>
   )
 })
