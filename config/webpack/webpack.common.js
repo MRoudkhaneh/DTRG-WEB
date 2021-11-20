@@ -68,5 +68,5 @@ module.exports = {
     }),
   ],
 
-  stats: 'errors-only',
+  stats: 'minimal',
 }
