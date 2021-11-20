@@ -1,5 +1,5 @@
-import { FC } from 'react'
 import { TableRow } from '../table-row'
+import { TableRowLoading } from '../table-row/table-row-loading'
 
 export const TableBody = ({
   loading,
@@ -9,32 +9,29 @@ export const TableBody = ({
   onRowClick,
   expanded,
 }: ITable) => {
-  return loading && (!data || typeof data === 'string' || data.length === 0) ? (
-    Array.from(new Array(10)).map((item, index) => (
-      <TableRow
-        key={index}
-        item={item}
-        columns={columns}
-        index={index}
-        expand={expand}
-        loading={loading}
-      />
-    ))
-  ) : data && data.length > 0 ? (
-    (data || []).map((item, index) => (
-      <TableRow
-        key={item.id}
-        item={item}
-        columns={columns}
-        index={index}
-        expand={expand}
-        loading={loading}
-        length={data.length}
-        onRowClick={onRowClick}
-        expanded={expanded}
-      />
-    ))
-  ) : (
-    <span className="text-gray-600 pt-6 text-lg">No items</span>
+  if (loading && !data.length)
+    return (
+      <tbody className="w-full animate-pulse">
+        {Array.from({ length: 10 }, (_, index) => index).map((item) => (
+          <TableRowLoading key={item} columns={columns} />
+        ))}
+      </tbody>
+    )
+  return (
+    <tbody className="w-full">
+      {(data || []).map((item, index) => (
+        <TableRow
+          key={item.id}
+          item={item}
+          columns={columns}
+          index={index}
+          expand={expand}
+          loading={loading}
+          length={data.length}
+          onRowClick={onRowClick}
+          expanded={expanded}
+        />
+      ))}
+    </tbody>
   )
 }

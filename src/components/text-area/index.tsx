@@ -3,7 +3,7 @@ import { Error } from 'components/error'
 import { classNames } from 'utils/classes'
 
 export const TextArea = memo((props: ITextArea) => {
-  const { className, error, ...rest } = props
+  const { className, error, value, ...rest } = props
 
   return (
     <div
@@ -20,7 +20,7 @@ export const TextArea = memo((props: ITextArea) => {
         </label>
       )}
       <textarea
-        onChange={(e) => {}}
+        value={value || ''}
         className={classNames(
           error
             ? 'border-2 border-red-400'

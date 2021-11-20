@@ -5,7 +5,7 @@ import { Switch } from 'components/switch'
 
 export const PatientListDetails = memo(({ item }: { item?: any }) => {
   return (
-    <div className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
+    <td className="grid gird-cols-2 md:grid-cols-3  lg:grid-cols-4  gap-3 w-full">
       <Input size="small" disabled label="Patient Status" value={item.status} />
       <Input size="small" disabled label="Gender" value={item.gender} />
       <Input
@@ -277,6 +277,6 @@ export const PatientListDetails = memo(({ item }: { item?: any }) => {
         label="Do Not Call Until"
         value={item.do_not_call_until}
       />
-    </div>
+    </td>
   )
 })

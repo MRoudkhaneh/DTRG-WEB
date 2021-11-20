@@ -4,7 +4,7 @@ import { classNames } from 'utils/classes'
 export const TableCell = memo(
   ({ column, index, item, columns }: ITableCell) => {
     return (
-      <div
+      <td
         slot="wrapper"
         className={classNames(
           'flex items-center',
@@ -23,7 +23,7 @@ export const TableCell = memo(
             N/A
           </span>
         )}
-      </div>
+      </td>
     )
   }
 )

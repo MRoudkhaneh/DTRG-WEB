@@ -78,7 +78,6 @@ const ModalCore = ({ className, children, size, onClose, header }: TModal) => (
                 <Text
                   className="text-light dark:text-dark justify-self-start"
                   size="title"
-                  as="h1"
                 >
                   {header}
                 </Text>

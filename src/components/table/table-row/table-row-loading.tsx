@@ -1,14 +1,14 @@
-import { FC, Fragment, memo } from 'react'
+import { Fragment, memo } from 'react'
 import { classNames } from 'utils/classes'
 
 export const TableRowLoading = memo(({ columns }: ITable) => {
   return (
-    <div
+    <tr
       className="w-full row-start h-14 px-6 py-4"
       data-testid="table-skeleton"
     >
       {columns.map((column, index) => (
-        <div
+        <td
           key={index}
           className={classNames(
             'flex flex-row items-end',
@@ -37,8 +37,8 @@ export const TableRowLoading = memo(({ columns }: ITable) => {
           ) : (
             ''
           )}
-        </div>
+        </td>
       ))}
-    </div>
+    </tr>
   )
 })

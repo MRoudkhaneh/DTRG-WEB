@@ -23,15 +23,18 @@ export const Table = memo(
         className={classNames('w-full flex flex-col items-center', className)}
         slot="wrapper"
       >
-        <TableHead columns={columns} loading={loading} />
-        <TableBody
-          columns={columns}
-          data={data}
-          loading={loading}
-          expand={expand}
-          onRowClick={onRowClick}
-          expanded={expanded}
-        />
+        <table className="w-full flex flex-col items-center">
+          <TableHead columns={columns} loading={loading} />
+          <TableBody
+            columns={columns}
+            data={data}
+            loading={loading}
+            expand={expand}
+            onRowClick={onRowClick}
+            expanded={expanded}
+          />
+        </table>
+
         {data && onPaginate && (
           <Pagination
             className="mt-10"

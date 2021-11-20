@@ -58,7 +58,7 @@ export const FormSelect = memo(
               )}
               {...rest}
             >
-              <option value="" selected disabled hidden>
+              <option value="" disabled hidden>
                 Select an option
               </option>
               {children}
