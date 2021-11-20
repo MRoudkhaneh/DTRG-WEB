@@ -15,7 +15,7 @@ export const Confirm = memo(
     return (
       <Modal
         size="sm"
-        className="col-center px-4 md:px-10 xl:px-26 py-10  bg-white dark:bg-dark"
+        className="col-center px-4 md:px-10 xl:px-26 py-10  bg-lite dark:bg-dark"
       >
         <ConfirmBody title={title} description={description} />
         <ConfirmActions

@@ -7,7 +7,7 @@ export const ConfirmActions = memo(
       <div className="row-around w-full mt-10" slot="actions">
         <Button
           icon
-          className="h-12  w-20 xl:w-40 bg-gray-100 "
+          className="h-12  w-20 xl:w-40 bg-gray-200 "
           onClick={onCancel}
         >
           Cancel
