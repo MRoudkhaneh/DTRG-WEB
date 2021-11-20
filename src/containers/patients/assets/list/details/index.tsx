@@ -1,9 +1,9 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'utils'
 
 export const PatientAssetsDetails = memo(({ item }: { item?: any }) => {
   return (
-    <div
+    <td
       className={classNames(
         'w-full ',
         item && item.image && item.image.url && 'h-[500px]'
@@ -15,10 +15,10 @@ export const PatientAssetsDetails = memo(({ item }: { item?: any }) => {
           src={item.image.url}
         />
       ) : (
-        <div className=" text-gray-100 text-2xl flex  items-center justify-center py-10">
+        <span className=" text-gray-100 text-2xl flex  items-center justify-center py-10">
           No image was uploaded
-        </div>
+        </span>
       )}
-    </div>
+    </td>
   )
 })

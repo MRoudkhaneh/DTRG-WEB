@@ -25,7 +25,6 @@ export const PatientInteractionsModal = memo(() => {
               ? 'Edit interaction'
               : `Add an interaction `
           }
-          withHeader
         >
           <PatientInteractionsForm />
         </Modal>

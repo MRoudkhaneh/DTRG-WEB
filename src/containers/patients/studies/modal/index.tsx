@@ -25,7 +25,6 @@ export const PatientStudiesModal = memo(() => {
               ? 'Edit study'
               : `Add an study `
           }
-          withHeader
         >
           <PatientStudiesForm />
         </Modal>

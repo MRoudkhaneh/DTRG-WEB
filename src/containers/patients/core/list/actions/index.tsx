@@ -58,6 +58,7 @@ export const PatientListActions = ({ item, queryKey }) => {
       </Tooltip>
       <Tooltip content="Edit">
         <Button
+          id="Edit"
           icon
           className="peer"
           onClick={(e) => {

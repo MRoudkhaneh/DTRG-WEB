@@ -16,7 +16,6 @@ export const AssetModal = memo(() => {
           className="px-10 "
           onClose={reset}
           header={dialog.isEditing ? 'Edit asset' : 'Add an new asset'}
-          withHeader
         >
           <PatientAssetForm />
         </Modal>

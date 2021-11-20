@@ -3,7 +3,7 @@ import { Button } from 'components/button'
 import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 import { ICClose } from 'icons'
-import { ComponentProps, Fragment, memo, MouseEventHandler } from 'react'
+import { ComponentProps, Fragment, MouseEventHandler } from 'react'
 import { createPortal } from 'react-dom'
 import { classNames } from 'utils'
 
@@ -11,7 +11,6 @@ let modalRoot = document.getElementById('modal') as any
 if (!modalRoot) {
   modalRoot = document.createElement('div')
   modalRoot.setAttribute('id', 'modal')
-  modalRoot.setAttribute('title', 'dialog')
   document.body.appendChild(modalRoot)
 }
 

@@ -2,15 +2,9 @@ import { memo } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
-import { lazy } from 'utils/lazy'
 import { PatientAdvanceSearch } from '../advance-search'
 import { useDialog } from 'hooks/use-dialog'
-
-const PatientForm = lazy(() =>
-  import('containers/patients/core/form').then((module) => ({
-    default: module.PatientForm,
-  }))
-)
+import { PatientForm } from '../form'
 
 export const PatientModal = memo(() => {
   const { deletePatient } = usePatientModal()
@@ -31,7 +25,6 @@ export const PatientModal = memo(() => {
               ? `Edit ${dialog.data.first_name} ${dialog.data.surename}'s informations`
               : `Edit patient's information`
           }
-          withHeader
         >
           <PatientForm isEditing editInitials={dialog.data} />
         </Modal>
@@ -58,7 +51,6 @@ export const PatientModal = memo(() => {
           className="px-10 "
           onClose={reset}
           header="Search for patient"
-          withHeader
         >
           <PatientAdvanceSearch />
         </Modal>
