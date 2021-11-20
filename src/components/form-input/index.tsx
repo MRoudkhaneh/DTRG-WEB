@@ -55,6 +55,7 @@ export const FormInput = memo(
           <div className={classNames('w-full col-start relative', className)}>
             {label && (
               <label
+                htmlFor={name}
                 className={classNames(
                   ' mb-2 text-light dark:text-dark',
                   size === 'small' ? 'text-xs' : 'text-base'
@@ -65,6 +66,7 @@ export const FormInput = memo(
             )}
             <input
               data-testid="input-core"
+              id={name}
               ref={ref}
               value={value || ''}
               onChange={onChange}

@@ -47,7 +47,7 @@ export const FormSelect = memo(
             <select
               id={name}
               ref={ref}
-              defaultValue={value || ''}
+              defaultValue={value}
               onChange={onChange}
               className={classNames(
                 ' h-12',
@@ -64,16 +64,14 @@ export const FormSelect = memo(
               {children}
             </select>
             <div className="flex items-center absolute top-0 right-0 mt-12 mr-8">
-              {value && setValue && (
+              {value && (
                 <Button
                   type="button"
                   className="mr-1"
                   icon
                   onClick={(e) => {
                     e.stopPropagation()
-                    if (setValue) {
-                      setValue(name, '')
-                    }
+                    setValue(name, '')
                   }}
                 >
                   <ICDelete

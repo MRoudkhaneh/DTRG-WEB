@@ -44,6 +44,7 @@ export const FormTextArea = memo(
           >
             {label && (
               <label
+                htmlFor={name}
                 className={classNames(
                   ' mb-2 text-gray-800 dark:text-gray-300',
                   size === 'small' ? 'text-xs' : 'text-base'
@@ -53,6 +54,7 @@ export const FormTextArea = memo(
               </label>
             )}
             <textarea
+              id={name}
               value={value || ''}
               ref={ref}
               onChange={(e) => onChange(e.target.value)}
