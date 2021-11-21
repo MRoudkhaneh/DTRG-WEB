@@ -1,44 +1,53 @@
-import { toastAtom } from 'provider/recoil/atoms'
-import { useCallback } from 'react'
-import { useRecoilState } from 'recoil'
+import { UiContext } from 'provider'
+import { useCallback, useContext } from 'react'
 
 export const useToast = () => {
-  const [toast, setToast] = useRecoilState(toastAtom)
+  const {
+    uiState: { toast },
+    uiDispatch,
+  } = useContext(UiContext)
 
   return {
     toast,
     error: useCallback(
       (description) =>
-        setToast((prev) => ({
-          ...prev,
-          open: true,
-          type: 'error',
-          title: 'Error',
-          description,
-        })),
+        uiDispatch({
+          type: 'TOGGLE_TOAST',
+          payload: {
+            open: true,
+            type: 'error',
+            title: 'Error',
+            description,
+          },
+        }),
+
       []
     ),
     success: useCallback(
       (description) =>
-        setToast((prev) => ({
-          ...prev,
-          open: true,
-          type: 'success',
-          title: 'Success',
-          description,
-        })),
+        uiDispatch({
+          type: 'TOGGLE_TOAST',
+          payload: {
+            open: true,
+            type: 'success',
+            title: 'Success',
+            description,
+          },
+        }),
 
       []
     ),
     close: useCallback(
       () =>
-        setToast((prev) => ({
-          ...prev,
-          open: false,
-          type: null,
-          title: null,
-          description: null,
-        })),
+        uiDispatch({
+          type: 'TOGGLE_TOAST',
+          payload: {
+            open: false,
+            type: null,
+            title: null,
+            description: null,
+          },
+        }),
 
       []
     ),

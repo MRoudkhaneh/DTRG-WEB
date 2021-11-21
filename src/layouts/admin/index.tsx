@@ -1,12 +1,8 @@
 import { classNames } from 'utils/classes'
 import { AdminHeader } from 'containers/header/admin-header'
 import { AdminDashboard } from 'containers/dashboards/admin-dashboard'
-import { useRecoilValue } from 'recoil'
-import { drawerAtom } from 'provider/recoil/atoms'
 
 export const AdminLayout = ({ children }) => {
-  const open = useRecoilValue(drawerAtom)
-
   return (
     <div
       className={classNames(
@@ -18,7 +14,7 @@ export const AdminLayout = ({ children }) => {
       <div
         className={classNames(
           'w-full col-center my-4  transition-padding duration-500 ease-in-out',
-          open ? 'pl-72' : 'pl-20'
+          false ? 'pl-72' : 'pl-20'
         )}
       >
         <div className="px-20 w-full">{children}</div>

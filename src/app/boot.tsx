@@ -1,13 +1,16 @@
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Router } from './router'
-import { RecoilRoot } from 'recoil'
+import { UiProvider } from 'provider'
+import { BrowserRouter } from 'react-router-dom'
 
 const Boot = () => {
   return (
     <QueryClientProvider client={new QueryClient()}>
-      <RecoilRoot>
-        <Router />
-      </RecoilRoot>
+      <UiProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </UiProvider>
     </QueryClientProvider>
   )
 }

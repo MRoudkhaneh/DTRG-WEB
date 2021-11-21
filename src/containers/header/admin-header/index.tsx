@@ -7,8 +7,6 @@ import { Tooltip } from 'components/tooltip'
 import { Button } from 'components/button'
 import { ICPersonDash } from 'icons/person-dash'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
-import { drawerAtom } from 'provider/recoil/atoms'
 
 export const AdminHeader = memo(() => {
   const [dark, setDark] = useState(true)
@@ -16,8 +14,6 @@ export const AdminHeader = memo(() => {
   const push = useNavigate()
 
   const { pathname } = useLocation()
-
-  const open = useRecoilValue(drawerAtom)
 
   const toggleDark = useCallback((payload) => {
     if (payload) {
@@ -29,14 +25,7 @@ export const AdminHeader = memo(() => {
   }, [])
 
   return (
-    <header
-      className={classNames(
-        'row-between h-20 pr-4 md:pr-10 px-2',
-        open
-          ? 'md:transform md:translate-x-72 md:w-[calc(100%-18rem)]'
-          : 'md:transform md:translate-x-20 md:w-[calc(100%-5rem)]'
-      )}
-    >
+    <header className="row-between h-20 pr-4 md:pr-10 px-2 w-full">
       <div />
       <div className="flex items-center">
         {!pathname.includes('authentication') && (

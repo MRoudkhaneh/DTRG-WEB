@@ -1,4 +1,4 @@
-import { memo, Suspense, lazy } from 'react'
+import { memo, Suspense, lazy, useEffect } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientInteractionModal } from './use-patient-interactions-modal'
@@ -18,35 +18,41 @@ export const PatientInteractionsModal = memo(() => {
 
   const { dialog, reset } = useDialog()
 
-  switch (dialog.type) {
-    case 'patient-interactions-form':
-      return (
-        <Modal
-          size="sm"
-          className="px-10 "
-          onClose={reset}
-          header={
-            dialog.data && dialog.data.isEditing
-              ? 'Edit interaction'
-              : `Add an interaction `
-          }
-        >
-          <Suspense fallback={<Skeleton />}>
-            <PatientInteractionsForm />
-          </Suspense>
-        </Modal>
-      )
+  useEffect(() => {
+    return () => reset()
+  }, [])
 
-    case 'patient-interaction-delete':
-      return (
-        <Confirm
-          type="delete"
-          description={`You are about to delete this interaction.`}
-          onConfirm={() => mutate()}
-          onCancel={reset}
-        />
-      )
-    default:
-      return null
-  }
+  if (dialog.open)
+    switch (dialog.type) {
+      case 'patient-interactions-form':
+        return (
+          <Modal
+            size="sm"
+            className="px-10 "
+            onClose={reset}
+            header={
+              dialog.data && dialog.data.isEditing
+                ? 'Edit interaction'
+                : `Add an interaction `
+            }
+          >
+            <Suspense fallback={<Skeleton />}>
+              <PatientInteractionsForm />
+            </Suspense>
+          </Modal>
+        )
+
+      case 'patient-interaction-delete':
+        return (
+          <Confirm
+            type="delete"
+            description={`You are about to delete this interaction.`}
+            onConfirm={() => mutate()}
+            onCancel={reset}
+          />
+        )
+      default:
+        return null
+    }
+  else return null
 })

@@ -1,18 +1,13 @@
-import { Skeleton } from 'components/skeleton'
-import { Suspense } from 'react'
 import { PatientStudiesList } from 'containers/patients/studies/list'
 import { PatientStudiesModal } from 'containers/patients/studies/modal'
-import { useDialog } from 'hooks/use-dialog'
+import { RecoilRoot } from 'recoil'
 
 const PatientStudies = () => {
-  const {
-    dialog: { open },
-  } = useDialog()
   return (
-    <Suspense fallback={<Skeleton />}>
+    <RecoilRoot>
       <PatientStudiesList />
-      {open && <PatientStudiesModal />}
-    </Suspense>
+      <PatientStudiesModal />
+    </RecoilRoot>
   )
 }
 
