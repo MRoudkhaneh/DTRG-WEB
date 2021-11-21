@@ -1,7 +1,7 @@
 interface IPagination {
   className?: string
-  total?: any
-  page?: number
-  onPaginate?: any
+  total: number
+  page: number
+  onPaginate?: (page: number) => void
   disabled?: boolean
 }

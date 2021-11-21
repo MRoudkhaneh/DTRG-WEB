@@ -2,7 +2,7 @@ import { ComponentProps } from 'react'
 
 type TInputOwn = {
   label?: string
-  error?: string
+  error?: FieldError
   later?: boolean | undefined
   required?: boolean | undefined
   max?: string | number | undefined

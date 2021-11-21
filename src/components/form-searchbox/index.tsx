@@ -42,6 +42,7 @@ export const FormSearchBox = memo((props: ISearch) => {
           paramKey={props.paramKey}
           valueKey={props.valueKey}
           params={params}
+          name={props.name}
         />
       )}
     />

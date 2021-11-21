@@ -10,6 +10,7 @@ type TFormTextArea = {
   expanded?: boolean
   max?: number
   min?: number
+  name: string
 } & Omit<ComponentProps<'textarea'>, 'onChange'>
 
 export const FormTextArea = memo(

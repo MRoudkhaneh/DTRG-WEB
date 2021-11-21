@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { Pagination } from 'components/pagination'
 import { classNames } from 'utils/classes'
 

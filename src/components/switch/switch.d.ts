@@ -1,14 +1,9 @@
 interface ISwitch {
   className?: string
-  checked?: boolean | undefined
-  onClick?: any
+  checked?: boolean
   label?: string
-  name?: any
-  control?: any
-  error?: any
-  onChange?: any
-  toggle?: any
-  open?: boolean
+  name?: string
+  onChange?: (open: boolean) => void
   size?: 'small' | 'large'
   disabled?: boolean
   withError?: boolean

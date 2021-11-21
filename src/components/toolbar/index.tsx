@@ -13,8 +13,8 @@ export const Toolbar = memo(({ children }: IToolbar) => {
       ) : (
         children.length > 0 && (
           <Fragment>
-            <>{children.find((child) => child.props.slot === 'start')}</>
-            <>{children.find((child) => child.props.slot === 'end')}</>
+            <>{children.find((child: any) => child.props.slot === 'start')}</>
+            <>{children.find((child: any) => child.props.slot === 'end')}</>
           </Fragment>
         )
       )}

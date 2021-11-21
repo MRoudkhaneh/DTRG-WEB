@@ -1,6 +1,6 @@
 interface IGrid {
   className?: string
-  children?: any
+  children?: ReactNode
   cols?: string
   gap?: string
 }

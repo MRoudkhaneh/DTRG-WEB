@@ -1,3 +1,3 @@
 interface IToolbar {
-  children?: any
+  children?: ReactNode
 }

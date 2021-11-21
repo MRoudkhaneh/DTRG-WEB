@@ -11,26 +11,34 @@ import { classNames } from 'utils'
 type TFormMultiSelect = {
   className?: string
   label?: string
-  name?: string
+  name: string
   id?: string
   children?: any
   required?: boolean
   options: { id: string | number; title: string | number; disabled?: boolean }[]
 }
 
-const handleChange = ({ option, onChange, value }) => {
+const handleChange = ({
+  option,
+  onChange,
+  value,
+}: {
+  option: any
+  onChange: any
+  value: any
+}) => {
   const existed =
     value === null
       ? false
       : value !== undefined &&
         value.length &&
-        value.some((item) => item == option.id)
+        value.some((item: any) => item == option.id)
   const payload =
     value === null
       ? [option.id]
       : value !== undefined
       ? existed
-        ? [...value.filter((item) => item != option.id)]
+        ? [...value.filter((item: any) => item != option.id)]
         : [...value, option.id]
       : [value]
   onChange(payload)

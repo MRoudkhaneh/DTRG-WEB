@@ -11,7 +11,7 @@ export const DropDownButton = memo(
           className,
           !open && 'transform hover:opacity-80'
         )}
-        onClick={() => toggle()}
+        onClick={() => toggle?.()}
         role="button"
       >
         <div className="row-items-center">

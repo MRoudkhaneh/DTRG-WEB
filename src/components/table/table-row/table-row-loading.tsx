@@ -1,7 +1,7 @@
 import { Fragment, memo } from 'react'
 import { classNames } from 'utils/classes'
 
-export const TableRowLoading = memo(({ columns }: ITable) => {
+export const TableRowLoading = memo(({ columns }: ITableHead) => {
   return (
     <tr
       className="w-full row-start h-14 px-6 py-4"

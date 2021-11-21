@@ -4,7 +4,7 @@ export const SearchBoxDropBox = memo((props: ISearch) => {
   return (
     <Fragment>
       <div className="absolute left-0 top-[80px] bg-white z-50 w-full rounded border border-blue-300  flex flex-col items-start p-3 h-auto space-y-2 max-h-[300px] overflow-y-auto">
-        {(props.data.data.results || []).map((item) => (
+        {(props.data.data.results || []).map((item: any) => (
           <div
             className=" w-full flex items-center space-x-2 cursor-pointer"
             key={item.id}

@@ -4,14 +4,10 @@ import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
 import { useDialog } from 'hooks/use-dialog'
 import { Skeleton } from 'components/skeleton'
+import { PatientAdvanceSearch } from '../advance-search'
 
 const PatientForm = lazy(() =>
   import('../form').then((module) => ({ default: module.PatientForm }))
-)
-const PatientAdvanceSearch = lazy(() =>
-  import('../advance-search').then((module) => ({
-    default: module.PatientAdvanceSearch,
-  }))
 )
 
 export const PatientModal = memo(() => {
@@ -67,9 +63,7 @@ export const PatientModal = memo(() => {
             onClose={reset}
             header="Search for patient"
           >
-            <Suspense fallback={<Skeleton />}>
-              <PatientAdvanceSearch />
-            </Suspense>
+            <PatientAdvanceSearch />
           </Modal>
         )
 

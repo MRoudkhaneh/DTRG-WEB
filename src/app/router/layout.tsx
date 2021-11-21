@@ -1,14 +1,17 @@
 import { useLocation, matchPath } from 'react-router-dom'
 import { routes } from './routes'
 import { AdminLayout } from 'layouts/admin'
+import { ReactNode } from 'react'
 
-const layouts = {
+const layouts: Record<string, any> = {
   admin: AdminLayout,
 }
 
-const DefaultLayout = ({ children }) => <>{children}</>
+type TLayout = { children?: ReactNode }
 
-export const Layout = ({ children }) => {
+const DefaultLayout = ({ children }: TLayout) => <>{children}</>
+
+export const Layout = ({ children }: TLayout): ReactNode => {
   const { pathname } = useLocation()
 
   const match = routes

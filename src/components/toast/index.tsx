@@ -10,7 +10,7 @@ export const Toast = memo(() => {
   } = useToast()
 
   useEffect(() => {
-    let timeout
+    let timeout: any
     if (open) timeout = setTimeout(close, 3000)
     return () => clearTimeout(timeout)
   }, [open])

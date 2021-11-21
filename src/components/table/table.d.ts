@@ -1,44 +1,38 @@
 type TColumn = {
   head?: string
-  key?: string
+  key: string
   width?: string
   check?: boolean
-  render?: any
+  render?: (data: any) => ReactNode
 }
 
 interface ITable {
-  columns?: Array<TColumn>
+  columns: Array<TColumn>
   className?: string
   data?: any
-  expand?: any
-  onPaginate?: any
+  expand?: (item: any) => ReactNode
+  onPaginate?: (page: number) => void
   loading?: boolean
   fetching?: boolean
-  page?: number
-  total?: number
-  onRowClick?: any
-  expanded?: any
+  page: number
+  total: number
+  onRowClick?: (data: any) => void
+  expanded?: boolean
 }
 
-interface ITableCell {
-  column?: any
-  index?: any
-  item?: any
-  columns?: Array<TColumn>
-}
+type ITableBody = Pick<
+  ITable,
+  'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded' | 'data'
+>
 
-interface ITableRow {
-  item?: any
-  columns?: Array<TColumn>
-  index?: any
-  expand?: any
-  loading?: boolean
-  length?: any
-  onRowClick?: any
-  expanded?: any
-}
+type ITableCell = { item?: any; index?: number; column: TColumn } & Pick<
+  ITable,
+  'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded'
+>
 
-interface ITableHead {
-  columns?: Array<TColumn>
-  loading?: boolean
-}
+type ITableRow = { item?: any; index?: number; length?: number } & Pick<
+  ITable,
+  'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded'
+>
+
+type ITableHead = Pick<ITable, 'columns' | 'loading'>

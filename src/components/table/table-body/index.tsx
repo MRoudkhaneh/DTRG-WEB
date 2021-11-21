@@ -8,7 +8,7 @@ export const TableBody = ({
   expand,
   onRowClick,
   expanded,
-}: ITable) => {
+}: ITableBody) => {
   if (loading && !data.length)
     return (
       <tbody className="w-full animate-pulse">
@@ -19,7 +19,7 @@ export const TableBody = ({
     )
   return (
     <tbody className="w-full">
-      {(data || []).map((item, index) => (
+      {(data || []).map((item: any, index: number) => (
         <TableRow
           key={item.id}
           item={item}

@@ -3,16 +3,16 @@ interface ISearch {
   label?: string
   value?: any
   placeholder?: string
-  error?: any
-  name?: any
+  error?: FieldError
+  name: string
   id?: string
-  required?: boolean | undefined
+  required?: boolean
   disabled?: boolean
   onChange?: any
-  control?: any
+  control?: Control
   onFocus?: any
-  url?: any
-  valueKey?: any
+  url?: string
+  valueKey?: string
   paramKey?: any
   isOpen?: boolean
   isLoading?: boolean

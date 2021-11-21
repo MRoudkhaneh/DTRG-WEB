@@ -1,8 +1,8 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { Button } from 'components/button'
 import { classNames } from 'utils/classes'
 
-const pager = (total, page) => {
+const pager = (total: number, page: number) => {
   const totalPages = Math.ceil(total / 10)
 
   const pages = Array.from(new Array(totalPages)).map((item, index) => index)
@@ -39,7 +39,7 @@ export const Pagination = memo(
           <div />
 
           <Button
-            onClick={() => onPaginate(1)}
+            onClick={() => onPaginate?.(1)}
             disabled={disabled}
             className={classNames(
               'w-8 h-8  disabled:opacity-30 mr-2',
@@ -50,10 +50,10 @@ export const Pagination = memo(
           >
             {1}
           </Button>
-          {pager(total, page).map((item, index) => (
+          {pager(total, page).map((item) => (
             <Button
               key={item}
-              onClick={() => onPaginate(item + 1)}
+              onClick={() => onPaginate?.(item + 1)}
               disabled={disabled}
               className={classNames(
                 'w-8 h-8  mr-2 disabled:opacity-30',
@@ -66,7 +66,7 @@ export const Pagination = memo(
             </Button>
           ))}
           <Button
-            onClick={() => onPaginate(Math.ceil(total / 10))}
+            onClick={() => onPaginate?.(Math.ceil(total / 10))}
             disabled={disabled}
             className={classNames(
               'w-8 h-8  disabled:opacity-30',

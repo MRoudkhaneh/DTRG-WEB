@@ -9,7 +9,8 @@ import { classNames } from 'utils'
 type TFormSelect = {
   label?: string
   size?: 'small' | 'large' | 'default'
-  validation?: Function
+  validation?: (value: any) => string
+  name: string
 } & ComponentProps<'select'>
 
 export const FormSelect = memo(

@@ -4,7 +4,8 @@ import { v4 as uuid } from 'uuid'
 
 export type TFormCheckBox = {
   label?: string
-} & Omit<ComponentProps<'input'>, 'type' | 'id'>
+  name: string
+} & Omit<ComponentProps<'input'>, 'type' | 'id' | 'name'>
 
 export const FormCheckBox = memo(
   ({ label, name, disabled, ...rest }: TFormCheckBox): JSX.Element => {

@@ -47,8 +47,8 @@ export const Switch = memo(
                 size === 'small' ? 'h-7 w-14' : 'h-8 w-16'
               )}
               onClick={() => {
-                if (!disabled && onChange) {
-                  onChange(!open)
+                if (!disabled) {
+                  onChange?.(!open)
                   toggle()
                 }
               }}

@@ -1,4 +1,4 @@
 interface IError {
-  error?: any
+  error?: FieldError
   className?: string
 }

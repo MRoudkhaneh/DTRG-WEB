@@ -1,6 +1,6 @@
 import { useValidation } from 'hooks/use-validation'
 import { memo, useMemo } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import { Controller, FieldError, useFormContext } from 'react-hook-form'
 import { v4 as uuid } from 'uuid'
 import moment from 'moment'
 import { classNames } from 'utils'
@@ -11,20 +11,20 @@ import 'react-datepicker/dist/react-datepicker.css'
 type TFormDatePicker = {
   className?: string
   label?: string
-  name?: any
+  name: string
   later?: boolean
   required?: boolean
-  validation?: any
+  validation?: (value: any) => string
   year?: boolean
   defaultValue?: string
   time?: boolean
-  onChange?: any
-  error?: any
-  value?: any
-  id?: any
+  onChange?: Function
+  error?: FieldError
+  value?: string
+  id?: string
 }
 
-const datePickerBoxClassName = (error) =>
+const datePickerBoxClassName = (error: TFormDatePicker['error']) =>
   classNames(
     ' w-full row-between focus:outline-none overflow-hidden cursor-pointer  rounded  text-gray-900  h-12  px-4 absolute top-8 right-0 z-0 bg-white dark:bg-gray-400',
     error
@@ -32,7 +32,11 @@ const datePickerBoxClassName = (error) =>
       : 'border border-gray-300 dark:border-gray-700'
   )
 
-const datePickerBoxValue = (value, time, defaultValue) =>
+const datePickerBoxValue = (
+  value: TFormDatePicker['value'],
+  time?: boolean,
+  defaultValue?: string
+) =>
   value
     ? time
       ? value.slice(0, 15)
@@ -84,7 +88,9 @@ export const FormDatePicker = memo(
               dropdownMode="select"
               className=" z-50 opacity-0"
               showTimeSelect={time}
-              onChange={(date) => onChange(moment(date).format().slice(0, 10))}
+              onChange={(date: any) =>
+                onChange(moment(date).format().slice(0, 10))
+              }
             />
             <label
               htmlFor={id}

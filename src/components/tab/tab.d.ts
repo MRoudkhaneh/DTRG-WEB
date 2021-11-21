@@ -1,5 +1,5 @@
 interface ITab {
-  children?: any
+  children?: ReactNode
   text?: string
   className?: string
   expandable?: boolean

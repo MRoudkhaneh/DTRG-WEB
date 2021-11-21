@@ -1,5 +1,5 @@
 interface IDropdownOption {
-  children?: string | JSX | JSX.Element | Element | any
+  children?: ReactNode
   onClick?: Function | MouseEventHandler<HTMLSpanElement>
   active?: boolean
 }

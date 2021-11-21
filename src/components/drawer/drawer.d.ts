@@ -1,4 +1,4 @@
 interface IDrawer {
-  children?: any
+  children?: ReactNode
   open?: boolean
 }

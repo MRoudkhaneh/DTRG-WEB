@@ -2,8 +2,14 @@ import { memo } from 'react'
 import { Error } from 'components/error'
 import { classNames } from 'utils/classes'
 import { TInput } from './input'
+import { FieldError } from 'react-hook-form'
 
-export const inputCoreClassName = (fieldError, withError, size, icon) =>
+export const inputCoreClassName = (
+  fieldError?: FieldError,
+  withError?: boolean,
+  size?: string,
+  icon?: any
+) =>
   classNames(
     fieldError || withError
       ? 'border-2 border-red-400 shadow'
@@ -12,7 +18,7 @@ export const inputCoreClassName = (fieldError, withError, size, icon) =>
     icon ? 'px-10' : 'px-4'
   )
 
-export const inputIconClassName = (label, size) =>
+export const inputIconClassName = (label?: string, size?: string) =>
   classNames(
     'absolute  left-3',
     label
@@ -24,13 +30,15 @@ export const inputIconClassName = (label, size) =>
       : 'top-4'
   )
 
-export const inputLabelClassName = (size) =>
+export const inputLabelClassName = (size?: string) =>
   classNames(
     ' mb-2 text-light dark:text-dark',
     size === 'small' ? 'text-xs' : 'text-base'
   )
 
-export const inputCoreActualValue = (value) => {
+export const inputCoreActualValue = (
+  value?: string | number | readonly string[]
+) => {
   switch (typeof value) {
     case 'string':
       return value
