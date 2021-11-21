@@ -4,7 +4,13 @@ import { Tooltip } from 'components/tooltip'
 import { ICEdit } from 'icons/edit'
 import { useDialog } from 'hooks/use-dialog'
 
-export const PatientStudiesListActions = ({ item, queryKey }) => {
+export const PatientStudiesListActions = ({
+  item,
+  queryKey,
+}: {
+  item: any
+  queryKey: any[]
+}) => {
   const { toggleDialog } = useDialog()
   return (
     <div className="list-action">

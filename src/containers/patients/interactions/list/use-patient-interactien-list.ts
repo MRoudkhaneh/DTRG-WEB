@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, ChangeEvent } from 'react'
 import { useParams } from 'react-router-dom'
 import { useService } from 'hooks/use-service'
 import { useError } from 'hooks/use-error'
@@ -8,15 +8,26 @@ import { PatientInteractionListActions } from './actions'
 import { PatientInteractionListDate } from './date'
 import { PatientInteractionListDetails } from './details'
 
-export const usePatientInteractionList = () => {
+export type TUsePatientInteractionList = {
+  queryKey: any[]
+  columns: TColumn[]
+  data: { count: number; results: any[] }
+  isLoading: boolean
+  page: number
+  onPaginate: (page: number) => void
+  onSearch: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+export const usePatientInteractionList = (): TUsePatientInteractionList => {
   const routerParams = useParams() as any
+  const { useGet } = useService()
+  const { onError } = useError()
+
   const [params, setParams] = useState({
     page: 1,
     search: null,
     patient_id: routerParams.id,
   })
-  const { useGet } = useService()
-  const { onError } = useError()
 
   const queryKey = useMemo(() => ['PATIENT_INTERACTION_LIST', params], [params])
 
@@ -42,18 +53,20 @@ export const usePatientInteractionList = () => {
           head: 'Date',
           key: 'interaction_datetime',
           width: 'w-1/6',
-          render: (item) => PatientInteractionListDate({ item }),
+          render: (item: any) => PatientInteractionListDate({ item }),
         },
         {
           head: 'Details',
           key: 'contact_details',
           width: 'w-4/5',
-          render: (item) => PatientInteractionListDetails({ item }),
+          render: (item: any) => PatientInteractionListDetails({ item }),
         },
         {
           head: '',
           width: 'w-[100px]',
-          render: (item) => PatientInteractionListActions({ item, queryKey }),
+          key: '',
+          render: (item: any) =>
+            PatientInteractionListActions({ item, queryKey }),
         },
       ],
       [queryKey]
@@ -70,7 +83,7 @@ export const usePatientInteractionList = () => {
     onSearch: useCallback(
       (event) => {
         setTimeout(() => {
-          setParams((prev) => ({
+          setParams((prev: any) => ({
             ...prev,
             page: 1,
             search: event.target.value,

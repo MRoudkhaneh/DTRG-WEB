@@ -15,14 +15,11 @@ const columns = [
     head: 'Date',
     key: 'history_date',
     width: 'w-1/6',
-    render: (item) => (
+    render: (item: any) => (
       <div className="flex items-center space-x-4">
         <span className="text-gray-600 dark:text-gray-300">
           {item.history_date?.slice(0, 10)}
         </span>
-        {/* <span className="text-gray-600 dark:text-gray-300 text-sm">
-          {item.history_date?.slice(11, 19)}
-        </span> */}
       </div>
     ),
   },
@@ -30,7 +27,7 @@ const columns = [
     head: 'Reason for change',
     key: 'history_change_reason',
     width: 'w-1/3',
-    render: (item) => (
+    render: (item: any) => (
       <span className="text-gray-600 dark:text-gray-300 text-sm">
         {item.history_change_reason}
       </span>
@@ -38,7 +35,17 @@ const columns = [
   },
 ]
 
-export const useAuditsList = () => {
+type TUseAuditsList = {
+  queryKey: any[]
+  isSuccess: boolean
+  columns: TColumn[]
+  data: { count: number; results: any[] }
+  isLoading: boolean
+  page: number
+  onPaginate: (page: number) => void
+}
+
+export const useAuditsList = (): TUseAuditsList => {
   const { useGet } = useService()
 
   const { onError } = useError()

@@ -6,7 +6,15 @@ import { useDialog } from 'hooks/use-dialog'
 import { useCallback, useMemo } from 'react'
 import { Api } from 'utils/api'
 
-export const usePatientAssetForm = () => {
+type TUsePatientAssetForm = {
+  isEditing: boolean
+  isLoading: boolean
+  pathname: string
+  onSubmit: (values: any) => void
+  defaultValues: Record<string, any>
+}
+
+export const usePatientAssetForm = (): TUsePatientAssetForm => {
   const { usePut, usePost, client } = useService()
   const { pathname } = useLocation()
   const { onError } = useError()
@@ -18,11 +26,11 @@ export const usePatientAssetForm = () => {
 
   const { mutate: edit } = usePut({
     url: data ? `${Api.assets}${data.id}` : '',
-    onMutate: async ({ payload }) => {
+    onMutate: async ({ payload }: { payload: any }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
       client.setQueryData(queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item) =>
+        old.data.results = old.data.results.map((item: any) =>
           item.id == data.id ? payload : item
         )
         return old
@@ -30,7 +38,7 @@ export const usePatientAssetForm = () => {
       reset()
       return { snapshot }
     },
-    onError: (error, data, context) => {
+    onError: (error: any, data: any, context: any) => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },

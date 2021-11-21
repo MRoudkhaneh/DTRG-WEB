@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, ChangeEvent } from 'react'
 import { useService } from 'hooks/use-service'
 import { useError } from 'hooks/use-error'
 import { Api } from 'utils/api'
@@ -7,7 +7,22 @@ import * as FileSaver from 'file-saver'
 import { useRecoilState, useResetRecoilState } from 'recoil'
 import { patientParamsAtom, patientCurrentAtom } from 'provider/recoil/atoms'
 
-export const usePatientList = () => {
+export type TUsePatientList = {
+  onResetFilter: () => void
+  current: any
+  exportLoading: boolean
+  search: string | null
+  data: { count: number; results: any[] }
+  isLoading: boolean
+  page: number
+  columns: TColumn[]
+  onPaginate: (page: number) => void
+  onSearch: (e: ChangeEvent<HTMLInputElement>) => void
+  onRowClick: (item: any) => void
+  onExport: () => void
+}
+
+export const usePatientList = (): TUsePatientList => {
   const { useGet } = useService()
   const { onError } = useError()
   const [params, setParams] = useRecoilState(patientParamsAtom)
@@ -32,7 +47,7 @@ export const usePatientList = () => {
     refetchOnWindowFocus: false,
     keepPreviousData: false,
     enabled: isExport,
-    onSuccess: ({ data }) => {
+    onSuccess: ({ data }: { data: any }) => {
       const fileType =
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
       const fileExtension = '.csv'
@@ -58,7 +73,8 @@ export const usePatientList = () => {
         {
           head: '',
           width: ' w-[0px]',
-          render: (item) => PatientListActions({ item, queryKey }),
+          key: '',
+          render: (item: any) => PatientListActions({ item, queryKey }),
         },
       ],
       [queryKey]
@@ -68,7 +84,11 @@ export const usePatientList = () => {
     }, []),
     onSearch: useCallback(
       (event) =>
-        setParams((prev) => ({ ...prev, name: event.target.value, page: 1 })),
+        setParams((prev: any) => ({
+          ...prev,
+          name: event.target.value,
+          page: 1,
+        })),
       []
     ),
     onRowClick: useCallback((item) => setCurrent(item), []),

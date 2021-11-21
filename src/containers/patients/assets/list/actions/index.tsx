@@ -4,7 +4,13 @@ import { ICDelete } from 'icons/delete'
 import { ICEdit } from 'icons/edit'
 import { useDialog } from 'hooks/use-dialog'
 
-export const PatientAssetActions = ({ item, queryKey }) => {
+export const PatientAssetActions = ({
+  item,
+  queryKey,
+}: {
+  item: any
+  queryKey: any[]
+}) => {
   const { toggleDialog } = useDialog()
 
   return (

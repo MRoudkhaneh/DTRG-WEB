@@ -6,7 +6,13 @@ import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
 import { useDialog } from 'hooks/use-dialog'
 
-export const usePatientStudyForm = () => {
+type TUsePatientInteractionForm = {
+  isLoading: boolean
+  onSubmit: (state: any) => void
+  defaultValues: Record<string, any>
+}
+
+export const usePatientStudyForm = (): TUsePatientInteractionForm => {
   const { id } = useParams() as any
   const { usePost, usePut, client } = useService()
   const { onError } = useError()
@@ -18,7 +24,7 @@ export const usePatientStudyForm = () => {
 
   const { mutate: save, isLoading: saveLoading } = usePost({
     url: Api.studies,
-    onMutate: async ({ payload }) => {
+    onMutate: async ({ payload }: { payload: any }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
       client.setQueryData(queryKey, (old: any) => {
@@ -28,7 +34,7 @@ export const usePatientStudyForm = () => {
       reset()
       return { snapshot }
     },
-    onError: (error, data, context) => {
+    onError: (error: any, data: any, context: any) => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },
@@ -38,11 +44,11 @@ export const usePatientStudyForm = () => {
 
   const { mutate: edit, isLoading: editLoading } = usePut({
     url: data ? `${Api.studies}${data.id}/` : '',
-    onMutate: async ({ payload }) => {
+    onMutate: async ({ payload }: { payload: any }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
       client.setQueryData(queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item) =>
+        old.data.results = old.data.results.map((item: any) =>
           item.id == data.id ? payload : item
         )
         return old
@@ -50,7 +56,7 @@ export const usePatientStudyForm = () => {
       reset()
       return { snapshot }
     },
-    onError: (error, data, context) => {
+    onError: (error: any, data: any, context: any) => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },

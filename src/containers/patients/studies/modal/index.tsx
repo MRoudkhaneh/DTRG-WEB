@@ -10,9 +10,7 @@ const PatientStudiesForm = lazy(() =>
 )
 
 export const PatientStudiesModal = memo(() => {
-  const { deleteInteraction } = usePatientStudiesModal()
-
-  const { mutate } = deleteInteraction()
+  const { deleteStudy } = usePatientStudiesModal()
 
   const { dialog, reset } = useDialog()
 
@@ -46,7 +44,7 @@ export const PatientStudiesModal = memo(() => {
           <Confirm
             type="delete"
             description={`You are about to delete this study.`}
-            onConfirm={() => mutate()}
+            onConfirm={() => deleteStudy()}
             onCancel={reset}
           />
         )

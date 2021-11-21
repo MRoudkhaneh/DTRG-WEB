@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { ICArrowLeft } from 'icons/arrow-left'
 import { Button } from 'components/button'
@@ -10,13 +10,12 @@ import { Input } from 'components/input'
 import { ICPlus } from 'icons/plus'
 import { ICExport } from 'icons/export'
 import { useDialog } from 'hooks/use-dialog'
+import { TUsePatientAsset } from '../use-patient-assets'
 
-type TPatientsAssetsToolbar = {
-  onSearch?: any
-  queryKey?: any
-  onExport?: any
-  exportLoading?: boolean
-}
+type TPatientsAssetsToolbar = Pick<
+  TUsePatientAsset,
+  'onSearch' | 'queryKey' | 'exportLoading' | 'onExport'
+>
 
 export const PatientAssetsToolbar = memo(
   ({ onSearch, queryKey, onExport, exportLoading }: TPatientsAssetsToolbar) => {

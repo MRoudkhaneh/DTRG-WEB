@@ -3,7 +3,12 @@ import { patientParamsAtom } from 'provider/recoil/atoms'
 import { useCallback, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
-export const usePatientAdvanceSearch = () => {
+type TUsePatientAdvanceSearch = {
+  onSubmit: (state: any) => void
+  defaultValues: any
+}
+
+export const usePatientAdvanceSearch = (): TUsePatientAdvanceSearch => {
   const [params, setParams] = useRecoilState(patientParamsAtom)
   const { reset } = useDialog()
 

@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useCallback, useMemo, useState, ChangeEvent } from 'react'
+import { useParams, Params } from 'react-router-dom'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { Api } from 'utils/api'
@@ -8,19 +8,29 @@ import * as FileSaver from 'file-saver'
 
 type TAssetParmas = {
   page: number
-  search: string
-  patient_id: string
+  search: string | null
+  patient_id: string | null
 }
 
-export const usePatientAssets = () => {
+export type TUsePatientAsset = {
+  isSuccess: boolean
+  isLoading: boolean
+  queryKey: any[]
+  data: { count: number; results: any[] }
+  exportLoading: boolean
+  page: number
+  columns: TColumn[]
+  onPaginate: (page: number) => void
+  onSearch: (e: ChangeEvent<HTMLInputElement>) => void
+  onExport: () => void
+}
+
+export const usePatientAssets = (): TUsePatientAsset => {
   const { useGet } = useService()
-
   const { onError } = useError()
-
-  const routeParams: { id: string } = useParams()
+  const routeParams: Readonly<Params<'id'>> = useParams()
 
   const [isExport, setIsExport] = useState<boolean>(false)
-
   const [params, setParams] = useState<TAssetParmas>({
     page: 1,
     search: null,
@@ -43,7 +53,7 @@ export const usePatientAssets = () => {
     refetchOnWindowFocus: false,
     keepPreviousData: false,
     enabled: isExport,
-    onSuccess: ({ data }) => {
+    onSuccess: ({ data }: { data: any }) => {
       const fileType =
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
       const fileExtension = '.csv'
@@ -68,6 +78,7 @@ export const usePatientAssets = () => {
         {
           head: '',
           width: 'w-[0px]',
+          key: '',
           render: (item: any) => PatientAssetActions({ item, queryKey }),
         },
       ],

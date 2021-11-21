@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { Tab } from 'components/tab'
 import { Grid } from 'components/grid'
-import { usePatientForm } from './use-patient-form'
+import { IPatientForm, usePatientForm } from './use-patient-form'
 import { PatientFormToolbar } from './toolbar'
 import { classNames } from 'utils/classes'
 import { FormControl } from 'components/form-control'
@@ -57,7 +57,7 @@ import {
   PatientFormSubmit,
 } from './fields'
 
-export const PatientForm = memo((props?: IPatientForm) => {
+export const PatientForm = memo((props: IPatientForm) => {
   const { onSubmit, saveLoading, editLoading, defaultValues } =
     usePatientForm(props)
 

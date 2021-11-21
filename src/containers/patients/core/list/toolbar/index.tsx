@@ -9,14 +9,12 @@ import { ICEraser } from 'icons/eraser'
 import { Link } from 'react-router-dom'
 import { useDialog } from 'hooks/use-dialog'
 import { ICFilter } from 'icons/filter'
+import { TUsePatientList } from '../use-patient-list'
 
-type TPatientsToolbar = {
-  onSearch?: any
-  search?: any
-  exportLoading?: boolean
-  onExport?: any
-  onResetFilter?: any
-}
+type TPatientsToolbar = Pick<
+  TUsePatientList,
+  'onResetFilter' | 'onSearch' | 'search' | 'exportLoading' | 'onExport'
+>
 
 export const PatientListToolbar = memo(
   ({

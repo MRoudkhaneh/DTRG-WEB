@@ -1,10 +1,7 @@
 import { memo } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Button } from 'components/button'
 import { Tab } from 'components/tab'
-
 import { classNames } from 'utils/classes'
-
 import { useRegister } from './use-register'
 import { FormControl } from 'components/form-control'
 import { FormInput } from 'components/form-input'

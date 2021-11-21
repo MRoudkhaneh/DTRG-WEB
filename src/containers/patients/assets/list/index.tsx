@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { Table } from 'components/table'
 
 import { PatientAssetsDetails } from './details'

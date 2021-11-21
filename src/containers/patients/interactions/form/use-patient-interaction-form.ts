@@ -6,7 +6,12 @@ import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
 import { useDialog } from 'hooks/use-dialog'
 
-export const usePatientInteractionForm = () => {
+type TUsePatientInteractionForm = {
+  onSubmit: (state: any) => void
+  defaultValues: Record<string, any>
+}
+
+export const usePatientInteractionForm = (): TUsePatientInteractionForm => {
   const { id } = useParams() as any
   const { usePost, usePut, client } = useService()
   const { onError } = useError()
@@ -18,7 +23,7 @@ export const usePatientInteractionForm = () => {
 
   const { mutate: save } = usePost({
     url: Api.interactions,
-    onMutate: async ({ payload }) => {
+    onMutate: async ({ payload }: { payload: any }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
       client.setQueryData(queryKey, (old: any) => {
@@ -28,7 +33,7 @@ export const usePatientInteractionForm = () => {
       reset()
       return { snapshot }
     },
-    onError: (error, data, context) => {
+    onError: (error: any, data: any, context: any) => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },
@@ -38,11 +43,11 @@ export const usePatientInteractionForm = () => {
 
   const { mutate: edit } = usePut({
     url: data ? `${Api.interactions}/${data.id}/` : '',
-    onMutate: async ({ payload }) => {
+    onMutate: async ({ payload }: { payload: any }) => {
       await client.cancelQueries(queryKey)
       const snapshot = client.getQueryData(queryKey)
       client.setQueryData(queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item) =>
+        old.data.results = old.data.results.map((item: any) =>
           item.id == data.id ? payload : item
         )
         return old
@@ -50,7 +55,7 @@ export const usePatientInteractionForm = () => {
       reset()
       return { snapshot }
     },
-    onError: (error, data, context) => {
+    onError: (error: any, data: any, context: any) => {
       client.setQueryData(queryKey, context.snapshot)
       onError(error)
     },

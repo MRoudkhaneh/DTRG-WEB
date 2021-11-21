@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, MouseEventHandler } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
@@ -13,7 +13,14 @@ const defaultValues = {
   verification_code: '',
 }
 
-export const useRegister = () => {
+type TUseRegister = {
+  isLoading: boolean
+  defaultValues: typeof defaultValues
+  onSubmit: (values: any) => void
+  onPush: MouseEventHandler<HTMLButtonElement>
+}
+
+export const useRegister = (): TUseRegister => {
   const { success } = useToast()
   const { usePost } = useService()
   const { onError } = useError()

@@ -39,14 +39,8 @@ export const dialogAtom = atom({
   default: {
     open: false,
     data: {},
-    type: null,
-    queryKey: null,
+    type: '',
+    queryKey: '',
     isEditing: false,
-  } as {
-    open: boolean
-    data: any
-    type: string
-    queryKey: string
-    isEditing: boolean
-  },
+  } as TDialog,
 })

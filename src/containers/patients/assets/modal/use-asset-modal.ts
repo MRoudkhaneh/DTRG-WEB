@@ -4,7 +4,13 @@ import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
 import { useDialog } from 'hooks/use-dialog'
 
-export const useAssetModal = () => {
+type TUseAssetModal = {
+  deleteAsset: () => void
+  dialog: TDialog
+  reset: () => void
+}
+
+export const useAssetModal = (): TUseAssetModal => {
   const { success } = useToast()
   const { onError } = useError()
   const { useDelete, client } = useService()
@@ -16,7 +22,7 @@ export const useAssetModal = () => {
       await client.cancelQueries(dialog.queryKey)
       const snapshot = client.getQueryData(dialog.queryKey)
       client.setQueryData(dialog.queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item) =>
+        old.data.results = old.data.results.map((item: any) =>
           item.id == dialog.data.id
             ? {
                 ...item,
@@ -31,14 +37,12 @@ export const useAssetModal = () => {
       reset()
       return { snapshot }
     },
-    onError: (error, data, context) => {
+    onError: (error: any, data: any, context: any) => {
       client.setQueryData(dialog.queryKey, context.snapshot)
       onError(error)
     },
     onSuccess: () => success('You successfully deleted this asset.'),
-    onSettled: (data, error) => {
-      client.invalidateQueries(dialog.queryKey)
-    },
+    onSettled: () => client.invalidateQueries(dialog.queryKey),
   })
 
   return {

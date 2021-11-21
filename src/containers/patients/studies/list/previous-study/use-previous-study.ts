@@ -24,7 +24,14 @@ const defaultState = {
   no_previous_study_involvement: false,
 }
 
-export const usepreviousStudy = () => {
+type TUsePreviousStudy = {
+  defaultValues: typeof defaultState
+  saveLoading: boolean
+  isLoading: boolean
+  onSubmit: (state: any) => void
+}
+
+export const usepreviousStudy = (): TUsePreviousStudy => {
   const [defaultValues, setDefaultValues] = useState(defaultState)
   const { id } = useParams() as any
   const { useGet, usePost } = useService()
@@ -41,13 +48,13 @@ export const usepreviousStudy = () => {
     url: `${Api.prevStudies}`,
     refetchOnWindowFocus: false,
     keepPreviousData: true,
-    onSuccess: ({ data }) => setDefaultValues(data),
+    onSuccess: ({ data }: { data: any }) => setDefaultValues(data),
     onError,
   })
 
   const { mutate: save, isLoading: saveLoading } = usePost({
     url: Api.prevStudies,
-    onError: (error) => onError(error),
+    onError: (error: any) => onError(error),
     onSuccess: () => success('You successfully save previous studies.'),
   })
 

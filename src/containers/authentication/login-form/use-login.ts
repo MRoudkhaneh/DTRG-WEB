@@ -1,6 +1,5 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useMemo, MouseEventHandler } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
 import { useError } from 'hooks/use-error'
 import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
@@ -10,19 +9,26 @@ const isProd = process.env.variable === 'prod'
 
 const defaultValues = { email: '', password: '' }
 
-export const useLogin = () => {
+type TUseLogin = {
+  isSuccess: boolean
+  isLoading: boolean
+  defaultValues: typeof defaultValues
+  data: any
+  onSubmit: (values: any) => void
+  onPush: MouseEventHandler<HTMLButtonElement>
+  href: string
+}
+
+export const useLogin = (): TUseLogin => {
   const { success } = useToast()
-
   const { usePost } = useService()
-
-  const push = useNavigate()
-
   const { onError } = useError()
+  const push = useNavigate()
 
   const { mutate, isLoading, isSuccess, data } = usePost({
     url: `${Api.users}login/`,
     onError,
-    onSuccess: (res) => {
+    onSuccess: (res: any) => {
       localStorage.setItem('token', res.data ? res.data.access : null)
       push('/admin/patients')
       success('You successfully loged in.')

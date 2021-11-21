@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form'
 import { useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useError } from 'hooks/use-error'
@@ -60,12 +59,24 @@ const initialState = {
   post_code: null,
 }
 
-export const usePatientForm = (props: IPatientForm) => {
+export type IPatientForm = {
+  isEditing?: boolean
+  editInitials?: any
+}
+
+type TUsePatientForm = {
+  saveLoading: boolean
+  editLoading: boolean
+  onSubmit: (state: any) => void
+  defaultValues: typeof initialState
+}
+
+export const usePatientForm = (props: IPatientForm): TUsePatientForm => {
   const { usePost, usePut, client } = useService()
-  const push = useNavigate()
   const { success } = useToast()
   const { onError } = useError()
   const { dialog, reset } = useDialog()
+  const push = useNavigate()
 
   const { isEditing, editInitials } = props
 
@@ -80,11 +91,11 @@ export const usePatientForm = (props: IPatientForm) => {
 
   const { mutate: edit, isLoading: editLoading } = usePut({
     url: editInitials ? `${Api.patients}${editInitials.id}/` : '',
-    onMutate: async ({ payload }) => {
+    onMutate: async ({ payload }: { payload: any }) => {
       await client.cancelQueries(dialog.queryKey)
       const snapshot = client.getQueryData(dialog.queryKey)
       client.setQueryData(dialog.queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item) =>
+        old.data.results = old.data.results.map((item: any) =>
           item.id == editInitials.id ? payload : item
         )
         return old
@@ -92,7 +103,7 @@ export const usePatientForm = (props: IPatientForm) => {
       reset()
       return { snapshot }
     },
-    onError: (error, data, context) => {
+    onError: (error: any, data: any, context: any) => {
       client.setQueryData(dialog.queryKey, context.snapshot)
       onError(error)
     },

@@ -8,7 +8,13 @@ import { ICInteractions } from 'icons/interactions'
 import { ICStudies } from 'icons/studies'
 import { useDialog } from 'hooks/use-dialog'
 
-export const PatientListActions = ({ item, queryKey }) => {
+export const PatientListActions = ({
+  item,
+  queryKey,
+}: {
+  item: any
+  queryKey: any[]
+}) => {
   const { toggleDialog } = useDialog()
   const push = useNavigate()
 
