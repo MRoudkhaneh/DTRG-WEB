@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { ICWrapper } from './wrapper'
+import { ICWrapper, TIcon } from './wrapper'
 
-export const ICEyeFill = ({ className, onClick, role, id }: IIcon) => {
+export const ICEyeFill = ({ className, onClick, role, id }: TIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick} role={role} id={id}>
       <path d="M4.5 11a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />

@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { ICWrapper } from './wrapper'
+import { ICWrapper, TIcon } from './wrapper'
 
-export const ICExpand = ({ className, onClick }: IIcon) => {
+export const ICExpand = ({ className, onClick }: TIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick}>
       <path

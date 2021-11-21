@@ -1,7 +1,6 @@
-import { FC } from 'react'
-import { ICWrapper } from './wrapper'
+import { ICWrapper, TIcon } from './wrapper'
 
-export const ICPerson = ({ className, onClick }: IIcon) => {
+export const ICPerson = ({ className, onClick }: TIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick}>
       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />

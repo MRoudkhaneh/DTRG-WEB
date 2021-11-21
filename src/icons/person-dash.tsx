@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
-import { ICWrapper } from './wrapper'
+import { ICWrapper, TIcon } from './wrapper'
 
-export const ICPersonDash = memo(({ className, onClick }: IIcon) => {
+export const ICPersonDash = memo(({ className, onClick }: TIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick}>
       <path

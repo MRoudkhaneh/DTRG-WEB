@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { ICWrapper } from './wrapper'
+import { ICWrapper, TIcon } from './wrapper'
 
-export const ICChevronLeft = ({ className, onClick }: IIcon) => {
+export const ICChevronLeft = ({ className, onClick }: TIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick}>
       <path

@@ -1,8 +1,9 @@
 import { classNames } from 'utils/classes'
 import { AdminHeader } from 'containers/header/admin-header'
 import { AdminDashboard } from 'containers/dashboards/admin-dashboard'
+import { ReactNode } from 'react'
 
-export const AdminLayout = ({ children }) => {
+export const AdminLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div
       className={classNames(

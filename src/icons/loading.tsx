@@ -1,8 +1,7 @@
-import { FC } from 'react'
 import { classNames } from 'utils'
-import { ICWrapper } from './wrapper'
+import { ICWrapper, TIcon } from './wrapper'
 
-export const ICLoading = ({ className }: IIcon) => {
+export const ICLoading = ({ className }: TIcon) => {
   return (
     <ICWrapper className={classNames('animate-spin', className)}>
       <path

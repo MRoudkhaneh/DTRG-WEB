@@ -1,7 +1,7 @@
 import { memo } from 'react'
-import { ICWrapper } from './wrapper'
+import { ICWrapper, TIcon } from './wrapper'
 
-export const ICActivity = memo(({ className, onClick }: IIcon) => {
+export const ICActivity = memo(({ className, onClick }: TIcon) => {
   return (
     <ICWrapper className={className} onClick={onClick}>
       <path

@@ -1,6 +1,6 @@
 import { lazy as ReactLazy } from 'react'
 
-export const lazy = (componentImport) =>
+export const lazy = (componentImport: any) =>
   ReactLazy(async () => {
     const pageHasAlreadyBeenForceRefreshed = JSON.parse(
       window.localStorage.getItem('page-has-been-force-refreshed') || 'false'

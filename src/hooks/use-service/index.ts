@@ -14,11 +14,13 @@ export const useService = () => {
       return useQuery(key, asyncGet, { ...rest })
     },
     usePost: ({ url, ...rest }: IUseService) => {
-      const asyncPost = async ({ payload }) => await Request.post(url, payload)
+      const asyncPost = async ({ payload }: { payload: any }) =>
+        await Request.post(url, payload)
       return useMutation(asyncPost, { ...rest })
     },
     usePut: ({ url, ...rest }: IUseService) => {
-      const asyncPut = async ({ payload }) => await Request.put(url, payload)
+      const asyncPut = async ({ payload }: { payload: any }) =>
+        await Request.put(url, payload)
       return useMutation(asyncPut, {
         ...rest,
       })

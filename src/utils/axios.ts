@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const isProd = process.env.variable === 'prod'
 
-let Request
+let Request: any
 
 if (axios.defaults) {
   axios.defaults.baseURL = isProd
@@ -12,14 +12,14 @@ if (axios.defaults) {
   Request = axios.create()
 
   Request.interceptors.request.use(
-    async (config) => {
+    async (config: any) => {
       const token = localStorage.getItem('token')
       if (token) {
         config.headers.Authorization = 'Bearer ' + token
       }
       return config
     },
-    (error) => {
+    (error: any) => {
       return Promise.reject(error)
     }
   )
