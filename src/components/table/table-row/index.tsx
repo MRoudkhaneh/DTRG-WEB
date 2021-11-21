@@ -14,7 +14,7 @@ export const TableRow = memo(
     onRowClick,
     expanded = { id: null },
   }: ITableRow) => {
-    const { open, toggle } = useToggle((): boolean =>
+    const { open, toggle } = useToggle(() =>
       item ? item.id === expanded.id : false
     )
 

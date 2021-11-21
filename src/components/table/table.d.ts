@@ -1,23 +1,24 @@
+type TTableItem = Record<string, any>
+
 type TColumn = {
   head?: string
   key: string
   width?: string
-  check?: boolean
-  render?: (data: any) => ReactNode
+  render?: (data: TTableItem) => ReactNode
 }
 
-interface ITable {
-  columns: Array<TColumn>
+type ITable = {
+  columns: TColumn[]
+  data: TTableItem[]
   className?: string
-  data?: any
-  expand?: (item: any) => ReactNode
-  onPaginate?: (page: number) => void
   loading?: boolean
   fetching?: boolean
   page: number
   total: number
-  onRowClick?: (data: any) => void
-  expanded?: boolean
+  expanded?: Record<string, any>
+  onRowClick?: (item: TTableItem) => void
+  expand?: (item: TTableItem) => ReactNode
+  onPaginate?: (page: number) => void
 }
 
 type ITableBody = Pick<
@@ -30,7 +31,7 @@ type ITableCell = { item?: any; index?: number; column: TColumn } & Pick<
   'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded'
 >
 
-type ITableRow = { item?: any; index?: number; length?: number } & Pick<
+type ITableRow = { item?: any; index?: number; length: number } & Pick<
   ITable,
   'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded'
 >
