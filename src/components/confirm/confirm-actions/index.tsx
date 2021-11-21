@@ -1,5 +1,5 @@
 import { Button } from 'components/button'
-import { FC, memo } from 'react'
+import { memo } from 'react'
 
 export const ConfirmActions = memo(
   ({ onConfirm, onCancel, loading }: Partial<IConfirm>) => {

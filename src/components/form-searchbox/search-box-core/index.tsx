@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react'
+import { useMemo } from 'react'
 import { Input } from 'components/input'
 import { classNames } from 'utils/classes'
 import { SearchBoxDropBox } from '../search-drop-box'

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'utils/classes'
 
 export const DropDownBox = memo(({ open, children }: IDropdown) => {

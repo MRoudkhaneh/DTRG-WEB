@@ -1,5 +1,4 @@
 import { memo, useCallback, useState } from 'react'
-import { classNames } from 'utils/classes'
 import { Switch } from 'components/switch'
 import { ICDark } from 'icons/dark'
 import { ICLight } from 'icons/light'

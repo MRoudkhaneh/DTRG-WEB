@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { LoaidngBounce } from 'components/loading/bounce'
 import { buttonClassName } from './helper'
 import { TButton } from './button'

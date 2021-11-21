@@ -1,4 +1,4 @@
-import { FC } from 'react'
+
 import { ICWrapper, TIcon } from './wrapper'
 
 export const ICDark = ({ className, onClick, role, id }: TIcon) => {

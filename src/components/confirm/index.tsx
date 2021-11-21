@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { Modal } from 'components/modal'
 
 import { ConfirmActions } from './confirm-actions'

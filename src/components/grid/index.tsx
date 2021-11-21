@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 
 export const Grid = memo(({ className, children, cols, gap = '6' }: IGrid) => {
   return (

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { ICWrapper, TIcon } from './wrapper'
 
 const ICArrowRight = memo(({ className, onClick }: TIcon) => {

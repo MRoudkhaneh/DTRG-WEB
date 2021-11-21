@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { useToggle } from 'hooks/use-toggle'
 import { classNames } from 'utils/classes'
 

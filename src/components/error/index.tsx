@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { classNames } from 'utils'
 
 export const Error = memo(({ error, className }: IError) => {

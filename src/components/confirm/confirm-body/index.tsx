@@ -1,4 +1,4 @@
-import { FC, Fragment, memo } from 'react'
+import { Fragment, memo } from 'react'
 
 export const ConfirmBody = memo(({ title, description }: Partial<IConfirm>) => {
   return (

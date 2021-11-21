@@ -1,4 +1,4 @@
-import { FC } from 'react'
+
 import { ICWrapper, TIcon } from './wrapper'
 
 export const ICLight = ({ className, onClick, role, id }: TIcon) => {

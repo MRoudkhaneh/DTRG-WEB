@@ -1,4 +1,4 @@
-import { FC } from 'react'
+
 import { classNames } from 'utils/classes'
 
 import { TabExpand } from './tab-expand'

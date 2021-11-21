@@ -1,4 +1,4 @@
-import { FC, Fragment, memo } from 'react'
+import { Fragment, memo } from 'react'
 import { classNames } from 'utils/classes'
 
 export const Toolbar = memo(({ children }: IToolbar) => {

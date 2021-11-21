@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { Button } from 'components/button'
 import { ICChevronDown } from 'icons/chevron-down'
 import { ICChevronRight } from 'icons/chevron-right'

@@ -1,4 +1,4 @@
-import { createContext, FC, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 import { reducer } from './reducer'
 import { initialState } from './state'
 

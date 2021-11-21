@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { Input } from 'components/input'
 import { TextArea } from 'components/text-area'
 import { Switch } from 'components/switch'
