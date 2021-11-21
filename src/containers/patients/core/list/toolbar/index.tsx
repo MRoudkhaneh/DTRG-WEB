@@ -5,8 +5,6 @@ import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 import { ICExport } from 'icons/export'
 import { ICPlus } from 'icons/plus'
-import { Menu } from '@headlessui/react'
-import { ICFilterOutline } from 'icons/filter-outline'
 import { ICEraser } from 'icons/eraser'
 import { Link } from 'react-router-dom'
 import { useDialog } from 'hooks/use-dialog'
@@ -46,42 +44,24 @@ export const PatientListToolbar = memo(
             onChange={onSearch}
             value={search ?? ''}
           />
-
-          <Menu as="div" className="relative">
-            <Menu.Button>
-              <Tooltip content="Advanced search">
-                <ICFilterOutline className="w-5 h-5 text-primary mr-2 -mb-0.5 peer " />
-              </Tooltip>
-            </Menu.Button>
-            <Menu.Items className="origin-top-right absolute right-0  flex flex-col space-y-2 mt-2">
-              <Menu.Item>
-                {({ active }) => (
-                  <Tooltip content="Filter">
-                    <Button
-                      className="peer"
-                      onClick={() =>
-                        toggleDialog({
-                          open: true,
-                          type: 'patient-advance-search',
-                        })
-                      }
-                    >
-                      <ICFilter className="w-5 h-5 text-primary " />
-                    </Button>
-                  </Tooltip>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <Tooltip content="Reset">
-                    <Button className="peer" onClick={onResetFilter}>
-                      <ICEraser className="w-5 h-5 text-primary " />
-                    </Button>
-                  </Tooltip>
-                )}
-              </Menu.Item>
-            </Menu.Items>
-          </Menu>
+          <Tooltip content="Filter">
+            <Button
+              className="peer mr-2"
+              onClick={() =>
+                toggleDialog({
+                  open: true,
+                  type: 'patient-advance-search',
+                })
+              }
+            >
+              <ICFilter className="w-5 h-5 text-primary " />
+            </Button>
+          </Tooltip>
+          <Tooltip content="Reset">
+            <Button className="peer mr-2" onClick={onResetFilter}>
+              <ICEraser className="w-5 h-5 text-primary " />
+            </Button>
+          </Tooltip>
 
           <Tooltip content="Export">
             <Button
