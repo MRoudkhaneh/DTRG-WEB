@@ -1,10 +1,15 @@
-import { memo } from 'react'
+import { memo, Suspense, lazy } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
-
 import { usePatientInteractionModal } from './use-patient-interactions-modal'
-import { PatientInteractionsForm } from '../form'
 import { useDialog } from 'hooks/use-dialog'
+import { Skeleton } from 'components/skeleton'
+
+const PatientInteractionsForm = lazy(() =>
+  import('../form').then((module) => ({
+    default: module.PatientInteractionsForm,
+  }))
+)
 
 export const PatientInteractionsModal = memo(() => {
   const { deleteInteraction } = usePatientInteractionModal()
@@ -26,7 +31,9 @@ export const PatientInteractionsModal = memo(() => {
               : `Add an interaction `
           }
         >
-          <PatientInteractionsForm />
+          <Suspense fallback={<Skeleton />}>
+            <PatientInteractionsForm />
+          </Suspense>
         </Modal>
       )
 

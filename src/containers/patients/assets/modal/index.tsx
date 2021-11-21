@@ -1,8 +1,14 @@
-import { memo } from 'react'
+import { memo, Suspense, lazy } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { useAssetModal } from './use-asset-modal'
-import { PatientAssetForm } from '../form'
+import { Skeleton } from 'components/skeleton'
+
+const PatientAssetForm = lazy(() =>
+  import('../form').then(({ PatientAssetForm }) => ({
+    default: PatientAssetForm,
+  }))
+)
 
 export const AssetModal = memo(() => {
   const { deleteAsset, dialog, reset } = useAssetModal()
@@ -17,7 +23,9 @@ export const AssetModal = memo(() => {
           onClose={reset}
           header={dialog.isEditing ? 'Edit asset' : 'Add an new asset'}
         >
-          <PatientAssetForm />
+          <Suspense fallback={<Skeleton />}>
+            <PatientAssetForm />
+          </Suspense>
         </Modal>
       )
 
