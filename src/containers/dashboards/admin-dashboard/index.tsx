@@ -11,7 +11,7 @@ export const AdminDashboard = memo(() => {
   const [drawer, setDrawer] = useState(false)
 
   return (
-    <Drawer open={drawer}>
+    <Drawer open={drawer} onClose={() => setDrawer(false)}>
       <div className="w-full row-center mt-2 mb-6 ">
         <img
           className="w-14 h-14 cursor-pointer"

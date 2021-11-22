@@ -1,11 +1,11 @@
-type TTableItem = Record<string, any>
-
 type TColumn = {
   head?: string
   key: string
   width?: string
   render?: (data: TTableItem) => ReactNode
 }
+
+type TTableItem = Record<string, any>
 
 type ITable = {
   columns: TColumn[]
@@ -26,12 +26,12 @@ type ITableBody = Pick<
   'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded' | 'data'
 >
 
-type ITableCell = { item?: any; index?: number; column: TColumn } & Pick<
-  ITable,
-  'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded'
+type ITableCell = { item: TTableItem; index?: number; column: TColumn } & Omit<
+  ITableBody,
+  'data'
 >
 
-type ITableRow = { item?: any; index?: number; length: number } & Pick<
+type ITableRow = { item: TTableItem; index?: number; length: number } & Pick<
   ITable,
   'columns' | 'expand' | 'loading' | 'onRowClick' | 'expanded'
 >

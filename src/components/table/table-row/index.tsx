@@ -1,7 +1,8 @@
-import { memo, Fragment } from 'react'
+import { memo, Fragment, Suspense } from 'react'
 import { classNames } from 'utils/classes'
 import { useToggle } from 'hooks/use-toggle'
 import { TableCell } from '../table-cell'
+import { Skeleton } from 'components/skeleton'
 
 export const TableRow = memo(
   ({
@@ -24,7 +25,7 @@ export const TableRow = memo(
           className={classNames(
             'w-full row-start h-14 px-6  overflow-hidden border-gray-300 dark:border-gray-600',
             loading ? 'opacity-50 ' : 'group',
-            index === length - 1 ? '' : 'border-b',
+            index !== length - 1 && !open && 'border-b',
             expand && 'cursor-pointer',
             open
               ? 'bg-blue-100 dark:bg-gray-700'
@@ -45,15 +46,17 @@ export const TableRow = memo(
             />
           ))}
         </tr>
-        {open && expand && (
-          <tr
-            className={classNames(
-              'w-full row-start p-4 bg-blue-100 dark:bg-gray-700'
-            )}
-          >
-            {expand(item)}
-          </tr>
-        )}
+        <Suspense fallback={<Skeleton />}>
+          {open && expand && (
+            <tr
+              className={classNames(
+                'w-full row-start p-4 bg-blue-100 dark:bg-gray-700'
+              )}
+            >
+              {expand(item)}
+            </tr>
+          )}
+        </Suspense>
       </Fragment>
     )
   }
