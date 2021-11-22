@@ -1,14 +1,9 @@
-import { memo, lazy, useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientInteractionModal } from './use-patient-interactions-modal'
 import { useDialog } from 'hooks/use-dialog'
-
-const PatientInteractionsForm = lazy(() =>
-  import('../form').then((module) => ({
-    default: module.PatientInteractionsForm,
-  }))
-)
+import { PatientInteractionsForm } from '../form'
 
 export const PatientInteractionsModal = memo(() => {
   const { deleteInteraction } = usePatientInteractionModal()

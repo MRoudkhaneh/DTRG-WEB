@@ -1,13 +1,8 @@
-import { memo, lazy, useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { useAssetModal } from './use-asset-modal'
-
-const PatientAssetForm = lazy(() =>
-  import('../form').then(({ PatientAssetForm }) => ({
-    default: PatientAssetForm,
-  }))
-)
+import { PatientAssetForm } from '../form'
 
 export const AssetModal = memo(() => {
   const { deleteAsset, dialog, reset } = useAssetModal()
