@@ -3,15 +3,10 @@ import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
 import { useDialog } from 'hooks/use-dialog'
+import { PatientAdvanceSearch } from '../advance-search'
 
 const PatientForm = lazy(() =>
   import('../form').then((module) => ({ default: module.PatientForm }))
-)
-
-const PatientAdvanceSearch = lazy(() =>
-  import('../advance-search').then((module) => ({
-    default: module.PatientAdvanceSearch,
-  }))
 )
 
 export const PatientModal = memo(() => {
