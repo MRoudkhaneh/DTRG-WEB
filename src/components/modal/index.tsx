@@ -1,9 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Button } from 'components/button'
+import { Skeleton } from 'components/skeleton'
 import { Text } from 'components/text'
 import { Tooltip } from 'components/tooltip'
 import { ICClose } from 'icons'
-import { ComponentProps, Fragment, MouseEventHandler } from 'react'
+import { ComponentProps, Fragment, MouseEventHandler, Suspense } from 'react'
 import { createPortal } from 'react-dom'
 import { classNames } from 'utils'
 
@@ -100,7 +101,11 @@ const ModalCore = ({ className, children, size, onClose, header }: TModal) => (
                 </Tooltip>
               )}
             </Dialog.Title>
-            <div className={className}>{children}</div>
+            <div className={className}>
+              <Suspense fallback={<Skeleton size="medium" />}>
+                {children}
+              </Suspense>
+            </div>
           </div>
         </Transition.Child>
       </div>

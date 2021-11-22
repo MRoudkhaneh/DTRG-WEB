@@ -1,13 +1,17 @@
-import { memo, Suspense, lazy, useEffect } from 'react'
+import { memo, lazy, useEffect } from 'react'
 import { Modal } from 'components/modal'
 import { Confirm } from 'components/confirm'
 import { usePatientModal } from './use-patient-modal'
 import { useDialog } from 'hooks/use-dialog'
-import { Skeleton } from 'components/skeleton'
-import { PatientAdvanceSearch } from '../advance-search'
 
 const PatientForm = lazy(() =>
   import('../form').then((module) => ({ default: module.PatientForm }))
+)
+
+const PatientAdvanceSearch = lazy(() =>
+  import('../advance-search').then((module) => ({
+    default: module.PatientAdvanceSearch,
+  }))
 )
 
 export const PatientModal = memo(() => {
@@ -33,9 +37,7 @@ export const PatientModal = memo(() => {
                 : `Edit patient's information`
             }
           >
-            <Suspense fallback={<Skeleton />}>
-              <PatientForm isEditing editInitials={dialog.data} />
-            </Suspense>
+            <PatientForm isEditing editInitials={dialog.data} />
           </Modal>
         )
 

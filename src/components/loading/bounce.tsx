@@ -3,12 +3,14 @@ import { useMemo } from 'react'
 export const LoaidngBounce = ({
   size = 'small',
 }: {
-  size?: 'small' | 'large'
+  size?: 'small' | 'large' | 'medium'
 }) => {
   const circleCommonClasses = useMemo(
     () =>
       size === 'large'
         ? 'h-6 w-6 bg-gray-600 rounded-full'
+        : size === 'medium'
+        ? 'h-4 w-4 bg-gray-300 rounded-full'
         : 'h-2 w-2 bg-gray-300 rounded-full',
     [size]
   )
