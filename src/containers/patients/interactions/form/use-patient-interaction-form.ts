@@ -13,7 +13,7 @@ type TUsePatientInteractionForm = {
 
 export const usePatientInteractionForm = (): TUsePatientInteractionForm => {
   const { id } = useParams() as any
-  const { usePost, usePut, client } = useService()
+  const { useOptimisticPost, useOptimisticPut } = useService()
   const { onError } = useError()
   const { success } = useToast()
   const {
@@ -21,46 +21,21 @@ export const usePatientInteractionForm = (): TUsePatientInteractionForm => {
     dialog: { data, queryKey },
   } = useDialog()
 
-  const { mutate: save } = usePost({
+  const { mutate: save } = useOptimisticPost({
     url: Api.interactions,
-    onMutate: async ({ payload }: { payload: any }) => {
-      await client.cancelQueries(queryKey)
-      const snapshot = client.getQueryData(queryKey)
-      client.setQueryData(queryKey, (old: any) => {
-        old.data.results = [payload, ...old.data.results]
-        return old
-      })
-      reset()
-      return { snapshot }
-    },
-    onError: (error: any, data: any, context: any) => {
-      client.setQueryData(queryKey, context.snapshot)
-      onError(error)
-    },
+    key: queryKey,
+    onMutate: reset,
+    onError,
     onSuccess: () => success('You successfully add an interaction.'),
-    onSettled: () => client.invalidateQueries(queryKey),
   })
 
-  const { mutate: edit } = usePut({
-    url: data ? `${Api.interactions}/${data.id}/` : '',
-    onMutate: async ({ payload }: { payload: any }) => {
-      await client.cancelQueries(queryKey)
-      const snapshot = client.getQueryData(queryKey)
-      client.setQueryData(queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item: any) =>
-          item.id == data.id ? payload : item
-        )
-        return old
-      })
-      reset()
-      return { snapshot }
-    },
-    onError: (error: any, data: any, context: any) => {
-      client.setQueryData(queryKey, context.snapshot)
-      onError(error)
-    },
+  const { mutate: edit } = useOptimisticPut({
+    url: `${Api.interactions}/${data?.id}/`,
+    id: data ? data.id : '',
+    key: queryKey,
+    onMutate: reset,
+    onError,
     onSuccess: () => success('You successfully edit this interaction.'),
-    onSettled: () => client.invalidateQueries(queryKey),
   })
 
   return {
