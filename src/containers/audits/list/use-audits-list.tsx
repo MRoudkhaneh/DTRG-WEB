@@ -71,11 +71,8 @@ export const useAuditsList = (): TUseAuditsList => {
     data: data ? data.data : { count: 0, results: [] },
     isLoading: useMemo(() => isLoading || isFetching, [isLoading, isFetching]),
     page: useMemo(() => params.page, [params.page]),
-    onPaginate: useCallback(
-      (index) => {
-        setParams((prev) => ({ ...prev, page: index }))
-      },
-      [params.page]
-    ),
+    onPaginate: useCallback((page) => {
+      setParams((prev) => ({ ...prev, page }))
+    }, []),
   }
 }
