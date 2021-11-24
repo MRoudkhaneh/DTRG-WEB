@@ -1,6 +1,5 @@
 import { act, renderHook } from '@testing-library/react-hooks'
-import { rest } from 'msw'
-import { mockServer, wrapper } from 'test/mock'
+import { mockServer, wrapper, rest, mockCycles } from 'test/mock'
 import { ApiBaseurl } from 'utils'
 import { useService } from '..'
 
@@ -11,9 +10,7 @@ const { result: service } = renderHook(() => useService(), {
 })
 
 describe('Use service', () => {
-  beforeAll(() => worker.listen())
-  afterAll(() => worker.close())
-  afterEach(() => worker.resetHandlers())
+  mockCycles(worker)
   it('Should return proper data on get', async () => {
     const { result, waitFor } = renderHook(
       () =>
@@ -86,6 +83,7 @@ describe('Use service', () => {
       }
     )
     act(() => result.current.mutate(''))
+    jest.spyOn(console, 'error').mockImplementation(() => {})
     await waitFor(() => result.current.isError)
     expect(result.current.error?.response?.data?.error).toBe(
       'Server error dtrg'

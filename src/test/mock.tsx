@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactNode } from 'react'
 import { ApiBaseurl } from 'utils'
 
-export const mockServer = (
+const mockServer = (
   url: string,
   options?: {
     get?: { res?: Record<string, any>; status?: number }
@@ -14,10 +14,13 @@ export const mockServer = (
   }
 ) =>
   setupServer(
+    rest.get('*', (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json('Success get'))
+    }),
     rest.get(`${ApiBaseurl.dev}/${url}`, (req, res, ctx) => {
       return res(
         ctx.status(options?.get?.status || 200),
-        ctx.json(options?.get?.res ?? 'Success get')
+        ctx.json(options?.get?.res ?? 'Success get all')
       )
     }),
     rest.post(`${ApiBaseurl.dev}/${url}`, (req, res, ctx) => {
@@ -40,7 +43,7 @@ export const mockServer = (
     })
   )
 
-export const wrapper = ({ children }: { children: ReactNode }) => (
+const wrapper = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider
     client={
       new QueryClient({
@@ -55,3 +58,11 @@ export const wrapper = ({ children }: { children: ReactNode }) => (
     {children}
   </QueryClientProvider>
 )
+
+const mockCycles = (worker: any) => {
+  beforeAll(() => worker.listen())
+  afterAll(() => worker.close())
+  afterEach(() => worker.resetHandlers())
+}
+
+export { wrapper, mockServer, rest, mockCycles }
