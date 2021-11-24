@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react-hooks'
+import { rest } from 'msw'
 import { mockServer, wrapper } from 'test/mock'
+import { ApiBaseurl } from 'utils'
 import { useService } from '..'
 
-const worker = mockServer('url-for-test', {
-  get: { title: 'Lord of the Rings', author: 'J. R. R. Tolkien' },
-})
+const worker = mockServer('url-for-test')
 
 const { result: service } = renderHook(() => useService(), {
   wrapper,
@@ -13,6 +13,7 @@ const { result: service } = renderHook(() => useService(), {
 describe('Use service', () => {
   beforeAll(() => worker.listen())
   afterAll(() => worker.close())
+  afterEach(() => worker.resetHandlers())
   it('Should return proper data on get', async () => {
     const { result, waitFor } = renderHook(
       () =>
@@ -25,10 +26,7 @@ describe('Use service', () => {
       }
     )
     await waitFor(() => result.current.isSuccess)
-    expect(result.current.data.data).toStrictEqual({
-      title: 'Lord of the Rings',
-      author: 'J. R. R. Tolkien',
-    })
+    expect(result.current.data.data).toBe('Success get')
   })
   it('Should return proper data on post', async () => {
     const { result, waitFor } = renderHook(
@@ -71,5 +69,26 @@ describe('Use service', () => {
     act(() => result.current.mutate(''))
     await waitFor(() => result.current.isSuccess)
     expect(result.current.data.data).toBe('Success delete')
+  })
+  it('Should throw an error on bad delete req', async () => {
+    worker.use(
+      rest.delete(`${ApiBaseurl.dev}/url-for-test`, (req, res, ctx) => {
+        return res(ctx.status(500), ctx.json({ error: 'Server error dtrg' }))
+      })
+    )
+    const { result, waitFor } = renderHook(
+      () =>
+        service.current.useDelete({
+          url: 'url-for-test',
+        }),
+      {
+        wrapper,
+      }
+    )
+    act(() => result.current.mutate(''))
+    await waitFor(() => result.current.isError)
+    expect(result.current.error?.response?.data?.error).toBe(
+      'Server error dtrg'
+    )
   })
 })

@@ -7,31 +7,36 @@ import { ApiBaseurl } from 'utils'
 export const mockServer = (
   url: string,
   options?: {
-    get?: Record<string, any> | boolean
-    post?: Record<string, any> | boolean
-    put?: Record<string, any> | boolean
-    delete?: Record<string, any> | boolean
+    get?: { res?: Record<string, any>; status?: number }
+    post?: { res?: Record<string, any>; status?: number }
+    put?: { res?: Record<string, any>; status?: number }
+    delete?: { res?: Record<string, any>; status?: number }
   }
 ) =>
   setupServer(
     rest.get(`${ApiBaseurl.dev}/${url}`, (req, res, ctx) => {
       return res(
-        ctx.json(
-          options?.get ?? {
-            title: 'Lord of the Rings',
-            author: 'J. R. R. Tolkien',
-          }
-        )
+        ctx.status(options?.get?.status || 200),
+        ctx.json(options?.get?.res ?? 'Success get')
       )
     }),
     rest.post(`${ApiBaseurl.dev}/${url}`, (req, res, ctx) => {
-      return res(ctx.json(options?.post ?? req.body))
+      return res(
+        ctx.status(options?.post?.status || 200),
+        ctx.json(options?.post?.res ?? req.body)
+      )
     }),
     rest.put(`${ApiBaseurl.dev}/${url}`, (req, res, ctx) => {
-      return res(ctx.json(options?.put ?? req.body))
+      return res(
+        ctx.status(options?.put?.status || 200),
+        ctx.json(options?.put?.res ?? req.body)
+      )
     }),
     rest.delete(`${ApiBaseurl.dev}/${url}`, (req, res, ctx) => {
-      return res(ctx.json(options?.delete ?? 'Success delete'))
+      return res(
+        ctx.status(options?.delete?.status || 200),
+        ctx.json(options?.delete?.res ?? 'Success delete')
+      )
     })
   )
 
