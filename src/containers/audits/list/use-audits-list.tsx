@@ -33,6 +33,12 @@ const columns = [
       </span>
     ),
   },
+  {
+    head: '',
+    key: '',
+    width: 'w-[0px]',
+    render: () => null,
+  },
 ]
 
 type TUseAuditsList = {
