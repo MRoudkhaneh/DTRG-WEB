@@ -1,11 +1,12 @@
 import { memo } from 'react'
 import { Table } from 'components/table'
 
-import { useAuditsList } from './use-audits-list'
+import { columns, useAuditsList } from './use-audits-list'
 import { AuditsToolbar } from './toolbar'
+import { AuditListDetails } from './details'
 
 export const AuditsList = memo(() => {
-  const { data, columns, page, onPaginate, isLoading } = useAuditsList()
+  const { data, page, onPaginate, isLoading } = useAuditsList()
 
   return (
     <div className="w-full">
@@ -18,6 +19,7 @@ export const AuditsList = memo(() => {
         page={page}
         onPaginate={onPaginate}
         loading={isLoading}
+        expand={(item) => <AuditListDetails item={item} />}
       />
     </div>
   )

@@ -5,7 +5,7 @@ type TColumn = {
   render?: (data: TTableItem) => ReactNode
 }
 
-type TTableItem = Record<string, any>
+type TTableItem = any
 
 type ITable = {
   columns: TColumn[]
