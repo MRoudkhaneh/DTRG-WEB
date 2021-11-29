@@ -30,8 +30,6 @@ export const DropDownButton = memo(
             'w-3 h-3 transition-all duration-300 ease-in-out',
             open && 'transform rotate-90'
           )}
-          role="close"
-          id="close"
         />
       </button>
     )
