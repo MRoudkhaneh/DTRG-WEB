@@ -1,4 +1,7 @@
 import '../src/styles/index.css'
+import '@storybook/addon-actions/register'
+import '@storybook/addon-console'
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {

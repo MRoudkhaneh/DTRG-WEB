@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react'
 import { classNames } from 'utils'
 import { v4 as uuid } from 'uuid'
-import { TCheck } from './check'
+import { TCheck } from './types/check'
 
 export const Check = memo(
   ({ label, className, ...rest }: Partial<TCheck>): JSX.Element => {
@@ -11,7 +11,6 @@ export const Check = memo(
       <div className={classNames('flex items-center space-x-4', className)}>
         <input
           id={id}
-          data-testid="check-core"
           type="checkbox"
           className="w-5 h-5 checked:bg-indigo-600"
           onChange={() => {}}
