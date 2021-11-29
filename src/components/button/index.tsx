@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { LoaidngBounce } from 'components/loading/bounce'
-import { buttonClassName } from './helper'
 import { TButton } from './button'
+import { classNames } from 'utils'
 
 export const Button = memo(
   ({
@@ -17,7 +17,15 @@ export const Button = memo(
       <button
         data-testid={id}
         disabled={disabled || loading}
-        className={buttonClassName(icon, loading, disabled, className)}
+        className={classNames(
+          ' flex items-center justify-center rounded focus:outline-none  disabled:opacity-50 ',
+          !icon && 'shadow',
+          loading
+            ? 'cursor-wait '
+            : !disabled &&
+                'transform hover:-translate-y-1 hover:scale-105 transition-all ease-in duration-400',
+          className
+        )}
         {...rest}
       >
         {loading ? <LoaidngBounce /> : children}
