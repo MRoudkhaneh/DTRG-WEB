@@ -4,49 +4,28 @@ import { useService } from 'hooks/use-service'
 import { useToast } from 'hooks/use-toast'
 import { Api } from 'utils/api'
 import { useDialog } from 'hooks/use-dialog'
+import { UseMutateFunction } from 'react-query'
 
 export const usePatientInteractionModal = (): {
-  deleteInteraction: () => void
+  deleteInteraction: UseMutateFunction<any, any, any, { snapshot: unknown }>
 } => {
   const { success } = useToast()
   const { onError } = useError()
-  const { useDelete, client } = useService()
+  const { useOptimisticDelete } = useService()
   const { id } = useParams() as any
   const {
     dialog: { data, queryKey },
     reset,
   } = useDialog()
 
-  const { mutate: deleteInteraction } = useDelete({
-    url: data ? `${Api.interactions}${data.id}/` : '',
+  const { mutate: deleteInteraction } = useOptimisticDelete({
+    url: `${Api.interactions}${data?.id}/`,
     params: { patient_id: id },
-    onMutate: async () => {
-      await client.cancelQueries(queryKey)
-      const snapshot = client.getQueryData(queryKey)
-      client.setQueryData(queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item: any) =>
-          item.id == data.id
-            ? {
-                ...item,
-                interaction_type: '',
-                interaction_datetime: '',
-                contact_admin: '',
-                contact_details: '',
-              }
-            : item
-        )
-        return old
-      })
-
-      reset()
-      return { snapshot }
-    },
-    onError: (error: any, data: any, context: any) => {
-      client.setQueryData(queryKey, context.snapshot)
-      onError(error)
-    },
+    key: queryKey,
+    id: data?.id,
+    onMutate: reset,
+    onError,
     onSuccess: () => success('You successfully deleted this interaction.'),
-    onSettled: () => client.invalidateQueries(queryKey),
   })
 
   return {

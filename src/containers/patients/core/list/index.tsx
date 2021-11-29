@@ -1,7 +1,5 @@
-import { memo, Suspense } from 'react'
+import { memo, lazy } from 'react'
 import { Table } from 'components/table'
-import { Skeleton } from 'components/skeleton'
-import { lazy } from 'utils/lazy'
 import { usePatientList } from './use-patient-list'
 import { PatientListToolbar } from './toolbar'
 
@@ -34,20 +32,18 @@ export const PatientList = memo(() => {
         exportLoading={exportLoading}
         onResetFilter={onResetFilter}
       />
-      <Suspense fallback={<Skeleton />}>
-        <Table
-          className="w-full my-10"
-          data={data.results}
-          total={data.count}
-          page={page}
-          columns={columns}
-          onPaginate={onPaginate}
-          loading={isLoading}
-          onRowClick={onRowClick}
-          expanded={current}
-          expand={(item) => <PatientListDetails item={item} />}
-        />
-      </Suspense>
+      <Table
+        className="w-full my-10"
+        data={data.results}
+        total={data.count}
+        page={page}
+        columns={columns}
+        onPaginate={onPaginate}
+        loading={isLoading}
+        onRowClick={onRowClick}
+        expanded={current}
+        expand={(item) => <PatientListDetails item={item} />}
+      />
     </div>
   )
 })

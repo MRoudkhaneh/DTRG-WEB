@@ -15,7 +15,7 @@ type TUsePatientAssetForm = {
 }
 
 export const usePatientAssetForm = (): TUsePatientAssetForm => {
-  const { usePut, usePost, client } = useService()
+  const { usePost, useOptimisticPut, client } = useService()
   const { pathname } = useLocation()
   const { onError } = useError()
   const { success } = useToast()
@@ -24,26 +24,13 @@ export const usePatientAssetForm = (): TUsePatientAssetForm => {
     dialog: { data, queryKey, isEditing },
   } = useDialog()
 
-  const { mutate: edit } = usePut({
-    url: data ? `${Api.assets}${data.id}` : '',
-    onMutate: async ({ payload }: { payload: any }) => {
-      await client.cancelQueries(queryKey)
-      const snapshot = client.getQueryData(queryKey)
-      client.setQueryData(queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item: any) =>
-          item.id == data.id ? payload : item
-        )
-        return old
-      })
-      reset()
-      return { snapshot }
-    },
-    onError: (error: any, data: any, context: any) => {
-      client.setQueryData(queryKey, context.snapshot)
-      onError(error)
-    },
+  const { mutate: edit } = useOptimisticPut({
+    url: `${Api.assets}${data?.id}`,
+    key: queryKey,
+    id: data ? data.id : '',
+    onMutate: reset,
     onSuccess: () => success('You successfully edit this asset.'),
-    onSettled: () => client.invalidateQueries(queryKey),
+    onError,
   })
 
   const { mutate: save, isLoading } = usePost({

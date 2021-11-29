@@ -72,7 +72,7 @@ type TUsePatientForm = {
 }
 
 export const usePatientForm = (props: IPatientForm): TUsePatientForm => {
-  const { usePost, usePut, client } = useService()
+  const { usePost, useOptimisticPut } = useService()
   const { success } = useToast()
   const { onError } = useError()
   const { dialog, reset } = useDialog()
@@ -89,26 +89,12 @@ export const usePatientForm = (props: IPatientForm): TUsePatientForm => {
     onError,
   })
 
-  const { mutate: edit, isLoading: editLoading } = usePut({
-    url: editInitials ? `${Api.patients}${editInitials.id}/` : '',
-    onMutate: async ({ payload }: { payload: any }) => {
-      await client.cancelQueries(dialog.queryKey)
-      const snapshot = client.getQueryData(dialog.queryKey)
-      client.setQueryData(dialog.queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item: any) =>
-          item.id == editInitials.id ? payload : item
-        )
-        return old
-      })
-      reset()
-      return { snapshot }
-    },
-    onError: (error: any, data: any, context: any) => {
-      client.setQueryData(dialog.queryKey, context.snapshot)
-      onError(error)
-    },
+  const { mutate: edit, isLoading: editLoading } = useOptimisticPut({
+    url: `${Api.patients}${editInitials?.id}/`,
+    key: dialog.queryKey,
+    onMutate: reset,
     onSuccess: () => success('You successfully edited this patient.'),
-    onSettled: () => client.invalidateQueries(dialog.queryKey),
+    onError,
   })
 
   return {

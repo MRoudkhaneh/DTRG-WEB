@@ -14,7 +14,7 @@ type TUsePatientInteractionForm = {
 
 export const usePatientStudyForm = (): TUsePatientInteractionForm => {
   const { id } = useParams() as any
-  const { usePost, usePut, client } = useService()
+  const { useOptimisticPut, useOptimisticPost } = useService()
   const { onError } = useError()
   const { success } = useToast()
   const {
@@ -22,46 +22,21 @@ export const usePatientStudyForm = (): TUsePatientInteractionForm => {
     dialog: { data, queryKey },
   } = useDialog()
 
-  const { mutate: save, isLoading: saveLoading } = usePost({
+  const { mutate: save, isLoading: saveLoading } = useOptimisticPost({
     url: Api.studies,
-    onMutate: async ({ payload }: { payload: any }) => {
-      await client.cancelQueries(queryKey)
-      const snapshot = client.getQueryData(queryKey)
-      client.setQueryData(queryKey, (old: any) => {
-        old.data.results = [payload, ...old.data.results]
-        return old
-      })
-      reset()
-      return { snapshot }
-    },
-    onError: (error: any, data: any, context: any) => {
-      client.setQueryData(queryKey, context.snapshot)
-      onError(error)
-    },
+    key: queryKey,
+    onMutate: reset,
+    onError,
     onSuccess: () => success('You successfully add an study.'),
-    onSettled: () => client.invalidateQueries(queryKey),
   })
 
-  const { mutate: edit, isLoading: editLoading } = usePut({
-    url: data ? `${Api.studies}${data.id}/` : '',
-    onMutate: async ({ payload }: { payload: any }) => {
-      await client.cancelQueries(queryKey)
-      const snapshot = client.getQueryData(queryKey)
-      client.setQueryData(queryKey, (old: any) => {
-        old.data.results = old.data.results.map((item: any) =>
-          item.id == data.id ? payload : item
-        )
-        return old
-      })
-      reset()
-      return { snapshot }
-    },
-    onError: (error: any, data: any, context: any) => {
-      client.setQueryData(queryKey, context.snapshot)
-      onError(error)
-    },
+  const { mutate: edit, isLoading: editLoading } = useOptimisticPut({
+    url: `${Api.studies}${data?.id}/`,
+    key: queryKey,
+    id: data ? data.id : '',
+    onMutate: reset,
+    onError,
     onSuccess: () => success('You successfully edit this study.'),
-    onSettled: () => client.invalidateQueries(queryKey),
   })
 
   return {
