@@ -1,11 +1,10 @@
 import { memo } from 'react'
-import { useFormContext, useWatch } from 'react-hook-form'
+import { useWatch } from 'react-hook-form'
 import { years } from 'utils/constants'
 import { FormSelect } from 'components/form-select'
 
 export const DateOfDiagnosisOfT1D = memo(() => {
-  const { control } = useFormContext()
-  const state = useWatch({ control, name: 'diabetes_type' })
+  const state = useWatch({ name: 'diabetes_type' })
   if (state === 'Type 1')
     return (
       <FormSelect

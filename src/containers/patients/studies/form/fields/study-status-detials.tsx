@@ -1,10 +1,9 @@
 import { FormTextArea } from 'components/form-textarea'
 import { memo } from 'react'
-import { useFormContext, useWatch } from 'react-hook-form'
+import { useWatch } from 'react-hook-form'
 
 export const StatusDetails = memo(() => {
-  const { control } = useFormContext()
-  const state = useWatch({ control, name: 'study_status' })
+  const state = useWatch({ name: 'study_status' })
   if (
     state === 'Approached - declined' ||
     state === 'Approached - ineligible' ||

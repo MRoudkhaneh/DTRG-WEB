@@ -1,10 +1,9 @@
 import { memo } from 'react'
-import { useFormContext, useWatch } from 'react-hook-form'
+import { useWatch } from 'react-hook-form'
 import { FormMultiSelect } from 'components/form-multi-select'
 
 export const CHOCounting = memo(() => {
-  const { control } = useFormContext()
-  const state = useWatch({ control, name: 'cho_counting' })
+  const state = useWatch({ name: 'cho_counting' })
 
   return (
     <FormMultiSelect
