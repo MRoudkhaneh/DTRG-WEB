@@ -11,7 +11,7 @@ interface ISearch {
   onChange?: any
   control?: Control
   onFocus?: any
-  url?: string
+  url: string
   valueKey?: string
   paramKey?: any
   isOpen?: boolean

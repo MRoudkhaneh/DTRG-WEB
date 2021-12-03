@@ -1,13 +1,12 @@
 import { useService } from 'hooks/use-service'
 import { useValidation } from 'hooks/use-validation'
 import { memo, useState } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 import { SearchBoxCore } from './search-box-core'
 
 export const FormSearchBox = memo((props: ISearch) => {
   const [params, setParams] = useState({ [props.paramKey]: null })
   const [isOpen, setIsOpen] = useState(false)
-  const { control } = useFormContext()
   const { useGet } = useService()
   const { validate } = useValidation({ required: props.required })
 
@@ -21,7 +20,6 @@ export const FormSearchBox = memo((props: ISearch) => {
   return (
     <Controller
       name={props.name}
-      control={control}
       rules={{ validate }}
       render={({
         field: { onChange: fieldChange, value: fieldValue },

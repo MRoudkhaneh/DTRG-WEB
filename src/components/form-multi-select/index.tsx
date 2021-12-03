@@ -8,16 +8,6 @@ import { memo } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { classNames } from 'utils'
 
-type TFormMultiSelect = {
-  className?: string
-  label?: string
-  name: string
-  id?: string
-  children?: any
-  required?: boolean
-  options: { id: string | number; title: string | number; disabled?: boolean }[]
-}
-
 const handleChange = ({
   option,
   onChange,
@@ -46,20 +36,19 @@ const handleChange = ({
 
 export const FormMultiSelect = memo((props: TFormMultiSelect) => {
   const { open, toggle } = useToggle()
-  const { control, setValue } = useFormContext()
+  const { setValue } = useFormContext()
   const { validate } = useValidation({ required: props.required })
 
   return (
     <div className={classNames('w-full col-start', props.className)}>
       <Controller
         name={props.name}
-        control={control}
         rules={{ validate }}
         render={({
           field: { onChange, value, ref },
           fieldState: { error },
         }) => (
-          <div className="w-full flex-col relative space-y-2">
+          <div className="w-full flex-col relative">
             {props.label && (
               <label className="mb-2 text-light dark:text-dark">
                 {props.label}
@@ -103,7 +92,6 @@ export const FormMultiSelect = memo((props: TFormMultiSelect) => {
                     icon
                     onClick={(e) => {
                       e.stopPropagation()
-
                       setValue(props.name, '')
                     }}
                   >
@@ -134,12 +122,10 @@ export const FormMultiSelect = memo((props: TFormMultiSelect) => {
                   'w-full col-start min-h-[3rem] max-h-60 overflow-y-auto rounded-b px-4  z-50 pt-18px absolute top-1px border-r-2 border-b-2 border-l-2  border-indigo-400 bg-white dark:bg-gray-400'
                 )}
                 ref={ref}
-                slot="wrapper"
               >
-                {props.options.map((option) => (
+                {props.options?.map((option) => (
                   <div
                     key={option.id}
-                    slot="wrapper"
                     className={classNames(
                       'w-full row-start z-40',
                       option.disabled
