@@ -1,28 +1,11 @@
 import { useValidation } from 'hooks/use-validation'
-import { memo, useMemo } from 'react'
-import { Controller, FieldError, useFormContext } from 'react-hook-form'
-import { v4 as uuid } from 'uuid'
+import { memo } from 'react'
+import { Controller } from 'react-hook-form'
 import moment from 'moment'
 import { classNames } from 'utils'
 import { Error } from 'components/error'
 import DatePickerReact from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-
-type TFormDatePicker = {
-  className?: string
-  label?: string
-  name: string
-  later?: boolean
-  required?: boolean
-  validation?: (value: any) => string
-  year?: boolean
-  defaultValue?: string
-  time?: boolean
-  onChange?: Function
-  error?: FieldError
-  value?: string
-  id?: string
-}
 
 const datePickerBoxClassName = (error: TFormDatePicker['error']) =>
   classNames(
@@ -62,13 +45,9 @@ export const FormDatePicker = memo(
       later,
       validation,
     })
-    const { control } = useFormContext()
-
-    const id = useMemo(() => uuid(), [])
 
     return (
       <Controller
-        control={control}
         name={name}
         rules={{ validate }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
@@ -78,7 +57,7 @@ export const FormDatePicker = memo(
             )}
             <Error error={error} className=" absolute left-0 top-20 mt-1" />
             <DatePickerReact
-              id={id}
+              id={name}
               closeOnScroll={true}
               placeholderText="Click here"
               dateFormat="yyyy/MM/dd"
@@ -93,7 +72,7 @@ export const FormDatePicker = memo(
               }
             />
             <label
-              htmlFor={id}
+              htmlFor={name}
               className={datePickerBoxClassName(error)}
               data-testid="date-picker-box"
             >
