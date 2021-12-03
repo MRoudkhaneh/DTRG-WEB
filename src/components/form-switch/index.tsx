@@ -1,22 +1,11 @@
 import { memo } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 import { classNames } from 'utils'
 
-type TFormSwitch = {
-  className?: string
-  label?: string
-  name: string
-  size?: 'small' | 'large'
-  disabled?: boolean
-}
-
 export const FormSwitch = memo((props: TFormSwitch) => {
-  const { control } = useFormContext()
-
   return (
     <Controller
       name={props.name}
-      control={control}
       render={({ field: { onChange, value } }) => (
         <div
           className={classNames(

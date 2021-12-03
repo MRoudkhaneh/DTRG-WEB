@@ -1,17 +1,9 @@
-import { ComponentProps, memo } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import { memo } from 'react'
+import { Controller } from 'react-hook-form'
 import { useValidation } from 'hooks/use-validation'
 import { Error } from 'components/error'
 import { classNames } from 'utils/classes'
-
-type TFormTextArea = {
-  label?: string
-  size?: 'small' | 'large' | 'default'
-  expanded?: boolean
-  max?: number
-  min?: number
-  name: string
-} & Omit<ComponentProps<'textarea'>, 'onChange'>
+import type { TFormTextArea } from './types/form-textarea'
 
 export const FormTextArea = memo(
   ({
@@ -25,13 +17,11 @@ export const FormTextArea = memo(
     className,
     ...rest
   }: TFormTextArea) => {
-    const { control } = useFormContext()
     const { validate } = useValidation({ required, max, min })
 
     return (
       <Controller
         name={name}
-        control={control}
         rules={{ validate }}
         render={({
           field: { onChange, value, ref },
