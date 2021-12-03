@@ -2,11 +2,15 @@ import { FormSelect } from 'components/form-select'
 
 export const Availability = () => {
   return (
-    <FormSelect label="Availability" name="availability">
-      <option value="Daily">Daily</option>
-      <option value="Weekly">Weekly</option>
-      <option value="Fortnightly">Fortnightly</option>
-      <option value="Monthly">Monthly</option>
-    </FormSelect>
+    <FormSelect
+      label="Availability"
+      name="availability"
+      options={[
+        { id: 'Daily', title: 'Daily' },
+        { id: 'Weekly', title: 'Weekly' },
+        { id: 'Fortnightly', title: 'Fortnightly' },
+        { id: 'Monthly', title: 'Monthly' },
+      ]}
+    />
   )
 }

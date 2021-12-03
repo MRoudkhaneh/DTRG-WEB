@@ -7,10 +7,11 @@ export const InteractionType = () => {
       label="Interaction Type"
       className="mt-4"
       required
-    >
-      <option value="email">Email</option>
-      <option value="phone call">Phone call</option>
-      <option value="in person">In person</option>
-    </FormSelect>
+      options={[
+        { id: 'email', title: 'Email' },
+        { id: 'phone call', title: 'Phone call' },
+        { id: 'in person', title: 'In person' },
+      ]}
+    />
   )
 }

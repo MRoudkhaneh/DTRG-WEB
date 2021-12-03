@@ -2,35 +2,28 @@ import { Button } from 'components/button'
 import { Error } from 'components/error'
 import { useValidation } from 'hooks/use-validation'
 import { ICDelete } from 'icons'
-import { ComponentProps, memo } from 'react'
+import { memo } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { classNames } from 'utils'
-
-type TFormSelect = {
-  label?: string
-  size?: 'small' | 'large' | 'default'
-  validation?: (value: any) => string
-  name: string
-} & ComponentProps<'select'>
+import type { TFormSelect } from './types/form-select'
 
 export const FormSelect = memo(
   ({
     label,
-    children,
     className,
     name,
     size,
     required,
     validation,
+    options,
     ...rest
   }: TFormSelect) => {
-    const { control, setValue } = useFormContext()
+    const { setValue } = useFormContext()
     const { validate } = useValidation({ required, validation })
 
     return (
       <Controller
         name={name}
-        control={control}
         rules={{ validate }}
         render={({
           field: { onChange, value, ref },
@@ -48,23 +41,34 @@ export const FormSelect = memo(
             <select
               id={name}
               ref={ref}
-              defaultValue={value}
+              defaultValue={value || ''}
               onChange={onChange}
               className={classNames(
                 ' h-12',
+                !value && 'text-transparent',
                 error
                   ? 'rounded border-2 border-red-400 shadow'
-                  : 'rounded border border-light dark:border-dark',
-                !value && 'text-gray-700'
+                  : 'rounded border border-light dark:border-dark'
               )}
               {...rest}
             >
-              <option value="" disabled hidden>
-                Select an option
-              </option>
-              {children}
+              <option disabled hidden value=""></option>
+              {options?.map((option) => (
+                <option
+                  value={option.id}
+                  key={option.id}
+                  className="text-gray-900"
+                >
+                  {option.title}
+                </option>
+              ))}
             </select>
-            <div className="flex items-center absolute top-0 right-0 mt-12 mr-8">
+            <div
+              className={classNames(
+                'flex items-center absolute top-0 right-0  mr-8',
+                label ? 'mt-12' : 'mt-4'
+              )}
+            >
               {value && (
                 <Button
                   type="button"

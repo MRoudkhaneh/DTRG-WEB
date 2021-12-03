@@ -10,13 +10,8 @@ export const DateOfDiagnosisOfT1D = memo(() => {
       <FormSelect
         label="Date Of Diagnosis Of T1D"
         name="date_of_diagnosis_of_t1d"
-      >
-        {years.map((year, index) => (
-          <option key={index} value={year}>
-            {year}
-          </option>
-        ))}
-      </FormSelect>
+        options={years.map((year) => ({ id: year, title: year }))}
+      />
     )
   else return null
 })

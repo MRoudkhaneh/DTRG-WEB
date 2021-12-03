@@ -6,20 +6,19 @@ export const CurrentDiabetesManagement = memo(() => {
     <FormSelect
       label="Current Diabetes Management"
       name="current_diabetes_management"
-    >
-      <option value="640G">640G</option>
-      <option value="670G">670G</option>
-      <option value="770G">770G</option>
-      <option value="MDT AHCL">MDT AHCL</option>
-      <option value="Tslim X2">Tslim X2</option>
-      <option value="Tslim BasallQ">Tslim BasallQ</option>
-      <option value="Ypsomed">Ypsomed</option>
-      <option value="Looping">Looping</option>
-      <option value="Oral Agents">Oral Agents</option>
-      <option value="Multiple Daily Injections">
-        Multiple Daily Injections
-      </option>
-      <option value="Other">Other</option>
-    </FormSelect>
+      options={[
+        { id: '640G', title: '640G' },
+        { id: '670G', title: '670G' },
+        { id: '770G', title: '770G' },
+        { id: 'MDT AHC', title: 'MDT AHC' },
+        { id: 'Tslim X2', title: 'Tslim X2' },
+        { id: 'Tslim BasallQ', title: 'Tslim BasallQ' },
+        { id: 'Ypsomed', title: 'Ypsomed' },
+        { id: 'Looping', title: 'Looping' },
+        { id: 'Oral Agents', title: 'Oral Agents' },
+        { id: 'Multiple Daily Injections', title: 'Multiple Daily Injections' },
+        { id: 'Other', title: 'Other' },
+      ]}
+    />
   )
 })

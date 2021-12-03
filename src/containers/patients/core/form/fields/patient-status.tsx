@@ -2,9 +2,14 @@ import { FormSelect } from 'components/form-select'
 
 export const PatientStatus = () => {
   return (
-    <FormSelect label="Patient Status" name="status" required>
-      <option value="potential candidate">Potential candidate</option>
-      <option value="enrolled">Enrolled</option>
-    </FormSelect>
+    <FormSelect
+      label="Patient Status"
+      name="status"
+      required
+      options={[
+        { id: 'potential candidate', title: 'Potential candidate' },
+        { id: 'enrolled', title: 'Enrolled' },
+      ]}
+    />
   )
 }
